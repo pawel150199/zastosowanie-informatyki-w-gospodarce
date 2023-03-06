@@ -15,5 +15,7 @@ Dodatkowe funkcjonalności:
 * Zebrana baza danych z toaletami sama w sobie przedstawia pewna wartosc i moze byc udostepniona za oplatą
   
 
-## 
+## Aplikacja dla lekarzy
+Pozwalająca dopasowac dawkę leku w zalezności od pacjenta
+* Diagnoza na podstawie zdjęc
   
