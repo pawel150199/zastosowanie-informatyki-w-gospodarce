@@ -4,6 +4,7 @@
 * Wersja premium -> liczy kto ile wydał i na podstawie tych danych określa kwote
 * Najbardziej skupimy się na temacie ulepszenia rozwiązania i zmiecenia konkurencji z planszy
 * Wybranie najlepszego rozwiązania w kontekscie skanowania paragonów
+* Kalkulator promili
 
 ## Aplikacja z kiblami 
 Najwazniejszą funkcjonalnoscia aplikacji ma byc znalezienie publicznej toalety
@@ -18,4 +19,14 @@ Dodatkowe funkcjonalności:
 ## Aplikacja dla lekarzy
 Pozwalająca dopasowac dawkę leku w zalezności od pacjenta
 * Diagnoza na podstawie zdjęc
+
+
+## Aplikacja do organizacja wyjazdów zorganizowanych
+* Rózne konta
+* Zdjecia dzieci z koloni
+* Lista rzeczy do zabrania
+
+
+
+
   
