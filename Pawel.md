@@ -1,6 +1,6 @@
 # Aplikacja internetowa służąca do ewidencjonowania elementów sieci komputerowej
 
-Cele  projektu jest stworzenie aplikacji internetowej, która
+Celem  projektu jest stworzenie aplikacji internetowej, która
 pomoże administratorom sieci w ich codziennych obowiązkach.
 <br></br>
 ## Podstawowe funkcjonalności
