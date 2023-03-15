@@ -75,7 +75,7 @@ Aktualnie brak konkurencji na rynku
   * Docker
   * docker compose
 
-# Komunikacja w zespole
+## Komunikacja w zespole
 * Trello
 * Telegram
 * Microsoft Teams
