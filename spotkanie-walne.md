@@ -3,7 +3,7 @@
 ## Aplikacja webowa dla harcerstwa
 <img src='img/zhp.png' height='300' width='400'>
 
-# Format rozkazu
+## Format rozkazu
 <img src='img/example.png' height='900' width='600'>
 
 ## Opis w zrozumiałej formie
@@ -45,4 +45,37 @@
 * przyboczny ma te same uprawnienia co druzynowemu itd...
 * stopnie (ochotnik, samerytanin, wywiadowca, odkrywca, harcerz orli, harcerz RP)
 * kapituła stopni wędrowniczych -> 2 najwyższe stopnie muszą potwierdzić i naramiennik wędrowniczy
-* 
+* opcje wyborów rady drużyny
+* blokada na liczbę osób zastępie
+  
+## Zysk
+Sprzedaż aplikacji jednostce jaką jest drużyna albo pójdziemy szeroko i sprzedamy to ZHP
+
+## Konkurencja
+Aktualnie brak konkurencji na rynku
+
+## Stack technologiczny
+* Backend
+  * FastAPI
+
+* Baza danych
+  * PostgreSQL
+  
+* Frontend
+  * React
+  
+* CI/CD
+  * Github Actions
+  * Github
+
+* Infrastruktura
+  * AWS/Serwer VPS (potencjalnie mikrus)
+
+* Containers
+  * Docker
+  * docker compose
+
+# Komunikacja w zespole
+* Trello
+* Telegram
+* Microsoft Teams
