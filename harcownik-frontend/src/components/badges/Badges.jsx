@@ -31,7 +31,7 @@ const Badges = () => {
       image: 'https://via.placeholder.com/150',
     },
     // add more badges here with
-  ]
+  ];
 
   return (
     <Accordion defaultActiveKey={['0']} alwaysOpen>
