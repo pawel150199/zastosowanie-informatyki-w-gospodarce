@@ -16,3 +16,12 @@ Wszystkie usługi działają w kontenerach i są odpalane przy użyciu `docker-
 Wszystkie niezbędne obrazy będą dostępne w moim dockerhubie.
 W celu stworzenia najnowszego obrazu udostępnie joba Github Action, który zrobi to automatycznie.
 
+## Dodawanie zmian na repozytorium
+W związku z faktem, że nasze repozytorium powinno blokować `push` na mastera należy:
+* Stworzyć swojego lokalnego brancha `git checkout -b <NAZWA_BRANCHA>`
+* Wprowadzić zmiany
+* Dodać commita `git commit -a -m "comments"`
+* Zpuszować na waszego brancha `git push --set-upstream origin <BRANCH_NAME>`
+* Otworzyć `Pull Request`
+* Czekać na review :)
+
