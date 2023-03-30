@@ -44,7 +44,10 @@ const Badges = () => {
   ]
 
   return (
-    <Accordion defaultActiveKey="0">
+
+
+
+    <Accordion defaultActiveKey={['0']} alwaysOpen>
       <Accordion.Item eventKey="0">
         <Accordion.Header>Sprawności Samerytańskie</Accordion.Header>
         <Accordion.Body>
