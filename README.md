@@ -4,7 +4,7 @@
 **Na początek proponuje odpalać frontend bez kontenerów :)**
 
 Przy użyciu środowiska node można w łatwy sposób zainstalować wszystkie zależności 
-oraz odpalić cały frontend
+oraz odpalić cały fronten
 
 `npm install` -> instaluje wszystkie potrzebne zależności
 `npm start` -> odpala serwer
