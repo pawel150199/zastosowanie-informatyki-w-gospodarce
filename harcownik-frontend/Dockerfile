@@ -1,3 +1,5 @@
+######################DEVELOPMENT#VERSION########################
+
 # use node alpine version
 FROM node:16-alpine
 
@@ -20,7 +22,7 @@ RUN npm install
 CMD ["npm", "start"]
 
 
-######################DEVELOPMENT#VERSION########################
+######################PRODUCTION#VERSION########################
 ## stage 1
 #FROM node:16-alpine as builder
 #
