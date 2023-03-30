@@ -5,8 +5,7 @@ env:
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
-  build_and_push:
-    runs_on: ubuntu-latest
+  runs_on: ubuntu-latest
 
     steps:
       - name: Checkout repository
