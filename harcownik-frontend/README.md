@@ -1,24 +1,22 @@
 ## Quick start
 
-In the project directory, you can run:
+Aby odpalic server musisz uruchomić następujące komendy
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Odpala server w modzie development
+Wpisz w przeglądarce [http://localhost:3000](http://localhost:3000) aby zobaczyć stronę
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Jak wprowadzisz jakieś zmiany zawartość strony powinna się zmienić automatycznie
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Odpala test runnera
+Po wiecej informacji odsyłam tutaj [running tests](https://facebook.github.io/create-react-app/docs/running-tests).
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+buduje aplikacje do środowiska produkcyjnego.\
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**!UWAGA**
+Twoj kod zostanie zmieniony (minified) i będzie nieczytelny XD.
