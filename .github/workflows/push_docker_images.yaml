@@ -1,4 +1,10 @@
 name: Build and push docker images to DockerHub
+on:
+  push:
+    branches: [master]
+    
+  pull_request:
+    branches: [master]
 
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
