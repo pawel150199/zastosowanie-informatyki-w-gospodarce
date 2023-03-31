@@ -6,4 +6,3 @@ W miarę rozwoju możemy rozwijać bazę aby lepiej dostosować ją do większe
 
 
 <img src="./database.jpg">
-

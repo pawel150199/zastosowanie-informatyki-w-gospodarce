@@ -6,8 +6,8 @@
 Przy użyciu środowiska node można w łatwy sposób zainstalować wszystkie zależności 
 oraz odpalić cały fronten
 
-`npm install` -> instaluje wszystkie potrzebne zależności
-`npm start` -> odpala serwer
+`npm install` -> instaluje wszystkie potrzebne zależności \
+`npm start` -> odpala serwer \
 
 Aby zamknąć serwer wystarczy użyć kombinacji `CTRL + C`
 
