@@ -8,19 +8,7 @@ on:
   push:
     branches: "*"
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      
-      name: Lint Code
-
-on: 
-  push:
-    branches:
-      - main
-
+j
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -31,22 +19,7 @@ jobs:
       - name: Lint JavaScript with ESLint
         run: |
           npm install
-          npx eslint .
-      
-      # Flake8 for Python files
-      - name: Lint Python with Flake8
-        uses: PyCQA/flake8-action@3.3.0
-        with:
-          flake8-version: '3.9.2'
-          # You can specify the directories and files to be linted by Flake8
-          directory: .
-      
-      # yamllint for YAML files
-      - name: Lint YAML with yamllint
-        run: |
-          pip install yamllint
-          yamllint .
-
+          npx eslint ./harcownik-frontend
       
       # Flake8 for Python files
       - name: Lint Python with Flake8
