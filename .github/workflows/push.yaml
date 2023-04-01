@@ -3,9 +3,12 @@ name: Push and Pull Request checks
 
 on:
   workflow_dispatch:
+  push:
+    branches: '*'
+    
   pull_request:
-    branchese: [master]
-    types: [opened, synchronize, reopened, unlocked, edited]
+    branches: [master]
+    types: [opened, synchronize, reopened, unlocked, edite
 
 jobs: 
   run-linter:
