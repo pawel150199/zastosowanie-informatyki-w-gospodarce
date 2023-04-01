@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-linter:
-    uses: ./github/workflows/test.yaml@v1
+    uses: ./.github/workflows/test.yaml@v1
     with:
       test_type: flake8
 
