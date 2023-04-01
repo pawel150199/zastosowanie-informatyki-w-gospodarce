@@ -8,7 +8,6 @@ on:
   push:
     branches: "*"
 
-j
 jobs:
   lint:
     runs-on: ubuntu-latest
