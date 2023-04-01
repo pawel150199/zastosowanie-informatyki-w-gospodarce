@@ -1,0 +1,21 @@
+---
+name: Push and Pull Request checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branchese: [master]
+    types: [opened, synchronize, reopened, unlocked, edited]
+
+jobs: 
+  run-linter:
+    uses: ./.github/workflows/test.yaml
+    with:
+      test_type: flake8
+
+  run-pytest:
+    uses: ./.github/workflows/test.yaml
+    with:
+      test_type: py310
+
+    
