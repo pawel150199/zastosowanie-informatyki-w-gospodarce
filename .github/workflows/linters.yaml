@@ -1,7 +1,6 @@
 name: Lint Code
 
 on: 
-  workflow_dispatch 
   push:
     branches:
       - main
@@ -16,6 +15,7 @@ jobs:
       - name: Lint JavaScript with ESLint
         uses: wagoid/action-eslint@v3.1.0
         with:
+          directory: ./harcownik-frontend
           extensions: .js
           args: --quiet
       
