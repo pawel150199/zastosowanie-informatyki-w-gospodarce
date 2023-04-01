@@ -8,11 +8,11 @@ const MyNavbar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-left">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link>
-                        <Nav.Link href="/badges">Badges</Nav.Link>
-                        <Nav.Link href="/user">User</Nav.Link>
+                        <Nav.Link href="/">Strona Główna</Nav.Link>
+                        <Nav.Link href="/login">Logowanie</Nav.Link>
+                        <Nav.Link href="/about">O nas</Nav.Link>
+                        <Nav.Link href="/badges">Sprawności</Nav.Link>
+                        <Nav.Link href="/user">Użytkownik</Nav.Link>
                         <Nav.Link href="/raport">Raport</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
