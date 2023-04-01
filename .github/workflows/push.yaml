@@ -1,0 +1,19 @@
+---
+name: Push to repository
+
+on: 
+  workflow_dispatch:
+  push:
+    branches: 
+      - '*'
+
+jobs:
+  run-linter:
+    uses: ./github/workflows/test.yaml
+    with:
+      test_type: flake8
+
+#  run-pytest:
+#   uses: ./github/workflows/test.yaml
+#    with:
+#      test_type: py310
