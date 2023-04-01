@@ -14,13 +14,39 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      name: Lint Code
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
       # ESLint for JavaScript files
       - name: Lint JavaScript with ESLint
-        uses: wagoid/action-eslint@v3.1.0
+        run: |
+          npm install
+          npx eslint .
+      
+      # Flake8 for Python files
+      - name: Lint Python with Flake8
+        uses: PyCQA/flake8-action@3.3.0
         with:
-          directory: ./harcownik-frontend
-          extensions: .js
-          args: --quiet
+          flake8-version: '3.9.2'
+          # You can specify the directories and files to be linted by Flake8
+          directory: .
+      
+      # yamllint for YAML files
+      - name: Lint YAML with yamllint
+        run: |
+          pip install yamllint
+          yamllint .
+
       
       # Flake8 for Python files
       - name: Lint Python with Flake8
