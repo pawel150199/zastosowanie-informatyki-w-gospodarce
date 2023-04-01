@@ -17,4 +17,8 @@ test('About page renders correctly', () => {
   expect(screen.getByText('Harcownik to aplikacja webowa skierowana do organizacji harcerskich. Ma ona za zadanie usprawnić zarządzanie harcerzykami.')).toBeInTheDocument()
   expect(screen.getByText('Harcownik')).toBeInTheDocument()
   expect(screen.getByText('Nasz zespół')).toBeInTheDocument()
+  expect(screen.getByTestId('Learn More Paweł')).toBeDefined()
+  expect(screen.getByTestId('Learn More Michał')).toBeDefined()
+  expect(screen.getByTestId('Learn More Kasia')).toBeDefined()
+  
 })
