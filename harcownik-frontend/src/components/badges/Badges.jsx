@@ -77,7 +77,7 @@ const Badges = () => {
   ];
 
   return (
-    <Accordion defaultActiveKey={['0']} alwaysOpen>
+    <Accordion defaultActiveKey={['0']} >
 
       <Accordion.Item eventKey="0" className="mb-3">
         <Accordion.Header>Sprawności Łącznościowe</Accordion.Header>
