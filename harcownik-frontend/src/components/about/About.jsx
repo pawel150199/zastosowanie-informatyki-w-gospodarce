@@ -27,7 +27,7 @@ const About = () => {
                   Odpowiada za rozwój aplikacji, utrzymanie jej oraz kwestie związane z infrastrukturą.
                 </Card.Text>
                 <div className="mt-auto">
-                <Button variant="primary" className="mt-auto" href="https://pl-pl.facebook.com/people/Pawe%C5%82-Polski/pfbid0c17y1CUAhTfbuT7w9hnkAGRMtFWYS7eRURVCxBqZrezy11E1eX7nu5SxWGhCS1yel/">Learn More</Button>
+                <Button data-testid="Learn More Paweł" variant="primary" className="mt-auto" href="https://pl-pl.facebook.com/people/Pawe%C5%82-Polski/pfbid0c17y1CUAhTfbuT7w9hnkAGRMtFWYS7eRURVCxBqZrezy11E1eX7nu5SxWGhCS1yel/">Learn More</Button>
                 </div>
               </Card.Body>
             </Card>
@@ -41,7 +41,7 @@ const About = () => {
                   Odpowiada za rozwój aplikacji oraz za jej jakość.
                 </Card.Text>
                 <div className="mt-auto">
-                <Button variant="primary" className="align-bottom" href="https://pl-pl.facebook.com/michal.wlo.7">Learn More</Button>
+                <Button data-testid="Learn More Michał" variant="primary" className="align-bottom" href="https://pl-pl.facebook.com/michal.wlo.7">Learn More</Button>
                 </div>
               </Card.Body>
             </Card>
@@ -55,7 +55,7 @@ const About = () => {
                   Odpowiada za rozwój aplikacji oraz kwestie związane z organizacją zespołą (Scrum Master) oraz za finalny wygląd aplikacji.
                 </Card.Text>
                 <div className="mt-auto">
-                <Button variant="primary" className="align-bottom" href="https://www.facebook.com/kasia.duszynska.52">Learn More</Button>
+                <Button data-testid="Learn More Kasia" variant="primary" className="align-bottom" href="https://www.facebook.com/kasia.duszynska.52">Learn More</Button>
                 </div>
               </Card.Body>
             </Card>
