@@ -1,0 +1,23 @@
+---
+name: Push and Pull Request checks
+
+on:
+  workflow_dispatch:
+  #push:
+  # branches: '*'
+
+  #pull_request:
+  #  branches: 'master'
+
+jobs: 
+  run-linter:
+    uses: ./.github/workflows/test.yaml
+    with:
+      test_type: flake8
+
+  run-pytest:
+    uses: ./.github/workflows/test.yaml
+    with:
+      test_type: py310
+
+    

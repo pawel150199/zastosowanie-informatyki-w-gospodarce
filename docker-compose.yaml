@@ -10,7 +10,7 @@ services:
     volumes:
       - ./keycloak/keycloak_data:/opt/jboss/keycloak/standalone/data
     environment:
-      - KEYCLOAK_USER=keycloak
+      - KEYCLOAK_USER=keycloak 
       - KEYCLOAK_PASSWORD=keycloak
       - DB_VENDOR=H2
 
