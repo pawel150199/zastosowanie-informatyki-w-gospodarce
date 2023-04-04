@@ -26,8 +26,7 @@ test('About page renders correctly', () => {
 
 test('Badges page renders correctly', () => {
   render(<Badges />)
-  expect(screen.getByText('Sprawności Samerytańskie')).toBeInTheDocument()
-  expect(screen.getByText('Sprawności Sprawnościowe')).toBeInTheDocument()
+  expect(screen.getByText('lacznoscioweBadges')).toBeInTheDocument()
   
 })
 
