@@ -3,14 +3,15 @@ import React from 'react'
 
 const MyNavbar = () => {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className="justify-content-center">
             <Container>
             <Nav.Link href="/">
-                <Image src="/img/logo.jpeg"  style={{width: "3em", marginRight: "4em"}}/>
+                {/* <Image src="/img/logo.jpeg"  style={{width: "3em", marginRight: "4em"}}/> */}
             </Nav.Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left"/>
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-left">
+                    <Nav className="navbar-nav mx-auto">
+                        <Image src="/img/logo.jpeg"  style={{width: "3em", marginRight: "3em"}}/>
                         <Nav.Link href="/">Strona Główna</Nav.Link>
                         <Nav.Link href="/login">Logowanie</Nav.Link>
                         <Nav.Link href="/about">O nas</Nav.Link>

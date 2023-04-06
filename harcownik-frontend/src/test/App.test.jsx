@@ -26,7 +26,10 @@ test('About page renders correctly', () => {
 
 test('Badges page renders correctly', () => {
   render(<Badges />)
-  expect(screen.getByText('lacznoscioweBadges')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Łącznościowe')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Kucharskie')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Przyrodnicze')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Wyrobienie Harcerskie')).toBeInTheDocument()
   
 })
 
