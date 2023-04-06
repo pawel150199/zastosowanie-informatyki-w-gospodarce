@@ -1,10 +1,13 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Image} from 'react-bootstrap';
 import React from 'react'
 
 const MyNavbar = () => {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
+            <Nav.Link href="/">
+                <Image src="/img/logo.jpeg"  style={{width: "3em", marginRight: "4em"}}/>
+            </Nav.Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-left">
