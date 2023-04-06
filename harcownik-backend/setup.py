@@ -1,16 +1,28 @@
-from distutils.core import setup
+import setuptools
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 
 dependencies = open("requirements.txt", "r").read().splitlines()
 
-dist = setup(
+setuptools.setup(
     name="Harcownik API",
     version="1.0",
-    description="API for harcownik scout application"
-    author="Paweł Polski",
+    description="API for harcownik scout application",
+    author="Pawel Polski",
     author_email="pawel.polski99@gmail.com",
-    long_description=open("README.md", "r").read(),
-    version=__version__,
+    long_description=long_description,
+    packages=setuptools.find_packages(where="src"),
     long_description_content_type="text/markdown",
     install_requires=dependencies,
-    platforms="any"
+    platforms="any",
+    py_modules=["logger"],
+    package_dir={"": "src"},
+    python_requires=">=3.6",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "Operating System :: OS Independent",
+    ],
+    install_requires=["termcolor==1.1.0 "],
 )
