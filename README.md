@@ -1,27 +1,28 @@
-# Szybki tutorial
+# Harcownik
 
-## Frontend
-**Na początek proponuje odpalać frontend bez kontenerów :)**
+Aplikacja przeznaczona dla zarządzania drużyną harcerską. Najważniejszą funkcjonalnością w bogatej palecie tej aplikacji 
+jest funkcja generowania raportów harcerskich. Obecnie istnieje duży problem z tym zadaniem, a żadna obecnie dostępna na rynku aplikacja nie dostarcza takiej funkcjonalności. Mamy nadzieje, że nasza aplikacja zrewolucjonizuje wszystkie drużyny harcerskie i uprości biurokrację :)
+<br></br>
 
-Przy użyciu środowiska node można w łatwy sposób zainstalować wszystkie zależności 
-oraz odpalić cały frontent
-
-`npm install` -> instaluje wszystkie potrzebne zależności \
-`npm start` -> odpala serwer \
-
-Aby zamknąć serwer wystarczy użyć kombinacji `CTRL + C`
-
-## Kontenery
-Wszystkie usługi działają w kontenerach i są odpalane przy użyciu `docker-compose up`.
-Wszystkie niezbędne obrazy będą dostępne w moim dockerhubie.
-W celu stworzenia najnowszego obrazu udostępnie joba Github Action, który zrobi to automatycznie.
-
-## Dodawanie zmian na repozytorium
-W związku z faktem, że nasze repozytorium powinno blokować `push` na mastera należy:
+## Kontrybucja aplikacji
+### W celu wprowadzenia zmiany w repozytorium należy:
 * Stworzyć swojego lokalnego brancha `git checkout -b <BRANCH_NAME>`
 * Wprowadzić zmiany
 * Dodać commita `git commit -a -m "comments"`
 * Zpuszować na waszego brancha `git push --set-upstream origin <BRANCH_NAME>`
 * Otworzyć `Pull Request`
 * Czekać na review :)
+<br></br>
+
+### Aby stworzyć nowy obraz dockera należy:
+* Przejść do sekcji `Actions` na githubie
+* Uruchomić akcje `Build and push docker images to DockerHub`
+<br></br>
+
+## Informacje o komponentach
+Bardziej szczegółowe informacje o poszczególnych komponentach można znaleźć w katalogach, w których znajduje się ich kod źródłowy.
+<br></br>
+
+
+
 
