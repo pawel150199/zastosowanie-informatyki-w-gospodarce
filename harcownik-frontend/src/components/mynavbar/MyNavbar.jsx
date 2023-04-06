@@ -3,6 +3,7 @@ import React from 'react'
 
 const MyNavbar = () => {
     return (
+<<<<<<< HEAD
         <Navbar bg="light" expand="lg" className="navbar-nav  h1 fs-5" > 
             <Container>
                 <Navbar.Brand href="/" className="navbar-nav mr-left">
@@ -11,6 +12,17 @@ const MyNavbar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="navbar-nav mx-auto">
+=======
+        <Navbar bg="light" expand="lg" className="justify-content-center">
+            <Container>
+            <Nav.Link href="/">
+                {/* <Image src="/img/logo.jpeg"  style={{width: "3em", marginRight: "4em"}}/> */}
+            </Nav.Link>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="navbar-nav mx-auto">
+                        <Image src="/img/logo.jpeg"  style={{width: "3em", marginRight: "3em"}}/>
+>>>>>>> 7109308 (add tests and center MyNavBar)
                         <Nav.Link href="/">Strona Główna</Nav.Link>
                         <Nav.Link href="/login">Logowanie</Nav.Link>
                         <Nav.Link href="/about">O nas</Nav.Link>
