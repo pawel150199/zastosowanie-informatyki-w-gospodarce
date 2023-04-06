@@ -1,7 +1,4 @@
-from tokenize import group
-from pydantic import BaseModel, EmailStr
-from typing import List
-from datetime import datetime
+from pydantic import BaseModel
 
 # Base models
 class GroupBase(BaseModel):
@@ -11,7 +8,7 @@ class GroupBase(BaseModel):
 class UserBase(BaseModel):
     first_name: str
     last_name: str
-    email: EmailStr
+    email: str
 
 class BadgeBase(BaseModel):
     name: str
