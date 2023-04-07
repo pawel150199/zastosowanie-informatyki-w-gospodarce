@@ -21,7 +21,7 @@ class LevelReportBase(BaseModel):
     title: str
 
 # Create
-class CreateGroup(BaseModel):
+class CreateGroup(GroupBase):
     szczep: str
     city: str
 
@@ -44,7 +44,7 @@ class CreateLevelReport(LevelReportBase):
     user_id: int
 
 # Get
-class Group(BaseModel):
+class Group(GroupBase):
     szczep: str
     city: str
 
