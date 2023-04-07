@@ -12,6 +12,7 @@ class UserBase(BaseModel):
 
 class BadgeBase(BaseModel):
     name: str
+    description: str
 
 class BadgeReportBase(BaseModel):
     title: str

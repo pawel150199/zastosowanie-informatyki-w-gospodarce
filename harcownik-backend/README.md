@@ -14,5 +14,10 @@
 To API to część backendu apikacji `Harcownik`.
 <br></br>
 
+## Jak uruchomić?
+W celu uruchomienia API należy użyć komendy `uvicorn src.main:app --reload`
+<br></br>
+
 ## Dokumentacja API
-WIP
+Dokumentacja dostępna jest po uruchomieniu API pod adresem `<adres_servera>:8000/docs`.
+<br></br>
