@@ -10,7 +10,7 @@ def create_badge(badge: schemas.CreateBadge, db:Session = Depends(get_db)):
     return crud.create_badge(db=db, badge=badge)
 
 @router.get("/badges/", response_model=list[schemas.Badge])
-def read_groups(db: Session = Depends(get_db)):
+def read_badges(db: Session = Depends(get_db)):
     badges = crud.get_badges(db)
     return badges
 
