@@ -1,10 +1,23 @@
+from typing import Any, Dict, Optional, Union
 from sqlalchemy.orm import Session
 
 from src.models.user import User as UserModel
 from src.schemas.user import User, CreateUser, UserBase
+from src.core.security import get_password_hash, verify_password
+
+def get_by_email(db: Session, email: str) -> Optional[UserModel]:
+    return db.query(UserModel).filter(UserModel.email == email).first()
 
 def get_user(db: Session, user_id: int):
     return db.query(UserModel).filter(UserModel.id == user_id).first()
+
+def authenticate(db: Session, email: str, password: str) -> Optional[UserModel]: 
+    user = get_by_email(db, email=email)
+    if not user:
+        return None
+    if not verify_password(password, user.hashed_password):
+        return None
+    return user
 
 def get_users(db: Session):
     return db.query(UserModel).all()
