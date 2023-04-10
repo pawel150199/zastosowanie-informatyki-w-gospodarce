@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import styles from './RegisterStyle';
 
@@ -44,7 +45,9 @@ const Register = () => {
         Register
       </Button>
       <TouchableOpacity>
-        <Text style={styles.link}>Already have an account? Login</Text>
+        <Link to="/login">
+            <Text style={styles.link}>Already have an account? Login</Text>
+        </Link>
       </TouchableOpacity>
     </View>
   );
