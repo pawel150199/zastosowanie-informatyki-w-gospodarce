@@ -16,6 +16,9 @@ const MyNavbar = () => {
 =======
         <Navbar bg="light" expand="lg" className="justify-content-center">
             <Container>
+                <Navbar.Brand href="/" className="navbar-nav mr-left">
+                        <Image src="/img/logo.jpeg"  style={{width: "3em"}}/>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="navbar-nav mx-auto">
