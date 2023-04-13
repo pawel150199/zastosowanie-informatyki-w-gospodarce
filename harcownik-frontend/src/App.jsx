@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import Badges from './components/badges/Badges';
 import MyNavbar from './components/mynavbar/MyNavbar';
 import Footer from './components/footer/Footer';
+import NotFound from './components/notfound/NotFound';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
