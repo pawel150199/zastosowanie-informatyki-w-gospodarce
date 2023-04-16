@@ -9,7 +9,8 @@ import  './style.css'
 const MyNavbar = () => {
 
     return (
-         <Navbar className="navbar-nav navbar-dark bg-dark h1 fs-4">  
+        <Navbar  expand="lg" className="navbar-nav navbar-dark bg-dark h1 fs-5" > 
+         {/* <Navbar className="navbar-nav navbar-dark bg-dark h1 fs-4">   */}
             <Container>
                 <Navbar.Brand href="/" className="navbar-nav mr-left">
                         <Image src="/img/logo.jpeg"  style={{width: "3em"}}/>

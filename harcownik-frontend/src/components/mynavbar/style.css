@@ -1,9 +1,9 @@
- .box {
+.box {
     text-decoration: underline;
  }
  
  .box:hover {
-   color:blue;
    background-color: gray;
+   color: gray;
     
  }
