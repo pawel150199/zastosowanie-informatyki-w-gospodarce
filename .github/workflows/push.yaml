@@ -21,6 +21,6 @@ jobs:
   #    test_type: py310
 
   run-jest-tests:
-    uses: ./.githubworkflows/test_js.yaml
+    uses: ./.github/workflows/test_js.yaml
 
     
