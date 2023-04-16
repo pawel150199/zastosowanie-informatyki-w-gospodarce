@@ -22,7 +22,7 @@ jobs:
       
     - name: Store artifacts
       uses: actions/upload-artifact@v3
-        with: 
-          name: js-test-output
-          retention-days: 14
-          path: test_output.txt
+      with: 
+        name: js-test-output
+        retention-days: 14
+        path: test_output.txt
