@@ -35,8 +35,8 @@ test('Badges page renders correctly', () => {
 
 test('Raport page renders correctly', () => {
   render(<Raport />)
-  expect(screen.getByText('Report')).toBeInTheDocument()
-  expect(screen.getByText('Select a PDF file to view:')).toBeInTheDocument()
+  expect(screen.getByText('Zgłoszenia')).toBeInTheDocument()
+  expect(screen.getByText('Zakładka służąca do generowania raportu')).toBeInTheDocument()
   
 })
 

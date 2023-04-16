@@ -22,7 +22,7 @@ const MyNavbar = () => {
                         <Nav.Link className="box" href="/login"> Logowanie</Nav.Link>
                         <Nav.Link className="box" href="/about"> O nas</Nav.Link>
                         <Nav.Link className="box" href="/badges"> Sprawności</Nav.Link>
-                        <Nav.Link className="box" href="/raport"> Raport</Nav.Link>
+                        <Nav.Link className="box" href="/raport"> Generuj rozkaz</Nav.Link>
                     </Nav>
                     <Nav className="navbar-nav mr-auto">
                         <NavDropdown className="box" title="Menu" id="basic-nav-dropdown">

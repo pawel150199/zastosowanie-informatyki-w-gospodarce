@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Jumbotron, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Jumbotron,
+  Button,
+  Form,
+  FormControl,
+  Dropdown,
+} from "react-bootstrap";
 import pdfjsLib from "pdfjs-dist";
 import "./raport_style.css";
 
@@ -50,11 +59,23 @@ const Raport = () => {
     setEditing(false);
   };
 
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const handleSelect = (eventKey) => {
+    if (!selectedItems.includes(eventKey)) {
+      setSelectedItems([...selectedItems, eventKey]);
+    }
+  };
+
+  const handleDeselect = (eventKey) => {
+    setSelectedItems(selectedItems.filter((item) => item !== eventKey));
+  };
+
   return (
     <div class="container">
       <Row>
         <div class="jumbotron jumbotronStyle_0 rounded">
-          <h1 >Zakładka służąca do generowania raportu</h1>
+          <h1>Zakładka służąca do generowania raportu</h1>
         </div>
       </Row>
       <Row>
@@ -65,61 +86,145 @@ const Raport = () => {
         </Col>
         <Col md={7}>
           <div class="jumbotron  jumbotronStyle_2 rounded">
-            <h1>Generuj pdf z rozkazem</h1>
-            <h1>Report</h1>
-            {pdf ? (
-              <div>
-                <div className="d-flex justify-content-between mb-3">
-                  <Button
-                    variant="primary"
-                    onClick={() => handlePageChange(-1)}
-                    disabled={pageNumber <= 1}
-                  >
-                    Previous
-                  </Button>
-                  <span>Page {pageNumber}</span>
-                  <Button
-                    variant="primary"
-                    onClick={() => handlePageChange(1)}
-                    disabled={pageNumber >= pdf.numPages}
-                  >
-                    Next
-                  </Button>
-                </div>
-                <canvas
-                  id="pdfCanvas"
-                  ref={(el) => setCanvas(el)}
-                  style={{ border: "1px solid black" }}
-                />
-                {editing ? (
-                  <div>
-                    {/* TODO: Add form to modify PDF contents */}
-                    <Button variant="primary" onClick={handleSaveClick}>
-                      Save
-                    </Button>
-                  </div>
-                ) : (
-                  <div>
-                    <Button variant="primary" onClick={handleEditClick}>
-                      Edit
-                    </Button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div>
-                <p>Select a PDF file to view:</p>
-                <input type="file" accept=".pdf" onChange={handleFileSelect} />
-              </div>
-            )}
+            <h1>Podpunkty do rozkazu</h1>
+            <Dropdown onSelect={handleSelect} onDeselect={handleDeselect}>
+              <Dropdown.Toggle variant="primary" id="multi-checkbox-dropdown">
+                {selectedItems.length === 0
+                  ? "Select items"
+                  : `${selectedItems.length} items selected`}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Form>
+                  <Form.Check
+                    type="checkbox"
+                    label="Wstęp"
+                    id="item1"
+                    checked={selectedItems.includes("item1")}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        handleSelect("item1");
+                      } else {
+                        handleDeselect("item1");
+                      }
+                    }}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    label="Wyjątki z rozkazu"
+                    id="item2"
+                    checked={selectedItems.includes("item2")}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        handleSelect("item2");
+                      } else {
+                        handleDeselect("item2");
+                      }
+                    }}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    label="Uchwały"
+                    id="item3"
+                    checked={selectedItems.includes("item3")}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        handleSelect("item3");
+                      } else {
+                        handleDeselect("item3");
+                      }
+                    }}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    label="Zwolnienia"
+                    id="item4"
+                    checked={selectedItems.includes("item4")}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        handleSelect("item4");
+                      } else {
+                        handleDeselect("item4");
+                      }
+                    }}
+                  />
+                  <Form.Check
+                    type="checkbox"
+                    label="Przyznanie stopni,sprawności"
+                    id="item5"
+                    checked={selectedItems.includes("item5")}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        handleSelect("item5");
+                      } else {
+                        handleDeselect("item5");
+                      }
+                    }}
+                  />
+                </Form>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
+          {/* <h1>Generuj pdf z rozkazem</h1>
+                <h1>Report</h1>
+                {pdf ? (
+                  <div>
+                    <div className="d-flex justify-content-between mb-3">
+                      <Button
+                        variant="primary"
+                        onClick={() => handlePageChange(-1)}
+                        disabled={pageNumber <= 1}
+                      >
+                        Previous
+                      </Button>
+                      <span>Page {pageNumber}</span>
+                      <Button
+                        variant="primary"
+                        onClick={() => handlePageChange(1)}
+                        disabled={pageNumber >= pdf.numPages}
+                      >
+                        Next
+                      </Button>
+                    </div>
+                    <canvas
+                      id="pdfCanvas"
+                      ref={(el) => setCanvas(el)}
+                      style={{ border: "1px solid black" }}
+                    />
+                    {editing ? (
+                      <div>
+                        {/* TODO: Add form to modify PDF contents */}
+          {/* <Button variant="primary" onClick={handleSaveClick}>
+                          Save
+                        </Button>
+                      </div>
+                    ) : (
+                      <div>
+                        <Button variant="primary" onClick={handleEditClick}>
+                          Edit
+                        </Button>
+                      </div>
+                    )}
+                    
+                  </div> */}
+          {/* // ) : (
+                //   <div>
+                //     <p>Select a PDF file to view:</p>
+                //     <input type="file" accept=".pdf" onChange={handleFileSelect} />
+                //   </div>
+                // )} */}
+          {/* </div> */}
           <div class="jumbotron jumbotronStyle_3 rounded">
             <h1 class="display-4">Pole nr 3</h1>
             <p class="lead">
               Kliknij poniższy przycisk, aby wygenerować raport w formacie PDF.
             </p>
-            <hr class="my-4"></hr>
-            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> */}
+            <Form>
+              <Form.Group controlId="formBasicName" className=" form_place ">
+                {/* <Form.Label>Imię</Form.Label> */}
+                <FormControl type="text"  placeholder="Wprowadź tekst" className=" form_place_space" />
+              </Form.Group>
+            </Form>
+            {/* <hr class="my-3"></hr> */}
             <a class="btn btn-light btn-lg" href="#" role="button">
               Generuj raport
             </a>
