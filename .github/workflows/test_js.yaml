@@ -18,5 +18,11 @@ jobs:
     
     - name: Run tests
       run: |
-        npm test
-
+        npm test > test_output.txt
+      
+    - name: Store artifacts
+      uses: actions/upload-artifact@v3
+        with: 
+          name: js-test-output
+          retention-days: 14
+          path: test_output.txt
