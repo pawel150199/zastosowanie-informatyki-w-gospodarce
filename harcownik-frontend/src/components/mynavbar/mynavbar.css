@@ -1,0 +1,20 @@
+.box {
+    text-decoration: none;
+    color: white;
+    width: max-content;
+    width: max-content;
+    text-align: center;
+}
+
+.box:hover {
+    color: white;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+#img:hover {
+    box-shadow: 0 0.3em 3em gray;
+}
+
+.box:active {
+    box-shadow: 0 4px 2px -2px gray;
+}
