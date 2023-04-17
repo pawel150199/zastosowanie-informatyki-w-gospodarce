@@ -17,7 +17,6 @@ const MyNavbar = () => {
                         <Nav.Link className="box" href="/login"> Logowanie</Nav.Link>
                         <Nav.Link className="box" href="/about"> O nas</Nav.Link>
                         <Nav.Link className="box" href="/badges"> Sprawności</Nav.Link>
-                        <Nav.Link className="box" href="/raport"> Raport</Nav.Link>
                     </Nav>
                     <Nav className="navbar-nav navbar-dark mr-auto">
                         <NavDropdown title="Menu" id="basic-nav-dropdown">
