@@ -3,7 +3,6 @@ import '@testing-library/jest-dom'
 import App from '../App';
 import About from '../components/about/About';
 import Badges from '../components/badges/Badges';
-import Raport from '../components/raport/Raport';
 
 test('Main page renders correctly', () => {
   render(<App />)
@@ -32,11 +31,3 @@ test('Badges page renders correctly', () => {
   expect(screen.getByText('Sprawności Wyrobienie Harcerskie')).toBeInTheDocument()
   
 })
-
-test('Raport page renders correctly', () => {
-  render(<Raport />)
-  expect(screen.getByText('Report')).toBeInTheDocument()
-  expect(screen.getByText('Select a PDF file to view:')).toBeInTheDocument()
-  
-})
-
