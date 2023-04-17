@@ -20,6 +20,7 @@ jobs:
       run: |
         cd harcownik-frontend
         npm test > test_output.txt
+        cat test_output.txt
       
     - name: Store artifacts
       uses: actions/upload-artifact@v3
