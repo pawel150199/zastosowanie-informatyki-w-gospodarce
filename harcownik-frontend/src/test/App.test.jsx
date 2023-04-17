@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
+import React from 'react';
 import App from '../App';
 import About from '../components/about/About';
 import Badges from '../components/badges/Badges';
