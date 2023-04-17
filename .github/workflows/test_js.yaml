@@ -27,4 +27,4 @@ jobs:
       with: 
         name: js-test-output
         retention-days: 14
-        path: test_output.txt
+        path: ./harcownik-frontend/test_output.txt
