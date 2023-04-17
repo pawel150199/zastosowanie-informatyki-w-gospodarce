@@ -1,5 +1,5 @@
 ---
-name: Run jest js tests
+name: Run JavaScript [Jest] tests
 
 on:
   workflow_dispatch:
