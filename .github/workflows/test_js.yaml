@@ -3,6 +3,7 @@ name: Run JavaScript [Jest] tests
 
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   run_tests:
