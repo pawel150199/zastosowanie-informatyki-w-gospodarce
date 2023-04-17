@@ -1,5 +1,5 @@
 ---
-name: Push and Pull Request checks
+name: Continous Integration Pipeline
 
 on:
   workflow_dispatch:
