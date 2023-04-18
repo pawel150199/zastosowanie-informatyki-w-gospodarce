@@ -22,5 +22,3 @@ jobs:
 
   run-jest-tests:
     uses: ./.github/workflows/test_js.yaml
-
-    
