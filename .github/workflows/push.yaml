@@ -1,8 +1,6 @@
 ---
 name: Continous Integration Pipeline
 
-description: Continous Integration Pipeline for Harcownik
-
 on:
   workflow_dispatch:
   push:
