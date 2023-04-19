@@ -1,14 +1,14 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
-import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import React from "react";
 
-import About from './components/about/About';
-import User from './components/user/User';
-import Home from './components/home/Home';
-import Badges from './components/badges/Badges';
-import MyNavbar from './components/mynavbar/MyNavbar';
-import Footer from './components/footer/Footer';
-import NotFound from './components/notfound/NotFound';
+import About from "./components/about/About";
+import User from "./components/user/User";
+import Home from "./components/home/Home";
+import Badges from "./components/badges/Badges";
+import MyNavbar from "./components/mynavbar/MyNavbar";
+import Footer from "./components/footer/Footer";
+import NotFound from "./components/notfound/NotFound";
 
 function App() {
   return (

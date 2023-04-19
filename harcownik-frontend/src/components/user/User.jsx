@@ -1,14 +1,14 @@
-import React from 'react';
-import { Container, Row, Col, Badge, Image } from 'react-bootstrap';
-import { FaMedal } from 'react-icons/fa';
+import React from "react";
+import { Container, Row, Col, Badge, Image } from "react-bootstrap";
+import { FaMedal } from "react-icons/fa";
 
 const UserPage = () => {
   // User data mockup
   const user = {
-    name: 'Katarzyna Duszyńska',
-    email: 'dus.kas@wp.pl',
-    role: 'Harcmistrzyni',
-    lastLogin: '2023-03-25 15:30:00',
+    name: "Katarzyna Duszyńska",
+    email: "dus.kas@wp.pl",
+    role: "Harcmistrzyni",
+    lastLogin: "2023-03-25 15:30:00",
   };
 
   // Function to format the last login date and time
@@ -26,7 +26,7 @@ const UserPage = () => {
               src="/img/kasia.jpg"
               alt="Profile"
               roundedCircle
-              style={{ width: '150px', height: '150px' }}
+              style={{ width: "150px", height: "150px" }}
             />
           </div>
           <div className="text-center">
@@ -52,7 +52,7 @@ const UserPage = () => {
             <h3>Informacje</h3>
             <ul>
               <li>
-                <strong>Data ostatniego logowania:</strong>{' '}
+                <strong>Data ostatniego logowania:</strong>{" "}
                 {formatLastLogin(user.lastLogin)}
               </li>
               <li>Konto zostało założone 2022-01-01</li>

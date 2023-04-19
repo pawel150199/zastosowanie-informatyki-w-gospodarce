@@ -1,6 +1,6 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
-import './footer.css'
+import React from "react";
+import { Container } from "react-bootstrap";
+import "./footer.css";
 function Footer() {
   const year = new Date().getFullYear();
 
