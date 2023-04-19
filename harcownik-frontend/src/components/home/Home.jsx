@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Container } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Container } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 
 function Home() {
   const features = [
