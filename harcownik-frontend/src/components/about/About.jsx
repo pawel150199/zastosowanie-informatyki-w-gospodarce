@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import React from "react";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
 
 const About = () => {
@@ -66,6 +66,6 @@ const About = () => {
       
     </div>
   );
-}
+};
 
 export default About;

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Accordion } from 'react-bootstrap';
-import BadgeItem from './BadgeItem';
+import React from "react";
+import { Accordion } from "react-bootstrap";
+import BadgeItem from "./BadgeItem";
 
 const Badges = () => {
   const lacznoscioweBadges = [
     {
-      name: 'Goniec',
+      name: "Goniec",
       description: [
         "Wskazała / wskazał drogę do urzędów i ważnych miejsc w swojej miejscowości",
         "Dostarczyła / dostarczył list lub ustną wiadomość do adresata w wyznaczonym terminie",
@@ -14,7 +14,7 @@ const Badges = () => {
       ],
     },
     {
-      name: 'Zwiadowca',
+      name: "Zwiadowca",
       description: [
         "W nieznanym terenie niedostrzeżenie podeszła / podszedł wskazany obiekt",
         "Przeprowadziła / przeprowadził zwiad, sporządzając szczegółowy raport z opisem wykonanych zadań i zaobserwowanych zdarzeń",
@@ -27,7 +27,7 @@ const Badges = () => {
 
   const kucharskieBadges = [
     {
-      name: 'Kuchcik',
+      name: "Kuchcik",
       description: [
         "Przygotował/a w terenie posiłek dla zastępu, korzystając z kuchni polowej lub kuchenki turystycznej",
         "Zadbał/a o estetyczny wygląd polowego stołu",
@@ -35,7 +35,7 @@ const Badges = () => {
       ],
     },
     {
-      name: 'Kucharz',
+      name: "Kucharz",
       description: [
         "Prawidłowo posługiwała / posługiwał się sprzętem kuchennym (nożami, tłuczkami, maszynką do mielenia, garnkami i patelniami, cedzakiem)",
         "Ułożyła / ułożył urozmaicony jadłospis na kilkudniowy biwak lub na tydzień obozu dla całej drużyny",
@@ -77,7 +77,7 @@ const Badges = () => {
   ];
 
   return (
-    <Accordion defaultActiveKey={['0']} >
+    <Accordion defaultActiveKey={["0"]} >
 
       <Accordion.Item eventKey="0" className="mb-3">
         <Accordion.Header>Sprawności Łącznościowe</Accordion.Header>

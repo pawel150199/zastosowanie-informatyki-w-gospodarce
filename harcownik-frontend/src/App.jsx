@@ -1,6 +1,6 @@
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
-import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import React from "react";
 
 import About from './components/about/About';
 import User from './components/user/User';

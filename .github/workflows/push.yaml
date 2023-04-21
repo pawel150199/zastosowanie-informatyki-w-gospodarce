@@ -1,13 +1,13 @@
 ---
-name: Push and Pull Request checks
+name: Continous Integration Pipeline
 
 on:
   workflow_dispatch:
-  #push:
-  # branches: '*'
+  push:
+   branches: '*'
 
-  #pull_request:
-  #  branches: 'master'
+  pull_request:
+    branches: 'master'
 
 jobs: 
   #run-linter:
@@ -22,5 +22,3 @@ jobs:
 
   run-jest-tests:
     uses: ./.github/workflows/test_js.yaml
-
-    

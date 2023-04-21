@@ -1,10 +1,6 @@
-import { Navbar, Nav, Container, Image, NavDropdown} from 'react-bootstrap';
-// import {React, useState} from 'react'
-import {React} from 'react'
-// import styles from './style.css'
-import  './style.css'
-
-
+import { Navbar, Nav, Container, Image, NavDropdown} from "react-bootstrap";
+import React from "react";
+import  "./mynavbar.css";
 
 const MyNavbar = () => {
 
@@ -35,7 +31,7 @@ const MyNavbar = () => {
             </Container>
         </Navbar>
     );
-}
+};
 
 export default MyNavbar;
 
