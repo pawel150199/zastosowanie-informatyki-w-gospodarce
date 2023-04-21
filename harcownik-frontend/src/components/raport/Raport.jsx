@@ -72,7 +72,7 @@ const Raport = () => {
   };
 
   return (
-    <div class="container">
+    <div style={{ marginTop: 0 }} class="container">
       <Row>
         <div class="jumbotron jumbotronStyle_0 rounded">
           <h1>Zakładka służąca do generowania raportu</h1>
@@ -220,11 +220,9 @@ const Raport = () => {
             </p>
             <Form>
               <Form.Group controlId="formBasicName" className=" form_place ">
-                {/* <Form.Label>Imię</Form.Label> */}
                 <FormControl type="text"  placeholder="Wprowadź tekst" className=" form_place_space" />
               </Form.Group>
             </Form>
-            {/* <hr class="my-3"></hr> */}
             <a class="btn btn-light btn-lg" href="#" role="button">
               Generuj raport
             </a>
