@@ -1,19 +1,6 @@
 version: "3.9"
 services:
 
-  keycloak:
-    image: jboss/keycloak:latest
-    container_name: keycloak
-    restart: always
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./keycloak/keycloak_data:/opt/jboss/keycloak/standalone/data
-    environment:
-      - KEYCLOAK_USER=keycloak 
-      - KEYCLOAK_PASSWORD=keycloak
-      - DB_VENDOR=H2
-
   react-app:
     container_name: frontend
     restart: always
