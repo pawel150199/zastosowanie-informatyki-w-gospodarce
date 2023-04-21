@@ -72,7 +72,7 @@ const Raport = () => {
   };
 
   return (
-    <div style={{ marginTop: 0 }} class="container">
+    <div  class="container">
       <Row>
         <div class="jumbotron jumbotronStyle_0 rounded">
           <h1>Zakładka służąca do generowania raportu</h1>
