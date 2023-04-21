@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
-import NetworkNotifier from "react-network-notifier;"
+import NetworkNotifier from "react-network-notifier";
 import React from "react";
 
 import About from "./components/about/About";
