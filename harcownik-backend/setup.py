@@ -15,7 +15,6 @@ setuptools.setup(
     platforms="any",
     py_modules=["logger"],
     package_dir={"": "src"},
-    python_requires="=3.9",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
