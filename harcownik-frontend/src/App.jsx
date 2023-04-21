@@ -13,12 +13,15 @@ import NotFound from "./components/notfound/NotFound";
 function App() {
   return (
     <div className="d-flex flex-column" style={{ minHeight: "100vh"}}>
+      <NetworkNotifier message="Ups, you lost internet conection" />
       <BrowserRouter>
         <MyNavbar />
         <Navbar />
         <div className="flex-grow-1 d-flex justify-content-center align-items-center">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />
