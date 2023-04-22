@@ -30,4 +30,3 @@ def delete_badge_report(db: Session, badge_report_id: int):
     db.delete(db_badge_report)
     db.commit()
     return db_badge_report
-    

@@ -28,5 +28,4 @@ def delete_level_report(db: Session, level_report_id: int):
     db_level_report = db.query(LevelReportModel).get(level_report_id)
     db.delete(db_level_report)
     db.commit()
-    return db_level_report
-    
+    return db_level_report 
