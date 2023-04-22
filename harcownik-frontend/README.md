@@ -13,7 +13,7 @@
 W celu uruchomienia servera z frontendem należy wykonać następujące kroki:
 <br></br>
 ## Zainstalować potrzebne zależności
-Można to zrobić komendą `npm install`
+Można to zrobić komendą `npm install`. Warto dodać że należy to zrobić w katalogu, w którym znajduje się plik `package.json`. W tym przypadku to katalog `harcownik-frontend`.
 <br></br>
 ## Uruchomić testy (krok opcjonalny)
 Komenda `npm test` uruchamia wszystkie zdefiniowane testy.
@@ -21,7 +21,7 @@ Komenda `npm test` uruchamia wszystkie zdefiniowane testy.
 ## Uruchomić serwer (development)
 W celu uruchomienia servera developerskiego należy użyć komendy `npm start`.
 Przydatna informacja w kontekście servera developerskiego jest to, że nie trzeba go restartować, jeżeli wprowadzamy jakąś zmianę.
-Zmiana powinna być wprowadzona automatycznie
+Zmiana powinna być wprowadzona automatycznie.
 <br></br>
 ### Uruchomić serwer (production)
 W celu uruchomienia serwera produkcyjnego należy zbudować aplikację poleceniem `npm build`.

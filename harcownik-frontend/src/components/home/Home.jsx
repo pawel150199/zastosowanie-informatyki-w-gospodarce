@@ -35,7 +35,7 @@ function Home() {
               Zarejestruj się
             </Button>
           </Link>
-          <Link to="/register" className="text-center" >
+          <Link to="/login" className="text-center" >
           <Button variant="primary" className="mt-3 badge">
             Zaloguj się
           </Button>

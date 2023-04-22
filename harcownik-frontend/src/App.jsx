@@ -1,9 +1,12 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
+import NetworkNotifier from "react-network-notifier";
 import React from "react";
 
 import About from "./components/about/About";
 import User from "./components/user/User";
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
 import Home from "./components/home/Home";
 import Badges from "./components/badges/Badges";
 import MyNavbar from "./components/mynavbar/MyNavbar";
@@ -13,12 +16,15 @@ import NotFound from "./components/notfound/NotFound";
 function App() {
   return (
     <div className="d-flex flex-column" style={{ minHeight: "100vh"}}>
+      <NetworkNotifier message="Ups, you lost internet conection" />
       <BrowserRouter>
         <MyNavbar />
         <Navbar />
         <div className="flex-grow-1 d-flex justify-content-center align-items-center">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/about" element={<About />} />
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />

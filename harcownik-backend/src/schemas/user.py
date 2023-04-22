@@ -8,6 +8,7 @@ class UserBase(BaseModel):
 class CreateUser(UserBase):
     level: str
     function: str
+    password: str
     group_id: int
     badge_id: int
 

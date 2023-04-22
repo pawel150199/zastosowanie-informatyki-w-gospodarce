@@ -10,14 +10,10 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 <br></br>
 
-## Parę słów o API
-To API to część backendu apikacji `Harcownik`.
-<br></br>
-
 ## Jak uruchomić?
 W celu uruchomienia API należy użyć komendy `uvicorn src.main:app --reload`
 <br></br>
 
 ## Dokumentacja API
-Dokumentacja dostępna jest po uruchomieniu API pod adresem `<adres_servera>:8000/docs`.
+W ramach API dostępna jest dokumentacja w oparciu na narzędzie jakim jest swagger. Umozliwia on przeglądanie wszystkich dostępnych endpointów oraz testowanie ich. Dokumentacja dostępna jest pod adresem `http://<SERVER>:<PORT>/docs`
 <br></br>
