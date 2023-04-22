@@ -19,6 +19,7 @@ from src.utils import (
 
 router = APIRouter()
 
+# POST
 @router.post("/login/access-token", response_model=schemas.Token)
 def login_access_token( db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()) -> Any:
     user = crud.authenticate(db, email=form_data.username, password=form_data.password)
@@ -52,7 +53,6 @@ def recover_password(email: str, db: Session = Depends(get_db)) -> Any:
     return {
         "msg": "Password recovery email sent"
     }
-
 
 @router.post("/reset-password/", response_model=schemas.Message)
 def reset_password(token: str = Body(...), new_password: str = Body(...), db: Session = Depends(get_db)) -> Any:
