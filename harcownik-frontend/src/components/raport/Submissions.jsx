@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./raport_style.css";
+// import "./Raport_Style";
 import {
   Container,
   Row,
@@ -13,6 +14,28 @@ import {
 } from "react-bootstrap";
 
 function Submissions() {
+  const eventCheckBoxTrue = () => {
+    let checkboxs = document.getElementsByName("submissions");
+    for (let i = 0; i < checkboxs.length; i++) {
+      //zero-based array
+      if (!checkboxs[i].checked) {
+        // Zaznaczenie checkboxa
+        checkboxs[i].checked = true;
+      }
+    }
+  };
+
+  const eventCheckBoxFalse = () => {
+    let checkboxs = document.getElementsByName("submissions");
+    for (let i = 0; i < checkboxs.length; i++) {
+      //zero-based array
+      if (checkboxs[i].checked) {
+        // Zaznaczenie checkboxa
+        checkboxs[i].checked = false;
+      }
+    }
+  };
+
   return (
     <div class="jumbotron jumbotronStyle_1 rounded ">
       <h1>Zgłoszenia</h1>
@@ -35,6 +58,7 @@ function Submissions() {
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
+                    name="submissions"
                   />
                   <label
                     class="form-check-label"
@@ -54,7 +78,8 @@ function Submissions() {
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
-                    disabled
+                    name="submissions"
+                    // disabled
                   />
                   <label
                     class="form-check-label"
@@ -74,6 +99,7 @@ function Submissions() {
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
+                    name="submissions"
                   />
                   <label
                     class="form-check-label"
@@ -87,6 +113,22 @@ function Submissions() {
             </tr>
           </tbody>
         </Table>
+        <button
+          type="button"
+          class="btn btn-dark"
+          onClick={eventCheckBoxTrue}
+          style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
+        >
+          Zaznacz wszystko
+        </button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          onClick={eventCheckBoxFalse}
+          style={{ marginBottom: "3%", marginTop: "1%" }}
+        >
+          Odznacz wszystko
+        </button>
       </Container>
     </div>
   );
