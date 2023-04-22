@@ -2,15 +2,15 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 
-import About from './components/about/About';
-import User from './components/user/User';
-import Home from './components/home/Home';
-import Badges from './components/badges/Badges';
-import MyNavbar from './components/mynavbar/MyNavbar';
-import Footer from './components/footer/Footer';
-import NotFound from './components/notfound/NotFound';
-import Raport from './components/raport/Raport';
-import RaportViev from './components/raport/RaportViev'
+import About from "./components/about/About";
+import User from "./components/user/User";
+import Home from "./components/home/Home";
+import Badges from "./components/badges/Badges";
+import MyNavbar from "./components/mynavbar/MyNavbar";
+import Footer from "./components/footer/Footer";
+import NotFound from "./components/notfound/NotFound";
+import Raport from "./components/raport/Raport";
+import RaportViev from "./components/raport/RaportViev"
 
 function App() {
   return (
