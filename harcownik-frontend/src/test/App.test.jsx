@@ -5,8 +5,6 @@ import App from "../App";
 import About from "../components/about/About";
 import Badges from "../components/badges/Badges";
 
-jest.mock('react-native');
-
 test("Main page renders correctly", () => {
   render(<App />);
   expect(screen.getByText("Witaj w aplikacji Harcownik")).toBeInTheDocument();
