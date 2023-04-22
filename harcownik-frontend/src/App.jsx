@@ -5,6 +5,8 @@ import React from "react";
 
 import About from "./components/about/About";
 import User from "./components/user/User";
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
 import Home from "./components/home/Home";
 import Badges from "./components/badges/Badges";
 import MyNavbar from "./components/mynavbar/MyNavbar";
