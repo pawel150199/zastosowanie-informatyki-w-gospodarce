@@ -31,3 +31,4 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     user = crud.delete_user(db=db, user_id=user_id)
     return user
+    

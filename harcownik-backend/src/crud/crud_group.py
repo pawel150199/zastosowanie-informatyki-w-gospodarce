@@ -30,3 +30,4 @@ def delete_group(db: Session, group_id: int):
     db.delete(db_group)
     db.commit()
     return db_group
+    

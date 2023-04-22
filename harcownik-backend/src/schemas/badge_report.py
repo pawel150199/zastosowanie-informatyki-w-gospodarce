@@ -15,3 +15,4 @@ class BadgeReport(BadgeReportBase):
 
     class Config:
         orm_mode = True
+        

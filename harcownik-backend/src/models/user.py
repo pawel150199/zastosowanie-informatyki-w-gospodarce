@@ -19,3 +19,4 @@ class User(Base):
 
     group = relationship("Group")
     badge = relationship("Badge")
+    

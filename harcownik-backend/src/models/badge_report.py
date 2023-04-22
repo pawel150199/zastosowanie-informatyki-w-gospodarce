@@ -16,3 +16,4 @@ class BadgeReport(Base):
 
     user = relationship("User")
     badge = relationship("Badge")
+    

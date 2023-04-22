@@ -29,3 +29,4 @@ def delete_level_report(db: Session, level_report_id: int):
     db.delete(db_level_report)
     db.commit()
     return db_level_report
+    

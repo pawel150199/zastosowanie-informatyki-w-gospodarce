@@ -13,4 +13,4 @@ class Group(GroupBase):
     city: str
 
     class Config:
-        orm_mode = True
+        orm_mode = True    

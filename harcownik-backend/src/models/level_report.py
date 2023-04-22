@@ -13,3 +13,4 @@ class LevelReport(Base):
     time_updated = Column(DateTime(timezone=True), onupdate=func.now())
 
     user = relationship("User")
+    

@@ -72,3 +72,4 @@ def reset_password(token: str = Body(...), new_password: str = Body(...), db: Se
     return {
         "msg": "Password updated successfully"
     }
+    

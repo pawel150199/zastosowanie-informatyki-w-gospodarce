@@ -13,3 +13,4 @@ class LevelReport(LevelReportBase):
 
     class Config:
         orm_mode = True
+        
