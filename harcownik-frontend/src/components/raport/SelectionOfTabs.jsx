@@ -12,22 +12,15 @@ import {
 import "./raport_style.css";
 
 
-
-
-
 function SelectionOfTabs() {
   const [pdf, setPdf] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [editing, setEditing] = useState(false);
   const [canvas, setCanvas] = useState(null);
 
-
-
-
   const handleEditClick = () => {
     setEditing(true);
   };
-
 
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -40,8 +33,7 @@ function SelectionOfTabs() {
   const handleDeselect = (eventKey) => {
     setSelectedItems(selectedItems.filter((item) => item !== eventKey));
   };
-
-    
+ 
     return(
         <div class="jumbotron  jumbotronStyle_2 rounded">
         <h1>Podpunkty do rozkazu</h1>
@@ -66,6 +58,7 @@ function SelectionOfTabs() {
                   }
                 }}
               />
+              
               <Form.Check
                 type="checkbox"
                 label="Wyjątki z rozkazu"
@@ -79,6 +72,7 @@ function SelectionOfTabs() {
                   }
                 }}
               />
+              
               <Form.Check
                 type="checkbox"
                 label="Uchwały"
@@ -92,6 +86,7 @@ function SelectionOfTabs() {
                   }
                 }}
               />
+              
               <Form.Check
                 type="checkbox"
                 label="Zwolnienia"
@@ -105,6 +100,7 @@ function SelectionOfTabs() {
                   }
                 }}
               />
+              
               <Form.Check
                 type="checkbox"
                 label="Przyznanie stopni,sprawności"
@@ -118,6 +114,7 @@ function SelectionOfTabs() {
                   }
                 }}
               />
+              
             </Form>
           </Dropdown.Menu>
         </Dropdown>
