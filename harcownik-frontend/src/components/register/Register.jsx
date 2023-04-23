@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-import styles from './RegisterStyle';
+import styles from "./RegisterStyle";
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = () => {
     // perform registration authentication

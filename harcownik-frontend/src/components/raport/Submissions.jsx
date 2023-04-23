@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable */
+import React from "react";
 import "./raport_style.css";
-// import "./Raport_Style";
 import {
   Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Form,
-  FormControl,
-  Dropdown,
   Table,
 } from "react-bootstrap";
 
@@ -37,7 +30,7 @@ function Submissions() {
   };
 
   return (
-    <div class="jumbotron jumbotronStyle_1 rounded ">
+    <div className="jumbotron jumbotronStyle_1 rounded ">
       <h1>Zgłoszenia</h1>
       <Container>
         <Table responsive striped bordered>
@@ -52,16 +45,16 @@ function Submissions() {
           <tbody>
             <tr>
               <td>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
                     name="submissions"
                   />
                   <label
-                    class="form-check-label"
+                    className="form-check-label"
                     for="flexCheckDefault"
                   ></label>
                 </div>
@@ -72,9 +65,9 @@ function Submissions() {
             </tr>
             <tr>
               <td>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
@@ -82,7 +75,7 @@ function Submissions() {
                     // disabled
                   />
                   <label
-                    class="form-check-label"
+                    className="form-check-label"
                     for="flexCheckDefault"
                   ></label>
                 </div>
@@ -93,16 +86,16 @@ function Submissions() {
             </tr>
             <tr>
               <td>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
                     name="submissions"
                   />
                   <label
-                    class="form-check-label"
+                    className="form-check-label"
                     for="flexCheckDefault"
                   ></label>
                 </div>
@@ -115,7 +108,7 @@ function Submissions() {
         </Table>
         <button
           type="button"
-          class="btn btn-dark"
+          className="btn btn-dark"
           onClick={eventCheckBoxTrue}
           style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
         >
@@ -123,7 +116,7 @@ function Submissions() {
         </button>
         <button
           type="button"
-          class="btn btn-dark"
+          className="btn btn-dark"
           onClick={eventCheckBoxFalse}
           style={{ marginBottom: "3%", marginTop: "1%" }}
         >
