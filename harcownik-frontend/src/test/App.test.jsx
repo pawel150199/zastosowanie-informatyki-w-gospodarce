@@ -22,13 +22,20 @@ test("About page renders correctly", () => {
   expect(screen.getByTestId("Learn More Michał")).toBeDefined();
   expect(screen.getByTestId("Learn More Kasia")).toBeDefined();
   
-});
+})
 
-test("Badges page renders correctly", () => {
-  render(<Badges />);
-  expect(screen.getByText("Sprawności Łącznościowe")).toBeInTheDocument();
-  expect(screen.getByText("Sprawności Kucharskie")).toBeInTheDocument();
-  expect(screen.getByText("Sprawności Przyrodnicze")).toBeInTheDocument();
-  expect(screen.getByText("Sprawności Wyrobienie Harcerskie")).toBeInTheDocument();
+test('Badges page renders correctly', () => {
+  render(<Badges />)
+  expect(screen.getByText('Sprawności Łącznościowe')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Kucharskie')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Przyrodnicze')).toBeInTheDocument()
+  expect(screen.getByText('Sprawności Wyrobienie Harcerskie')).toBeInTheDocument()
+  
+})
+
+test('Raport page renders correctly', () => {
+  render(<Raport />)
+  expect(screen.getByText('Zgłoszenia')).toBeInTheDocument()
+  expect(screen.getByText('Zakładka służąca do generowania raportu')).toBeInTheDocument()
   
 });
