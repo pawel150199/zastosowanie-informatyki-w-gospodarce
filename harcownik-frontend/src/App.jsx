@@ -13,7 +13,7 @@ import MyNavbar from "./components/mynavbar/MyNavbar";
 import Footer from "./components/footer/Footer";
 import NotFound from "./components/notfound/NotFound";
 import Raport from "./components/raport/Raport";
-import RaportView from "./components/raport/RaportView"
+import RaportView from "./components/raport/RaportView";
 
 function App() {
   return (

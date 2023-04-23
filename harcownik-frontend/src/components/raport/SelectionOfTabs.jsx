@@ -1,26 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
-  Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
   Form,
-  FormControl,
   Dropdown,
 } from "react-bootstrap";
 import "./raport_style.css";
 
 
 function SelectionOfTabs() {
-  const [pdf, setPdf] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [editing, setEditing] = useState(false);
-  const [canvas, setCanvas] = useState(null);
+  // const [pdf, setPdf] = useState(null);
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const [editing, setEditing] = useState(false);
+  // const [canvas, setCanvas] = useState(null);
 
-  const handleEditClick = () => {
-    setEditing(true);
-  };
+  // const handleEditClick = () => {
+  //   setEditing(true);
+  // };
 
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -35,15 +29,15 @@ function SelectionOfTabs() {
   };
  
     return(
-        <div class="jumbotron  jumbotronStyle_2 rounded">
+        <div className="jumbotron  jumbotronStyle_2 rounded">
         <h1>Podpunkty do rozkazu</h1>
         <Dropdown onSelect={handleSelect} onDeselect={handleDeselect}>
-          <Dropdown.Toggle variant="primary" id="multi-checkbox-dropdown" style={{ width: "100%" ,backgroundColor: '#e0a158'}}>
+          <Dropdown.Toggle variant="primary" id="multi-checkbox-dropdown" style={{ width: "100%" ,backgroundColor: "#e0a158"}}>
             {selectedItems.length === 0
               ? "Wybierz kategorie"
               : `${selectedItems.length} kategorie`}
           </Dropdown.Toggle>
-          <Dropdown.Menu style={{ width: "100%", backgroundColor: '#d6c0a8' }}>
+          <Dropdown.Menu style={{ width: "100%", backgroundColor: "#d6c0a8" }}>
             <Form>
               <Form.Check
                 type="checkbox"
@@ -119,7 +113,7 @@ function SelectionOfTabs() {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-    )
+    );
 }
 
-export default SelectionOfTabs
+export default SelectionOfTabs;

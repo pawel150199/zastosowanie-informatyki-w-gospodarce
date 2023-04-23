@@ -48,7 +48,7 @@ function Home() {
         <h2 className="text-center" style={{ margin: "2vh" }}>Czym jest Harcownik?</h2>
         <p className="text-center">
           Jest to aplikacja przeznaczona dla podgrup harcerskich zwanych drużyną. Zadaniem aplikacji jest ułatwienie zarządzanie 
-          drużyną w tym kluczowa jest kwestia generowania rozkazu, który powoduje wiele problemów. Dodatkowo aplikacja udostępnia podstawowe
+          drużyną w tym kluczowa jest kwestia generowania rozkazu, który powoduje wiele problemów. Dodatkowo aplikacja udostępnia podstawowe
           informacje np. o zdobytych zdolnościach oraz o wymaganiach, które trzeba spełnić aby je zdobyć. Aplikacja wysyła powiadomienia 
           przypominające o składkach.
         </p>

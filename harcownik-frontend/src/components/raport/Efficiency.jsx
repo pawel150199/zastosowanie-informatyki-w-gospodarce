@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable */
+import React from "react";
 import "./raport_style.css";
 import {
   Container,
-  Row,
-  Col,
-  Jumbotron,
-  Button,
-  Form,
-  FormControl,
-  Dropdown,
   Table,
 } from "react-bootstrap";
 
@@ -36,7 +30,7 @@ function Efficiency() {
   };
 
   return (
-    <div class="jumbotron jumbotronStyle_4 rounded ">
+    <div className="jumbotron jumbotronStyle_4 rounded ">
       <h1>Sprawności</h1>
       <Container>
         <Table responsive striped bordered>
@@ -51,9 +45,9 @@ function Efficiency() {
           <tbody>
             <tr>
               <td>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input ef"
+                    className="form-check-input ef"
                     type="checkbox"
                     value=""
                     name="efficiency"
@@ -61,7 +55,7 @@ function Efficiency() {
                     // checked onClick={eventCheckBox()}
                   />
                   <label
-                    class="form-check-label"
+                    className="form-check-label"
                     for="flexCheckDefault"
                   ></label>
                 </div>
@@ -72,16 +66,16 @@ function Efficiency() {
             </tr>
             <tr>
               <td>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     name="efficiency"
                     type="checkbox"
                     value=""
                     id="flexCheckDefault"
                   />
                   <label
-                    class="form-check-label"
+                    className="form-check-label"
                     for="flexCheckDefault"
                   ></label>
                 </div>
@@ -92,9 +86,9 @@ function Efficiency() {
             </tr>
             <tr>
               <td>
-                <div class="form-check">
+                <div className="form-check">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="checkbox"
                     value=""
                     name="efficiency"
@@ -102,7 +96,7 @@ function Efficiency() {
                     // checked onClick={eventCheckBox()}
                   />
                   <label
-                    class="form-check-label"
+                    className="form-check-label"
                     for="flexCheckDefault"
                   ></label>
                 </div>
@@ -115,7 +109,7 @@ function Efficiency() {
         </Table>
         <button
           type="button"
-          class="btn btn-dark"
+          className="btn btn-dark"
           onClick={eventCheckBoxTrue}
           style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
         >
@@ -123,7 +117,7 @@ function Efficiency() {
         </button>
         <button
           type="button"
-          class="btn btn-dark"
+          className="btn btn-dark"
           onClick={eventCheckBoxFalse}
           style={{ marginBottom: "3%", marginTop: "1%" }}
         >
