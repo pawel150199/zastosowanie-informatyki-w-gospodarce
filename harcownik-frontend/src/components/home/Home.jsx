@@ -23,14 +23,9 @@ function Home() {
     "/img/home4.jpeg",
   ];
 
-
-  const isBackgroundRed = true;
-
-
   return (
     <div>
       <div className="jumbotron jumbotron-fluid bg-dark text-light text-center rounded-4" style={{
-        backgroundColor: isBackgroundRed ? 'red' : 'blue',
       }} >
         <Container >
           <br></br>
