@@ -7,6 +7,9 @@ class BadgeBase(BaseModel):
     name: str
     description: str
 
+    class Config:
+        orm_mode = True
+
 class CreateBadge(BadgeBase):
     group: str
 

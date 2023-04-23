@@ -21,7 +21,7 @@ def get_badge_groups(db: Session = Depends(get_db)):
     badge_groups = crud.get_badge_groups(db)
     return badge_groups
 
-@router.get("/badges/group/{group}", response_model=list[schemas.Badge])
+@router.get("/badges/group/{group}", response_model=list[schemas.BadgeBase])
 def get_badges_by_group(group: str, db: Session = Depends(get_db)):
     badges = crud.get_badges_by_group(db, group=group)
     if badges is None:
