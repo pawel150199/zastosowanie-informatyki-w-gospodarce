@@ -1,4 +1,4 @@
-from .crud_badge import get_badge, get_badges, create_badge, get_badge_groups, delete_badge
+from .crud_badge import get_badge, get_badges, create_badge, get_badge_groups, delete_badge, get_badges_by_group
 
 from .crud_group import get_group, get_groups, create_group, delete_group
 
