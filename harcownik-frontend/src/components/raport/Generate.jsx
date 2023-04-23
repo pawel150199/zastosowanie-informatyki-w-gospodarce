@@ -10,7 +10,7 @@ import {
     Dropdown,
   } from "react-bootstrap";
 import "./raport_style.css";
-import "./RaportViev"
+import "./RaportView"
 
 function Generate() {
     return(
@@ -19,12 +19,9 @@ function Generate() {
             <p class="lead">
               Kliknij poniższy przycisk, aby wygenerować raport w formacie PDF.
             </p>
-            {/* <link to="./RaportViev"> */}
             <a class="btn btn-light btn-lg" href="/raport/raport_viev" role="button">
-              
               Generuj raport
             </a>
-            {/* </link> */}
         </div>
     )
 }
