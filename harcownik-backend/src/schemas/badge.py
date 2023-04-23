@@ -1,5 +1,8 @@
 from pydantic import BaseModel
 
+class BadgeGroup(BaseModel):
+    group: str
+
 class BadgeBase(BaseModel):
     name: str
     description: str

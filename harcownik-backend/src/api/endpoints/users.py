@@ -1,13 +1,20 @@
+from typing import Any
 from fastapi import Depends, FastAPI, HTTPException, APIRouter
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
-from src.api.helper import get_db
+from src.api.helper import get_db, get_current_user
 
 router = APIRouter()
 
 # POST
 @router.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)):
+    user = crud.get_by_email(db, email=user.email)
+    if user:
+        raise HTTPException(
+            status_code=400,
+            details="The user with this username already exist in the system"
+        )
     return crud.create_user(db=db, user=user)
 
 # GET
@@ -15,6 +22,10 @@ def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)):
 def read_users(db: Session = Depends(get_db)):
     users = crud.get_users(db)
     return users
+
+@router.get("/me", response_model=schemas.User)
+def read_user_me(db: Session = Depends(get_db),  current_user: models.User = Depends(get_current_user)) -> Any:
+    return current_user
     
 @router.get("/users/{user_id}", response_model=schemas.User)
 def read_user(user_id: int, db: Session = Depends(get_db)):

@@ -6,11 +6,12 @@ from src.schemas.user import User, CreateUser, UserBase
 from src.core.security import get_password_hash, verify_password
 
 # POST
-def create_user(db: Session, user: CreateUser):
+def create_user(db: Session, user: CreateUser) -> UserModel:
     db_user = UserModel(
         first_name = user.first_name,
         last_name = user.last_name,
         email = user.email,
+        password = get_password_hash(user.password),
         level = user.level,
         function = user.function,
         group_id = user.group_id,

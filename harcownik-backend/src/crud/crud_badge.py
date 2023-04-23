@@ -16,8 +16,10 @@ def get_badge(db: Session, badge_id: int):
     return db.query(BadgeModel).filter(BadgeModel.id == badge_id).first()
 
 def get_badge_groups(db: Session):
-    return db.query(BadgeModel.group).distinct().all()
+    return db.query(BadgeModel.group).order_by(BadgeModel.group.asc()).distinct().all()
 
+def get_badges_by_group(db: Session, group: str):
+    return db.query(BadgeModel).filter(BadgeModel.group == group).all()
 
 def get_badges(db: Session):
     return db.query(BadgeModel).all()
