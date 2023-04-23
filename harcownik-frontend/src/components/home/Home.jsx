@@ -25,8 +25,7 @@ function Home() {
 
   return (
     <div>
-      <div className="jumbotron jumbotron-fluid bg-dark text-light text-center rounded-4" style={{
-      }} >
+      <div className="jumbotron jumbotron-fluid bg-dark text-light text-center rounded-4">
         <Container >
           <br></br>
           <h1>Witaj w aplikacji Harcownik</h1>
