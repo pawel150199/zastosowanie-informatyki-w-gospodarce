@@ -16,22 +16,30 @@ def read_badges(db: Session = Depends(get_db)):
     badges = crud.get_badges(db)
     return badges
 
-@router.get("/badges/{group}", response_model=list[schemas.Badge])
-def get_badges_by_group(group: str, db: Session = Depends(get_db)):
-    badges = crud.get_badges_by_group(db, group=group)
-    return badges
-
 @router.get("/badges/groups", response_model=list[schemas.BadgeGroup])
 def get_badge_groups(db: Session = Depends(get_db)):
     badge_groups = crud.get_badge_groups(db)
     return badge_groups
 
+@router.get("/badges/group/{group}", response_model=list[schemas.Badge])
+def get_badges_by_group(group: str, db: Session = Depends(get_db)):
+    badges = crud.get_badges_by_group(db, group=group)
+    if badges is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Badges not found"
+        )
+    return badges
+
 @router.get("/badges/{badge_id}", response_model=schemas.Badge)
 def read_badge(badge_id: int, db: Session = Depends(get_db)):
-    db_badge = crud.get_badge(db, badge_id=badge_id)
-    if db_badge is None:
-        raise HTTPException(status_code=404, detail="Badge not found")
-    return db_badge
+    badges = crud.get_badge(db, badge_id=badge_id)
+    if badges is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Badge not found"
+        )
+    return badges
 
 # DELETE
 @router.delete("/badge/delete/{badge_id}", response_model=schemas.Badge)
