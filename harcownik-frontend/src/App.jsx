@@ -10,7 +10,7 @@ import MyNavbar from "./components/mynavbar/MyNavbar";
 import Footer from "./components/footer/Footer";
 import NotFound from "./components/notfound/NotFound";
 import Raport from "./components/raport/Raport";
-import RaportViev from "./components/raport/RaportViev"
+import RaportView from "./components/raport/RaportView"
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
             <Route path="/badges" element={<Badges />} />
             <Route path="/raport" element={<Raport/>} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/raport/raport_viev" element={<RaportViev />} />
+            <Route path="/raport/raport_viev" element={<RaportView />} />
 
           </Routes>
         </div>
