@@ -1,13 +1,19 @@
 .ApplicationStatusStyle {
-    height: 1000px;
+    height: auto;
     background-color: #898d91;
-    margin: 1%;
+    margin-top: 10px;
+    /* margin: 1%; */
     /* display: flex; */
     text-align: center;
   }
 
+  .tableStyle {
+    margin-top: 10px;
+    text-align: center;
+  }
+
   .UserEfficiencyStyle {
-    height: 1000px;
+    height: 500px;
     background-color: #898d91;
     margin: 1%;
     /* display: flex; */
@@ -15,7 +21,7 @@
   }
 
   .UserRanksStyle {
-    height: 1000px;
+    height: 500px;
     background-color: #898d91;
     margin: 1%;
     text-align: center;

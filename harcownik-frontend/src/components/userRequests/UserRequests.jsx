@@ -19,14 +19,16 @@ const UserRequests = () => {
       <UserRequestsHeader />
       </Row>
       <Row>
-        <Col md={4}>
+        {/* <Col md={4}> */}
             <ApplicationStatus />
 
-        </Col>
-        <Col md={4}>
+        {/* </Col> */}
+      </Row>
+      <Row>
+        <Col md={6}>
             <UserEfficiency />
         </Col>
-        <Col md={4}>
+        <Col md={6}>
         <UserRanks />
         </Col>
       </Row>
