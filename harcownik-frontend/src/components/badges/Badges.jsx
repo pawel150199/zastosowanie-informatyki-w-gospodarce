@@ -1,6 +1,8 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
+
 import BadgeItem from "./BadgeItem";
+import getBadges from "./getBadges";
 
 const Badges = () => {
   const lacznoscioweBadges = [
@@ -118,5 +120,7 @@ const Badges = () => {
     </Accordion>
   );
 };
+
+getBadges("http://localhost:8000/badges/groups", "http://localhost:8000/badges/group")
 
 export default Badges;
