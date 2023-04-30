@@ -4,19 +4,23 @@ import { useState, useEffect } from "react";
 import { Accordion } from "react-bootstrap";
 
 import BadgeItem from "./BadgeItem";
-import getBadges from "./getBadges";
+
 
 const Badges = () => {
-
-  const [badges, setBadges] = useState([]);
+/*
+  const [badges, setBadges] = useState();
 
   useEffect(() => {
-    const response = getBadges("http://localhost:8000/badges/all");
-    setBadges(response.data);
-  })
+    const fetchData = async() => {
+      const response = await axios.get("http://localhost:8000/badges/all");
+      setBadges(response.data);
+    }
+    fetchData();
+  }, []);
 
-  /*
-  Just for testing purpose
+  console.log("XDDD" + badges)
+*/
+
   const badges = [
     {
       group: "Sprawności Łącznościowe",
@@ -67,7 +71,6 @@ const Badges = () => {
     },
     // add more groups here
   ];
-  */
   
 
   return (
