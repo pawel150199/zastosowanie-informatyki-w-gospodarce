@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from sqlalchemy.orm import joinedload
 
 from src.models.badge import Badge as BadgeModel
 from src.schemas.badge import Badge, CreateBadge, BadgeBase
