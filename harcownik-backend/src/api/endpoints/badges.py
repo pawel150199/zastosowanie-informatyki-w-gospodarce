@@ -21,8 +21,7 @@ def read_badges(db: Session = Depends(get_db)):
     groups = crud.get_badge_groups(db)
     result = []
     for group in groups:
-        badges = crud.get_badges_by_group(db, group[group])
-        print(group)
+        badges = crud.get_badges_by_group(db, str(group["group"]))
         one_group = {
             **group,
             "badges": [{"name": badge.name, "description": badge.description} for badge in badges],

@@ -11,7 +11,7 @@ const Badges = () => {
   const [badges, setBadges] = useState([]);
 
   useEffect(() => {
-    const response = getBadges("http://localhost:8000/badges/groups");
+    const response = getBadges("http://localhost:8000/badges/all");
     setBadges(response.data);
   })
 
