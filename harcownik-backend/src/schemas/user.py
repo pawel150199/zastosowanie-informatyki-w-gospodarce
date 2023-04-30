@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class UserBase(BaseModel):
     first_name: str
@@ -12,7 +13,13 @@ class CreateUser(UserBase):
     group_id: int
     badge_id: int
 
-class User(UserBase):
+class UserInDbBase(UserBase):
+    id: Optional[int] = None
+
+    class Config:
+        orm_mode = True
+
+class User(UserInDbBase):
     level: str
     function: str
     group_id: int

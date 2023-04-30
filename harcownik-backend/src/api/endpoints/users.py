@@ -9,8 +9,8 @@ router = APIRouter()
 # POST
 @router.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)):
-    user = crud.get_by_email(db, email=user.email)
-    if user:
+    db_user = crud.get_by_email(db, email=user.email)
+    if db_user:
         raise HTTPException(
             status_code=400,
             details="The user with this username already exist in the system"
