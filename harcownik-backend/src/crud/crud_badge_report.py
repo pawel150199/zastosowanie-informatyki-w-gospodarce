@@ -21,6 +21,12 @@ def create_badge_report(db: Session, badge_report: CreateBadgeReport):
 def get_badge_report(db: Session, badge_report_id: int):
     return db.query(BadgeReportModel).filter(BadgeReportModel.id == badge_report_id).first()
 
+def get_badge_report_by_user(db: Session, user_id: int):
+    return  db.query(BadgeReportModel).filter(BadgeReportModel.user_id == user_id).all()
+
+def get_badge_report_by_badge(db: Session, badge_id: int):
+    return  db.query(BadgeReportModel).filter(BadgeReportModel.badge_id == badge_id).all()
+
 def get_badge_reports(db: Session):
     return db.query(BadgeReportModel).all()
 

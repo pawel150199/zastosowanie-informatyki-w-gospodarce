@@ -20,6 +20,9 @@ def create_level_report(db:Session, level_report: CreateLevelReport):
 def get_level_report(db: Session, level_report_id: int):
     return db.query(LevelReportModel).filter(LevelReportModel.id == level_report_id).first()
 
+def get_level_report_by_user(db: Session, user_id: int):
+    return  db.query(LevelReportModel).filter(LevelReportModel.user_id == user_id).all()
+
 def get_level_reports(db: Session):
     return db.query(LevelReportModel).all()
 
