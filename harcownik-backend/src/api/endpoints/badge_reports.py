@@ -23,6 +23,20 @@ def read_group(badge_report_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Report not found")
     return db_badge_report
 
+@router.get("/badge_reports/user/{user_id}", response_model=list[schemas.BadgeReport])
+def read_group_by_user(user_id: int, db: Session = Depends(get_db)):
+    db_badge_report = crud.get_badge_report_by_user(db, user_id=user_id)
+    if db_badge_report is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    return db_badge_report
+
+@router.get("/badge_reports/badge/{badge_id}", response_model=list[schemas.BadgeReport])
+def read_group_by_badge(badge_id: int, db: Session = Depends(get_db)):
+    db_badge_report = crud.get_badge_report_by_badge(db, badge_id=badge_id)
+    if db_badge_report is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    return db_badge_report
+
 # DELETE
 @router.delete("/badge_report/delete/{badge_report_id}", response_model=schemas.BadgeReport)
 def delete_badge_report(badge_report_id: int, db: Session = Depends(get_db)):
