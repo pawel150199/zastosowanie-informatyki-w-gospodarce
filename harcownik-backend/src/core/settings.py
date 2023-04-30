@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     # EMAIL
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
     EMAIL_TEMPLATES_DIR: str = "/email_templates/build/"
-    EMAILS_ENABLED: bool = True
+    EMAILS_ENABLED: bool = False
     EMAIL_TEST_USER: str = "pawel.polski99@gmail.com"
     USERS_OPEN_REGISTRATION: bool = False
 

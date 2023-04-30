@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from sqlalchemy.orm import joinedload
 
 from src.models.badge import Badge as BadgeModel
 from src.schemas.badge import Badge, CreateBadge, BadgeBase
@@ -22,7 +23,7 @@ def get_badges_by_group(db: Session, group: str):
     return db.query(BadgeModel).filter(BadgeModel.group == group).all()
 
 def get_badges(db: Session):
-    return db.query(BadgeModel).all()
+    return db.query(BadgeModel).all()        
 
 # DELETE
 def delete_badge(db: Session, badge_id: int):
