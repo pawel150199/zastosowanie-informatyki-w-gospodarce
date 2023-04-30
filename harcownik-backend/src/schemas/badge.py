@@ -4,6 +4,7 @@ class BadgeGroup(BaseModel):
     group: str
 
 class BadgeBase(BaseModel):
+    id: int
     name: str
     description: str
 
