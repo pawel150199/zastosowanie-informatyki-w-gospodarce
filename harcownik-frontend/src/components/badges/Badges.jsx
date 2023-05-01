@@ -7,20 +7,22 @@ import BadgeItem from "./BadgeItem";
 
 
 const Badges = () => {
-/*
-  const [badges, setBadges] = useState();
+
+  const [badges, setBadges] = useState([]);
 
   useEffect(() => {
-    const fetchData = async() => {
-      const response = await axios.get("http://localhost:8000/badges/all");
-      setBadges(response.data);
-    }
-    fetchData();
+    axios.get("http://localhost:8000/badges/grouped")
+      .then(response => {
+        setBadges(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching data from API: " + error);
+      })
   }, []);
 
   console.log("XDDD" + badges)
-*/
 
+/*
   const badges = [
     {
       group: "Sprawności Łącznościowe",
@@ -71,16 +73,16 @@ const Badges = () => {
     },
     // add more groups here
   ];
-  
+*/
 
   return (
-    <Accordion defaultActiveKey={["0"]}>
-      {badges.map((group, index) => (
-        <Accordion.Item key={index} eventKey={index} className="mb-3">
+    <Accordion>
+      {badges.map((group) => (
+        <Accordion.Item key={group.id} eventKey={group.id} className="mb-3">
           <Accordion.Header>{group.group}</Accordion.Header>
           <Accordion.Body>
-            {group.badges.map((badge, index) => (
-              <BadgeItem key={index} badge={badge} />
+            {group.badges.map((badge) => (
+              <BadgeItem badge={badge} />
             ))}
           </Accordion.Body>
         </Accordion.Item>

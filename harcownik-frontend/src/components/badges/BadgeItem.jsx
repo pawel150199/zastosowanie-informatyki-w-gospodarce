@@ -6,7 +6,6 @@ const BadgeItem = ({ badge }) => {
   return (
     <Card>
       <div style={{ position: "relative" }}>
-        <Card.Img variant="top" src={badge.image} />
         <div style={{
           position: "absolute",
           bottom: 0,
@@ -19,9 +18,7 @@ const BadgeItem = ({ badge }) => {
         </div>
       </div>
       <Card.Body>
-        {badge.description.map((text, index) => (
-          <Card.Text key={index} style={{ margin: "0.5rem 0" }}> {text} </Card.Text>
-        ))}
+          <Card.Text key={badge.index} style={{ margin: "0.5rem 0" }}> {badge.description} </Card.Text>
       </Card.Body>
     </Card>
   );
