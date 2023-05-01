@@ -22,7 +22,7 @@ def get_badges_by_group(db: Session, group: str):
     return db.query(BadgeModel).filter(BadgeModel.group == group).all()
 
 def get_badges(db: Session):
-    return db.query(BadgeModel).all()
+    return db.query(BadgeModel).all()        
 
 # DELETE
 def delete_badge(db: Session, badge_id: int):

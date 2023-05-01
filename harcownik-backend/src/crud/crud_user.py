@@ -11,11 +11,11 @@ def create_user(db: Session, user: CreateUser) -> UserModel:
         first_name = user.first_name,
         last_name = user.last_name,
         email = user.email,
-        password = get_password_hash(user.password),
+        hashed_password = get_password_hash(user.password),
         level = user.level,
         function = user.function,
         group_id = user.group_id,
-        badge_id = user.badge_id
+        badge_id = user.badge_id,
     )
 
     db.add(db_user)
