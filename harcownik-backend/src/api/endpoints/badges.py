@@ -16,7 +16,7 @@ def read_badges(db: Session = Depends(get_db)):
     badges = crud.get_badges(db)
     return badges
 
-@router.get("/badges/all", response_model=list[schemas.BadgeAll])
+@router.get("/badges/grouped", response_model=list[schemas.BadgeAll])
 def read_badges(db: Session = Depends(get_db)):
     groups = crud.get_badge_groups(db)
     result = []
