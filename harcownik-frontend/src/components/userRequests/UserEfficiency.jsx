@@ -1,93 +1,76 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
+import "./UserRequests.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Button } from "react-bootstrap";
-
-import "./UserRequests.css";
+import { getBadges, getBadgeGroups, postBadge } from "./getUserEfficiency";
 
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
   const [badges, setBadges] = useState([]);
 
   useEffect(() => {
-    axios
-      .all([
-        axios.get("http://localhost:8000/badges/"),
-        axios.get("http://localhost:8000/level_reports/"),
-      ])
-      .then(
-        axios.spread((badgesGroupsResponse, badgesResponse) => {
-          setBadgesGroups(badgesGroupsResponse.data);
-          setBadges(badgesResponse.data);
-        })
-      )
-      .catch((error) => {
-        console.error(error);
-      });
+    const fetchData = async () => {
+      const badges = await getBadges();
+      setBadges(badges);
+
+      const badgesGroupData = await getBadgeGroups();
+      setBadgesGroups(badgesGroupData);
+    };
+    fetchData();
   }, []);
 
   const [choosenGroup, setChoosenGroup] = useState("");
   const [choosenBadge, setChoosenBadge] = useState("");
 
-  const handleSelect = (group) => {
+  const selectGroup = (group) => {
     setChoosenGroup(group);
-    //TODO: delete debugging logs
-    console.log("Choosen Group: " + group);
+    console.log(group);
   };
-  const handleSelect1 = (badg) => {
+  const selectBadge = (badg) => {
     setChoosenBadge(badg);
-    console.log("Choosen Badge: " + badg);
+    console.log("Wybrany badge", badg);
   };
-
-  function PostBadge() {
-    axios
-      .post("http://localhost:8000/badge_reports/", {
-        title: choosenGroup,
-        status: "zgłoszona",
-        user_id: 1,
-        badge_id: 3,
-      })
-      .then(function (response) {
-        console.log("Response Data: " + response);
-      });
-  }
 
   return (
     <div className="jumbotron UserEfficiencyStyle rounded">
-      <h1>Zgłoszenie Sprawności</h1>
+      <h1>Zakładka służąca rozpoczęcia nowej sprawności</h1>
       <DropdownButton
         alignRight
-        title="Wybierz sprawność"
+        title="Wybierz grupę"
         id="dropdown-menu-align-right"
-        onSelect={handleSelect}
+        onSelect={selectGroup}
       >
         {badgesGroups.map((report) => (
-          <Dropdown.Item key={report.id} eventKey={report.name}>
-            {report.name}
+          <Dropdown.Item key={report.id} eventKey={report.title}>
+            {report.title}
           </Dropdown.Item>
         ))}
       </DropdownButton>
-      <DropdownButton
-        alignRight
-        title="Wybierz sprawność"
-        id="dropdown-menu-align-right"
-        onSelect={handleSelect1}
-      >
-        {badges.map((badge) => (
-          <Dropdown.Item
-            key={badge.id}
-            eventKey={badge.title}
-            // onClick={badgeSelect}
-          >
-            {badge.title}
-          </Dropdown.Item>
-        ))}
-      </DropdownButton>
-      <h4>Grupa sprawności: {choosenGroup}</h4>
-      <h4>Sprawność: {choosenBadge}</h4>
-      <Button onClick={() => PostBadge()}>Rozpocznij sprawność</Button>
+      {choosenGroup && <h4>Grupa sprawności: {choosenGroup}</h4>}
+      {badges && (
+        <DropdownButton
+          alignRight
+          title="Wybierz sprawność"
+          id="dropdown-menu-align-right"
+          onSelect={selectBadge}
+        >
+          {badges.map((badge) => (
+            <Dropdown.Item key={badge.id} eventKey={badge.name}>
+              {badge.name}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+      )}
+
+      {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
+      {choosenBadge && (
+        <Button onClick={() => postBadge(choosenBadge)}>
+          Rozpocznij sprawność
+        </Button>
+      )}
     </div>
   );
 }

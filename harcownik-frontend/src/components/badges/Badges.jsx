@@ -1,7 +1,7 @@
+/* eslint-disable */
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Spinner } from "react-bootstrap";
-
 import BadgeItem from "./BadgeItem";
 import "./badges.css";
 
@@ -37,17 +37,24 @@ const Badges = () => {
       <Accordion>
         {badges.map((group, index) => (
           <Accordion.Item key={index} eventKey={index} className="mb-3">
-          <Accordion.Header className="text-center">{group.group}</Accordion.Header>
-          <Accordion.Body>
-            {group.badges.map((badge, index) => (
-              <BadgeItem key={index} badge={badge} />
-            ))}
-          </Accordion.Body>
-        </Accordion.Item>
+            <Accordion.Header className="text-center">
+              {group.group}
+            </Accordion.Header>
+            <Accordion.Body>
+              {group.badges.map((badge, index) => (
+                <BadgeItem key={index} badge={badge} />
+              ))}
+            </Accordion.Body>
+          </Accordion.Item>
         ))}
       </Accordion>
     </Container>
   );
 };
+
+getBadges(
+  "http://localhost:8000/badges/groups",
+  "http://localhost:8000/badges/group"
+);
 
 export default Badges;
