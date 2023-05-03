@@ -52,9 +52,4 @@ const Badges = () => {
   );
 };
 
-getBadges(
-  "http://localhost:8000/badges/groups",
-  "http://localhost:8000/badges/group"
-);
-
 export default Badges;
