@@ -1,12 +1,22 @@
 /* eslint-disable */
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
 import "./raport_style.css";
-import {
-  Container,
-  Table,
-} from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 
 function Submissions() {
+  // const [levelApplications, setLevelApplications] = useState([]);
+  const [badgesApplications, setBadgesApplications] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // const levelApplicationsData = await getLevelApplications();
+      // setLevelApplications(levelApplicationsData);
+      const levelBadgesData = await getBadgesApplications();
+      setBadgesApplications(levelBadgesData);
+    };
+    fetchData();
+  }, []);
   const eventCheckBoxTrue = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {
@@ -43,67 +53,27 @@ function Submissions() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                    name="submissions"
-                  />
-                  <label
-                    className="form-check-label"
-                    for="flexCheckDefault"
-                  ></label>
-                </div>
-              </td>
-              <td>Wiersz 1, Kolumna 2</td>
-              <td>Wiersz 1, Kolumna 3</td>
-              <td>Wiersz 1, Kolumna 4</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                    name="submissions"
-                    // disabled
-                  />
-                  <label
-                    className="form-check-label"
-                    for="flexCheckDefault"
-                  ></label>
-                </div>
-              </td>
-              <td>Wiersz 2, Kolumna 2</td>
-              <td>Wiersz 2, Kolumna 3</td>
-              <td>Wiersz 2, Kolumna 4</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                    name="submissions"
-                  />
-                  <label
-                    className="form-check-label"
-                    for="flexCheckDefault"
-                  ></label>
-                </div>
-              </td>
-              <td>Wiersz 3, Kolumna 2</td>
-              <td>Wiersz 3, Kolumna 3</td>
-              <td>Wiersz 3, Kolumna 4</td>
-            </tr>
+            {badgesApplications.map((report) => (
+              <tr key={report.id}>
+                <td>
+                  <div className="form-check">
+                    <input
+                      className="form-check-input ef"
+                      type="checkbox"
+                      value=""
+                      name="efficiency"
+                      id="flexCheckDefault"
+                    />
+                    <label
+                      className="form-check-label"
+                      for="flexCheckDefault"
+                    ></label>
+                  </div>
+                </td>
+                <td>Imie i nazwisko</td>
+                <td>{report.title}</td> <td>{report.status}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
         <button

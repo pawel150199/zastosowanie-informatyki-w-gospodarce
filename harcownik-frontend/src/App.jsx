@@ -18,7 +18,7 @@ import UserRequests from "./components/userRequests/UserRequests";
 
 function App() {
   return (
-    <div className="d-flex flex-column" style={{ minHeight: "100vh"}}>
+    <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
       <NetworkNotifier message="Ups, you lost internet conection" />
       <BrowserRouter>
         <MyNavbar />
@@ -31,10 +31,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />
-            <Route path="/raport" element={<Raport/>} />
+            <Route path="/raport" element={<Raport />} />
             <Route path="/raport/raport_view" element={<RaportView />} />
             <Route path="/user_requests" element={<UserRequests />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/raport/raport_viev" element={<RaportView />} />
+            <Route path="/userRequests" element={<UserRequests />} />
           </Routes>
         </div>
         <Footer />
