@@ -2,7 +2,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Spinner } from "react-bootstrap";
-import getBadges from "./getBadges";
 import BadgeItem from "./BadgeItem";
 import "./badges.css";
 

@@ -35,8 +35,6 @@ function App() {
             <Route path="/raport/raport_view" element={<RaportView />} />
             <Route path="/user_requests" element={<UserRequests />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/raport/raport_viev" element={<RaportView />} />
-            <Route path="/userRequests" element={<UserRequests />} />
           </Routes>
         </div>
         <Footer />
