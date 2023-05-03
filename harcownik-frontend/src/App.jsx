@@ -33,7 +33,7 @@ function App() {
             <Route path="/badges" element={<Badges />} />
             <Route path="/raport" element={<Raport />} />
             <Route path="/raport/raport_view" element={<RaportView />} />
-            <Route path="/user_Requests" element={<UserRequests />} />
+            <Route path="/user_requests" element={<UserRequests />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
