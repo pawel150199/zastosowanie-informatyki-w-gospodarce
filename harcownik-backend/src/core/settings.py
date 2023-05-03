@@ -20,8 +20,8 @@ class Settings(BaseSettings):
 
     # SMTP
     SMTP_TLS: bool = True
-    SMTP_PORT: Optional[int] = None
-    SMTP_HOST: Optional[str] = None
+    SMTP_PORT: Optional[int] = 587
+    SMTP_HOST: Optional[str] = "smtp.gmail.com"
     SMTP_USER: Optional[str] = None
     SMTP_PASSWORD: Optional[str] = None
     EMAILS_FROM_EMAIL: Optional[str] = None
@@ -29,8 +29,8 @@ class Settings(BaseSettings):
 
     # EMAIL
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
-    EMAIL_TEMPLATES_DIR: str = "/src/email-templates/build"
-    EMAILS_ENABLED: bool = False
+    EMAIL_TEMPLATES_DIR: str = "/email_templates/build/"
+    EMAILS_ENABLED: bool = True
     EMAIL_TEST_USER: str = "pawel.polski99@gmail.com"
     USERS_OPEN_REGISTRATION: bool = False
 
