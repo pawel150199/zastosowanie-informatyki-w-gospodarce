@@ -14,6 +14,7 @@ import Footer from "./components/footer/Footer";
 import NotFound from "./components/notfound/NotFound";
 import Raport from "./components/raport/Raport";
 import RaportView from "./components/raport/RaportView";
+import UserRequests from "./components/userRequests/UserRequests";
 
 function App() {
   return (
@@ -31,9 +32,9 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />
             <Route path="/raport" element={<Raport/>} />
+            <Route path="/raport/raport_view" element={<RaportView />} />
+            <Route path="/user_requests" element={<UserRequests />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/raport/raport_viev" element={<RaportView />} />
-
           </Routes>
         </div>
         <Footer />
