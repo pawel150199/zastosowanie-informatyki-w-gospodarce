@@ -5,10 +5,10 @@ from src.db.db import Base
 
 class User(Base):
     __tablename__ = "user"
-    id = Column(Integer, primary_key=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    email = Column(String, unique=True, nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    first_name = Column(String, index=True)
+    last_name = Column(String, index=True)
+    email = Column(String, unique=True, nullable=False, index=True)
     hashed_password = Column(String, nullable=False)
     level = Column(String)
     function = Column(String)
