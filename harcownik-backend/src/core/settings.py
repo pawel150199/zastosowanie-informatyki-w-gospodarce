@@ -8,7 +8,8 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     SERVER_NAME: str = "localhost"
     ALGORITHM: str = "HS256"
-    SERVER_HOST: AnyHttpUrl = "http://localhost:8000/"
+    SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
 
     # DATABASE
     POSTGRES_SERVER: str = "localhost"

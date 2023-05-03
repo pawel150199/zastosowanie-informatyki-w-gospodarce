@@ -10,6 +10,7 @@ from src.api import helper
 from src.core import security
 from src.core.settings import settings
 from src.core.security import get_password_hash
+import logging
 from src.api.helper import get_db
 from src.utils import (
     generate_password_reset_token,
@@ -29,9 +30,9 @@ def login_access_token( db: Session = Depends(get_db), form_data: OAuth2Password
             detail="Incorect email or password"
         )
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    return {
-        "access_token": security.create_access_token(user.id ,expires_delta=access_token_expires),
-        "token_type": "Bearer",
+    return { 
+        "access_token": security.create_access_token(user.email, expires_delta=access_token_expires),
+        "token_type": "bearer",
     }
 
 @router.post("/login/test-token", response_model=schemas.User)

@@ -1,3 +1,5 @@
+from asyncio.log import logger
+import logging
 from src.db.db import SessionLocal
 from typing import Generator
 from fastapi import Depends, HTTPException, status
@@ -11,7 +13,7 @@ from src.core import security
 from src.db.db import SessionLocal
 from src.core.settings import settings
 
-reusable_oauth2 = OAuth2PasswordBearer(tokenUrl="/login/access_token")
+reusable_oauth2 = OAuth2PasswordBearer(tokenUrl="/login/access-token")
 
 def get_db() -> Generator:
     db = SessionLocal()
@@ -22,14 +24,15 @@ def get_db() -> Generator:
 
 def get_current_user(db: Session = Depends(get_db), token: str = Depends(reusable_oauth2)) -> models.User:
     try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithm=[settings.ALGORITHM])
+        jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         token_data = schemas.TokenPayload(**payload)
     except (jwt.JWTError, ValidationError):
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Could not validate credentials",
         )
-    user = crud.get_user(db, user_id=token_data.sub)
+    user = crud.get_by_email(db, email=token_data.sub)
     if not user:
         raise HTTPException(
             status_code=404,

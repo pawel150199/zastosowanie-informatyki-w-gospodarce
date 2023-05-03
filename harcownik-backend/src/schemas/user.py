@@ -13,13 +13,7 @@ class CreateUser(UserBase):
     group_id: int
     badge_id: int
 
-class UserInDbBase(UserBase):
-    id: Optional[int] = None
-
-    class Config:
-        orm_mode = True
-
-class User(UserInDbBase):
+class User(UserBase):
     level: str
     function: str
     group_id: int
