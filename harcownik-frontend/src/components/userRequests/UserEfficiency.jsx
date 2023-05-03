@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import "./UserRequests.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Button } from "react-bootstrap";
+
+import "./UserRequests.css";
 
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
@@ -23,7 +24,7 @@ function UserEfficiency() {
         })
       )
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, []);
 
@@ -32,11 +33,12 @@ function UserEfficiency() {
 
   const handleSelect = (group) => {
     setChoosenGroup(group);
-    console.log(group);
+    //TODO: delete debugging logs
+    console.log("Choosen Group: " + group);
   };
   const handleSelect1 = (badg) => {
     setChoosenBadge(badg);
-    console.log(badg);
+    console.log("Choosen Badge: " + badg);
   };
 
   function PostBadge() {
@@ -48,13 +50,13 @@ function UserEfficiency() {
         badge_id: 3,
       })
       .then(function (response) {
-        console.log(response);
+        console.log("Response Data: " + response);
       });
   }
 
   return (
     <div className="jumbotron UserEfficiencyStyle rounded">
-      <h1>Zakładka służąca rozpoczęcia nowej sprawnośći</h1>
+      <h1>Zgłoszenie Sprawności</h1>
       <DropdownButton
         alignRight
         title="Wybierz sprawność"
