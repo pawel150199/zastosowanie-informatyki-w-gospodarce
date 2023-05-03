@@ -32,6 +32,10 @@ function ApplicationStatus() {
                 {data.map(report => (
                   <tr key={report.id}><td>{report.title}</td> <td>{report.status}</td></tr>
                 ))}
+                  {/* <td key={report.id}>Tytuł:{report.title} Status:{report.status}</td>
+                  <td>Wiersz 1, Kolumna 3</td>
+                  <td>Wiersz 1, Kolumna 4</td> */}
+                {/* </tr> */}
               </tbody>
             </Table>
           </Container>
