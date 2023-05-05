@@ -3,18 +3,16 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 import axios from "../../api/api";
 import { loginHeader } from "../../api/authHeader";
-import { saveLocalToken } from "../../api/utils";
+import { saveLocalToken, getLoginStatus, setLoginStatus } from "../../api/utils";
 
 import styles from "./LoginStyle";
 
 const Login = () => {
-  const [isLogged, setIsLogged] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     const headers = loginHeader();
-
     try {
       const response = await axios.post("/login/access-token", {
         username: username,
@@ -23,6 +21,9 @@ const Login = () => {
       console.log(response.data.access_token)
       const accessToken = response.data.access_token;
       saveLocalToken(accessToken);
+      setLoginStatus("isLogged", true);
+
+      console.log("You are Logged: " + getLoginStatus("isLogged"));
       
       window.location.href = "/user";
     } catch (error) {

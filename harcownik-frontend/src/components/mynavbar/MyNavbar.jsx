@@ -2,25 +2,23 @@ import { Navbar, Nav, Container, Image, NavDropdown} from "react-bootstrap";
 import { useState } from "react"; 
 import React from "react";
 
-import axios from "../../api/api";
-import authHeader from "../../api/authHeader";
+import getMe from "../../api/getMe";
+import { getLoginStatus, removeLocalToken, removeLoginStatus } from "../../api/utils";
 
 import  "./mynavbar.css";
 
 const MyNavbar = () => {
     const [username, setUsername] = useState("");
     
-    const getMe = async() => {
-        axios.get("/me", authHeader())
-            .then((response) => {
-                setUsername(response.data.first_name);
-            })
-            .catch((error) => {
-                console.error(error);
-            })
+    const handleLogout = () => {
+        removeLoginStatus("isLogged");
+        removeLocalToken("token");
+        window.location.reload()
     }
 
-    getMe();
+    if (getLoginStatus("isLogged")) {
+        getMe(setUsername);
+    }
 
     return (
         <Navbar  expand="lg" className="navbar-nav navbar-dark bg-dark h1 fs-4"> 
@@ -38,10 +36,12 @@ const MyNavbar = () => {
                         <Nav.Link className="box" href="/raport"> Raport</Nav.Link>
                     </Nav>
                     <Nav className="navbar-nav navbar-dark mr-auto">
+                    {getLoginStatus("isLogged") ? (
                         <NavDropdown title={username} id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
-                            <NavDropdown.Item href="#">Wyloguj</NavDropdown.Item>
+                          <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
+                          <NavDropdown.Item onClick={handleLogout}>Wyloguj</NavDropdown.Item>
                         </NavDropdown>
+                    ) : null}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
