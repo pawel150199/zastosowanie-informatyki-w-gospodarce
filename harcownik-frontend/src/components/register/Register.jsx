@@ -33,7 +33,7 @@ const Register = () => {
         style={styles.input}
         placeholder="Nazwisko"
         value={lastName}
-        onChangeText={setFirstName}
+        onChangeText={setLastName}
       />
       <TextInput
         style={styles.input}

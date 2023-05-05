@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
-from src import crud, schemas
-from src.api.helper import get_db
+from src import crud, schemas, models
+from src.api.helper import get_db, get_current_user
 
 router = APIRouter()
 
@@ -19,6 +19,14 @@ def read_badge_reports(db: Session = Depends(get_db)):
 @router.get("/badge_reports/{badge_report_id}", response_model=schemas.BadgeReport)
 def read_group(badge_report_id: int, db: Session = Depends(get_db)):
     db_badge_report = crud.get_badge_report(db, badge_report_id=badge_report_id)
+    if db_badge_report is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    return db_badge_report
+
+@router.get("/badge_reports/me/raports", response_model=schemas.BadgeReport)
+def read_group(db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+    me = current_user.id
+    db_badge_report = crud.get_badge_report(db, badge_report_id=me)
     if db_badge_report is None:
         raise HTTPException(status_code=404, detail="Report not found")
     return db_badge_report
