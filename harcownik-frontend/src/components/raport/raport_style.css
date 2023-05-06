@@ -1,10 +1,12 @@
+  /* eslint-disable */
   .jumbotronStyle_0 {
     height: 100px;
     background-color: #778899;
-    margin: 1%;
+    /* margin: 1%; */
     overflow: scroll;
     /* display: flex; */
     text-align: center;
+    margin-bottom: 2.5%;
   }
 
   .jumbotronStyle_1 {
@@ -15,10 +17,11 @@
     margin-bottom: 10px;
     /* display: flex; */
     text-align: center;
+    margin-bottom: 5%;
   }
 
   .jumbotronStyle_2 {
-    height: 300px;
+    height: 400px;
     overflow: scroll;
     background-color: #D2BBA0;
     margin-left: 0.5%;
@@ -27,7 +30,7 @@
   }
 
  .jumbotronStyle_3 {
-    height: 490px;
+    height: 400px;
     overflow: scroll;
     background-color: #D2BBA0;
     margin-left: 0.5%;
@@ -36,18 +39,20 @@
   }
 
   .jumbotronStyle_4 {
-    height: 390px;
+    height: 400px;
     overflow: scroll;
     background-color: #D2CAB0;
     margin-right: 0.5%;
     /* display: flex; */
     text-align: center;
+    margin-bottom: 5%;
   }
 
   .form_place {
     width: 100%;
-    height: 200px;
+    height: 400px;
     text-align: left;
+    
   }
 
   .dropDownStyle {
