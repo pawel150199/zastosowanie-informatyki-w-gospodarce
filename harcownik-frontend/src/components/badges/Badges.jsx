@@ -9,8 +9,7 @@ const Badges = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("/badges/grouped")
+    axios.get("/badges/grouped")
       .then((response) => {
         setBadges(response.data);
         setIsLoading(false);

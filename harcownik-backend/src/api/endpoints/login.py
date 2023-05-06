@@ -10,7 +10,6 @@ from src.api import helper
 from src.core import security
 from src.core.settings import settings
 from src.core.security import get_password_hash
-import logging
 from src.api.helper import get_db
 from src.utils import (
     generate_password_reset_token,

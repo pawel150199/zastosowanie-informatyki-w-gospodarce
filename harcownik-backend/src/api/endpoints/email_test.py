@@ -1,8 +1,6 @@
 from typing import Any
-from fastapi import Depends, FastAPI, HTTPException, APIRouter
-from sqlalchemy.orm import Session
-from src import crud, models, schemas
-from src.api.helper import get_db
+from fastapi import APIRouter
+from src import schemas
 from src.utils import send_test_email
 
 router =  APIRouter()

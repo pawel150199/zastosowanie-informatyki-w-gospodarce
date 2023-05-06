@@ -1,5 +1,3 @@
-from asyncio.log import logger
-import logging
 from src.db.db import SessionLocal
 from typing import Generator
 from fastapi import Depends, HTTPException, status
@@ -9,7 +7,6 @@ from pydantic import ValidationError
 from sqlalchemy.orm import Session
 
 from src import crud, models, schemas
-from src.core import security
 from src.db.db import SessionLocal
 from src.core.settings import settings
 

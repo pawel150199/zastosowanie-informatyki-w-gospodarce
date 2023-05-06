@@ -1,6 +1,6 @@
 import secrets
 from typing import Any, Dict, List, Optional, Union
-from pydantic import AnyHttpUrl, BaseSettings, HttpUrl, PostgresDsn, validator
+from pydantic import AnyHttpUrl, BaseSettings, HttpUrl, PostgresDsn
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Harcownik"
