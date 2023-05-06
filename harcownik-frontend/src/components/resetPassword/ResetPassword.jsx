@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 import axios from "../../api/api";
-import { authHeader } from "../../api/authHeader";
-import { saveLocalToken, getLoginStatus, getLocalToken, setLoginStatus } from "../../api/utils";
+import { getLoginStatus, getLocalToken } from "../../api/utils";
 
 import styles from "./ResetPasswordStyle";
 
