@@ -54,7 +54,7 @@ def recover_password(email: str, db: Session = Depends(get_db)) -> Any:
         "msg": "Password recovery email sent"
     }
 
-@router.post("/reset-password/", response_model=schemas.Message)
+@router.post("/reset-password", response_model=schemas.Message)
 def reset_password(token: str = Body(...), new_password: str = Body(...), db: Session = Depends(get_db)) -> Any:
     email = verify_password_reset_token(token)
     if not email:

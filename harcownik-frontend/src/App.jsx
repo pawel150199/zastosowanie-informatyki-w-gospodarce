@@ -7,6 +7,7 @@ import About from "./components/about/About";
 import User from "./components/user/User";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
+import ResetPassword from "./components/resetPassword/ResetPassword";
 import Home from "./components/home/Home";
 import Badges from "./components/badges/Badges";
 import MyNavbar from "./components/mynavbar/MyNavbar";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/reset_password" element={<ResetPassword />} />
             <Route path="/about" element={<About />} />
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />

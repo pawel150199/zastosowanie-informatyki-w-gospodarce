@@ -22,7 +22,7 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>Rejestracja</Text>
       <TextInput
         style={styles.input}
         placeholder="Imie"
@@ -78,11 +78,11 @@ const Register = () => {
         style={styles.button}
         onPress={handleRegister}
       >
-        Register
+        Załóż konto
       </Button>
       <TouchableOpacity>
         <Link to="/login">
-            <Text style={styles.link}>Already have an account? Login</Text>
+            <Text style={styles.link}>Masz już konto? Zaloguj się</Text>
         </Link>
       </TouchableOpacity>
     </View>

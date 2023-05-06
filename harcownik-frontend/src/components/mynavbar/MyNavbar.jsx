@@ -39,6 +39,7 @@ const MyNavbar = () => {
                     {getLoginStatus("isLogged") ? (
                         <NavDropdown title={username} id="basic-nav-dropdown">
                           <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
+                          <NavDropdown.Item href="/reset_password">Zmień hasło</NavDropdown.Item>
                           <NavDropdown.Item onClick={handleLogout}>Wyloguj</NavDropdown.Item>
                         </NavDropdown>
                     ) : null}

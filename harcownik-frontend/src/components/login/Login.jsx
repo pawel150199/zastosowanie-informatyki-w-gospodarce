@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Zaloguj się</Text>
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -54,7 +54,7 @@ const Login = () => {
         <Text>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text style={styles.link}>Forgot Password?</Text>
+        <Text style={styles.link}>Zapomniałeś/aś hasła?</Text>
       </TouchableOpacity>
     </View>
   );
