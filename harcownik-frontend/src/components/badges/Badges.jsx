@@ -1,5 +1,4 @@
-/* eslint-disable */
-import axios from "axios";
+import axios from '../../api/api';
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Spinner } from "react-bootstrap";
 import BadgeItem from "./BadgeItem";
@@ -11,7 +10,7 @@ const Badges = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/badges/grouped")
+      .get("/badges/grouped")
       .then((response) => {
         setBadges(response.data);
         setIsLoading(false);
