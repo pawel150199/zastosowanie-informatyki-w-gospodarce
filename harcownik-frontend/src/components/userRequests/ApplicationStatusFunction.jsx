@@ -1,11 +1,12 @@
 /* eslint-disable */
-import "./UserRequests.css";
 import axios from "axios";
+
+import "./UserRequests.css";
 
 export const getBadgeApplicationStatus = async () => {
   try {
     const response = await axios.get("http://localhost:8000/badge_reports/");
-    console.log(response.data);
+    console.log("Response Data: ", response.data);
     return response.data;
   } catch (error) {
     console.error(error);

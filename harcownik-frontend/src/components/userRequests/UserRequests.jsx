@@ -1,11 +1,12 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import "./UserRequests.css";
 
 import ApplicationStatus from "./ApplicationStatus";
 import UserEfficiency from "./UserEfficiency";
 import UserRanks from "./UserRanks";
 import UserRequestsHeader from "./UserRequestsHeader";
+
+import "./UserRequests.css";
 
 const UserRequests = () => {
   return (

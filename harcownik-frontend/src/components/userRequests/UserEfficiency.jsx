@@ -1,11 +1,12 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import "./UserRequests.css";
 import Dropdown from "react-bootstrap/Dropdown";
-import axios from "axios";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Button } from "react-bootstrap";
+
 import { getBadges, getBadgeGroups, postBadge } from "./getUserEfficiency";
+
+import "./UserRequests.css";
 
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
@@ -31,7 +32,7 @@ function UserEfficiency() {
   };
   const selectBadge = (badg) => {
     setChoosenBadge(badg);
-    console.log("Wybrany badge", badg);
+    console.log("Choosen Badge: ", badg);
   };
 
   return (

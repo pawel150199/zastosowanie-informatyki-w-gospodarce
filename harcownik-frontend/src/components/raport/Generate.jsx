@@ -1,6 +1,8 @@
 import React from "react";
-import "./raport_style.css";
+
 import "./RaportView";
+
+import "./raport_style.css";
 
 function Generate() {
   return (

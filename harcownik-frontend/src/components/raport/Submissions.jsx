@@ -1,8 +1,10 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
-import "./raport_style.css";
 import { Container, Table } from "react-bootstrap";
+
+import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
+
+import "./raport_style.css";
 
 function Submissions() {
   // const [levelApplications, setLevelApplications] = useState([]);
@@ -17,12 +19,13 @@ function Submissions() {
     };
     fetchData();
   }, []);
+  
   const eventCheckBoxTrue = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {
-      //zero-based array
+      // zero-based array
       if (!checkboxs[i].checked) {
-        // Zaznaczenie checkboxa
+        // mark checkbox
         checkboxs[i].checked = true;
       }
     }
@@ -31,9 +34,9 @@ function Submissions() {
   const eventCheckBoxFalse = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {
-      //zero-based array
+      // zero-based array
       if (checkboxs[i].checked) {
-        // Zaznaczenie checkboxa
+        // mark checkbox
         checkboxs[i].checked = false;
       }
     }

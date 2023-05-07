@@ -1,6 +1,7 @@
 /* eslint-disable */
-import "./UserRequests.css";
 import axios from "axios";
+
+import "./UserRequests.css";
 
 export const getBadgeGroups = async () => {
   try {
@@ -30,6 +31,6 @@ export const postBadge = async (data) => {
     });
     console.error(response);
   } catch (error) {
-    console.error("Error sending report:", response);
+    console.error("Error sending report: ", response);
   }
 };

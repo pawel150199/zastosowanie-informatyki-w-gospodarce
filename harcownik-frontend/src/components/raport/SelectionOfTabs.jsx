@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import {
-  Form,
-  Dropdown,
-} from "react-bootstrap";
+import { Form, Dropdown } from "react-bootstrap";
+
 import "./raport_style.css";
 
 
@@ -97,7 +95,7 @@ function SelectionOfTabs() {
               
               <Form.Check
                 type="checkbox"
-                label="Przyznanie stopni,sprawności"
+                label="Przyznanie stopni, sprawności"
                 id="item5"
                 checked={selectedItems.includes("item5")}
                 onChange={(e) => {

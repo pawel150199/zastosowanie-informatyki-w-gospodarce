@@ -1,12 +1,13 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import "./UserRequests.css";
-import axios from "axios";
 import { Container, Table } from "react-bootstrap";
+
 import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
+
+import "./UserRequests.css";
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
@@ -15,7 +16,7 @@ function ApplicationStatus() {
   useEffect(() => {
     const fetchData = async () => {
       const badges = await getBadgeApplicationStatus();
-      console.log("Tu pobiera status badgy!", badges);
+      console.log("Badges are downloaded: ", badges);
       getBadgeStatus(badges);
 
       const level = await getLevelApplicationStatus();
