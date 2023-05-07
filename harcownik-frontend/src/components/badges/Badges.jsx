@@ -1,5 +1,4 @@
-/* eslint-disable */
-import axios from "axios";
+import axios from "../../api/api";
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Spinner } from "react-bootstrap";
 import BadgeItem from "./BadgeItem";
@@ -10,14 +9,13 @@ const Badges = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/badges/grouped")
+    axios.get("/badges/grouped")
       .then((response) => {
         setBadges(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching data from API: " + error);
+        console.error("Error fetching data from API: ", error);
         setIsLoading(false);
       });
   }, []);

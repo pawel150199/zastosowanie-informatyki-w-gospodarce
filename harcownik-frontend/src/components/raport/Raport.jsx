@@ -5,7 +5,7 @@ import {
 } from "react-bootstrap";
 import "./raport_style.css";
 
-import Raport_Headear from "./Raport_Headear";
+import RaportHeadear from "./RaportHeadear";
 import Submissions from "./Submissions";
 import SelectionOfTabs from "./SelectionOfTabs";
 import Generate from "./Generate";
@@ -16,7 +16,7 @@ const Raport = () => {
   return (
     <div  className="container">
       <Row>
-        <Raport_Headear />
+        <RaportHeadear />
       </Row>
       <Row>
         <Col md={7}>

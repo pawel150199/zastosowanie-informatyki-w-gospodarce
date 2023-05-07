@@ -10,7 +10,6 @@ from src.api import helper
 from src.core import security
 from src.core.settings import settings
 from src.core.security import get_password_hash
-import logging
 from src.api.helper import get_db
 from src.utils import (
     generate_password_reset_token,
@@ -55,7 +54,7 @@ def recover_password(email: str, db: Session = Depends(get_db)) -> Any:
         "msg": "Password recovery email sent"
     }
 
-@router.post("/reset-password/", response_model=schemas.Message)
+@router.post("/reset-password", response_model=schemas.Message)
 def reset_password(token: str = Body(...), new_password: str = Body(...), db: Session = Depends(get_db)) -> Any:
     email = verify_password_reset_token(token)
     if not email:

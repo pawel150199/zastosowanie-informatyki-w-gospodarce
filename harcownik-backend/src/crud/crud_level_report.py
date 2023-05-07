@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from src.models.level_report import LevelReport as LevelReportModel
-from src.schemas.level_report import LevelReport, CreateLevelReport, LevelReportBase
+from src.schemas.level_report import CreateLevelReport
 
 # POST
 def create_level_report(db:Session, level_report: CreateLevelReport):

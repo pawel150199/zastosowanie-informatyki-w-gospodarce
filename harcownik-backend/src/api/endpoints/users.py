@@ -1,6 +1,5 @@
-from tokenize import Token
 from typing import Any
-from fastapi import Depends, FastAPI, HTTPException, APIRouter
+from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
 from src.api.helper import get_db, get_current_user

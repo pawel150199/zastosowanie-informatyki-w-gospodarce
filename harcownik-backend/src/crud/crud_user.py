@@ -3,9 +3,8 @@ from typing import Any, Dict, Optional, Union
 from sqlalchemy.orm import Session
 
 from src.models.user import User as UserModel
-from src.schemas.user import User, CreateUser, UserBase
+from src.schemas.user import  CreateUser
 from src.core.security import get_password_hash, verify_password
-import logging
 
 
 # POST

@@ -5,6 +5,10 @@ jest funkcja generowania raportów harcerskich. Obecnie istnieje duży problem z
 <br></br>
 
 ## Kontrybucja aplikacji
+
+### Język aplikacji
+* Interfejs aplikacji pisany jest w języku polskim
+* Logi, komentarze itd. pisane są w języku angielskim
 ### W celu wprowadzenia zmiany w repozytorium należy:
 * Stworzyć swojego lokalnego brancha `git checkout -b <BRANCH_NAME>`
 * Wprowadzić zmiany

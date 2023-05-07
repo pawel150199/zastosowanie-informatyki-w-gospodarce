@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { Button } from "react-bootstrap";
+
+import axios from "../../api/api";
+import { loginHeader } from "../../api/authHeader";
+import { saveLocalToken, getLoginStatus, setLoginStatus } from "../../api/utils";
 
 import styles from "./LoginStyle";
 
@@ -8,13 +11,29 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // perform login authentication
+  const handleLogin = async () => {
+    const headers = loginHeader();
+    try {
+      const response = await axios.post("/login/access-token", {
+        username: username,
+        password: password
+      }, { headers });
+      console.log(response.data.access_token);
+      const accessToken = response.data.access_token;
+      saveLocalToken(accessToken);
+      setLoginStatus("isLogged", true);
+
+      console.log("You are Logged: ", getLoginStatus("isLogged"));
+      
+      window.location.href = "/user";
+    } catch (error) {
+      console.error("Error!", error);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Zaloguj się</Text>
       <TextInput
         style={styles.input}
         placeholder="Username"
@@ -28,14 +47,14 @@ const Login = () => {
         value={password}
         onChangeText={setPassword}
       />
-      <Button
+      <TouchableOpacity
         style={styles.button}
         onPress={handleLogin}
       >
-        Login
-      </Button>
+        <Text>Login</Text>
+      </TouchableOpacity>
       <TouchableOpacity>
-        <Text style={styles.link}>Forgot Password?</Text>
+        <Text style={styles.link}>Zapomniałeś/aś hasła?</Text>
       </TouchableOpacity>
     </View>
   );

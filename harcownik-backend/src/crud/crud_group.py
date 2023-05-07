@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from src.models.group import Group as GroupModel
-from src.schemas.group import Group, CreateGroup, GroupBase
+from src.schemas.group import CreateGroup
 
 # POST
 def create_group(db:Session, group: CreateGroup):

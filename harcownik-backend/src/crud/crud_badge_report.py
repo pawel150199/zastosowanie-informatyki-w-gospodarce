@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from src.models.badge_report import BadgeReport as BadgeReportModel
-from src.schemas.badge_report import BadgeReport, CreateBadgeReport, BadgeReportBase
+from src.schemas.badge_report import CreateBadgeReport
 
 # POST
 def create_badge_report(db: Session, badge_report: CreateBadgeReport):
