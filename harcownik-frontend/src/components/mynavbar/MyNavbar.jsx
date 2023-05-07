@@ -34,7 +34,7 @@ const MyNavbar = () => {
                         <Nav.Link className="box" href="/about"> O nas</Nav.Link>
                         <Nav.Link className="box" href="/badges"> Sprawności</Nav.Link>
                         <Nav.Link className="box" href="/raport"> Raport</Nav.Link>
-                        <Nav.Link className="box" href="/user_requests"></Nav.Link>
+                        <Nav.Link className="box" href="/user_requests">Zgłoszenia użytkownika</Nav.Link>
                     </Nav>
                     <Nav className="navbar-nav navbar-dark mr-auto">
                     {getLoginStatus("isLogged") ? (
