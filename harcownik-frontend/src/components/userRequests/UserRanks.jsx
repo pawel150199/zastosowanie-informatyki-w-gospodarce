@@ -1,10 +1,12 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
-import "./UserRequests.css";
-import { getLevel, postLevelRaports } from "./UserRanksFunction";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Button } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
+
+import { getLevel, postLevelRaports } from "./UserRanksFunction";
+
+import "./UserRequests.css";
 
 function UserRanks() {
   const [level, getLevelData] = useState([]);
@@ -20,7 +22,7 @@ function UserRanks() {
 
   const selectLevel = (level) => {
     setChoosenLevel(level);
-    console.log(level);
+    console.log("Selected Level: ", level);
   };
 
   return (

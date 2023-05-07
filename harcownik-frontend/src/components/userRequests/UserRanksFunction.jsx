@@ -1,6 +1,7 @@
 /* eslint-disable */
-import "./UserRequests.css";
 import axios from "axios";
+
+import "./UserRequests.css";
 
 export const getLevel = async () => {
   try {
@@ -18,7 +19,7 @@ export const postLevelRaports = async (level) => {
       status: "zgłoszona",
       user_id: 1,
     });
-    console.error(response);
+    console.log("Posted Report: ", response);
   } catch (error) {
     console.error("Error sending report:", response);
   }

@@ -1,8 +1,10 @@
 /* eslint-disable */
-import "./raport_style.css";
-import React, { useState, useEffect } from "react";
-import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
+import React from "react";
+import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
+
+import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
+import "./raport_style.css";
 
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);
@@ -16,23 +18,23 @@ function Efficiency() {
   }, []);
 
   const eventCheckBoxTrue = () => {
-    let checkboxs = document.getElementsByName("efficiency");
-    for (let i = 0; i < checkboxs.length; i++) {
-      //zero-based array
-      if (!checkboxs[i].checked) {
-        // Zaznaczenie checkboxa
-        checkboxs[i].checked = true;
+    let checkboxes = document.getElementsByName("efficiency");
+    for (let i = 0; i < checkboxes.length; i++) {
+      // zero-based array
+      if (!checkboxes[i].checked) {
+        // mark checkbox
+        checkboxes[i].checked = true;
       }
     }
   };
 
   const eventCheckBoxFalse = () => {
-    let checkboxs = document.getElementsByName("efficiency");
-    for (let i = 0; i < checkboxs.length; i++) {
-      //zero-based array
-      if (checkboxs[i].checked) {
-        // Zaznaczenie checkboxa
-        checkboxs[i].checked = false;
+    let checkboxes = document.getElementsByName("efficiency");
+    for (let i = 0; i < checkboxes.length; i++) {
+      // zero-based array
+      if (checkboxes[i].checked) {
+        // mark checkbox
+        checkboxes[i].checked = false;
       }
     }
   };

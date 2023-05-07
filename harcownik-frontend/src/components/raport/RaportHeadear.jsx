@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./raport_style.css";
 
 function Jumbotron1() {
