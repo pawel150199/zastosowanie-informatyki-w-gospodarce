@@ -15,7 +15,6 @@ const ResetPassword = () => {
   const handleResetPassword = async () => {
     if (getLoginStatus("isLogged")) {
         if (newPassword ===  newRepeatedPassword) {
-            console.log(getLocalToken("token"))
             axios.post("/reset-password", {
                 token: getLocalToken("token"),
                 new_password: newPassword
@@ -25,11 +24,11 @@ const ResetPassword = () => {
                     window.location.href = "/user";
                 })
                 .catch((error) => {
-                    console.error("Error: " + error)
-                })
+                    console.error("Error: ",  error);
+                });
         }
     }
-  }
+  };
 
   return (
     <View style={styles.container}>

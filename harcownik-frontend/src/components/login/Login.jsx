@@ -18,18 +18,18 @@ const Login = () => {
         username: username,
         password: password
       }, { headers });
-      console.log(response.data.access_token)
+      console.log(response.data.access_token);
       const accessToken = response.data.access_token;
       saveLocalToken(accessToken);
       setLoginStatus("isLogged", true);
 
-      console.log("You are Logged: " + getLoginStatus("isLogged"));
+      console.log("You are Logged: ", getLoginStatus("isLogged"));
       
       window.location.href = "/user";
     } catch (error) {
-      console.error("Error!" + error);
+      console.error("Error!", error);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>

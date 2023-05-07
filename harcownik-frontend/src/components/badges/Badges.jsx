@@ -1,4 +1,4 @@
-import axios from '../../api/api';
+import axios from "../../api/api";
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Spinner } from "react-bootstrap";
 import BadgeItem from "./BadgeItem";
@@ -15,7 +15,7 @@ const Badges = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching data from API: " + error);
+        console.error("Error fetching data from API: ", error);
         setIsLoading(false);
       });
   }, []);

@@ -8,7 +8,7 @@ const getMe = async(setUsername) => {
         })
         .catch((error) => {
             console.error(error);
-        })
-}
+        });
+};
 
 export default getMe;

@@ -7,14 +7,14 @@ const authHeader = () => {
         Authorization: `Bearer ${token}`,
       },
     };
-}
+};
 
 const loginHeader = () => {
     return {
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded"
-    }
-}
+    };
+};
 
 export { loginHeader };
 export default authHeader;

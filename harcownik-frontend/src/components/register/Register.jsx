@@ -14,6 +14,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [group, setGroup] = useState("");
+// eslint-disable-next-line
   const [badges, setBadges] = useState("");
 
   const handleRegister = () => {
