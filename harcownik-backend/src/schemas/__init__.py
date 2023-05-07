@@ -1,4 +1,4 @@
-from .user import User, UserBase, CreateUser
+from .user import User, UserBase, CreateUser, UserWithId
 from .badge import Badge, BadgeBase, CreateBadge, BadgeGroup, BadgeAll, BadgeBaseWithId
 from .group import Group, GroupBase, CreateGroup
 from .badge_report import BadgeReport, BadgeReportBase, CreateBadgeReport
