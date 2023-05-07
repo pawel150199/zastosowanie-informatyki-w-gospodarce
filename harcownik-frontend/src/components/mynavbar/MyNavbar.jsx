@@ -18,7 +18,6 @@ const MyNavbar = () => {
 
     if (getLoginStatus("isLogged")) {
         getMe(setUsername, "first_name");
-        console.log("XDDD: ", username)
     }
 
     return (
