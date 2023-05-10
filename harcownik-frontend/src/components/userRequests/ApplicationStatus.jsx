@@ -6,14 +6,13 @@ import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
+import { getMe_2 } from "../../api/getMe";
 import getMe from "../../api/getMe";
-import {
-  getLoginStatus,
-  removeLocalToken,
-  removeLoginStatus,
-} from "../../api/utils";
-
+// import authHeader from "../../authHeader";
+import { getLoginStatus } from "../../api/utils";
 import "./UserRequests.css";
+
+// import getMe from "../../api/getMe";
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
@@ -21,19 +20,33 @@ function ApplicationStatus() {
   const [userID, setUserID] = useState("");
 
   if (getLoginStatus("isLogged")) {
-    getMe(setUserID, "user_id");
-    console.log("UserID:", userID);
+    const id = getMe(setUserID, "id");
+    console.log("getloginstatus: ", id);
   }
 
+  // getMe(setUserID, "id");
+  // console.log("getMe inside jumbotron:", userID);
+
   useEffect(() => {
+    // getMe(setUserID, "id");
+    // const fetchMe = async () => {
+    //   const userID = await getMe_2("id");
+    //   setUserID(userID);
+    //   console.log("getMe inside jumbotron:", userID);
+    //   fetchData();
+    // };
+    // fetchMe();
+
     const fetchData = async () => {
-      const badges = await getBadgeApplicationStatus();
+      console.log("userID przekazany do funkcji get: ", userID);
+      const badges = await getBadgeApplicationStatus(userID);
       console.log("Badges are downloaded: ", badges);
       getBadgeStatus(badges);
 
-      const level = await getLevelApplicationStatus();
+      const level = await getLevelApplicationStatus(userID);
       getLevelStatus(level);
     };
+
     fetchData();
   }, []);
 
