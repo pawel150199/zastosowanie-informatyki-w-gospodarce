@@ -19,25 +19,25 @@ function ApplicationStatus() {
   const [levelStatus, getLevelStatus] = useState([]);
   const [userID, setUserID] = useState("");
 
-  if (getLoginStatus("isLogged")) {
-    const id = getMe(setUserID, "id");
-    console.log("getloginstatus: ", id);
-  }
-
-  // getMe(setUserID, "id");
-  // console.log("getMe inside jumbotron:", userID);
+  // if (getLoginStatus("isLogged")) {
+  //   getMe(setUserID, "id");
+  //   console.log("getloginstatus: ", userID);
+  // }
+  const getMeFunction = async () => {
+    if (getLoginStatus("isLogged")) {
+      const response = await getMe();
+      console.log("userId in getMe: ", response["id"]);
+    }
+  };
 
   useEffect(() => {
-    // getMe(setUserID, "id");
-    // const fetchMe = async () => {
-    //   const userID = await getMe_2("id");
-    //   setUserID(userID);
-    //   console.log("getMe inside jumbotron:", userID);
-    //   fetchData();
-    // };
-    // fetchMe();
+    getMeFunction();
 
     const fetchData = async () => {
+      if (getLoginStatus("isLogged")) {
+        await getMe(setUserID, "id");
+        console.log("userId in getMe: ", userID);
+      }
       console.log("userID przekazany do funkcji get: ", userID);
       const badges = await getBadgeApplicationStatus(userID);
       console.log("Badges are downloaded: ", badges);
