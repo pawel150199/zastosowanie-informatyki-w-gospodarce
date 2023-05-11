@@ -19,7 +19,7 @@ function Submissions() {
     };
     fetchData();
   }, []);
-  
+
   const eventCheckBoxTrue = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {

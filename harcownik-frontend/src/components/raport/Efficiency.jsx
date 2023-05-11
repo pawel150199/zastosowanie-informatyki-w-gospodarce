@@ -11,8 +11,12 @@ function Efficiency() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const levelBadgesData = await getBadgesApplications();
-      setBadgesApplications(levelBadgesData);
+      if (getLoginStatus("isLogged")) {
+        const response = await getMe();
+        // setUserID(response.id);
+        const levelBadgesData = await getBadgesApplications(response.id);
+        setBadgesApplications(levelBadgesData);
+      }
     };
     fetchData();
   }, []);

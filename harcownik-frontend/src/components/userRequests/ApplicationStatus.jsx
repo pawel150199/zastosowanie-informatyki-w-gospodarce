@@ -6,45 +6,26 @@ import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
-import { getMe_2 } from "../../api/getMe";
 import getMe from "../../api/getMe";
-// import authHeader from "../../authHeader";
 import { getLoginStatus } from "../../api/utils";
 import "./UserRequests.css";
-
-// import getMe from "../../api/getMe";
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
   const [levelStatus, getLevelStatus] = useState([]);
-  const [userID, setUserID] = useState("");
-
-  // if (getLoginStatus("isLogged")) {
-  //   getMe(setUserID, "id");
-  //   console.log("getloginstatus: ", userID);
-  // }
-  const getMeFunction = async () => {
-    if (getLoginStatus("isLogged")) {
-      const response = await getMe();
-      console.log("userId in getMe: ", response["id"]);
-    }
-  };
+  const [userID, setUserID] = useState();
 
   useEffect(() => {
-    getMeFunction();
-
     const fetchData = async () => {
       if (getLoginStatus("isLogged")) {
-        await getMe(setUserID, "id");
-        console.log("userId in getMe: ", userID);
+        const response = await getMe();
+        const id = response.id;
+        console.log("ID:", id);
+        const badges = await getBadgeApplicationStatus(id);
+        getBadgeStatus(badges);
+        const level = await getLevelApplicationStatus(id);
+        getLevelStatus(level);
       }
-      console.log("userID przekazany do funkcji get: ", userID);
-      const badges = await getBadgeApplicationStatus(userID);
-      console.log("Badges are downloaded: ", badges);
-      getBadgeStatus(badges);
-
-      const level = await getLevelApplicationStatus(userID);
-      getLevelStatus(level);
     };
 
     fetchData();

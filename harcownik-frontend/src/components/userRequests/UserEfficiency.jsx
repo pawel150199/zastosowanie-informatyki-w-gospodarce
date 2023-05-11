@@ -5,21 +5,39 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { Button } from "react-bootstrap";
 
 import { getBadges, getBadgeGroups, postBadge } from "./getUserEfficiency";
+import { getLoginStatus } from "../../api/utils";
+import getMe from "../../api/getMe";
 
 import "./UserRequests.css";
 
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
   const [badges, setBadges] = useState([]);
+  const [userID, setUserID] = useState();
 
+  const getId = async () => {
+    if (getLoginStatus("isLogged")) {
+      const response = await getMe();
+      const id = response.id;
+      setUserID(response.id);
+      console.log("getMe inside userefficiency: ", id);
+      console.log("getMe type userefficiency: ", typeof id);
+      console.log("userID inside userefficiency: ", typeof userID);
+      console.log("userID inside userefficiency: ", userID);
+    }
+  };
   useEffect(() => {
+    getId();
     const fetchData = async () => {
       const badges = await getBadges();
       setBadges(badges);
 
       const badgesGroupData = await getBadgeGroups();
+
       setBadgesGroups(badgesGroupData);
+      console.log("Badged group:", badgesGroups);
     };
+
     fetchData();
   }, []);
 
@@ -45,8 +63,8 @@ function UserEfficiency() {
         onSelect={selectGroup}
       >
         {badgesGroups.map((report) => (
-          <Dropdown.Item key={report.id} eventKey={report.title}>
-            {report.title}
+          <Dropdown.Item key={report.id} eventKey={report.group}>
+            {report.group}
           </Dropdown.Item>
         ))}
       </DropdownButton>
@@ -68,7 +86,7 @@ function UserEfficiency() {
 
       {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
       {choosenBadge && (
-        <Button onClick={() => postBadge(choosenBadge)}>
+        <Button onClick={() => postBadge(choosenBadge, userID)}>
           Rozpocznij sprawność
         </Button>
       )}

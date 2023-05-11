@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getLevelApplications = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/level_reports/");
+    const response = await axios.get("http://localhost:8000/level_reports/z");
     console.log("GetLevelApplications: ", response);
     return response.data;
   } catch (error) {

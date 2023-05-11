@@ -5,20 +5,37 @@ import { Button } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
 import { getLevel, postLevelRaports } from "./UserRanksFunction";
+import { getLoginStatus } from "../../api/utils";
+import getMe from "../../api/getMe";
 
 import "./UserRequests.css";
 
 function UserRanks() {
   const [level, getLevelData] = useState([]);
   const [choosenLevel, setChoosenLevel] = useState("");
+  const [userID, setUserID] = useState();
+
+  const getId = async () => {
+    if (getLoginStatus("isLogged")) {
+      const response = await getMe();
+      console.log("response: ", response);
+      console.log("response: ", typeof response.id);
+      const id = response.id;
+      setUserID(id);
+      console.log("getMe inside userranks: ", id);
+      console.log("userID inside userranks: ", userID);
+    }
+  };
+
+  const fetchData = async () => {
+    const levelData = await getLevel();
+    getLevelData(levelData);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const levelData = await getLevel();
-      getLevelData(levelData);
-    };
+    getId();
     fetchData();
-  });
+  }, []);
 
   const selectLevel = (level) => {
     setChoosenLevel(level);
@@ -29,7 +46,7 @@ function UserRanks() {
     <div className="jumbotron UserRanksStyle rounded">
       <h1>Zakładka służąca rozpoczęcia nowego stopnia</h1>
       <DropdownButton
-        alignRight
+        alignight
         title="Wybierz stopień"
         id="dropdown-menu-align-right"
         onSelect={selectLevel}
@@ -41,7 +58,7 @@ function UserRanks() {
         ))}
       </DropdownButton>
       <h4>Wybrany stopień: {choosenLevel}</h4>
-      <Button onClick={() => postLevelRaports(choosenLevel)}>
+      <Button onClick={() => postLevelRaports(choosenLevel, userID)}>
         Rozpocznij nowy stopień
       </Button>
     </div>
