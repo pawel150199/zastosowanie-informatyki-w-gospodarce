@@ -10,7 +10,9 @@ const BadgeItem = ({ badge }) => {
         </div>
       </div>
       <Card.Body className="text-center">
-        <Card.Text style={{ margin: "0.5rem 0" }}>{badge.description}</Card.Text>
+        {badge.description.map((description, index) => (
+          <Card.Text key={index} style={{ margin: "0.5rem 0" }}>{description}</Card.Text>
+        ))}
       </Card.Body>
     </Card>
   );
