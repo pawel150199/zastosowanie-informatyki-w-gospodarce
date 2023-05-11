@@ -20,7 +20,7 @@ function ApplicationStatus() {
       if (getLoginStatus("isLogged")) {
         const response = await getMe();
         const id = response.id;
-        console.log("ID:", id);
+        // console.log("ID:", id);
         const badges = await getBadgeApplicationStatus(id);
         getBadgeStatus(badges);
         const level = await getLevelApplicationStatus(id);

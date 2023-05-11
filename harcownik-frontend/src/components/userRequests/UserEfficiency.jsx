@@ -20,10 +20,10 @@ function UserEfficiency() {
       const response = await getMe();
       const id = response.id;
       setUserID(response.id);
-      console.log("getMe inside userefficiency: ", id);
-      console.log("getMe type userefficiency: ", typeof id);
-      console.log("userID inside userefficiency: ", typeof userID);
-      console.log("userID inside userefficiency: ", userID);
+      // console.log("getMe inside userefficiency: ", id);
+      // console.log("getMe type userefficiency: ", typeof id);
+      // console.log("userID inside userefficiency: ", typeof userID);
+      // console.log("userID inside userefficiency: ", userID);
     }
   };
   useEffect(() => {
@@ -31,11 +31,9 @@ function UserEfficiency() {
     const fetchData = async () => {
       const badges = await getBadges();
       setBadges(badges);
-
       const badgesGroupData = await getBadgeGroups();
-
       setBadgesGroups(badgesGroupData);
-      console.log("Badged group:", badgesGroups);
+      // console.log("Badged group:", badgesGroups);
     };
 
     fetchData();

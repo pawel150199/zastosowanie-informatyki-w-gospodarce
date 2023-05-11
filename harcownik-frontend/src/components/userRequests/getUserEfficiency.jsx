@@ -18,7 +18,7 @@ export const getBadgeGroups = async () => {
 
 export const getBadges = async () => {
   try {
-    console.log("http://localhost:8000/badges");
+    // console.log("http://localhost:8000/badges");
     const response = await axios.get(
       "http://localhost:8000/badges",
       authHeader()
@@ -31,7 +31,7 @@ export const getBadges = async () => {
 
 export const postBadge = async (data, userID) => {
   try {
-    console.log("otrzymany user id do post:");
+    // console.log("otrzymany user id do post:");
     const response = await axios.post(
       "http://localhost:8000/badge_reports/",
       {

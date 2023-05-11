@@ -18,12 +18,12 @@ function UserRanks() {
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
       const response = await getMe();
-      console.log("response: ", response);
-      console.log("response: ", typeof response.id);
+      // console.log("response: ", response);
+      // console.log("response: ", typeof response.id);
       const id = response.id;
       setUserID(id);
-      console.log("getMe inside userranks: ", id);
-      console.log("userID inside userranks: ", userID);
+      // console.log("getMe inside userranks: ", id);
+      // console.log("userID inside userranks: ", userID);
     }
   };
 
