@@ -13,7 +13,6 @@ function Efficiency() {
     const fetchData = async () => {
       if (getLoginStatus("isLogged")) {
         const response = await getMe();
-        // setUserID(response.id);
         const levelBadgesData = await getBadgesApplications(response.id);
         setBadgesApplications(levelBadgesData);
       }
@@ -24,9 +23,7 @@ function Efficiency() {
   const eventCheckBoxTrue = () => {
     let checkboxes = document.getElementsByName("efficiency");
     for (let i = 0; i < checkboxes.length; i++) {
-      // zero-based array
       if (!checkboxes[i].checked) {
-        // mark checkbox
         checkboxes[i].checked = true;
       }
     }
