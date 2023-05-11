@@ -16,34 +16,32 @@ export const getBadgeGroups = async () => {
   }
 };
 
-export const getBadges = async () => {
+export const getBadges = async (group) => {
   try {
-    // console.log("http://localhost:8000/badges");
     const response = await axios.get(
-      "http://localhost:8000/badges",
+      `http://localhost:8000/badges/group/${group}`,
       authHeader()
     );
     return response.data;
   } catch (error) {
-    console.error("http://localhost:8000/badges", error);
+    console.error(error);
   }
 };
 
-export const postBadge = async (data, userID) => {
+export const postBadge = async (data, userID, badgeID) => {
   try {
-    // console.log("otrzymany user id do post:");
     const response = await axios.post(
       "http://localhost:8000/badge_reports/",
       {
         title: data,
         status: "zgłoszona",
         user_id: userID,
-        badge_id: 3,
+        badge_id: badgeID,
       },
       authHeader()
     );
-    console.error(response);
+    console.log(response);
   } catch (error) {
-    console.error("Error sending report: ", response);
+    console.error(error);
   }
 };

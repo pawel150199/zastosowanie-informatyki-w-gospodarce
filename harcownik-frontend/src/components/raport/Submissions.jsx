@@ -7,13 +7,10 @@ import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
 import "./raport_style.css";
 
 function Submissions() {
-  // const [levelApplications, setLevelApplications] = useState([]);
   const [badgesApplications, setBadgesApplications] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // const levelApplicationsData = await getLevelApplications();
-      // setLevelApplications(levelApplicationsData);
       const levelBadgesData = await getBadgesApplications();
       setBadgesApplications(levelBadgesData);
     };
@@ -23,9 +20,7 @@ function Submissions() {
   const eventCheckBoxTrue = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {
-      // zero-based array
       if (!checkboxs[i].checked) {
-        // mark checkbox
         checkboxs[i].checked = true;
       }
     }

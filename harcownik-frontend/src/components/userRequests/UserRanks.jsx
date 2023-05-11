@@ -11,30 +11,27 @@ import getMe from "../../api/getMe";
 import "./UserRequests.css";
 
 function UserRanks() {
-  const [level, getLevelData] = useState([]);
   const [choosenLevel, setChoosenLevel] = useState("");
   const [userID, setUserID] = useState();
+  const levels = [
+    "ochotnik-młodzik",
+    " tropiciel-wywiadowca",
+    "pionier-odkrywca",
+    " samarytanin-ćwik",
+    "harcerz orla-harcerz orli",
+    "harcerz Rzeczypospolitej",
+  ];
 
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
       const response = await getMe();
-      // console.log("response: ", response);
-      // console.log("response: ", typeof response.id);
       const id = response.id;
       setUserID(id);
-      // console.log("getMe inside userranks: ", id);
-      // console.log("userID inside userranks: ", userID);
     }
-  };
-
-  const fetchData = async () => {
-    const levelData = await getLevel();
-    getLevelData(levelData);
   };
 
   useEffect(() => {
     getId();
-    fetchData();
   }, []);
 
   const selectLevel = (level) => {
@@ -51,9 +48,9 @@ function UserRanks() {
         id="dropdown-menu-align-right"
         onSelect={selectLevel}
       >
-        {level.map((level) => (
-          <Dropdown.Item key={level.id} eventKey={level.title}>
-            {level.title}
+        {levels.map((level, index) => (
+          <Dropdown.Item key={index} eventKey={level}>
+            {level}
           </Dropdown.Item>
         ))}
       </DropdownButton>

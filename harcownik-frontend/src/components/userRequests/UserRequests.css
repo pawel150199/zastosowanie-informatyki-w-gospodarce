@@ -1,14 +1,12 @@
 .ApplicationStatusStyle {
-    height: auto;
+    height: 500px;
     background-color: #898d91;
-    /* margin-top: 10px; */
     margin: 1%;
-    /* display: flex; */
     text-align: center;
+    overflow: auto;
   }
 
   .tableStyle {
-    /* margin-top: 10px; */
     text-align: center;
   }
 
@@ -18,8 +16,6 @@
     margin-top: 1%;
     margin-left: 1%;
     margin-right: 1%;
-    /* margin: 1%; */
-    /* display: flex; */
     text-align: center;
   }
 

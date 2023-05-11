@@ -20,20 +20,14 @@ function UserEfficiency() {
       const response = await getMe();
       const id = response.id;
       setUserID(response.id);
-      // console.log("getMe inside userefficiency: ", id);
-      // console.log("getMe type userefficiency: ", typeof id);
-      // console.log("userID inside userefficiency: ", typeof userID);
-      // console.log("userID inside userefficiency: ", userID);
     }
   };
+
   useEffect(() => {
     getId();
     const fetchData = async () => {
-      const badges = await getBadges();
-      setBadges(badges);
       const badgesGroupData = await getBadgeGroups();
       setBadgesGroups(badgesGroupData);
-      // console.log("Badged group:", badgesGroups);
     };
 
     fetchData();
@@ -41,15 +35,30 @@ function UserEfficiency() {
 
   const [choosenGroup, setChoosenGroup] = useState("");
   const [choosenBadge, setChoosenBadge] = useState("");
+  const [choosenBadgeID, setChoosenBadgeID] = useState("");
 
   const selectGroup = (group) => {
     setChoosenGroup(group);
     console.log(group);
+    getProperBadges(group);
   };
   const selectBadge = (badg) => {
-    setChoosenBadge(badg);
-    console.log("Choosen Badge: ", badg);
+    getProperBadges;
+    const badgeName = getBadgeNameById(+badg);
+    setChoosenBadgeID(badg);
+    setChoosenBadge(badgeName);
   };
+
+  const getProperBadges = async (group) => {
+    const badges = await getBadges(group);
+    console.log("Pobrane badge z grupy:", badges);
+    setBadges(badges);
+  };
+
+  function getBadgeNameById(id) {
+    const badge = badges.find((b) => b.id === id);
+    return badge ? badge.name : undefined;
+  }
 
   return (
     <div className="jumbotron UserEfficiencyStyle rounded">
@@ -67,7 +76,7 @@ function UserEfficiency() {
         ))}
       </DropdownButton>
       {choosenGroup && <h4>Grupa sprawności: {choosenGroup}</h4>}
-      {badges && (
+      {choosenGroup && (
         <DropdownButton
           alignRight
           title="Wybierz sprawność"
@@ -75,7 +84,7 @@ function UserEfficiency() {
           onSelect={selectBadge}
         >
           {badges.map((badge) => (
-            <Dropdown.Item key={badge.id} eventKey={badge.name}>
+            <Dropdown.Item key={badge.id} eventKey={badge.id}>
               {badge.name}
             </Dropdown.Item>
           ))}
@@ -84,7 +93,7 @@ function UserEfficiency() {
 
       {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
       {choosenBadge && (
-        <Button onClick={() => postBadge(choosenBadge, userID)}>
+        <Button onClick={() => postBadge(choosenBadge, userID, choosenBadgeID)}>
           Rozpocznij sprawność
         </Button>
       )}

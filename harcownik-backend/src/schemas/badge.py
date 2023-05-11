@@ -3,6 +3,8 @@ from typing import List
 
 class BadgeGroup(BaseModel):
     group: str
+    class Config:
+        orm_mode = True
 
 class BadgeBase(BaseModel):
     name: str

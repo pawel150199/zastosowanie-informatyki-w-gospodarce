@@ -15,10 +15,7 @@ const UserRequests = () => {
         <UserRequestsHeader />
       </Row>
       <Row>
-        {/* <Col md={4}> */}
         <ApplicationStatus />
-
-        {/* </Col> */}
       </Row>
       <Row>
         <Col md={6}>

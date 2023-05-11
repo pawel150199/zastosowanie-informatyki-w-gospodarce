@@ -11,7 +11,6 @@ export const getBadgeApplicationStatus = async (userID) => {
       `http://localhost:8000/badge_reports/user/${userID}`,
       authHeader()
     );
-    // console.log("Application status response:", response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -20,7 +19,6 @@ export const getBadgeApplicationStatus = async (userID) => {
 
 export const getLevelApplicationStatus = async (userID) => {
   try {
-    // console.log("USERID w getLevel:", userID);
     const response = await axios.get(
       `http://localhost:8000/level_reports/user/${userID}`,
       authHeader()
