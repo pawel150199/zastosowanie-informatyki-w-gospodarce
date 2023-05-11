@@ -61,7 +61,7 @@ def init_badges(db: Session) -> None:
 
 def init_groups(db: Session) -> None:
     groups = [
-        schemas.CreateGroup(name="Forward", number="7", szczep="Zielona Siódemka", city="Bydgoszcz")
+        schemas.CreateGroup(name="Forward", number=7, szczep="Zielona Siódemka", city="Bydgoszcz")
     ]
 
     for group in groups:
@@ -77,7 +77,7 @@ def init_users(db: Session) -> None:
             level="admin", function="admin",
             password="admin",
             group_id=1,
-            badge_id=3
+            badge_id=1
         )
     ]
 

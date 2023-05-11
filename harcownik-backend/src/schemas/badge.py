@@ -6,7 +6,9 @@ class BadgeGroup(BaseModel):
 
 class BadgeBase(BaseModel):
     name: str
-    description: str
+    description: List[str]
+    class Config:
+        orm_mode = True
 
 class BadgeBaseWithId(BadgeBase):
     id: int
