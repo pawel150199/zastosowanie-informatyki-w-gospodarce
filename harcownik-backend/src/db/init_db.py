@@ -77,7 +77,7 @@ def init_users(db: Session) -> None:
             level="admin", function="admin",
             password="admin",
             group_id=1,
-            badge_id=[1]
+            badge_id=1
         )
     ]
 
