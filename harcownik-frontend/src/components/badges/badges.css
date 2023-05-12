@@ -6,6 +6,24 @@ div.navbar-nav.mx-auto {
     width: 1.8em
 }
 
+button.accordion-button {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+button.accordion-button {
+    box-shadow: 2px 3px 4px gray;
+    background-color: aliceblue;
+}
+
+p.card-text {
+    margin: "0.5rem 0";
+    text-align: left;
+    margin-left: 1rem;
+}
+
 #badges {
     margin-bottom: 3rem;
     text-align: center;
