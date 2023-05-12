@@ -18,3 +18,7 @@
 .box:active {
     box-shadow: 0 4px 2px -2px gray;
 }
+
+#img {
+    width: 1.8em;
+}

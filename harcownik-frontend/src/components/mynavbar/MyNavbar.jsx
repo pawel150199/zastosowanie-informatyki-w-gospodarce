@@ -34,7 +34,7 @@ const MyNavbar = () => {
     <Navbar expand="lg" className="navbar-nav navbar-dark bg-dark h1 fs-4">
       <Container>
         <Navbar.Brand href="/" className="navbar-nav mr-left">
-          <Image src="/img/logo.png" id="img" style={{ width: "1.8em" }} />
+          <Image src="/img/logo.png" id="img"/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left" />
         <Navbar.Collapse id="basic-navbar-nav">
