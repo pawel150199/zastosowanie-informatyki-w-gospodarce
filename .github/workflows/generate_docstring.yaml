@@ -22,11 +22,11 @@ jobs:
           python-version: "3.9"
           cache: "pip"
 
-      - run: pip3 install -r ./.github/generate_docstrings/requirements.txt
+      - run: pip3 install -r ./.github/generate_docstring/requirements.txt
 
       # Step 3: Run the generate docstring script
       - name: Generate Docstrings
-        run: /bin/bash ./.github/generate_docstrings/run_generate_docstring.sh ./.github/generate_docstrings/generate_docstring.py
+        run: /bin/bash ./.github/generate_docstring/run_generate_docstring.sh ./.github/generate_docstring/generate_docstring.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       
