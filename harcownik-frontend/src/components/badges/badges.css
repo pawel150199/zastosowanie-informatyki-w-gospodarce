@@ -13,13 +13,21 @@ button.accordion-button {
     text-align: center;
 }
 
+div.card-title.h5 {
+    color: white;
+}
+
+div.card {
+    margin-bottom: 1rem;
+}
+
 button.accordion-button {
     box-shadow: 2px 3px 4px gray;
     background-color: aliceblue;
 }
 
 p.card-text {
-    margin: "0.5rem 0";
+    margin: 0.5rem 0;
     text-align: left;
     margin-left: 1rem;
 }

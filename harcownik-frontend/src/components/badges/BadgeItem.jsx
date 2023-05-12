@@ -8,7 +8,7 @@ const BadgeItem = ({ badge }) => {
     <Card key={badge.id} style={{ marginBottom: "1rem" }}>
       <div id="item-1">
         <div id="item-2">
-          <Card.Title style={{ color: "white" }}>{badge.name}</Card.Title>
+          <Card.Title>{badge.name}</Card.Title>
         </div>
       </div>
       <Card.Body className="text-center">
