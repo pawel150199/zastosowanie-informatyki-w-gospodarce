@@ -1,4 +1,3 @@
-/*
 const badges = [
   {
     group: "Sprawności Łącznościowe",
@@ -51,4 +50,3 @@ const badges = [
 ];
 
 export default badges;
-*/

@@ -35,7 +35,7 @@ const Badges = () => {
       <Accordion>
         {badges.map((group, index) => (
           <Accordion.Item key={index} eventKey={index} className="mb-3">
-            <Accordion.Header className="text-center">
+            <Accordion.Header>
               {group.group}
             </Accordion.Header>
             <Accordion.Body>
