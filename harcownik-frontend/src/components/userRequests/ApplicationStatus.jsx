@@ -13,7 +13,7 @@ import "./UserRequests.css";
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
   const [levelStatus, getLevelStatus] = useState([]);
-  const [userID, setUserID] = useState();
+  // const [userId, setuserId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {

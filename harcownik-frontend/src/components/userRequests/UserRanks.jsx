@@ -12,12 +12,12 @@ import "./UserRequests.css";
 
 function UserRanks() {
   const [choosenLevel, setChoosenLevel] = useState("");
-  const [userID, setUserID] = useState();
+  const [userId, setUserId] = useState();
   const levels = [
     "ochotnik-młodzik",
-    " tropiciel-wywiadowca",
+    "tropiciel-wywiadowca",
     "pionier-odkrywca",
-    " samarytanin-ćwik",
+    "samarytanin-ćwik",
     "harcerz orla-harcerz orli",
     "harcerz Rzeczypospolitej",
   ];
@@ -25,8 +25,8 @@ function UserRanks() {
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
       const response = await getMe();
-      const id = response.id;
-      setUserID(id);
+      const Id = response.Id;
+      setUserId(Id);
     }
   };
 
@@ -45,7 +45,7 @@ function UserRanks() {
       <DropdownButton
         alignight
         title="Wybierz stopień"
-        id="dropdown-menu-align-right"
+        Id="dropdown-menu-align-right"
         onSelect={selectLevel}
       >
         {levels.map((level, index) => (
@@ -55,7 +55,7 @@ function UserRanks() {
         ))}
       </DropdownButton>
       <h4>Wybrany stopień: {choosenLevel}</h4>
-      <Button onClick={() => postLevelRaports(choosenLevel, userID)}>
+      <Button onClick={() => postLevelRaports(choosenLevel, userId)}>
         Rozpocznij nowy stopień
       </Button>
     </div>
