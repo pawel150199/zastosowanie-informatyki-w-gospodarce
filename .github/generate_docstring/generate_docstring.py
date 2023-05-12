@@ -3,7 +3,10 @@ import sys
 import time
 import subprocess
 import openai
+import logging
 from redbaron import RedBaron
+
+logger = logging.getLogger()
 
 # Set OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -48,42 +51,42 @@ def addDocstring(filePath):
 
             # Extract the function code
             function_code = node.dumps()
+            try:
+                # Send the function code to ChatGPT API for generating docstring (offcourse use GPT4 API if you hace access to it)
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    temperature=0.2,
+                    messages=[
+                        *history,
+                        {"role": "user", "content": function_code},
+                    ],
+                )
 
-            # Send the function code to ChatGPT API for generating docstring (offcourse use GPT4 API if you hace access to it)
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                temperature=0.2,
-                messages=[
-                    *history,
-                    {"role": "user", "content": function_code},
-                ],
-            )
+                # Extract the generated docstring from the OpenAI response
+                docstring = response.choices[0].message.content
 
-            currentTime = time.time()
+                # Remove the quotes from the generated docstring if present
+                if docstring.startswith('"""') or docstring.startswith("'''"):
+                    docstring = docstring[3:-3]
+                if docstring.startswith('"'):
+                    docstring = docstring[1:-1]
 
-            # Extract the generated docstring from the OpenAI response
-            docstring = response.choices[0].message.content
+                # Add the function code and generated docstring to history
+                history.append({"role": "user", "content": function_code})
+                history.append(
+                    {
+                        "role": "assistant",
+                        "content": docstring,
+                    }
+                )
 
-            # Remove the quotes from the generated docstring if present
-            if docstring.startswith('"""') or docstring.startswith("'''"):
-                docstring = docstring[3:-3]
-            if docstring.startswith('"'):
-                docstring = docstring[1:-1]
-
-            # Add the function code and generated docstring to history
-            history.append({"role": "user", "content": function_code})
-            history.append(
-                {
-                    "role": "assistant",
-                    "content": docstring,
-                }
-            )
-
-            # Insert the generated docstring to the Function node
-            if node.next and node.next.type == "comment":
-                node.next.insert_after(f'"""\n{docstring}\n"""')
-            else:
-                node.value.insert(0, f'"""\n{docstring}\n"""')
+                # Insert the generated docstring to the Function node
+                if node.next and node.next.type == "comment":
+                    node.next.insert_after(f'"""\n{docstring}\n"""')
+                else:
+                    node.value.insert(0, f'"""\n{docstring}\n"""')
+            except openai.error.RateLimitError:
+                logger.error("Response from openapi is not delivered")
 
     # Write the modified Python file back to disk
     with open(filePath, "w", encoding="utf-8") as file:
