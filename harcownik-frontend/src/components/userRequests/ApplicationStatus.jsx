@@ -6,12 +6,24 @@ import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
+import getMe from "../../api/getMe";
+import {
+  getLoginStatus,
+  removeLocalToken,
+  removeLoginStatus,
+} from "../../api/utils";
 
 import "./UserRequests.css";
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
   const [levelStatus, getLevelStatus] = useState([]);
+  const [userID, setUserID] = useState("");
+
+  if (getLoginStatus("isLogged")) {
+    getMe(setUserID, "user_id");
+    console.log("UserID:", userID);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
