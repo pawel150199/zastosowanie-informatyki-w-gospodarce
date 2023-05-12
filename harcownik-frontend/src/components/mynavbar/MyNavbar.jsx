@@ -42,10 +42,6 @@ const MyNavbar = () => {
             <Nav.Link className="box" href="/">
               Strona Główna
             </Nav.Link>
-            <Nav.Link className="box" href="/login">
-              {" "}
-              Logowanie
-            </Nav.Link>
             <Nav.Link className="box" href="/about">
               {" "}
               O nas
