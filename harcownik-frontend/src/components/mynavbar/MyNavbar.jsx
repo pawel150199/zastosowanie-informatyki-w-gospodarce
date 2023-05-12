@@ -24,13 +24,12 @@ const MyNavbar = () => {
         <Navbar  expand="lg" className="navbar-nav navbar-dark bg-dark h1 fs-4"> 
             <Container>
                 <Navbar.Brand href="/" className="navbar-nav mr-left">
-                        <Image src="/img/logo.png" id="img" style={{width: "1.8em"}}/>
+                        <Image src="/img/logo.png" id="img"/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="navbar-nav mx-auto" >
                         <Nav.Link className="box" href="/" >Strona Główna</Nav.Link>
-                        <Nav.Link className="box" href="/login"> Logowanie</Nav.Link>
                         <Nav.Link className="box" href="/about"> O nas</Nav.Link>
                         <Nav.Link className="box" href="/badges"> Sprawności</Nav.Link>
                         <Nav.Link className="box" href="/raport"> Raport</Nav.Link>
