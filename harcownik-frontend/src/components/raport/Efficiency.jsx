@@ -11,8 +11,11 @@ function Efficiency() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const levelBadgesData = await getBadgesApplications();
-      setBadgesApplications(levelBadgesData);
+      if (getLoginStatus("isLogged")) {
+        const response = await getMe();
+        const levelBadgesData = await getBadgesApplications(response.id);
+        setBadgesApplications(levelBadgesData);
+      }
     };
     fetchData();
   }, []);
@@ -20,9 +23,7 @@ function Efficiency() {
   const eventCheckBoxTrue = () => {
     let checkboxes = document.getElementsByName("efficiency");
     for (let i = 0; i < checkboxes.length; i++) {
-      // zero-based array
       if (!checkboxes[i].checked) {
-        // mark checkbox
         checkboxes[i].checked = true;
       }
     }

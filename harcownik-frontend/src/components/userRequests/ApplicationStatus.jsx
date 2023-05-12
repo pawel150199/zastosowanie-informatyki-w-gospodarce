@@ -6,22 +6,27 @@ import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
-
+import getMe from "../../api/getMe";
+import { getLoginStatus } from "../../api/utils";
 import "./UserRequests.css";
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
   const [levelStatus, getLevelStatus] = useState([]);
+  // const [userId, setuserId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
-      const badges = await getBadgeApplicationStatus();
-      console.log("Badges are downloaded: ", badges);
-      getBadgeStatus(badges);
-
-      const level = await getLevelApplicationStatus();
-      getLevelStatus(level);
+      if (getLoginStatus("isLogged")) {
+        const response = await getMe();
+        const id = response.id;
+        const badges = await getBadgeApplicationStatus(id);
+        getBadgeStatus(badges);
+        const level = await getLevelApplicationStatus(id);
+        getLevelStatus(level);
+      }
     };
+
     fetchData();
   }, []);
 
@@ -29,7 +34,7 @@ function ApplicationStatus() {
     <div className="jumbotron ApplicationStatusStyle rounded">
       <Container>
         <h2>Zgłoszenia dotyczące sprawności</h2>
-        <Table responsive bordered striped style={{ margintop: "50px" }}>
+        <Table responsive bordered striped style={{ marginTop: "50px" }}>
           <thead>
             <tr>
               <th>Tytuł</th>
@@ -37,15 +42,16 @@ function ApplicationStatus() {
             </tr>
           </thead>
           <tbody>
-            {badgeStatus.map((report) => (
-              <tr key={report.id}>
-                <td>{report.title}</td> <td>{report.status}</td>
+            {badgeStatus.map((Status) => (
+              <tr key={Status.id}>
+                <td>{Status.title}</td>
+                <td>{Status.status}</td>
               </tr>
             ))}
           </tbody>
         </Table>
         <h2>Zgłoszenia dotyczące stopni</h2>
-        <Table responsive bordered striped style={{ margintop: "50px" }}>
+        <Table responsive bordered striped style={{ marginTop: "50px" }}>
           <thead>
             <tr>
               <th>Tytuł</th>
@@ -53,18 +59,15 @@ function ApplicationStatus() {
             </tr>
           </thead>
           <tbody>
-            {levelStatus.map((report) => (
-              <tr key={report.id}>
-                <td>{report.title}</td> <td>{report.status}</td>
+            {levelStatus.map((level) => (
+              <tr key={level.id}>
+                <td>{level.title}</td>
+                <td>{level.status}</td>
               </tr>
             ))}
           </tbody>
         </Table>
       </Container>
-
-      {/* <h1>{data.map(report => (
-          <h2 key={report.id}>Tytuł:{report.title} Status:{report.status}</h2>
-        ))}</h1> */}
     </div>
   );
 }

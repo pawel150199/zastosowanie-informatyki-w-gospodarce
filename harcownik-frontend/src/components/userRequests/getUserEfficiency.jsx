@@ -2,35 +2,46 @@
 import axios from "axios";
 
 import "./UserRequests.css";
+import authHeader from "../../api/authHeader";
 
 export const getBadgeGroups = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/level_reports");
+    const response = await axios.get(
+      "http://localhost:8000/badges/groups",
+      authHeader()
+    );
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getBadges = async () => {
+export const getBadges = async (group) => {
   try {
-    const response = await axios.get("http://localhost:8000/badges");
+    const response = await axios.get(
+      `http://localhost:8000/badges/group/${group}`,
+      authHeader()
+    );
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const postBadge = async (data) => {
+export const postBadge = async (data, userID, badgeID) => {
   try {
-    const response = await axios.post("http://localhost:8000/badge_reports/", {
-      title: data,
-      status: "zgłoszona",
-      user_id: 1,
-      badge_id: 3,
-    });
-    console.error(response);
+    const response = await axios.post(
+      "http://localhost:8000/badge_reports/",
+      {
+        title: data,
+        status: "zgłoszona",
+        user_id: userID,
+        badge_id: badgeID,
+      },
+      authHeader()
+    );
+    console.log(response);
   } catch (error) {
-    console.error("Error sending report: ", response);
+    console.error(error);
   }
 };

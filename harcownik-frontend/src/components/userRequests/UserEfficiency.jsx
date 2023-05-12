@@ -5,35 +5,60 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { Button } from "react-bootstrap";
 
 import { getBadges, getBadgeGroups, postBadge } from "./getUserEfficiency";
+import { getLoginStatus } from "../../api/utils";
+import getMe from "../../api/getMe";
 
 import "./UserRequests.css";
 
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
   const [badges, setBadges] = useState([]);
+  const [userID, setUserID] = useState();
+
+  const getId = async () => {
+    if (getLoginStatus("isLogged")) {
+      const response = await getMe();
+      const id = response.id;
+      setUserID(response.id);
+    }
+  };
 
   useEffect(() => {
+    getId();
     const fetchData = async () => {
-      const badges = await getBadges();
-      setBadges(badges);
-
       const badgesGroupData = await getBadgeGroups();
       setBadgesGroups(badgesGroupData);
     };
+
     fetchData();
   }, []);
 
   const [choosenGroup, setChoosenGroup] = useState("");
   const [choosenBadge, setChoosenBadge] = useState("");
+  const [choosenBadgeID, setChoosenBadgeID] = useState("");
 
   const selectGroup = (group) => {
     setChoosenGroup(group);
     console.log(group);
+    getProperBadges(group);
   };
   const selectBadge = (badg) => {
-    setChoosenBadge(badg);
-    console.log("Choosen Badge: ", badg);
+    getProperBadges;
+    const badgeName = getBadgeNameById(+badg);
+    setChoosenBadgeID(badg);
+    setChoosenBadge(badgeName);
   };
+
+  const getProperBadges = async (group) => {
+    const badges = await getBadges(group);
+    console.log("Pobrane badge z grupy:", badges);
+    setBadges(badges);
+  };
+
+  function getBadgeNameById(id) {
+    const badge = badges.find((b) => b.id === id);
+    return badge ? badge.name : undefined;
+  }
 
   return (
     <div className="jumbotron UserEfficiencyStyle rounded">
@@ -45,13 +70,13 @@ function UserEfficiency() {
         onSelect={selectGroup}
       >
         {badgesGroups.map((report) => (
-          <Dropdown.Item key={report.id} eventKey={report.title}>
-            {report.title}
+          <Dropdown.Item key={report.id} eventKey={report.group}>
+            {report.group}
           </Dropdown.Item>
         ))}
       </DropdownButton>
       {choosenGroup && <h4>Grupa sprawności: {choosenGroup}</h4>}
-      {badges && (
+      {choosenGroup && (
         <DropdownButton
           alignRight
           title="Wybierz sprawność"
@@ -59,7 +84,7 @@ function UserEfficiency() {
           onSelect={selectBadge}
         >
           {badges.map((badge) => (
-            <Dropdown.Item key={badge.id} eventKey={badge.name}>
+            <Dropdown.Item key={badge.id} eventKey={badge.id}>
               {badge.name}
             </Dropdown.Item>
           ))}
@@ -68,7 +93,7 @@ function UserEfficiency() {
 
       {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
       {choosenBadge && (
-        <Button onClick={() => postBadge(choosenBadge)}>
+        <Button onClick={() => postBadge(choosenBadge, userID, choosenBadgeID)}>
           Rozpocznij sprawność
         </Button>
       )}
