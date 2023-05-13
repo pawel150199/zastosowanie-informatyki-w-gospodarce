@@ -38,13 +38,11 @@ def read_badges(db: Session = Depends(get_db)):
                 status_code=404,
                 detail="Badges not found"
             )
-
         one_group = {
             **group,
             "badges": [{"name": badge.name, "description": badge.description} for badge in badges],
         }
         result.append(one_group)
-    
     return result
 
 
