@@ -1,13 +1,13 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
-from src import crud, schemas
-from src.api.helper import get_db
+from src import crud, schemas, models
+from src.api.helper import get_db, get_current_superuser
 
 router = APIRouter()
 
 # POST
 @router.post("/badges/", response_model=schemas.Badge)
-def create_badge(badge: schemas.CreateBadge, db:Session = Depends(get_db)):
+def create_badge(badge: schemas.CreateBadge, db:Session = Depends(get_db), _: models.User = Depends(get_current_superuser)):
     return crud.create_badge(db=db, badge=badge)
 
 # GET
@@ -78,7 +78,7 @@ def read_badge(badge_id: int, db: Session = Depends(get_db)):
 
 # DELETE
 @router.delete("/badge/delete/{badge_id}", response_model=schemas.Badge)
-def delete_badge(badge_id: int, db: Session = Depends(get_db)):
+def delete_badge(badge_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_superuser)):
     badge = crud.get_badge(db=db, badge_id=badge_id)
     if not badge:
         raise HTTPException(

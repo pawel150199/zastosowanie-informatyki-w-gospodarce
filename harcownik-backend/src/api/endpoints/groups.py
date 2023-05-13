@@ -1,13 +1,13 @@
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
-from src import crud, schemas
-from src.api.helper import get_db
+from src import crud, schemas, models
+from src.api.helper import get_db, get_current_superuser, get_current_user
 
 router = APIRouter()
 
 # POST
 @router.post("/groups/", response_model=schemas.Group)
-def create_group(group: schemas.CreateGroup, db:Session = Depends(get_db)):
+def create_group(group: schemas.CreateGroup, db:Session = Depends(get_db), _: models.User = Depends(get_current_superuser)):
     return crud.create_group(db=db, group=group)
 
 # GET
@@ -33,7 +33,7 @@ def read_group(group_id: int, db: Session = Depends(get_db)):
 
 # DELETE
 @router.delete("/group/delete/{group_id}", response_model=schemas.Group)
-def delete_group(group_id: int, db: Session = Depends(get_db)):
+def delete_group(group_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_superuser)):
     group = crud.get_group(db=db, group_id=group_id)
     if not group:
         raise HTTPException(

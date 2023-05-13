@@ -2,13 +2,13 @@ from typing import Any
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
-from src.api.helper import get_db, get_current_user
+from src.api.helper import get_db, get_current_user, get_current_superuser
 
 router = APIRouter()
 
 # POST
 @router.post("/users/", response_model=schemas.User)
-def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)):
+def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: models.User = Depends(get_current_user)):
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -19,7 +19,7 @@ def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)):
 
 # GET
 @router.get("/users/", response_model=list[schemas.User])
-def read_users(db: Session = Depends(get_db)):
+def read_users(db: Session = Depends(get_db), _: models.User = Depends(get_current_user)):
     users = crud.get_users(db)
     if users == [] or users is None:
         raise HTTPException(
@@ -29,7 +29,7 @@ def read_users(db: Session = Depends(get_db)):
     return users
 
 @router.get("/me", response_model=schemas.UserWithId)
-def read_user_me(db: Session = Depends(get_db),  current_user: models.User = Depends(get_current_user)) -> Any:
+def read_user_me(db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:
     if current_user is None:
         raise HTTPException(
             status_code=401,
@@ -38,7 +38,7 @@ def read_user_me(db: Session = Depends(get_db),  current_user: models.User = Dep
     return current_user
     
 @router.get("/users/{user_id}", response_model=schemas.User)
-def read_user(user_id: int, db: Session = Depends(get_db)):
+def read_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_user)):
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
        raise HTTPException(
@@ -48,7 +48,7 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     return db_user
 
 @router.get("/users/email/{email}", response_model=schemas.User)
-def get_user_by_email(email: str, db: Session = Depends(get_db)):
+def get_user_by_email(email: str, db: Session = Depends(get_db), _: models.User = Depends(get_current_user)):
     db_user = crud.get_by_email(db, email=email)
     if db_user is None:
        raise HTTPException(
@@ -59,7 +59,7 @@ def get_user_by_email(email: str, db: Session = Depends(get_db)):
 
 # DELETE
 @router.delete("/user/delete/{user_id}", response_model=schemas.User)
-def delete_user(user_id: int, db: Session = Depends(get_db)):
+def delete_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_superuser)):
     user = crud.get_user(db=db,user_id=user_id)
     if not user:
         raise HTTPException(
