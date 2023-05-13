@@ -63,12 +63,25 @@ export default function SelectionOfTabs() {
     setSelectedItems(selectedItems.filter((item) => item !== eventKey));
   };
 
+  // const handleTextValueChange = (event, tab) => {
+  //   console.log("event", event);
+  //   console.log("tab", tab.patternText);
+  //   const updatedTabs = tabs.map((t) => {
+  //     if (t.id === tab.id) {
+  //       return { ...t, textValue: event.target.value };
+  //     } else {
+  //       return t;
+  //     }
+  //   });
+  //   setTabs(updatedTabs);
+  // };
+
   const handleTextValueChange = (event, tab) => {
     console.log("event", event);
     console.log("tab", tab.patternText);
     const updatedTabs = tabs.map((t) => {
       if (t.id === tab.id) {
-        return { ...t, textValue: event.target.value };
+        return { ...t, patternText: event.target.value };
       } else {
         return t;
       }
@@ -79,7 +92,7 @@ export default function SelectionOfTabs() {
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     console.log("selectedTabs:", selectedTabs);
-    const fileContent = selectedTabs.map((tab) => tab.textValue).join("\n\n");
+    const fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
     console.log("fileContent:", fileContent);
 
     const orderPattern = {
