@@ -4,11 +4,11 @@ from src.models.badge_report import BadgeReport as BadgeReportModel
 from src.schemas.badge_report import CreateBadgeReport
 
 # POST
-def create_badge_report(db: Session, badge_report: CreateBadgeReport):
+def create_badge_report(db: Session, badge_report: CreateBadgeReport, user_id):
     db_badge_report = BadgeReportModel(
         title=badge_report.title,
         status=badge_report.status,
-        user_id=badge_report.user_id,
+        user_id=user_id,
         badge_id=badge_report.badge_id
     )
 

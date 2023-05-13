@@ -6,9 +6,9 @@ from src.api.helper import get_db, get_current_user
 router = APIRouter()
 
 # POST
-@router.post("/badge_reports/", response_model=schemas.BadgeReport)
-def create_badge_report(badge_report: schemas.CreateBadgeReport, db:Session = Depends(get_db)):
-    return crud.create_badge_report(db=db, badge_report=badge_report)
+@router.post("/me/badge_reports/", response_model=schemas.BadgeReport)
+def create_badge_report(badge_report: schemas.CreateBadgeReport, db:Session = Depends(get_db), current_user: models.BadgeReport = Depends(get_current_user)):
+    return crud.create_badge_report(db=db, badge_report=badge_report, user_id=current_user.id)
 
 # GET
 @router.get("/badge_reports/", response_model=list[schemas.BadgeReport])

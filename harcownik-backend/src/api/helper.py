@@ -40,7 +40,7 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(reusabl
 def get_current_teamadmin(current_user: models.User = Depends(get_current_user)) -> models.User:
     if not crud.is_teamadmin(current_user):
         raise HTTPException(
-            status_code=400,
+            status_code=401,
             detail="The user doesn't have enough privileges"
         )
     return current_user
@@ -48,7 +48,7 @@ def get_current_teamadmin(current_user: models.User = Depends(get_current_user))
 def get_current_webadmin(current_user: models.User = Depends(get_current_user)) -> models.User:
     if not crud.is_webadmin(current_user):
         raise HTTPException(
-            status_code=400,
+            status_code=401,
             detail="The user doesn't have enough privileges"
         )
     return current_user
@@ -57,7 +57,7 @@ def get_current_webadmin(current_user: models.User = Depends(get_current_user)) 
 def get_current_webadmin_or_teamadmin(current_user: models.User = Depends(get_current_user)) -> models.User:
     if not crud.is_webadmin_or_teamadmin(current_user):
         raise HTTPException(
-            status_code=400,
+            status_code=401,
             detail="The user doesn't have enough privileges"
         )
     return current_user

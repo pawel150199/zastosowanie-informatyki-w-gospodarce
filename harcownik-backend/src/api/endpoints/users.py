@@ -11,7 +11,7 @@ router = APIRouter()
 
 # POST
 @router.post("/users/scout", response_model=schemas.User)
-def create_scout(user: schemas.CreateUser, db: Session = Depends(get_db), current_teamadmin: models.User = Depends(get_current_teamadmin)):
+def create_scout(user: schemas.CreateScout, db: Session = Depends(get_db), current_teamadmin: models.User = Depends(get_current_teamadmin)):
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -21,11 +21,11 @@ def create_scout(user: schemas.CreateUser, db: Session = Depends(get_db), curren
     return crud.create_scout(db=db, user=user, group_id=current_teamadmin.group_id)
 
 @router.post("/users/admin", response_model=schemas.User)
-def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), current_webadmin: models.User = Depends(get_current_webadmin_or_teamadmin)):
+def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin)):
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
-            status_code=400,
+            status_code=401,
             detail="The user with this username already exist in the system"
         )
     if settings.EMAILS_ENABLED and user.email:
@@ -45,9 +45,9 @@ def read_users(db: Session = Depends(get_db), _: models.User = Depends(get_curre
         )
     return users
 
-@router.get("/users/{group_id}", response_model=list[schemas.User])
-def read_users(db: Session = Depends(get_db), _: models.User = Depends(get_current_user)):
-    users = crud.get_users_in_group(db)
+@router.get("/users/group/", response_model=list[schemas.User])
+def read_users(db: Session = Depends(get_db),  current_user: models.User = Depends(get_current_user)):
+    users = crud.get_users_in_group(db, group_id=current_user.group_id)
     if users == [] or users is None:
         raise HTTPException(
             status_code=404,
@@ -64,7 +64,7 @@ def read_user_me(db: Session = Depends(get_db), current_user: models.User = Depe
         )
     return current_user
     
-@router.get("/users/{user_id}", response_model=schemas.User)
+@router.get("/users/id/{user_id}", response_model=schemas.User)
 def read_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)):
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
