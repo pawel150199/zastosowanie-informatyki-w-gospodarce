@@ -14,6 +14,7 @@ class CreateUser(UserBase):
     badge_id: int
 
 class User(UserBase):
+    id: int
     level: str
     function: str
     group_id: int
