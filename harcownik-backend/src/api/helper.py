@@ -36,3 +36,11 @@ def get_current_user(db: Session = Depends(get_db), token: str = Depends(reusabl
             detail="User not found"
         )
     return user
+
+def get_current_superuser(current_user: models.User = Depends(get_current_user)) -> models.User:
+    if not crud.user.is_superuser(current_user):
+        raise HTTPException(
+            status_code=400,
+            detail="The user doesn't have enough privileges"
+        )
+    return current_user

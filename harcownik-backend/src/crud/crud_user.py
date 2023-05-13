@@ -43,6 +43,9 @@ def authenticate(db: Session, email: str, password: str) -> Optional[UserModel]:
 def get_users(db: Session):
     return db.query(UserModel).all()
 
+def is_superuser(self, user: UserModel) -> bool:
+        return user.is_superuser
+
 # DELETE
 def delete_user(db: Session, user_id: int):
     db_user = db.query(UserModel).get(user_id)

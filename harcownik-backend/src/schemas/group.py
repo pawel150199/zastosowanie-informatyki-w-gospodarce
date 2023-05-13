@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 class GroupBase(BaseModel):
     name: str
-    number: str
+    number: int
 
 class CreateGroup(GroupBase):
     szczep: str
