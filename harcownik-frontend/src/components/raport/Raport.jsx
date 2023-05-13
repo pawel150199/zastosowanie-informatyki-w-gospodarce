@@ -17,24 +17,14 @@ const Raport = () => {
         <RaportHeadear />
       </Row>
       <Row>
-        <Col md={6}>
-          <Submissions />
-        </Col>
-        <Col md={6}>
-          <Efficiency />
-        </Col>
+        <Submissions />
       </Row>
       <Row>
-        {/* <Col md={6}> */}
-        <SelectionOfTabs />
-        {/* </Col> */}
-        {/* <Col md={6}>
-          <Generate />
-        </Col> */}
+        <Efficiency />
       </Row>
-      {/* <Row>
-        <GenerateTextArea />
-      </Row> */}
+      <Row>
+        <SelectionOfTabs />
+      </Row>
     </div>
   );
 };

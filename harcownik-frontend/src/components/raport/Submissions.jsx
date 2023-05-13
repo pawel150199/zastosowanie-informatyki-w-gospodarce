@@ -2,11 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import {
-  getBadgesApplications,
-  getLevelApplications,
-  getUsersData,
-} from "./RaportFunction";
+import { getBadgesApplications, getUsersData } from "./RaportFunction";
 
 import "./raport_style.css";
 
@@ -21,6 +17,7 @@ function Submissions() {
 
       const usersInformation = await getUsersData();
       setUsersData(usersInformation);
+      // console.log("User informations:", usersInformation);
     };
 
     fetchData();
@@ -38,9 +35,7 @@ function Submissions() {
   const eventCheckBoxFalse = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {
-      // zero-based array
       if (checkboxs[i].checked) {
-        // mark checkbox
         checkboxs[i].checked = false;
       }
     }
@@ -60,27 +55,31 @@ function Submissions() {
             </tr>
           </thead>
           <tbody>
-            {badgesApplications.map((report) => (
-              <tr key={report.id}>
-                <td>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input ef"
-                      type="checkbox"
-                      value=""
-                      name="submissions"
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      className="form-check-label"
-                      for="flexCheckDefault"
-                    ></label>
-                  </div>
-                </td>
-                <td>{report.user_id}</td>
-                <td>{report.title}</td> <td>{report.status}</td>
-              </tr>
-            ))}
+            {badgesApplications.map((report) => {
+              const user = usersData.find((user) => user.id === report.user_id);
+              console.log("User:", user);
+              return (
+                <tr key={report.id}>
+                  <td>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input ef"
+                        type="checkbox"
+                        value=""
+                        name="submissions"
+                        id="flexCheckDefault"
+                      />
+                      <label
+                        className="form-check-label"
+                        for="flexCheckDefault"
+                      ></label>
+                    </div>
+                  </td>
+                  <td>{user && `${user.first_name} ${user.last_name}`}</td>
+                  <td>{report.title}</td> <td>{report.status}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
         <button

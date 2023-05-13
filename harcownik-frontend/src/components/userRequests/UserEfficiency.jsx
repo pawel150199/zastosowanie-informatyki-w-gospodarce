@@ -14,6 +14,9 @@ function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
   const [badges, setBadges] = useState([]);
   const [userId, setUserId] = useState();
+  const [choosenGroup, setChoosenGroup] = useState("");
+  const [choosenBadge, setChoosenBadge] = useState("");
+  const [choosenBadgeId, setChoosenBadgeId] = useState("");
 
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
@@ -31,10 +34,6 @@ function UserEfficiency() {
 
     fetchData();
   }, []);
-
-  const [choosenGroup, setChoosenGroup] = useState("");
-  const [choosenBadge, setChoosenBadge] = useState("");
-  const [choosenBadgeId, setChoosenBadgeId] = useState("");
 
   const selectGroup = (group) => {
     setChoosenGroup(group);

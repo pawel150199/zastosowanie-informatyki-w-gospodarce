@@ -54,10 +54,18 @@ function UserRanks() {
           </Dropdown.Item>
         ))}
       </DropdownButton>
-      <h4>Wybrany stopień: {choosenLevel}</h4>
+
+      {choosenLevel && <h4>Sprawność: {choosenLevel}</h4>}
+      {choosenLevel && (
+        <Button onClick={() => postLevelRaports(choosenLevel, userId)}>
+          Rozpocznij nowy stopień
+        </Button>
+      )}
+
+      {/* {{ choosenLevel } && <h4>Wybrany stopień: {choosenLevel}</h4>}
       <Button onClick={() => postLevelRaports(choosenLevel, userId)}>
         Rozpocznij nowy stopień
-      </Button>
+      </Button> */}
     </div>
   );
 }

@@ -3,16 +3,21 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import { getLevelApplications } from "./RaportFunction";
+import { getLevelApplications, getUsersData } from "./RaportFunction";
 import "./raport_style.css";
 
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);
+  const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const levelBadgesData = await getLevelApplications();
       setBadgesApplications(levelBadgesData);
+
+      const usersInformation = await getUsersData();
+      setUsersData(usersInformation);
+      // console.log("User informations:", usersInformation);
     };
     fetchData();
   }, []);
@@ -49,27 +54,31 @@ function Efficiency() {
             </tr>
           </thead>
           <tbody>
-            {badgesApplications.map((report) => (
-              <tr key={report.id}>
-                <td>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input ef"
-                      type="checkbox"
-                      value=""
-                      name="efficiency"
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      className="form-check-label"
-                      for="flexCheckDefault"
-                    ></label>
-                  </div>
-                </td>
-                <td>{report.user_id}</td>
-                <td>{report.title}</td> <td>{report.status}</td>
-              </tr>
-            ))}
+            {badgesApplications.map((report) => {
+              const user = usersData.find((user) => user.id === report.user_id);
+              console.log("User:", user);
+              return (
+                <tr key={report.id}>
+                  <td>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input ef"
+                        type="checkbox"
+                        value=""
+                        name="efficiency"
+                        id="flexCheckDefault"
+                      />
+                      <label
+                        className="form-check-label"
+                        for="flexCheckDefault"
+                      ></label>
+                    </div>
+                  </td>
+                  <td>{user && `${user.first_name} ${user.last_name}`}</td>
+                  <td>{report.title}</td> <td>{report.status}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
         <button
