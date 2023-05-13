@@ -34,7 +34,7 @@ const MyNavbar = () => {
     <Navbar expand="lg" className="navbar-nav navbar-dark bg-dark h1 fs-4">
       <Container>
         <Navbar.Brand href="/" className="navbar-nav mr-left">
-          <Image src="/img/logo.png" id="img"/>
+          <Image src="/img/logo.png" id="img" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-left" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -50,12 +50,12 @@ const MyNavbar = () => {
               {" "}
               Sprawności
             </Nav.Link>
+            <Nav.Link className="box" href="/user_requests">
+              Zgłoszenia użytkownika
+            </Nav.Link>
             <Nav.Link className="box" href="/raport">
               {" "}
               Raport
-            </Nav.Link>
-            <Nav.Link className="box" href="/user_requests">
-              Zgłoszenia użytkownika
             </Nav.Link>
           </Nav>
           <Nav className="navbar-nav navbar-dark mr-auto">

@@ -1,18 +1,24 @@
 /* eslint-disable */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Container } from "react-bootstrap";
 import { saveAs } from "file-saver";
 import { Form, Dropdown, FormGroup, FormControl } from "react-bootstrap";
 
 import "./raport_style.css";
 
-function SelectionOfTabs() {
+export let orderContent = "";
+
+export default function SelectionOfTabs() {
   const [tabs, setTabs] = useState([
     {
       id: "0",
       label: "Wstęp",
       isChecked: false,
-      patternText:
-        "Druhny i Druhowie!Minęło już 50 lat od powstania naszej drużyny. Każda harcerka i harcerz powinni poszukiwać w starszcyh pokoleniach wzorów swoich postaw, które będą stanowiły drogowskazy podejmowanych wyzwań i dokonywania wyborów życiowych....",
+      patternText: `Wstęp okolicznościowy (święta państwowe, rocznice, szczególne wydarzenia w Związku, tematom tym może być poświęcony rozkaz specjalny drużynowego).
+        Wyjątki z rozkazu komendanta Hufca ZHP Wąchock L. …/… z dnia ….. 2013 r.
+        (sprawy ogólnohufcowe lub dotyczące drużyny, m.in.: pełnienie funkcji na wyższych szczeblach
+          struktury, przyznanie odznaczeń lub stopni instruktorskich instruktorom danej drużyny).`,
       textValue: "",
     },
     {
@@ -58,6 +64,8 @@ function SelectionOfTabs() {
   };
 
   const handleTextValueChange = (event, tab) => {
+    console.log("event", event);
+    console.log("tab", tab.patternText);
     const updatedTabs = tabs.map((t) => {
       if (t.id === tab.id) {
         return { ...t, textValue: event.target.value };
@@ -71,24 +79,39 @@ function SelectionOfTabs() {
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     console.log("selectedTabs:", selectedTabs);
-    const fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
+    const fileContent = selectedTabs.map((tab) => tab.textValue).join("\n\n");
     console.log("fileContent:", fileContent);
 
     const orderPattern = {
       heading: "ROZKAZ HARCERSKI",
-      addressee: "Do drużynowych",
+      addressee: "Druchny i druchowie",
       contents: `\n\n${fileContent}`,
       signature: "Komendant drużyny",
       date: "Warszawa, 13 maja 2023 r.",
     };
 
-    const orderContent = `${orderPattern.heading}\n\n${orderPattern.addressee}\n\n${orderPattern.contents}\n\n${orderPattern.signature}\n\n${orderPattern.date}`;
+    orderContent = `Związek Harcerstwa Polskiego                       Kg, dnia 22.22.222
+    Hufiec Wąchock
+    Drużynowy 17 DH „Pioruny”
+    im. Zeusa Gromowładnego
+                                            Rozkaz L.3/2019
+
+      \n\n${orderPattern.contents}\n\n
+
+                                                                 Czuwaj !
+                                                                 phm. Jan Nowak
+
+    `;
+
+    // orderContent = `${orderPattern.heading}\n\n${orderPattern.addressee}\n\n${orderPattern.contents}\n\n${orderPattern.signature}\n\n${orderPattern.date}`;
     console.log("orderContent:", orderContent);
 
     const blob = new Blob([orderContent], {
       type: "text/plain;charset=utf-8",
     });
-    saveAs(blob, "rozkaz.txt");
+    // saveAs(blob, "rozkaz.txt");
+    console.log("orderContent:", orderContent);
+
     setRaportContent(orderContent);
   }
 
@@ -123,17 +146,20 @@ function SelectionOfTabs() {
                   defaultValue={tab.patternText}
                   onChange={(e) => handleTextValueChange(e, tab)}
                 />
-                <h1>{tab.textValue}</h1>
               </Form.Group>
             )}
           </div>
         ))}
       </Form>
-      <button onClick={handleDownload}>Pobierz plik</button>
-      <h1>Generuj raport:</h1>
-      {/* <h2>{raportContent}</h2> */}
+      <Link to="/raport/raport_view" id="raport_view">
+        <Button
+          variant="primary"
+          className="mt-3 badge"
+          onClick={handleDownload}
+        >
+          Przygotuj raport
+        </Button>
+      </Link>
     </div>
   );
 }
-
-export default SelectionOfTabs;
