@@ -24,12 +24,12 @@ export const postLevelRaports = async (level, userId) => {
       {
         title: level,
         status: "zgłoszona",
-        user_Id: userId,
+        user_id: userId,
       },
       authHeader()
     );
-    console.log(response);
+    console.log("Response:", response);
   } catch (error) {
-    console.error("Error sending report:", response);
+    console.error(error);
   }
 };

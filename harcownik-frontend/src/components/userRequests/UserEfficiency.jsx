@@ -18,8 +18,7 @@ function UserEfficiency() {
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
       const response = await getMe();
-      const Id = response.Id;
-      setUserId(response.Id);
+      setUserId(response.id);
     }
   };
 
@@ -43,9 +42,12 @@ function UserEfficiency() {
     getProperBadges(group);
   };
   const selectBadge = (badg) => {
+    console.log("badg:", badg);
     getProperBadges;
+
     const badgeName = getBadgeNameById(+badg);
     setChoosenBadgeId(badg);
+    console.log("Nazwa badga:", badgeName);
     setChoosenBadge(badgeName);
   };
 
@@ -56,7 +58,7 @@ function UserEfficiency() {
   };
 
   function getBadgeNameById(Id) {
-    const badge = badges.find((b) => b.Id === Id);
+    const badge = badges.find((b) => b.id === Id);
     return badge ? badge.name : undefined;
   }
 
@@ -84,7 +86,7 @@ function UserEfficiency() {
           onSelect={selectBadge}
         >
           {badges.map((badge) => (
-            <Dropdown.Item key={badge.Id} eventKey={badge.Id}>
+            <Dropdown.Item key={badge.id} eventKey={badge.id}>
               {badge.name}
             </Dropdown.Item>
           ))}

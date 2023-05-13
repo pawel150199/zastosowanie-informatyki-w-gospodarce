@@ -25,8 +25,8 @@ function UserRanks() {
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
       const response = await getMe();
-      const Id = response.Id;
-      setUserId(Id);
+      const id = response.id;
+      setUserId(id);
     }
   };
 
