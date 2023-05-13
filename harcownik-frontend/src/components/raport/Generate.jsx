@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React from "react";
 
 import "./RaportView";
+import { raportContent } from "./SelectionOfTabs";
 
 import "./raport_style.css";
 

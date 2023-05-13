@@ -2,18 +2,27 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
+import {
+  getBadgesApplications,
+  getLevelApplications,
+  getUsersData,
+} from "./RaportFunction";
 
 import "./raport_style.css";
 
 function Submissions() {
   const [badgesApplications, setBadgesApplications] = useState([]);
+  const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const levelBadgesData = await getBadgesApplications();
       setBadgesApplications(levelBadgesData);
+
+      const usersInformation = await getUsersData();
+      setUsersData(usersInformation);
     };
+
     fetchData();
   }, []);
 
@@ -59,7 +68,7 @@ function Submissions() {
                       className="form-check-input ef"
                       type="checkbox"
                       value=""
-                      name="efficiency"
+                      name="submissions"
                       id="flexCheckDefault"
                     />
                     <label
@@ -68,7 +77,7 @@ function Submissions() {
                     ></label>
                   </div>
                 </td>
-                <td>Imie i nazwisko</td>
+                <td>{report.user_id}</td>
                 <td>{report.title}</td> <td>{report.status}</td>
               </tr>
             ))}

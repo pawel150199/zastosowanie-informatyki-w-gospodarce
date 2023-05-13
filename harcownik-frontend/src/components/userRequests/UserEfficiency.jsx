@@ -13,13 +13,13 @@ import "./UserRequests.css";
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
   const [badges, setBadges] = useState([]);
-  const [userID, setUserID] = useState();
+  const [userId, setUserId] = useState();
 
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
       const response = await getMe();
-      const id = response.id;
-      setUserID(response.id);
+      const Id = response.Id;
+      setUserId(response.Id);
     }
   };
 
@@ -35,7 +35,7 @@ function UserEfficiency() {
 
   const [choosenGroup, setChoosenGroup] = useState("");
   const [choosenBadge, setChoosenBadge] = useState("");
-  const [choosenBadgeID, setChoosenBadgeID] = useState("");
+  const [choosenBadgeId, setChoosenBadgeId] = useState("");
 
   const selectGroup = (group) => {
     setChoosenGroup(group);
@@ -45,7 +45,7 @@ function UserEfficiency() {
   const selectBadge = (badg) => {
     getProperBadges;
     const badgeName = getBadgeNameById(+badg);
-    setChoosenBadgeID(badg);
+    setChoosenBadgeId(badg);
     setChoosenBadge(badgeName);
   };
 
@@ -55,8 +55,8 @@ function UserEfficiency() {
     setBadges(badges);
   };
 
-  function getBadgeNameById(id) {
-    const badge = badges.find((b) => b.id === id);
+  function getBadgeNameById(Id) {
+    const badge = badges.find((b) => b.Id === Id);
     return badge ? badge.name : undefined;
   }
 
@@ -66,11 +66,11 @@ function UserEfficiency() {
       <DropdownButton
         alignRight
         title="Wybierz grupę"
-        id="dropdown-menu-align-right"
+        Id="dropdown-menu-align-right"
         onSelect={selectGroup}
       >
         {badgesGroups.map((report) => (
-          <Dropdown.Item key={report.id} eventKey={report.group}>
+          <Dropdown.Item key={report.Id} eventKey={report.group}>
             {report.group}
           </Dropdown.Item>
         ))}
@@ -80,11 +80,11 @@ function UserEfficiency() {
         <DropdownButton
           alignRight
           title="Wybierz sprawność"
-          id="dropdown-menu-align-right"
+          Id="dropdown-menu-align-right"
           onSelect={selectBadge}
         >
           {badges.map((badge) => (
-            <Dropdown.Item key={badge.id} eventKey={badge.id}>
+            <Dropdown.Item key={badge.Id} eventKey={badge.Id}>
               {badge.name}
             </Dropdown.Item>
           ))}
@@ -93,7 +93,7 @@ function UserEfficiency() {
 
       {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
       {choosenBadge && (
-        <Button onClick={() => postBadge(choosenBadge, userID, choosenBadgeID)}>
+        <Button onClick={() => postBadge(choosenBadge, userId, choosenBadgeId)}>
           Rozpocznij sprawność
         </Button>
       )}

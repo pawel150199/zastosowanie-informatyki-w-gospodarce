@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 
-import "./home.css"
+import "./home.css";
 
 function Home() {
   const features = [
     "Generowanie raportu do rozkazu",
     "Przeglądanie wszystkich sprawności",
     "Bezpieczeństwo danych użytkowników",
-    "Akceptacja raportu przez drużynowego"
+    "Akceptacja raportu przez drużynowego",
   ];
   const [index, setIndex] = useState(0);
 
@@ -28,38 +28,46 @@ function Home() {
   return (
     <div>
       <div className="jumbotron jumbotron-fluid bg-dark text-light text-center rounded-4">
-        <Container >
+        <Container>
           <br></br>
           <h1>Witaj w aplikacji Harcownik</h1>
-          <p className="lead">Jesteś jeden krok od ułatwienia zarządzania grupą harcerzyków</p>
+          <p className="lead">
+            Jesteś jeden krok od ułatwienia zarządzania grupą harcerzyków
+          </p>
           <Link to="/register" id="register">
             <Button variant="primary" className="mt-3 badge">
               Zarejestruj się
             </Button>
           </Link>
-          <Link to="/login" className="text-center" >
-          <Button variant="primary" className="mt-3 badge">
-            Zaloguj się
-          </Button>
-        </Link>
+          <Link to="/login" className="text-center">
+            <Button variant="primary" className="mt-3 badge">
+              Zaloguj się
+            </Button>
+          </Link>
         </Container>
         <br></br>
       </div>
       <Container>
-          <br></br>
-        <h2 className="text-center" id="info">Czym jest Harcownik?</h2>
+        <br></br>
+        <h2 className="text-center" id="info">
+          Czym jest Harcownik?
+        </h2>
         <p className="text-center">
-          Jest to aplikacja przeznaczona dla podgrup harcerskich zwanych drużyną. Zadaniem aplikacji jest ułatwienie zarządzanie 
-          drużyną w tym kluczowa jest kwestia generowania rozkazu, który powoduje wiele problemów. Dodatkowo aplikacja udostępnia podstawowe
-          informacje np. o zdobytych zdolnościach oraz o wymaganiach, które trzeba spełnić aby je zdobyć. Aplikacja wysyła powiadomienia 
-          przypominające o składkach.
+          Jest to aplikacja przeznaczona dla podgrup harcerskich zwanych
+          drużyną. Zadaniem aplikacji jest ułatwienie zarządzanie drużyną w tym
+          kluczowa jest kwestia generowania rozkazu, który powoduje wiele
+          problemów. Dodatkowo aplikacja udostępnia podstawowe informacje np. o
+          zdobytych zdolnościach oraz o wymaganiach, które trzeba spełnić aby je
+          zdobyć. Aplikacja wysyła powiadomienia przypominające o składkach.
         </p>
         <br></br>
         <div className="text-center p-3 mb-5 bg-white rounded" id="features">
           <h2 className="text-center">Features</h2>
-          <Image src={images[index]} alt="home1" id="img"/>
+          <Image src={images[index]} alt="home1" id="img" />
           <p>{features[index]}</p>
-          <p>Slide {index + 1} of {features.length}</p>
+          <p>
+            Slide {index + 1} of {features.length}
+          </p>
           <Button variant="primary" className="mt-3" onClick={handleSlide}>
             Next
           </Button>

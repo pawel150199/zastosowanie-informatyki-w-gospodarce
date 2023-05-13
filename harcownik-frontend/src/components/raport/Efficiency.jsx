@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
+import { getLevelApplications } from "./RaportFunction";
 import "./raport_style.css";
 
 function Efficiency() {
@@ -11,11 +11,8 @@ function Efficiency() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (getLoginStatus("isLogged")) {
-        const response = await getMe();
-        const levelBadgesData = await getBadgesApplications(response.id);
-        setBadgesApplications(levelBadgesData);
-      }
+      const levelBadgesData = await getLevelApplications();
+      setBadgesApplications(levelBadgesData);
     };
     fetchData();
   }, []);
@@ -32,9 +29,7 @@ function Efficiency() {
   const eventCheckBoxFalse = () => {
     let checkboxes = document.getElementsByName("efficiency");
     for (let i = 0; i < checkboxes.length; i++) {
-      // zero-based array
       if (checkboxes[i].checked) {
-        // mark checkbox
         checkboxes[i].checked = false;
       }
     }
@@ -71,7 +66,7 @@ function Efficiency() {
                     ></label>
                   </div>
                 </td>
-                <td>Imie i nazwisko</td>
+                <td>{report.user_id}</td>
                 <td>{report.title}</td> <td>{report.status}</td>
               </tr>
             ))}

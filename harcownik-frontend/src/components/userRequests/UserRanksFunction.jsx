@@ -17,14 +17,14 @@ export const getLevel = async () => {
   }
 };
 
-export const postLevelRaports = async (level, userID) => {
+export const postLevelRaports = async (level, userId) => {
   try {
     const response = await axios.post(
       "http://localhost:8000/level_reports/",
       {
         title: level,
         status: "zgłoszona",
-        user_id: userID,
+        user_Id: userId,
       },
       authHeader()
     );
