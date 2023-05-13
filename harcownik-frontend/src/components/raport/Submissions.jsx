@@ -17,7 +17,6 @@ function Submissions() {
 
       const usersInformation = await getUsersData();
       setUsersData(usersInformation);
-      // console.log("User informations:", usersInformation);
     };
 
     fetchData();
@@ -43,7 +42,7 @@ function Submissions() {
 
   return (
     <div className="jumbotron jumbotronStyle_1 rounded ">
-      <h1>Zgłoszenia</h1>
+      <h1>Zgłoszone wnioski o nowe sprawności</h1>
       <Container>
         <Table responsive striped bordered>
           <thead>

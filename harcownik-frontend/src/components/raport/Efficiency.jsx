@@ -17,7 +17,6 @@ function Efficiency() {
 
       const usersInformation = await getUsersData();
       setUsersData(usersInformation);
-      // console.log("User informations:", usersInformation);
     };
     fetchData();
   }, []);
@@ -42,7 +41,7 @@ function Efficiency() {
 
   return (
     <div className="jumbotron jumbotronStyle_4 rounded ">
-      <h1>Sprawności</h1>
+      <h1>Zgłoszone wnioski o nowe poziomy harcerskie</h1>
       <Container>
         <Table responsive striped bordered>
           <thead>
