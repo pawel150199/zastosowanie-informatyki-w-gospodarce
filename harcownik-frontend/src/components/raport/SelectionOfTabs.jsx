@@ -54,7 +54,6 @@ export default function SelectionOfTabs() {
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
 
     orderContent = scoutOrder(userData);
-    console.log("orderContent:", orderContent);
   }
 
   return (

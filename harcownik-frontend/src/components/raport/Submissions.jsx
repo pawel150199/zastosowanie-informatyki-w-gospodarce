@@ -56,7 +56,6 @@ function Submissions() {
           <tbody>
             {badgesApplications.map((report) => {
               const user = usersData.find((user) => user.id === report.user_id);
-              // console.log("User:", user);
               return (
                 <tr key={report.id}>
                   <td>

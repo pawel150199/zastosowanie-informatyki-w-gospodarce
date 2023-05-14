@@ -10,7 +10,6 @@ export const getLevel = async () => {
       "http://localhost:8000/level_reports",
       authHeader()
     );
-    console.log("Rank response:", response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -28,7 +27,6 @@ export const postLevelRaports = async (level, userId) => {
       },
       authHeader()
     );
-    console.log("Response:", response);
   } catch (error) {
     console.error(error);
   }

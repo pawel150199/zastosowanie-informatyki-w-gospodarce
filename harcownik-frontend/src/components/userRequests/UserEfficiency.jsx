@@ -37,27 +37,23 @@ function UserEfficiency() {
 
   const selectGroup = (group) => {
     setChoosenGroup(group);
-    console.log(group);
     getProperBadges(group);
   };
   const selectBadge = (badg) => {
-    console.log("badg:", badg);
     getProperBadges;
 
     const badgeName = getBadgeNameById(+badg);
     setChoosenBadgeId(badg);
-    console.log("Nazwa badga:", badgeName);
     setChoosenBadge(badgeName);
   };
 
   const getProperBadges = async (group) => {
     const badges = await getBadges(group);
-    console.log("Pobrane badge z grupy:", badges);
     setBadges(badges);
   };
 
-  function getBadgeNameById(Id) {
-    const badge = badges.find((b) => b.id === Id);
+  function getBadgeNameById(id) {
+    const badge = badges.find((b) => b.id === id);
     return badge ? badge.name : undefined;
   }
 
