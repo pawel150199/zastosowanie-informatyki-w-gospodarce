@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
-import { saveAs } from "file-saver";
 import { Form, Dropdown, FormGroup, FormControl } from "react-bootstrap";
 import { getLoginStatus } from "../../api/utils";
 import getMe from "../../api/getMe";
@@ -13,18 +12,19 @@ import "./raport_style.css";
 
 export let orderContent = "";
 export let fileContent = "";
+export const userData = "";
 
 export default function SelectionOfTabs() {
   const [selectedItems, setSelectedItems] = useState([]);
   const [raportContent, setRaportContent] = useState();
-  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       if (getLoginStatus("isLogged")) {
         const response = await getMe();
-        const user = response.first_name + "  " + response.last_name;
-        setUserData(user);
+        const userData = response.first_name + "  " + response.last_name;
+        console.log("UserData przypisanie:", userData);
+        return userData;
         // console.log("response_user_name:", userData);
       }
     };
@@ -84,8 +84,7 @@ export default function SelectionOfTabs() {
     // `;
 
     // orderContent = `${orderPattern.heading}\n\n${orderPattern.addressee}\n\n${orderPattern.contents}\n\n${orderPattern.signature}\n\n${orderPattern.date}`;
-    console.log("filecontent przed funckją:", fileContent);
-    orderContent = scoutOrder(fileContent);
+    orderContent = scoutOrder(userData);
     console.log("orderContent:", orderContent);
 
     const blob = new Blob([orderContent], {

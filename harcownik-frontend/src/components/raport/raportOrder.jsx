@@ -1,7 +1,12 @@
 /* eslint-disable */
-import React from "react";
-import { fileContent } from "./SelectionOfTabs";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button, Container } from "react-bootstrap";
 import { saveAs } from "file-saver";
+import { Form, Dropdown, FormGroup, FormControl } from "react-bootstrap";
+import { getLoginStatus } from "../../api/utils";
+import getMe from "../../api/getMe";
+// import { userData } from "./SelectionOfTabs";
 
 function getCurrentYear() {
   const now = new Date();
@@ -133,44 +138,21 @@ export let tabs = [
   },
 ];
 
-// export const scoutOrder = ({}) => {
-//   console.log("Otrzymany file content:", fileContent);
-//   const selectedTabs = tabs.filter((tab) => tab.isChecked);
-//   const patternTexts = selectedTabs.map((tab) => (
-//     <p key={tab.id}>{tab.patternText}</p>
-//   ));
-//   return (
-//     <div>
-//       <h1>Rozkaz L. 3/{currentYear}</h1>
-//       {patternTexts}
-//       <p>Czuwaj!</p>
-//       <p>phm. </p>
-//     </div>
-//   );
-// };
-
 export const scoutOrder = ({}) => {
-  console.log("Otrzymany file content:", fileContent);
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
-  const patternTexts = selectedTabs.map((tab) => (
-    <p key={tab.id}>{tab.patternText}</p>
+  const patternTexts = selectedTabs.map((tab, index) => (
+    <div key={tab.id}>
+      <h3>{`${index + 1}. ${tab.label}`}</h3>
+      <p>{tab.patternText}</p>
+    </div>
   ));
-
-  // Konwersja JSX do zwykłego tekstu
-  const plainText = patternTexts.map((elem) => elem.props.children).join("\n");
-
-  // Tworzenie obiektu Blob z tekstem
-  const blob = new Blob([plainText], { type: "text/plain;charset=utf-8" });
-
-  // Zapisywanie pliku w przeglądarce
-  saveAs(blob, "scoutOrder.txt");
 
   return (
     <div>
-      <h1>Rozkaz L. 3/{currentYear}</h1>
+      <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{currentYear}</h1>
       {patternTexts}
-      <p>Czuwaj!</p>
-      <p>phm. </p>
+      <p style={{ textAlign: "right" }}>Czuwaj!</p>
+      <p style={{ textAlign: "right" }}>phm. </p>
     </div>
   );
 };
