@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button, Container } from "react-bootstrap";
-import { Form, Dropdown, FormGroup, FormControl } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { getLoginStatus } from "../../api/utils";
 import getMe from "../../api/getMe";
 import { scoutOrder } from "./raportOrder";
@@ -16,16 +16,13 @@ export const userData = "";
 
 export default function SelectionOfTabs() {
   const [selectedItems, setSelectedItems] = useState([]);
-  const [raportContent, setRaportContent] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       if (getLoginStatus("isLogged")) {
         const response = await getMe();
         const userData = response.first_name + "  " + response.last_name;
-        console.log("UserData przypisanie:", userData);
         return userData;
-        // console.log("response_user_name:", userData);
       }
     };
     fetchData();
@@ -42,8 +39,6 @@ export default function SelectionOfTabs() {
   };
 
   const handleTextValueChange = (event, tab) => {
-    // console.log("event", event);
-    // console.log("tab", tab.patternText);
     let updatedTabs = tabs.map((t) => {
       if (t.id === tab.id) {
         return { ...t, patternText: event.target.value };
@@ -51,49 +46,15 @@ export default function SelectionOfTabs() {
         return t;
       }
     });
-    // console.log("Tabs przed:", tabs);
     updateTabs(updatedTabs);
-    // console.log("Tabs:", tabs);
   };
 
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
-    // console.log("selectedTabs:", selectedTabs);
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
-    // console.log("fileContent:", fileContent);
 
-    // const orderPattern = {
-    //   heading: "ROZKAZ HARCERSKI",
-    //   addressee: "Druchny i druchowie",
-    //   contents: `\n\n${fileContent}`,
-    //   signature: "Komendant drużyny",
-    //   date: "Warszawa, 13 maja 2023 r.",
-    // };
-
-    // orderContent = `Związek Harcerstwa Polskiego                       Kg, dnia 22.22.222
-    // Hufiec Wąchock
-    // Drużynowy 17 DH „Pioruny”
-    // im. Zeusa Gromowładnego
-    //                                         Rozkaz L.3/2019
-
-    //   \n\n${fileContent}\n\n
-
-    //                                                              Czuwaj !
-    //                                                              phm. ${userData}
-
-    // `;
-
-    // orderContent = `${orderPattern.heading}\n\n${orderPattern.addressee}\n\n${orderPattern.contents}\n\n${orderPattern.signature}\n\n${orderPattern.date}`;
     orderContent = scoutOrder(userData);
     console.log("orderContent:", orderContent);
-
-    const blob = new Blob([orderContent], {
-      type: "text/plain;charset=utf-8",
-    });
-    // saveAs(blob, "rozkaz.txt");
-    // console.log("orderContent:", orderContent);
-
-    setRaportContent(orderContent);
   }
 
   return (
