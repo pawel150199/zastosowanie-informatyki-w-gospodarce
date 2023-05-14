@@ -36,7 +36,6 @@ function UserRanks() {
 
   const selectLevel = (level) => {
     setChoosenLevel(level);
-    console.log("Selected Level: ", level);
   };
 
   return (
