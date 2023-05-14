@@ -9,7 +9,7 @@ export const getLevelApplications = async () => {
       "http://localhost:8000/level_reports/",
       authHeader()
     );
-    console.log("GetLevelApplications: ", response);
+    // console.log("GetLevelApplications: ", response);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -22,7 +22,7 @@ export const getBadgesApplications = async () => {
       "http://localhost:8000/badge_reports/",
       authHeader()
     );
-    console.log("GetBadgeApplications: ", response);
+    // console.log("GetBadgeApplications: ", response);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -35,7 +35,7 @@ export const getUsersData = async () => {
       "http://localhost:8000/users/",
       authHeader()
     );
-    console.log("GetBadgeApplications: ", response);
+    // console.log("GetBadgeApplications: ", response);
     return response.data;
   } catch (error) {
     console.error(error);

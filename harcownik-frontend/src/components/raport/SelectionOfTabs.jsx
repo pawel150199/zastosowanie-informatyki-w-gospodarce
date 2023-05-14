@@ -6,264 +6,15 @@ import { saveAs } from "file-saver";
 import { Form, Dropdown, FormGroup, FormControl } from "react-bootstrap";
 import { getLoginStatus } from "../../api/utils";
 import getMe from "../../api/getMe";
-import { tabs } from "./raportOrder";
+import { scoutOrder } from "./raportOrder";
+import { tabs, updateTabs } from "./raportOrder";
 
 import "./raport_style.css";
 
 export let orderContent = "";
-
-// export let tabs = [
-//   {
-//     id: "0",
-//     label: "Wstęp",
-//     isChecked: false,
-//     patternText: `Wstęp okolicznościowy (Proszę uzupełnić święta państwowe, rocznice, szczególne wydarzenia w Związku).`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "1",
-//     label: "Wyjątki z rozkazu",
-//     isChecked: false,
-//     patternText: `Wyjątki z rozkazu komendanta Hufca ZHP ......
-//     (Proszę uzupełnić sprawy ogólnohufcowe lub dotyczące drużyny, m.in.: pełnienie funkcji na wyższych szczeblach
-//     struktury, przyznanie odznaczeń lub stopni instruktorskich instruktorom danej drużyny).`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "2",
-//     label: "Zarządzenia",
-//     isChecked: false,
-//     patternText: `Zwołuję …………………..`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "3",
-//     label: "Informacje",
-//     isChecked: false,
-//     patternText: `Podaję do wiadomości, że ………
-//     Informuję o decyzji ….`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "4",
-//     label: "Mianowania",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny mianuję ….. na …… z dniem ……..`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "5",
-//     label: "Zwolnienia",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny zwalniam  ……… z …….z dniem ………`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "6",
-//     label: "Utworzenie zastępu",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny powołuję zastęp  w składzie:
-//     •	…
-//     •	…
-//     `,
-//     // textValue: "",
-//   },
-//   {
-//     id: "7",
-//     label: "Rozwiązanie zastępu",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny rozwiązuję zastęp …`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "8",
-//     label: "Zamknięcie próby na stopień ",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny z dnia ……… zamykam próbę i przyznaję stopień ……. `,
-//     // textValue: "",
-//   },
-//   {
-//     id: "9",
-//     label: "Otwarcie próby na stopień",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na stopień ……:`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "10",
-//     label: "Zamknięcie próby na sprawność",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "11",
-//     label: "Otwarcie próby na sprawność",
-//     isChecked: false,
-//     patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "12",
-//     label: "Otwarcia i Zamknięcia inne",
-//     isChecked: false,
-//     patternText: `...`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "13",
-//     label: "Sprawy członkowskie",
-//     isChecked: false,
-//     patternText: `...`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "14",
-//     label: "Kary organizacyjne",
-//     isChecked: false,
-//     patternText: `Udzielam upomnienia  *komu* *za co*`,
-//     // textValue: "",
-//   },
-//   {
-//     id: "15",
-//     label: "Pochwały, wyróżnienia, nagrody",
-//     isChecked: false,
-//     patternText: `Udzielam pochwały *komu* *za co*`,
-//     // textValue: "",
-//   },
-// ];
+export let fileContent = "";
 
 export default function SelectionOfTabs() {
-  // const [tabs, setTabs] = useState([
-  //   // {
-  //   //   id: "20",
-  //   //   label: "Hufiec",
-  //   //   isChecked: true,
-  //   //   patternText: `Związek Harcerstwa Polskiego
-  //   //   Hufiec Wąchock
-  //   //   Drużynowy 17 DH „Pioruny”
-  //   //   im. Zeusa Gromowładnego`,
-  //   //   // textValue: "",
-  //   // },
-  //   {
-  //     id: "0",
-  //     label: "Wstęp",
-  //     isChecked: false,
-  //     patternText: `Wstęp okolicznościowy (Proszę uzupełnić święta państwowe, rocznice, szczególne wydarzenia w Związku).`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "1",
-  //     label: "Wyjątki z rozkazu",
-  //     isChecked: false,
-  //     patternText: `Wyjątki z rozkazu komendanta Hufca ZHP ......
-  //     (Proszę uzupełnić sprawy ogólnohufcowe lub dotyczące drużyny, m.in.: pełnienie funkcji na wyższych szczeblach
-  //     struktury, przyznanie odznaczeń lub stopni instruktorskich instruktorom danej drużyny).`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "2",
-  //     label: "Zarządzenia",
-  //     isChecked: false,
-  //     patternText: `Zwołuję …………………..`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "3",
-  //     label: "Informacje",
-  //     isChecked: false,
-  //     patternText: `Podaję do wiadomości, że ………
-  //     Informuję o decyzji ….`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "4",
-  //     label: "Mianowania",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny mianuję ….. na …… z dniem ……..`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "5",
-  //     label: "Zwolnienia",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny zwalniam  ……… z …….z dniem ………`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "6",
-  //     label: "Utworzenie zastępu",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny powołuję zastęp  w składzie:
-  //     •	…
-  //     •	…
-  //     `,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "7",
-  //     label: "Rozwiązanie zastępu",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny rozwiązuję zastęp …`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "8",
-  //     label: "Zamknięcie próby na stopień ",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny z dnia ……… zamykam próbę i przyznaję stopień ……. `,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "9",
-  //     label: "Otwarcie próby na stopień",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na stopień ……:`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "10",
-  //     label: "Zamknięcie próby na sprawność",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "11",
-  //     label: "Otwarcie próby na sprawność",
-  //     isChecked: false,
-  //     patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "12",
-  //     label: "Otwarcia i Zamknięcia inne",
-  //     isChecked: false,
-  //     patternText: `...`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "13",
-  //     label: "Sprawy członkowskie",
-  //     isChecked: false,
-  //     patternText: `...`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "14",
-  //     label: "Kary organizacyjne",
-  //     isChecked: false,
-  //     patternText: `Udzielam upomnienia  *komu* *za co*`,
-  //     // textValue: "",
-  //   },
-  //   {
-  //     id: "15",
-  //     label: "Pochwały, wyróżnienia, nagrody",
-  //     isChecked: false,
-  //     patternText: `Udzielam pochwały *komu* *za co*`,
-  //     // textValue: "",
-  //   },
-  // ]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [raportContent, setRaportContent] = useState();
   const [userData, setUserData] = useState([]);
@@ -274,7 +25,7 @@ export default function SelectionOfTabs() {
         const response = await getMe();
         const user = response.first_name + "  " + response.last_name;
         setUserData(user);
-        console.log("response_user_name:", userData);
+        // console.log("response_user_name:", userData);
       }
     };
     fetchData();
@@ -291,24 +42,25 @@ export default function SelectionOfTabs() {
   };
 
   const handleTextValueChange = (event, tab) => {
-    console.log("event", event);
-    console.log("tab", tab.patternText);
-    const updatedTabs = tabs.map((t) => {
+    // console.log("event", event);
+    // console.log("tab", tab.patternText);
+    let updatedTabs = tabs.map((t) => {
       if (t.id === tab.id) {
         return { ...t, patternText: event.target.value };
       } else {
         return t;
       }
     });
-    tabs = updatedTabs;
-    // setTabs(updatedTabs);
+    // console.log("Tabs przed:", tabs);
+    updateTabs(updatedTabs);
+    // console.log("Tabs:", tabs);
   };
 
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
-    console.log("selectedTabs:", selectedTabs);
-    const fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
-    console.log("fileContent:", fileContent);
+    // console.log("selectedTabs:", selectedTabs);
+    fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
+    // console.log("fileContent:", fileContent);
 
     // const orderPattern = {
     //   heading: "ROZKAZ HARCERSKI",
@@ -318,27 +70,29 @@ export default function SelectionOfTabs() {
     //   date: "Warszawa, 13 maja 2023 r.",
     // };
 
-    orderContent = `Związek Harcerstwa Polskiego                       Kg, dnia 22.22.222
-    Hufiec Wąchock
-    Drużynowy 17 DH „Pioruny”
-    im. Zeusa Gromowładnego
-                                            Rozkaz L.3/2019
+    // orderContent = `Związek Harcerstwa Polskiego                       Kg, dnia 22.22.222
+    // Hufiec Wąchock
+    // Drużynowy 17 DH „Pioruny”
+    // im. Zeusa Gromowładnego
+    //                                         Rozkaz L.3/2019
 
-      \n\n${fileContent}\n\n
+    //   \n\n${fileContent}\n\n
 
-                                                                 Czuwaj !
-                                                                 phm. ${userData}
+    //                                                              Czuwaj !
+    //                                                              phm. ${userData}
 
-    `;
+    // `;
 
     // orderContent = `${orderPattern.heading}\n\n${orderPattern.addressee}\n\n${orderPattern.contents}\n\n${orderPattern.signature}\n\n${orderPattern.date}`;
+    console.log("filecontent przed funckją:", fileContent);
+    orderContent = scoutOrder(fileContent);
     console.log("orderContent:", orderContent);
 
     const blob = new Blob([orderContent], {
       type: "text/plain;charset=utf-8",
     });
     // saveAs(blob, "rozkaz.txt");
-    console.log("orderContent:", orderContent);
+    // console.log("orderContent:", orderContent);
 
     setRaportContent(orderContent);
   }

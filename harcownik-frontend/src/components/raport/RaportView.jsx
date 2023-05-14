@@ -2,14 +2,29 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { orderContent } from "./SelectionOfTabs";
-import { RozkazL } from "./raportOrder";
+import ReactDOMServer from "react-dom/server";
+// import fs from "fs";
+import { saveAs } from "file-saver";
 function Footer() {
-  function handleDownload() {
-    const blob = new Blob([orderContent], {
-      type: "text/plain;charset=utf-8",
+  // function handleDownload() {
+  //   const blob = new Blob([JSON.stringify(orderContent)], {
+  //     type: "text/plain;charset=utf-8",
+  //   });
+  //   saveAs(blob, "plik.txt");
+  // }
+
+  function downloadTxtFile() {
+    const scoutOrderText = ReactDOMServer.renderToString(orderContent);
+
+    fs.writeFile("scoutOrder.txt", scoutOrderText, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log("Scout order saved to file!");
     });
-    saveAs(blob, "rozkaz.txt");
   }
+
   const jumbotronStyle = {
     backgroundColor: "#a6a2a2",
     padding: "20px",
@@ -19,10 +34,8 @@ function Footer() {
     <footer>
       <Container>
         <div className="jumbotron rounded" style={jumbotronStyle}>
-          {orderContent.split("\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-          <button onClick={handleDownload}>Pobierz plik </button>
+          {orderContent}
+          <button onClick={downloadTxtFile}>Pobierz plik </button>
         </div>
       </Container>
     </footer>
