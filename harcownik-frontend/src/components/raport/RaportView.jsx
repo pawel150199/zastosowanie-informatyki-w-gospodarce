@@ -2,8 +2,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { orderContent } from "./SelectionOfTabs";
-import { black } from "color-name";
-
+import { RozkazL } from "./raportOrder";
 function Footer() {
   function handleDownload() {
     const blob = new Blob([orderContent], {
@@ -23,7 +22,7 @@ function Footer() {
           {orderContent.split("\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
-          <button onClick={handleDownload}>Pobierz plik</button>
+          <button onClick={handleDownload}>Pobierz plik </button>
         </div>
       </Container>
     </footer>
