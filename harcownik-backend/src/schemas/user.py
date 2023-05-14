@@ -1,3 +1,4 @@
+from tokenize import group
 from pydantic import BaseModel
 from typing import Optional
 
@@ -23,12 +24,18 @@ class CreateScout(UserBase):
     group_id: Optional[int]
     badge_id: Optional[int]
 
+class UpdateUser(UserBase):
+    level: Optional[str]
+    function: Optional[str]
+    group_id: Optional[int]
+    badge_id: Optional[int]
+
 class User(UserBase):
     id: int
     level: str
     function: str
-    group_id: int
-    badge_id: int
+    group_id: Optional[int]
+    badge_id: Optional[int]
 
     class Config:
         orm_mode = True

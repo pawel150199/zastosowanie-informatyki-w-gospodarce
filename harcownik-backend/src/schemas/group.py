@@ -1,12 +1,17 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class GroupBase(BaseModel):
-    name: str
-    number: int
+    name: Optional[str]
+    number: Optional[int]
 
 class CreateGroup(GroupBase):
     szczep: str
     city: str
+
+class UpdateGroup(GroupBase):
+    szczep: Optional[str]
+    city: Optional[str]
 
 class Group(GroupBase):
     szczep: str

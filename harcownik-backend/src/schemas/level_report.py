@@ -1,7 +1,12 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class LevelReportBase(BaseModel):
-    title: str
+    title: Optional[str]
+
+
+class UpdateLevelReport(LevelReportBase):
+    status: Optional[str]
 
 class CreateLevelReport(LevelReportBase):
     status: str

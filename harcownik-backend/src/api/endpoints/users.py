@@ -11,7 +11,7 @@ router = APIRouter()
 
 # POST
 @router.post("/users/scout", response_model=schemas.User)
-def create_scout(user: schemas.CreateScout, db: Session = Depends(get_db), current_teamadmin: models.User = Depends(get_current_teamadmin)):
+def create_scout(user: schemas.CreateScout, db: Session = Depends(get_db), current_teamadmin: models.User = Depends(get_current_teamadmin)) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -21,7 +21,7 @@ def create_scout(user: schemas.CreateScout, db: Session = Depends(get_db), curre
     return crud.create_scout(db=db, user=user, group_id=current_teamadmin.group_id)
 
 @router.post("/users/admin", response_model=schemas.User)
-def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin)):
+def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin)) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -36,7 +36,7 @@ def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: mode
 
 # GET
 @router.get("/users/", response_model=list[schemas.User])
-def read_users(db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)):
+def read_users(db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)) -> Any:
     users = crud.get_users(db)
     if users == [] or users is None:
         raise HTTPException(
@@ -46,7 +46,7 @@ def read_users(db: Session = Depends(get_db), _: models.User = Depends(get_curre
     return users
 
 @router.get("/users/group/", response_model=list[schemas.User])
-def read_users(db: Session = Depends(get_db),  current_user: models.User = Depends(get_current_user)):
+def read_users(db: Session = Depends(get_db),  current_user: models.User = Depends(get_current_user)) -> Any:
     users = crud.get_users_in_group(db, group_id=current_user.group_id)
     if users == [] or users is None:
         raise HTTPException(
@@ -65,7 +65,7 @@ def read_user_me(db: Session = Depends(get_db), current_user: models.User = Depe
     return current_user
     
 @router.get("/users/id/{user_id}", response_model=schemas.User)
-def read_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)):
+def read_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)) -> Any:
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
        raise HTTPException(
@@ -75,7 +75,7 @@ def read_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depe
     return db_user
 
 @router.get("/users/email/{email}", response_model=schemas.User)
-def get_user_by_email(email: str, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)):
+def get_user_by_email(email: str, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin_or_teamadmin)) -> Any:
     db_user = crud.get_by_email(db, email=email)
     if db_user is None:
        raise HTTPException(
@@ -86,7 +86,7 @@ def get_user_by_email(email: str, db: Session = Depends(get_db), _: models.User 
 
 # DELETE
 @router.delete("/user/delete/{user_id}", response_model=schemas.User)
-def delete_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin)):
+def delete_user(user_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin)) -> Any:
     user = crud.get_user(db=db,user_id=user_id)
     if not user:
         raise HTTPException(
@@ -97,7 +97,7 @@ def delete_user(user_id: int, db: Session = Depends(get_db), _: models.User = De
     return user
 
 @router.delete("/user/group/delete/{user_id}", response_model=schemas.User)
-def delete_user(user_id: int, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_teamadmin)):
+def delete_user(user_id: int, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_teamadmin)) -> Any:
     user = crud.get_user(db=db,user_id=user_id)
     if user.group_id != current_user.group_id:
         raise HTTPException(
@@ -110,4 +110,16 @@ def delete_user(user_id: int, db: Session = Depends(get_db), current_user: model
             detail="User not found"
         )
     user = crud.delete_user(db=db, user_id=user_id)
+    return user
+
+# UPDATE
+@router.put("/{user_id}", response_model=schemas.User)
+def update_user(user_id: int, user_in: schemas.UpdateUser, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_webadmin_or_teamadmin)) -> Any:
+    user = crud.get_user(db, id=user_id)
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="The user with this username does not exist in the system",
+    )
+    user = crud.update_user(db, user_in=user, updated_user=user_in)
     return user

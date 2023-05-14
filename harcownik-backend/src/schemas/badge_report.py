@@ -1,7 +1,11 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class BadgeReportBase(BaseModel):
     title: str
+
+class UpdateBadgeReport(BadgeReportBase):
+    status: Optional[str]
 
 class CreateBadgeReport(BadgeReportBase):
     status: str

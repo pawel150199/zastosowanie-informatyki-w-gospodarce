@@ -1,14 +1,15 @@
 from fastapi import HTTPException
+from fastapi.encoders import jsonable_encoder
 from typing import Any, Dict, Optional, Union
 from sqlalchemy.orm import Session
 
 from src.models.user import User as UserModel
-from src.schemas.user import  CreateUser, CreateScout
+from src.schemas.user import  CreateUser, CreateScout, UpdateUser
 from src.core.security import get_password_hash, verify_password
 
 
 # POST
-def create_scout(db: Session, user: CreateScout, group_id) -> UserModel:
+def create_scout(db: Session, user: CreateScout, group_id:int) -> UserModel:
     db_user = UserModel(
         first_name = user.first_name,
         last_name = user.last_name,
@@ -62,10 +63,10 @@ def authenticate(db: Session, email: str, password: str) -> Optional[UserModel]:
         raise HTTPException(status_code=403, detail="password not correct")
     return user
     
-def get_users(db: Session):
+def get_users(db: Session) -> Optional[UserModel]:
     return db.query(UserModel).all()
 
-def get_users_in_group(db: Session, group_id):
+def get_users_in_group(db: Session, group_id) -> Optional[UserModel]:
     return db.query(UserModel).filter(UserModel.group_id == group_id).all()
 
 def is_teamadmin(user: UserModel) -> bool:
@@ -81,8 +82,27 @@ def is_webadmin_or_teamadmin(user: UserModel) -> bool:
         return False
 
 # DELETE
-def delete_user(db: Session, user_id: int):
+def delete_user(db: Session, user_id: int) -> Optional[UserModel]:
     db_user = db.query(UserModel).get(user_id)
     db.delete(db_user)
     db.commit()
     return db_user
+
+# UPDATE
+def update_user(db: Session, user_in: UserModel, updated_user: Union[UpdateUser, Dict[str, Any]]) -> UserModel:
+    obj_data = jsonable_encoder(user_in)
+    if isinstance(updated_user, dict):
+        update_data = updated_user
+    else:
+        update_data = updated_user.dict(exclude_unset=True)
+    if update_data["password"]:
+            hashed_password = get_password_hash(update_data["password"])
+            del update_data["password"]
+            update_data["hashed_password"] = hashed_password
+    for field in obj_data:
+            if field in update_data:
+                setattr(user_in, field, update_data[field])
+    db.add(user_in)
+    db.commit()
+    db.refresh(user_in)
+    return user_in
