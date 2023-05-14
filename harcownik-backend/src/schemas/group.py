@@ -14,6 +14,7 @@ class UpdateGroup(GroupBase):
     city: Optional[str]
 
 class Group(GroupBase):
+    id: int
     szczep: str
     city: str
 

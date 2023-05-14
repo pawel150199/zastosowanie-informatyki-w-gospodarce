@@ -45,13 +45,13 @@ def delete_group(group_id: int, db: Session = Depends(get_db), _: models.User = 
     return group
 
 # UPDATE
-@router.put("/{group_id}", response_model=schemas.Group)
-def update_group(group_id: int, level_report_in: schemas.UpdateGroup, db: Session = Depends(get_db), _: models.Group = Depends(get_current_webadmin_or_teamadmin)) -> Any:
-    level_report = crud.get_group(db, group_id=group_id)
-    if not level_report:
+@router.put("/group_report/{group_id}", response_model=schemas.Group)
+def update_group(group_id: int, group_in: schemas.UpdateGroup, db: Session = Depends(get_db), _: models.Group = Depends(get_current_webadmin_or_teamadmin)) -> Any:
+    group = crud.get_group(db, group_id=group_id)
+    if not group:
         raise HTTPException(
             status_code=404,
-            detail="The user with this username does not exist in the system",
+            detail="The group with this username does not exist in the system",
     )
-    level_report = crud.update_group(db, report_in=level_report, updated_report = level_report_in)
+    level_report = crud.update_group(db, group_obj=group, group_in=group_in)
     return level_report

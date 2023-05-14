@@ -12,6 +12,9 @@ class CreateLevelReport(LevelReportBase):
     status: str
     user_id: int
 
+class CreateMyLevelReport(LevelReportBase):
+    status: str
+
 class LevelReport(LevelReportBase):
     status: str
     user_id: int

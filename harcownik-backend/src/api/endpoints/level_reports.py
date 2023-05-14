@@ -8,7 +8,7 @@ router = APIRouter()
 
 # POST
 @router.post("/me/level_reports/", response_model=schemas.LevelReport)
-def create_level_report(level_report: schemas.CreateLevelReport, db:Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:
+def create_level_report(level_report: schemas.CreateMyLevelReport, db:Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:
     return crud.create_level_report(db=db, level_report=level_report, user_id=current_user.id)
 
 # GET
@@ -42,7 +42,7 @@ def read_level_reports_in_my_group(db: Session = Depends(get_db), current_user: 
 #        )
 #    return db_level_report
 
-@router.get("/level_reports/me/raports", response_model=list[schemas.LevelReport])
+@router.get("/me/level_reports", response_model=list[schemas.LevelReport])
 def read_level_report_by_user(db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:
     me = current_user.id
     db_level_report = crud.get_level_report_by_user(db=db, user_id=me)
@@ -77,7 +77,7 @@ def delete_level_report(level_report_id: int, db: Session = Depends(get_db), _: 
 
 
 # UPDATE
-@router.put("/{level_report_id}", response_model=schemas.LevelReport)
+@router.put("/level_report/{level_report_id}", response_model=schemas.LevelReport)
 def update_level_report(level_report_id: int, level_report_in: schemas.UpdateLevelReport, db: Session = Depends(get_db), _: models.LevelReport = Depends(get_current_webadmin_or_teamadmin)) -> Any:
     level_report = crud.get_level_report(db, level_report_id=level_report_id)
     if not level_report:
@@ -85,5 +85,5 @@ def update_level_report(level_report_id: int, level_report_in: schemas.UpdateLev
             status_code=404,
             detail="The user with this username does not exist in the system",
     )
-    level_report = crud.update_level_report(db, report_in=level_report, updated_report = level_report_in)
+    level_report = crud.update_level_report(db, report_obj=level_report, report_in=level_report_in)
     return level_report

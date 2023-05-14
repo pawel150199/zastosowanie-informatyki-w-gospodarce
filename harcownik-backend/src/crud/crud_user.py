@@ -89,20 +89,20 @@ def delete_user(db: Session, user_id: int) -> Optional[UserModel]:
     return db_user
 
 # UPDATE
-def update_user(db: Session, user_in: UserModel, updated_user: Union[UpdateUser, Dict[str, Any]]) -> UserModel:
-    obj_data = jsonable_encoder(user_in)
-    if isinstance(updated_user, dict):
-        update_data = updated_user
+def update_user(db: Session, user_obj: UserModel, user_in: Union[UpdateUser, Dict[str, Any]]) -> UserModel:
+    obj_data = jsonable_encoder(user_obj)
+    if isinstance(user_in, dict):
+        update_data = user_in
     else:
-        update_data = updated_user.dict(exclude_unset=True)
+        update_data = user_in.dict(exclude_unset=True)
     if update_data["password"]:
             hashed_password = get_password_hash(update_data["password"])
             del update_data["password"]
             update_data["hashed_password"] = hashed_password
     for field in obj_data:
             if field in update_data:
-                setattr(user_in, field, update_data[field])
-    db.add(user_in)
+                setattr(user_obj, field, update_data[field])
+    db.add(user_obj)
     db.commit()
-    db.refresh(user_in)
-    return user_in
+    db.refresh(user_obj)
+    return user_obj

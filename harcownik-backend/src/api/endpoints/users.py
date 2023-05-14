@@ -113,13 +113,13 @@ def delete_user(user_id: int, db: Session = Depends(get_db), current_user: model
     return user
 
 # UPDATE
-@router.put("/{user_id}", response_model=schemas.User)
+@router.put("/user/{user_id}", response_model=schemas.User)
 def update_user(user_id: int, user_in: schemas.UpdateUser, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_webadmin_or_teamadmin)) -> Any:
-    user = crud.get_user(db, id=user_id)
+    user = crud.get_user(db, user_id=user_id)
     if not user:
         raise HTTPException(
             status_code=404,
             detail="The user with this username does not exist in the system",
     )
-    user = crud.update_user(db, user_in=user, updated_user=user_in)
+    user = crud.update_user(db, user_obj=user, user_in=user_in)
     return user

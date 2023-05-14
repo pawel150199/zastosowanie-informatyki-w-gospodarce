@@ -8,7 +8,7 @@ router = APIRouter()
 
 # POST
 @router.post("/me/badge_reports/", response_model=schemas.BadgeReport)
-def create_badge_report(badge_report: schemas.CreateBadgeReport, db:Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:
+def create_badge_report(badge_report: schemas.CreateMyBadgeReport, db:Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:
     return crud.create_badge_report(db=db, badge_report=badge_report, user_id=current_user.id)
 
 # GET
@@ -66,7 +66,7 @@ def delete_badge_report(badge_report_id: int, db: Session = Depends(get_db), _: 
     return badge_report
 
 # UPDATE
-@router.put("/{badge_report_id}", response_model=schemas.BadgeReport)
+@router.put("/badge_report/{badge_report_id}", response_model=schemas.BadgeReport)
 def update_badge_report(badge_report_id: int, level_report_in: schemas.UpdateBadgeReport, db: Session = Depends(get_db), _: models.BadgeReport = Depends(get_current_webadmin_or_teamadmin)) -> Any:
     level_report = crud.get_badge_report(db, badge_report_id=badge_report_id)
     if not level_report:
@@ -74,5 +74,5 @@ def update_badge_report(badge_report_id: int, level_report_in: schemas.UpdateBad
             status_code=404,
             detail="The user with this username does not exist in the system",
     )
-    level_report = crud.update_badge_report(db, report_in=level_report, updated_report = level_report_in)
+    level_report = crud.update_badge_report(db, report_obj=level_report, report_in=level_report_in)
     return level_report

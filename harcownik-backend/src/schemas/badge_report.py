@@ -10,7 +10,11 @@ class UpdateBadgeReport(BadgeReportBase):
 class CreateBadgeReport(BadgeReportBase):
     status: str
     user_id: int
-    badge_id: int 
+    badge_id: int
+
+class CreateMyBadgeReport(BadgeReportBase):
+    status: str
+    badge_id: int
 
 class BadgeReport(BadgeReportBase):
     status: str

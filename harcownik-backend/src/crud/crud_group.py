@@ -34,17 +34,17 @@ def delete_group(db: Session, group_id: int):
     return db_group
 
 # UPDATE
-def update_group(db: Session, group_in: GroupModel, updated_group: Union[UpdateGroup, Dict[str, Any]]) -> GroupModel:
-    obj_data = jsonable_encoder(group_in)
-    if isinstance(updated_group, dict):
-        update_data = updated_group
+def update_group(db: Session, group_obj: GroupModel, group_in: Union[UpdateGroup, Dict[str, Any]]) -> GroupModel:
+    obj_data = jsonable_encoder(group_obj)
+    if isinstance(group_in, dict):
+        update_data = group_in
     else:
-        update_data = updated_group.dict(exclude_unset=True)
+        update_data = group_in.dict(exclude_unset=True)
 
     for field in obj_data:
             if field in update_data:
-                setattr(group_in, field, update_data[field])
-    db.add(group_in)
+                setattr(group_obj, field, update_data[field])
+    db.add(group_obj)
     db.commit()
-    db.refresh(group_in)
-    return group_in
+    db.refresh(group_obj)
+    return group_obj

@@ -26,6 +26,7 @@ class CreateScout(UserBase):
 
 class UpdateUser(UserBase):
     level: Optional[str]
+    password: Optional[str]
     function: Optional[str]
     group_id: Optional[int]
     badge_id: Optional[int]
