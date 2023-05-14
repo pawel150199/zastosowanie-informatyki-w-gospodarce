@@ -40,7 +40,6 @@ export const postBadge = async (data, userID, badgeID) => {
       },
       authHeader()
     );
-    console.log(response);
   } catch (error) {
     console.error(error);
   }

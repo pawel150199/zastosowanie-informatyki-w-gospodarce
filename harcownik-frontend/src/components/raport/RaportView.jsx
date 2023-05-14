@@ -1,12 +1,20 @@
+/* eslint-disable */
 import React from "react";
 import { Container } from "react-bootstrap";
-// import "./footer.css";
+import { orderContent } from "./SelectionOfTabs";
 
 function Footer() {
+  const jumbotronStyle = {
+    backgroundColor: "#a6a2a2",
+    padding: "20px",
+  };
+
   return (
-    <footer >
+    <footer>
       <Container>
-        <h1>Oto twój rozkaz bambiku</h1>
+        <div className="jumbotron rounded" style={jumbotronStyle}>
+          {orderContent}
+        </div>
       </Container>
     </footer>
   );

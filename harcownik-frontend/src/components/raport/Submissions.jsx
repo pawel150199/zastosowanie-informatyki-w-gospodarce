@@ -2,18 +2,23 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import { getBadgesApplications, getLevelApplications } from "./RaportFunction";
+import { getBadgesApplications, getUsersData } from "./RaportFunction";
 
 import "./raport_style.css";
 
 function Submissions() {
   const [badgesApplications, setBadgesApplications] = useState([]);
+  const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const levelBadgesData = await getBadgesApplications();
       setBadgesApplications(levelBadgesData);
+
+      const usersInformation = await getUsersData();
+      setUsersData(usersInformation);
     };
+
     fetchData();
   }, []);
 
@@ -29,9 +34,7 @@ function Submissions() {
   const eventCheckBoxFalse = () => {
     let checkboxs = document.getElementsByName("submissions");
     for (let i = 0; i < checkboxs.length; i++) {
-      // zero-based array
       if (checkboxs[i].checked) {
-        // mark checkbox
         checkboxs[i].checked = false;
       }
     }
@@ -39,7 +42,7 @@ function Submissions() {
 
   return (
     <div className="jumbotron jumbotronStyle_1 rounded ">
-      <h1>Zgłoszenia</h1>
+      <h1>Zgłoszone wnioski o nowe sprawności</h1>
       <Container>
         <Table responsive striped bordered>
           <thead>
@@ -51,27 +54,30 @@ function Submissions() {
             </tr>
           </thead>
           <tbody>
-            {badgesApplications.map((report) => (
-              <tr key={report.id}>
-                <td>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input ef"
-                      type="checkbox"
-                      value=""
-                      name="efficiency"
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      className="form-check-label"
-                      for="flexCheckDefault"
-                    ></label>
-                  </div>
-                </td>
-                <td>Imie i nazwisko</td>
-                <td>{report.title}</td> <td>{report.status}</td>
-              </tr>
-            ))}
+            {badgesApplications.map((report) => {
+              const user = usersData.find((user) => user.id === report.user_id);
+              return (
+                <tr key={report.id}>
+                  <td>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input ef"
+                        type="checkbox"
+                        value=""
+                        name="submissions"
+                        id="flexCheckDefault"
+                      />
+                      <label
+                        className="form-check-label"
+                        for="flexCheckDefault"
+                      ></label>
+                    </div>
+                  </td>
+                  <td>{user && `${user.first_name} ${user.last_name}`}</td>
+                  <td>{report.title}</td> <td>{report.status}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
         <button

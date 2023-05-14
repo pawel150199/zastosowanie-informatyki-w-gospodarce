@@ -1,10 +1,14 @@
 /* eslint-disable */
 import axios from "axios";
+import { async } from "regenerator-runtime";
+import authHeader from "../../api/authHeader";
 
 export const getLevelApplications = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/level_reports/");
-    console.log("GetLevelApplications: ", response);
+    const response = await axios.get(
+      "http://localhost:8000/level_reports/",
+      authHeader()
+    );
     return response.data;
   } catch (error) {
     console.error(error);
@@ -13,8 +17,22 @@ export const getLevelApplications = async () => {
 
 export const getBadgesApplications = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/badge_reports/");
-    console.log("GetBadgeApplications: ", response);
+    const response = await axios.get(
+      "http://localhost:8000/badge_reports/",
+      authHeader()
+    );
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getUsersData = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:8000/users/",
+      authHeader()
+    );
     return response.data;
   } catch (error) {
     console.error(error);

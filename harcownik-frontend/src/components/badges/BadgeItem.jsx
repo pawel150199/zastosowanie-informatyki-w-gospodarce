@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React from "react";
 import { Card } from "react-bootstrap";
 
-import "./badges.css"
+import "./badges.css";
 
 const BadgeItem = ({ badge }) => {
   return (
