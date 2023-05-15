@@ -9,6 +9,7 @@ import "./raport_style.css";
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +40,23 @@ function Efficiency() {
     }
   };
 
+  const handleCheckboxChange = (event, report) => {
+    console.log("handleCheckBox_report:", report);
+    console.log("handleCheckBox_event:", event);
+    if (event.target.checked) {
+      console.log("uno");
+      setSelectedItems([...selectedItems, report]);
+      console.log("setselected:", selectedItems);
+    } else {
+      console.log("dos");
+      const updatedItems = selectedItems.filter(
+        (item) => item.id !== report.id
+      );
+      setSelectedItems(updatedItems);
+    }
+    console.log("Update:", selectedItems);
+  };
+
   return (
     <div className="jumbotron jumbotronStyle_4 rounded ">
       <h1>Zgłoszone wnioski o nowe poziomy harcerskie</h1>
@@ -55,6 +73,12 @@ function Efficiency() {
           <tbody>
             {badgesApplications.map((report) => {
               const user = usersData.find((user) => user.id === report.user_id);
+              if (
+                report.status !== "zgłoszona" &&
+                report.status !== "zakończona"
+              ) {
+                return null;
+              }
               return (
                 <tr key={report.id}>
                   <td>
@@ -65,15 +89,20 @@ function Efficiency() {
                         value=""
                         name="efficiency"
                         id="flexCheckDefault"
+                        onChange={(event) =>
+                          handleCheckboxChange(event, report)
+                        }
                       />
+
                       <label
                         className="form-check-label"
-                        for="flexCheckDefault"
+                        htmlFor="flexCheckDefault"
                       ></label>
                     </div>
                   </td>
                   <td>{user && `${user.first_name} ${user.last_name}`}</td>
-                  <td>{report.title}</td> <td>{report.status}</td>
+                  <td>{report.title}</td>
+                  <td>{report.status}</td>
                 </tr>
               );
             })}

@@ -10,6 +10,7 @@ const currentYear = getCurrentYear();
 export function updateTabs(updatedTabs) {
   tabs = updatedTabs;
 }
+export let selectedLevels = [];
 export let tabs = [
   {
     id: "0",
