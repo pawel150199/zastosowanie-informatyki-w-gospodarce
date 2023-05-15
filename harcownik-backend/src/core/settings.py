@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     SERVER_NAME: str = "localhost"
+    SERVER_HOST: str = "localhost"
     ALGORITHM: str = "HS256"
     SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
@@ -30,6 +31,5 @@ class Settings(BaseSettings):
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
     EMAILS_ENABLED: bool = True
     EMAIL_TEST_USER: str = None
-    USERS_OPEN_REGISTRATION: bool = False
 
 settings = Settings()

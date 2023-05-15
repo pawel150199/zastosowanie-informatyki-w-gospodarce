@@ -30,7 +30,6 @@ def get_level_report_by_user(db: Session, user_id: int):
 def get_level_report_by_group(db: Session, group_id: int):
     return db.query(LevelReportModel).join(User).filter(User.group_id == group_id).all()
 
-
 # DELETE
 def delete_level_report(db: Session, level_report_id: int):
     db_level_report = db.query(LevelReportModel).get(level_report_id)

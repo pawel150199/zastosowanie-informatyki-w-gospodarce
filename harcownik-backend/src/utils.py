@@ -1,12 +1,19 @@
 from datetime import datetime, timedelta
 from typing import Any, Dict, Optional
 
+<<<<<<< HEAD
 import smtplib
 import ssl
 from email.message import EmailMessage
 from jose import jwt 
+=======
+import emails
+from emails.template import JinjaTemplate
+from jose import jwt
+>>>>>>> 7831362 (change privileges to endpoints)
 
 from src.core.settings import settings
+
 
 def send_email(
     email_to: str,
@@ -14,6 +21,7 @@ def send_email(
     body: str,
 ) -> None:
     assert settings.EMAILS_ENABLED, "no provided configuration for email variables"
+<<<<<<< HEAD
     
     sender = settings.EMAILS_FROM_EMAIL
     em = EmailMessage()
@@ -30,6 +38,24 @@ def send_email(
         smtp.login(sender, settings.SMTP_PASSWORD)
         smtp.sendmail(sender, email_to, em.as_string())
 
+
+=======
+    message = emails.Message(
+        subject=JinjaTemplate(subject_template),
+        html=JinjaTemplate(html_template),
+        mail_from=(settings.EMAILS_FROM_NAME, settings.EMAILS_FROM_EMAIL),
+    )
+    smtp_options = {"host": settings.SMTP_HOST, "port": settings.SMTP_PORT}
+    if settings.SMTP_TLS:
+        smtp_options["tls"] = True
+    if settings.SMTP_USER:
+        smtp_options["user"] = settings.SMTP_USER
+    if settings.SMTP_PASSWORD:
+        smtp_options["password"] = settings.SMTP_PASSWORD
+    if settings.SMTP_SSL:
+        smtp_options["ssl"] = True
+    response = message.send(to=email_to, render=environment, smtp=smtp_options)
+>>>>>>> 7831362 (change privileges to endpoints)
 
 
 def send_test_email(email_to: str) -> None:
@@ -49,6 +75,7 @@ def send_test_email(email_to: str) -> None:
         subject=subject,
         body=body
     )
+
 
 def send_reset_password_email(email_to: str, email: str, token: str) -> None:
     project_name = settings.PROJECT_NAME
@@ -73,6 +100,7 @@ def send_reset_password_email(email_to: str, email: str, token: str) -> None:
         body=body
     )
 
+
 def send_new_account_email(email_to: str, username: str, password: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - New account for user {username}"
@@ -96,6 +124,7 @@ def send_new_account_email(email_to: str, username: str, password: str) -> None:
         subject_template=subject,
         body=body
     )
+
 
 def generate_password_reset_token(email: str) -> str:
     delta = timedelta(hours=settings.EMAIL_RESET_TOKEN_EXPIRE_HOURS)
