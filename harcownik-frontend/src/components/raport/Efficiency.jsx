@@ -73,13 +73,21 @@ function Efficiency() {
   };
 
   const addReportedLevetToRaport = () => {
+    console.log("user:", usersData);
+
     selectedItemsReported.forEach((item) => {
-      tabs[9].patternText += item.title + "\n";
+      const username = usersData.find((user) => user.id === item.user_id);
+      const name = username.first_name + " " + username.last_name;
+      console.log("username:", name);
+      tabs[9].patternText += name + ": " + item.title + "\n";
     });
     console.log(tabs[9].patternText);
 
     selectedItemsEnded.forEach((item) => {
-      tabs[8].patternText += item.title + "\n";
+      const username = usersData.find((user) => user.id === item.user_id);
+      const name = username.first_name + " " + username.last_name;
+      console.log("username:", name);
+      tabs[8].patternText += name + ": " + item.title + "\n";
     });
     console.log(tabs[8].patternText);
   };

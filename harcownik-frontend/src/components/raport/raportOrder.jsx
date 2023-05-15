@@ -134,3 +134,32 @@ export const scoutOrder = ({}) => {
     </div>
   );
 };
+
+// export const createTextFile = () => {
+//   let text = "";
+
+//   tabs.forEach((tab) => {
+//     if (tab.isChecked) {
+//       text += `=== ${tab.label} ===\n`;
+//       text += tab.patternText;
+//       text += "\n";
+//     }
+//     console.log("text:", text);
+//     return text;
+//   });
+
+// const element = document.createElement("a");
+// const file = new Blob([text], { type: "text/plain" });
+// element.href = URL.createObjectURL(file);
+// element.download = "file.txt";
+// document.body.appendChild(element);
+// element.click();
+// };
+
+// const ExampleComponent = () => {
+//   return (
+//     <div>
+//       <button onClick={createTextFile}>Stwórz plik tekstowy</button>
+//     </div>
+//   );
+// };

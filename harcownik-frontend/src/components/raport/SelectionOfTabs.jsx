@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { getLoginStatus } from "../../api/utils";
 import getMe from "../../api/getMe";
-import { scoutOrder } from "./raportOrder";
+import { scoutOrder, createTextFile } from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";
 
 import "./raport_style.css";
@@ -54,6 +54,8 @@ export default function SelectionOfTabs() {
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
 
     orderContent = scoutOrder(userData);
+    // orderContent = createTextFile();
+    // console.log("raport:", orderContent);
   }
 
   return (
