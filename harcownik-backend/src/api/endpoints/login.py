@@ -13,6 +13,7 @@ from src.core.security import get_password_hash
 from src.api.helper import get_db, get_current_user
 from src.utils import (
     generate_password_reset_token,
+    send_test_email,
     send_reset_password_email,
     verify_password_reset_token
 )
@@ -34,9 +35,10 @@ def login_access_token( db: Session = Depends(get_db), form_data: OAuth2Password
         "token_type": "bearer",
     }
 
-@router.post("/login/test-token", response_model=schemas.User)
-def test_token(current_user: models.User = Depends(helper.get_current_user)) -> Any:
-    return current_user
+@router.post("/test-email/", response_model=schemas.Message, status_code=201)
+def test_email(email_to: str) -> Any:
+    send_test_email(email_to=email_to)
+    return {"msg": "Test email sent"}
 
 @router.post("/password-recovery/{email}", response_model=schemas.Message)
 def recover_password(email: str, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)) -> Any:

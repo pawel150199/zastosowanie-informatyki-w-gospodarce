@@ -1,8 +1,11 @@
 from typing import Any
 from fastapi import Depends, HTTPException, APIRouter
 from sqlalchemy.orm import Session
+
 from src import crud, models, schemas
 from src.api.helper import get_db, get_current_user, get_current_superuser
+from src.utils import send_new_account_email
+from src.core.settings import settings
 
 router = APIRouter()
 
@@ -14,6 +17,10 @@ def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: mode
         raise HTTPException(
             status_code=400,
             detail="The user with this username already exist in the system"
+        )
+    if settings.EMAILS_ENABLED and user.email:
+        send_new_account_email(
+            email_to=user.email, username=user.first_name, password=user.password
         )
     return crud.create_user(db=db, user=user)
 

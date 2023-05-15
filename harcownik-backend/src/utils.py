@@ -1,83 +1,100 @@
 from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Any, Dict, Optional
 
-import emails
-from emails.template import JinjaTemplate
+import smtplib
+import ssl
+from email.message import EmailMessage
 from jose import jwt 
 
 from src.core.settings import settings
 
 def send_email(
     email_to: str,
-    subject_template: str = "",
-    html_template: str = "",
-    environment: Dict[str, Any] = {},
+    subject: str,
+    body: str,
 ) -> None:
     assert settings.EMAILS_ENABLED, "no provided configuration for email variables"
-    message = emails.Message(
-        subject=JinjaTemplate(subject_template),
-        html=JinjaTemplate(html_template),
-        mail_from=(settings.EMAILS_FROM_NAME, settings.EMAILS_FROM_EMAIL),
-    )
-    smtp_options = {"host": settings.SMTP_HOST, "port": settings.SMTP_PORT}
-    if settings.SMTP_TLS:
-        smtp_options["tls"] = True
-    if settings.SMTP_USER:
-        smtp_options["user"] = settings.SMTP_USER
-    if settings.SMTP_PASSWORD:
-        smtp_options["password"] = settings.SMTP_PASSWORD
-    response = message.send(to=email_to, render=environment, smtp=smtp_options)
+    
+    sender = settings.EMAILS_FROM_EMAIL
+    em = EmailMessage()
+    em["From"] = sender
+    em['To'] = email_to
+    em['Subject'] = subject
+    em.set_content(body)
+
+    # Add SSL (layer of security)
+    context = ssl.create_default_context()
+
+    # Log in and send the email
+    with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as smtp:
+        smtp.login(sender, settings.SMTP_PASSWORD)
+        smtp.sendmail(sender, email_to, em.as_string())
+
+
 
 def send_test_email(email_to: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - Test email"
-    with open(Path(settings.EMAIL_TEMPLATES_DIR) / "test_email.html") as f:
-        template_str = f.read()
+    body = f"""
+        Hi,
+
+        This is test only
+
+        Best Regards,
+        {project_name} team
+    """
+
     send_email(
         email_to=email_to,
-        subject_template=subject,
-        html_template=template_str,
-        environment={"project_name": settings.PROJECT_NAME, "email": email_to},
+        subject=subject,
+        body=body
     )
 
 def send_reset_password_email(email_to: str, email: str, token: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - Password recovery for user {email}"
-    with open(Path(settings.EMAIL_TEMPLATES_DIR) / "reset_password.html") as f:
-        template_str = f.read()
     server_host = settings.SERVER_HOST
     link = f"{server_host}/reset-password?token={token}"
+
+    body = f"""
+        Hi,
+
+        Here is link to password recovery: {link}.
+        It is valid for {settings.EMAIL_RESET_TOKEN_EXPIRE_HOURS} hours.
+
+        Best Regards,
+
+        {project_name} team
+    """
+
     send_email(
         email_to=email_to,
         subject_template=subject,
-        html_template=template_str,
-        environment={
-            "project_name": settings.PROJECT_NAME,
-            "username": email,
-            "email": email_to,
-            "valid_hours": settings.EMAIL_RESET_TOKEN_EXPIRE_HOURS,
-            "link": link,
-        },
+        body=body
     )
 
 def send_new_account_email(email_to: str, username: str, password: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - New account for user {username}"
-    with open(Path(settings.EMAIL_TEMPLATES_DIR) / "new_account.html") as f:
-        template_str = f.read()
     link = settings.SERVER_HOST
+
+    body = f"""
+        Hi {username},
+
+        Now you have account in our application {project_name}.
+        We are hope you will enjoy using our application.
+
+        Your temporary password: {password}
+
+        Best Regards,
+
+        {project_name} team
+    """
+
     send_email(
         email_to=email_to,
         subject_template=subject,
-        html_template=template_str,
-        environment={
-            "project_name": settings.PROJECT_NAME,
-            "username": username,
-            "password": password,
-            "email": email_to,
-            "link": link,
-        },
+        body=body
     )
 
 def generate_password_reset_token(email: str) -> str:
