@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
 import { getLevelApplications, getUsersData } from "./RaportFunction";
+import { tabs } from "./raportOrder";
 import "./raport_style.css";
 
 function Efficiency() {
@@ -71,6 +72,18 @@ function Efficiency() {
     }
   };
 
+  const addReportedLevetToRaport = () => {
+    selectedItemsReported.forEach((item) => {
+      tabs[9].patternText += item.title + "\n";
+    });
+    console.log(tabs[9].patternText);
+
+    selectedItemsEnded.forEach((item) => {
+      tabs[8].patternText += item.title + "\n";
+    });
+    console.log(tabs[8].patternText);
+  };
+
   return (
     <div className="jumbotron jumbotronStyle_4 rounded ">
       <h1>Zgłoszone wnioski o nowe poziomy harcerskie</h1>
@@ -93,12 +106,6 @@ function Efficiency() {
               ) {
                 return null;
               }
-              if (
-                report.status !== "zgłoszona" &&
-                report.status !== "zakończona"
-              ) {
-                return null;
-              }
               return (
                 <tr key={report.id}>
                   <td>
@@ -112,21 +119,15 @@ function Efficiency() {
                         onChange={(event) =>
                           handleCheckboxChange(event, report)
                         }
-                        onChange={(event) =>
-                          handleCheckboxChange(event, report)
-                        }
                       />
 
                       <label
                         className="form-check-label"
                         htmlFor="flexCheckDefault"
-                        htmlFor="flexCheckDefault"
                       ></label>
                     </div>
                   </td>
                   <td>{user && `${user.first_name} ${user.last_name}`}</td>
-                  <td>{report.title}</td>
-                  <td>{report.status}</td>
                   <td>{report.title}</td>
                   <td>{report.status}</td>
                 </tr>
@@ -150,6 +151,16 @@ function Efficiency() {
         >
           Odznacz wszystko
         </button>
+        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={addReportedLevetToRaport}
+            style={{ marginLeft: "4%", marginTop: "1%", marginBottom: "3%" }}
+          >
+            Dodaj do raportu
+          </button>
+        )}
       </Container>
     </div>
   );

@@ -66,6 +66,7 @@ function UserEfficiency() {
     <div className="jumbotron UserEfficiencyStyle rounded">
       <h1>Zakładka służąca rozpoczęcia nowej sprawności</h1>
       <DropdownButton
+        className="dark"
         alignRight
         title="Wybierz grupę"
         Id="dropdown-menu-align-right"
