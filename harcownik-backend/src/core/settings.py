@@ -22,15 +22,14 @@ class Settings(BaseSettings):
     SMTP_PORT: Optional[int] = 465
     SMTP_HOST: Optional[str] = "smtp.gmail.com"
     SMTP_USER: Optional[str] = "harcownikapp@gmail.com"
-    SMTP_PASSWORD: Optional[str] = "zsjvososzmnhbeem"
+    SMTP_PASSWORD: Optional[str] = None
     EMAILS_FROM_EMAIL: Optional[str] = "harcownikapp@gmail.com"
     EMAILS_FROM_NAME: Optional[str] = "Harcownik"
 
     # EMAIL
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
-    EMAIL_TEMPLATES_DIR: str = "/src/email_templates/build"
     EMAILS_ENABLED: bool = True
-    EMAIL_TEST_USER: str = "pawel.polski99@gmail.com"
+    EMAIL_TEST_USER: str = None
     USERS_OPEN_REGISTRATION: bool = False
 
 settings = Settings()
