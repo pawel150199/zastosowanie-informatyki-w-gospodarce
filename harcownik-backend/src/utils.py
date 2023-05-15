@@ -1,16 +1,10 @@
 from datetime import datetime, timedelta
 from typing import Any, Dict, Optional
 
-<<<<<<< HEAD
 import smtplib
 import ssl
 from email.message import EmailMessage
 from jose import jwt 
-=======
-import emails
-from emails.template import JinjaTemplate
-from jose import jwt
->>>>>>> 7831362 (change privileges to endpoints)
 
 from src.core.settings import settings
 
@@ -21,7 +15,6 @@ def send_email(
     body: str,
 ) -> None:
     assert settings.EMAILS_ENABLED, "no provided configuration for email variables"
-<<<<<<< HEAD
     
     sender = settings.EMAILS_FROM_EMAIL
     em = EmailMessage()
@@ -39,23 +32,6 @@ def send_email(
         smtp.sendmail(sender, email_to, em.as_string())
 
 
-=======
-    message = emails.Message(
-        subject=JinjaTemplate(subject_template),
-        html=JinjaTemplate(html_template),
-        mail_from=(settings.EMAILS_FROM_NAME, settings.EMAILS_FROM_EMAIL),
-    )
-    smtp_options = {"host": settings.SMTP_HOST, "port": settings.SMTP_PORT}
-    if settings.SMTP_TLS:
-        smtp_options["tls"] = True
-    if settings.SMTP_USER:
-        smtp_options["user"] = settings.SMTP_USER
-    if settings.SMTP_PASSWORD:
-        smtp_options["password"] = settings.SMTP_PASSWORD
-    if settings.SMTP_SSL:
-        smtp_options["ssl"] = True
-    response = message.send(to=email_to, render=environment, smtp=smtp_options)
->>>>>>> 7831362 (change privileges to endpoints)
 
 
 def send_test_email(email_to: str) -> None:
