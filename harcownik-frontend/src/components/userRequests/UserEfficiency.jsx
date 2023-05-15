@@ -17,6 +17,8 @@ function UserEfficiency() {
   const [choosenGroup, setChoosenGroup] = useState("");
   const [choosenBadge, setChoosenBadge] = useState("");
   const [choosenBadgeId, setChoosenBadgeId] = useState("");
+  const [choosenStatus, setChoosenStatus] = useState("");
+  const status = ["zgłoszona", "zakończona"];
 
   const getId = async () => {
     if (getLoginStatus("isLogged")) {
@@ -56,6 +58,9 @@ function UserEfficiency() {
     const badge = badges.find((b) => b.id === id);
     return badge ? badge.name : undefined;
   }
+  const selectStatus = (status) => {
+    setChoosenStatus(status);
+  };
 
   return (
     <div className="jumbotron UserEfficiencyStyle rounded">
@@ -90,7 +95,26 @@ function UserEfficiency() {
 
       {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
       {choosenBadge && (
-        <Button onClick={() => postBadge(choosenBadge, userId, choosenBadgeId)}>
+        <DropdownButton
+          alignRight
+          title="Wybierz status"
+          Id="dropdown-menu-align-right"
+          onSelect={selectStatus}
+        >
+          {status.map((status, index) => (
+            <Dropdown.Item key={index} eventKey={status}>
+              {status}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+      )}
+      {choosenStatus && <h4>Zgłaszany status: {choosenStatus}</h4>}
+      {choosenStatus && (
+        <Button
+          onClick={() =>
+            postBadge(choosenBadge, userId, choosenBadgeId, choosenStatus)
+          }
+        >
           Rozpocznij sprawność
         </Button>
       )}
