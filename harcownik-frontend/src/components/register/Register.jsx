@@ -13,9 +13,6 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [group, setGroup] = useState("");
-// eslint-disable-next-line
-  const [badges, setBadges] = useState("");
 
   const handleRegister = () => {
     // perform registration authentication
@@ -23,7 +20,7 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Rejestracja</Text>
+      <Text style={styles.title}>Dodawanie nowego harcerza do drużyny</Text>
       <TextInput
         style={styles.input}
         placeholder="Imie"

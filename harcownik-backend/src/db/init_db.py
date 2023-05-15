@@ -74,12 +74,10 @@ def init_users(db: Session) -> None:
             first_name="admin",
             last_name="admin",
             email="admin@harcownik.com",
-            is_superuser=True,
+            is_webadmin=True,
             level="admin",
             function="admin",
             password="zaq12wsx",
-            group_id=1,
-            badge_id=1
         )
     ]
 

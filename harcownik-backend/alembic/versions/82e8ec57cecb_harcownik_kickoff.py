@@ -1,8 +1,8 @@
 """Harcownik kickoff
 
-Revision ID: f98d69311494
+Revision ID: 82e8ec57cecb
 Revises: 
-Create Date: 2023-05-13 15:32:51.554130
+Create Date: 2023-05-13 20:27:29.460104
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f98d69311494'
+revision = '82e8ec57cecb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,8 +52,9 @@ def upgrade() -> None:
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('hashed_password', sa.String(), nullable=False),
     sa.Column('level', sa.String(), nullable=True),
-    sa.Column('function', sa.String(), nullable=True),
-    sa.Column('is_superuser', sa.Boolean(), nullable=True),
+    sa.Column('function', sa.String(), nullable=False),
+    sa.Column('is_teamadmin', sa.Boolean(), nullable=True),
+    sa.Column('is_webadmin', sa.Boolean(), nullable=True),
     sa.Column('group_id', sa.Integer(), nullable=True),
     sa.Column('badge_id', sa.Integer(), nullable=True),
     sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
@@ -67,7 +68,8 @@ def upgrade() -> None:
     op.create_index(op.f('ix_user_function'), 'user', ['function'], unique=False)
     op.create_index(op.f('ix_user_hashed_password'), 'user', ['hashed_password'], unique=False)
     op.create_index(op.f('ix_user_id'), 'user', ['id'], unique=False)
-    op.create_index(op.f('ix_user_is_superuser'), 'user', ['is_superuser'], unique=False)
+    op.create_index(op.f('ix_user_is_teamadmin'), 'user', ['is_teamadmin'], unique=False)
+    op.create_index(op.f('ix_user_is_webadmin'), 'user', ['is_webadmin'], unique=False)
     op.create_index(op.f('ix_user_last_name'), 'user', ['last_name'], unique=False)
     op.create_index(op.f('ix_user_level'), 'user', ['level'], unique=False)
     op.create_table('badge_report',
@@ -113,7 +115,8 @@ def downgrade() -> None:
     op.drop_table('badge_report')
     op.drop_index(op.f('ix_user_level'), table_name='user')
     op.drop_index(op.f('ix_user_last_name'), table_name='user')
-    op.drop_index(op.f('ix_user_is_superuser'), table_name='user')
+    op.drop_index(op.f('ix_user_is_webadmin'), table_name='user')
+    op.drop_index(op.f('ix_user_is_teamadmin'), table_name='user')
     op.drop_index(op.f('ix_user_id'), table_name='user')
     op.drop_index(op.f('ix_user_hashed_password'), table_name='user')
     op.drop_index(op.f('ix_user_function'), table_name='user')

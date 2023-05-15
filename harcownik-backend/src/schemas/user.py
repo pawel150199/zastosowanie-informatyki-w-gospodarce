@@ -1,23 +1,24 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Union
 
 class UserBase(BaseModel):
     first_name: str = None
     last_name: str = None
     email: str = None
-    is_superuser: bool = False
+    is_teamadmin: bool = False
+    is_webadmin: bool = False
 
 class CreateUser(UserBase):
     level: str
-    function: str
-    password: str
-    group_id: int
-    badge_id: int
+    function: Optional[str]
+    password: Optional[str]
+    group_id: Optional[int]
+    badge_id: Optional[int]
 
 class User(UserBase):
     id: int
-    level: str
-    function: str
+    level: Optional[str]
+    function: Optional[str]
     group_id: Optional[int]
     badge_id: Optional[int]
 
