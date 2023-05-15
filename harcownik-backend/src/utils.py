@@ -97,7 +97,7 @@ def send_new_account_email(email_to: str, username: str, password: str) -> None:
 
     send_email(
         email_to=email_to,
-        subject_template=subject,
+        subject=subject,
         body=body
     )
 

@@ -18,6 +18,10 @@ def create_scout(user: schemas.CreateScout, db: Session = Depends(get_db), curre
             status_code=400,
             detail="The user with this username already exist in the system"
         )
+    if settings.EMAILS_ENABLED and user.email:
+        send_new_account_email(
+            email_to=user.email, username=user.first_name, password=user.password
+        )
     return crud.create_scout(db=db, user=user, group_id=current_teamadmin.group_id)
 
 @router.post("/users/admin", response_model=schemas.User)
