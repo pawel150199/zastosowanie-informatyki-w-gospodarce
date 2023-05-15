@@ -8,6 +8,7 @@ class CreateLevelReport(LevelReportBase):
     user_id: int
 
 class LevelReport(LevelReportBase):
+    id: int
     status: str
     user_id: int
 
