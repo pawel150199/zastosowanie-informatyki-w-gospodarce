@@ -9,8 +9,12 @@ import "./raport_style.css";
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
+<<<<<<< HEAD
   const [selectedItemsReported, setSelectedItemsReported] = useState([]);
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
+=======
+  const [selectedItems, setSelectedItems] = useState([]);
+>>>>>>> ae48403b7a8dde63c0cd6f53f04c5678c09afa55
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +46,7 @@ function Efficiency() {
   };
 
   const handleCheckboxChange = (event, report) => {
+<<<<<<< HEAD
     if (event.target.checked && report.status == "zgłoszona") {
       setSelectedItemsReported([...selectedItemsReported, report]);
       console.log("Selected_level_reports_reported:", [
@@ -69,6 +74,22 @@ function Efficiency() {
         console.log("Selected_level_reports_ended:", updatedItems);
       }
     }
+=======
+    console.log("handleCheckBox_report:", report);
+    console.log("handleCheckBox_event:", event);
+    if (event.target.checked) {
+      console.log("uno");
+      setSelectedItems([...selectedItems, report]);
+      console.log("setselected:", selectedItems);
+    } else {
+      console.log("dos");
+      const updatedItems = selectedItems.filter(
+        (item) => item.id !== report.id
+      );
+      setSelectedItems(updatedItems);
+    }
+    console.log("Update:", selectedItems);
+>>>>>>> ae48403b7a8dde63c0cd6f53f04c5678c09afa55
   };
 
   return (
