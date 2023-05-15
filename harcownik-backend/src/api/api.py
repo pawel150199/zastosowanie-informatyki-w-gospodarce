@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from src.api.endpoints import badges, badge_reports, users, level_reports, groups, login, email_test
+from src.api.endpoints import badges, badge_reports, users, level_reports, groups, login
 
 api_router = APIRouter()
 api_router.include_router(login.router, tags=["login"])
