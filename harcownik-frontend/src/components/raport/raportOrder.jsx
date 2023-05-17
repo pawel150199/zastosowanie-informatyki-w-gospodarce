@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from "react";
+import { Document, Page, Text, View, StyleSheet } from "react-pdf/renderer";
 
 function getCurrentYear() {
   const now = new Date();
@@ -136,7 +137,7 @@ export const scoutOrder = ({}) => {
       <h4 style={{ textAlign: "right" }}>
         {day}.{month}.{year}
       </h4>
-      <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{currentYear}</h1>
+      <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{Year}</h1>
       {patternTexts}
       <p style={{ textAlign: "right" }}>Czuwaj!</p>
       <p style={{ textAlign: "right" }}>phm. </p>
@@ -147,31 +148,44 @@ export const scoutOrder = ({}) => {
   );
 };
 
-// export const createTextFile = () => {
-//   let text = "";
+const styles = StyleSheet.create({
+  container: {
+    padding: "1cm",
+  },
+  header: {
+    textAlign: "right",
+  },
+  title: {
+    textAlign: "center",
+    fontSize: 24,
+    margin: "1cm 0",
+  },
+  text: {
+    textAlign: "right",
+    marginBottom: "0.5cm",
+  },
+  footer: {
+    textAlign: "center",
+    fontSize: 12,
+    marginTop: "1cm",
+  },
+});
 
-//   tabs.forEach((tab) => {
-//     if (tab.isChecked) {
-//       text += `=== ${tab.label} ===\n`;
-//       text += tab.patternText;
-//       text += "\n";
-//     }
-//     console.log("text:", text);
-//     return text;
-//   });
-
-// const element = document.createElement("a");
-// const file = new Blob([text], { type: "text/plain" });
-// element.href = URL.createObjectURL(file);
-// element.download = "file.txt";
-// document.body.appendChild(element);
-// element.click();
-// };
-
-// const ExampleComponent = () => {
-//   return (
-//     <div>
-//       <button onClick={createTextFile}>Stwórz plik tekstowy</button>
-//     </div>
-//   );
-// };
+export const MyPDF = ({ day, month, year, currentYear, patternTexts }) => (
+  <Document>
+    <Page>
+      <View style={styles.container}>
+        <Text style={styles.header}>
+          {day}.{month}.{year}
+        </Text>
+        <Text style={styles.title}>Rozkaz L. 3/{currentYear}</Text>
+        {patternTexts}
+        <Text style={styles.text}>Czuwaj!</Text>
+        <Text style={styles.text}>phm.</Text>
+        <Text style={styles.footer}>
+          Wygenerowane za pomocą aplikacji Harcownik
+        </Text>
+      </View>
+    </Page>
+  </Document>
+);
