@@ -72,14 +72,14 @@ function Efficiency() {
     }
   };
 
-  const addReportedLevetToRaport = () => {
+  const addReportedLevelToRaport = () => {
     console.log("user:", usersData);
 
     selectedItemsReported.forEach((item) => {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;
       console.log("username:", name);
-      tabs[9].patternText += name + ": " + item.title + "\n";
+      tabs[9].patternText += "- " + item.title + ": " + name + "\n";
     });
     console.log(tabs[9].patternText);
 
@@ -87,9 +87,8 @@ function Efficiency() {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;
       console.log("username:", name);
-      tabs[8].patternText += name + ": " + item.title + "\n";
+      tabs[8].patternText += "- " + item.title + ": " + name + ",\n";
     });
-    console.log(tabs[8].patternText);
   };
 
   return (
@@ -143,7 +142,7 @@ function Efficiency() {
             })}
           </tbody>
         </Table>
-        <button
+        {/* <button
           type="button"
           className="btn btn-dark"
           onClick={eventCheckBoxTrue}
@@ -158,12 +157,12 @@ function Efficiency() {
           style={{ marginBottom: "3%", marginTop: "1%" }}
         >
           Odznacz wszystko
-        </button>
+        </button> */}
         {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
           <button
             type="button"
             className="btn btn-dark"
-            onClick={addReportedLevetToRaport}
+            onClick={addReportedLevelToRaport}
             style={{ marginLeft: "4%", marginTop: "1%", marginBottom: "3%" }}
           >
             Dodaj do raportu

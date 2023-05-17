@@ -82,7 +82,7 @@ export let tabs = [
     id: "10",
     label: "Zamknięcie próby na sprawność",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny otwieram próbę na sprawność:\n`,
+    patternText: `\nNa wniosek Rady Drużyny zamykam próbę na sprawność:\n`,
   },
   {
     id: "11",
@@ -121,14 +121,16 @@ export const scoutOrder = ({}) => {
   const patternTexts = selectedTabs.map((tab, index) => (
     <div key={tab.id}>
       <h3>{`${index + 1}. ${tab.label}`}</h3>
-      <p>{tab.patternText}</p>
+      {tab.patternText.split("\n").map((line, lineIndex) => (
+        <p key={lineIndex}>{line}</p>
+      ))}
     </div>
   ));
 
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{currentYear}</h1>
-      <p>{patternTexts}</p>
+      {patternTexts}
       <p style={{ textAlign: "right" }}>Czuwaj!</p>
       <p style={{ textAlign: "right" }}>phm. </p>
     </div>
