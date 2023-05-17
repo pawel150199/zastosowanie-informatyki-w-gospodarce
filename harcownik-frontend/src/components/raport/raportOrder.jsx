@@ -117,6 +117,10 @@ export let tabs = [
 ];
 
 export const scoutOrder = ({}) => {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
   const patternTexts = selectedTabs.map((tab, index) => (
     <div key={tab.id}>
@@ -129,10 +133,16 @@ export const scoutOrder = ({}) => {
 
   return (
     <div>
+      <h4 style={{ textAlign: "right" }}>
+        {day}.{month}.{year}
+      </h4>
       <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{currentYear}</h1>
       {patternTexts}
       <p style={{ textAlign: "right" }}>Czuwaj!</p>
       <p style={{ textAlign: "right" }}>phm. </p>
+      <p style={{ textAlign: "center" }}>
+        Wygenerowane za pomocą aplikacji Harcownik
+      </p>
     </div>
   );
 };
