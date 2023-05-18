@@ -3,7 +3,7 @@
     height: 100px;
     background-color: #a1aebb;
     /* margin: 1%; */
-    overflow: scroll;
+    overflow: auto;
     /* display: flex; */
     text-align: center;
     margin-bottom: 2.5%;
@@ -11,7 +11,7 @@
 
   .jumbotronStyle_1 {
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
     background-color: #b4b1ad;
     margin-right: 0.5%;
     margin-bottom: 10px;
@@ -21,8 +21,8 @@
   }
 
   .jumbotronStyle_2 {
-    height: 400px;
-    overflow: scroll;
+    height: 35rem;
+    overflow: auto;
     background-color: #b4b1ad;
     margin-left: 0.5%;
     margin-bottom: 10px;
@@ -31,7 +31,7 @@
 
  .jumbotronStyle_3 {
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
     background-color: #b4b1ad;
     margin-left: 0.5%;
     margin-right: 0%;
@@ -40,7 +40,7 @@
 
   .jumbotronStyle_4 {
     height: 400px;
-    overflow: scroll;
+    overflow: auto;
     background-color: #b4b1ad;
     margin-right: 0.5%;
     /* display: flex; */

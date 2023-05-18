@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from "react";
-import { Document, Page, Text, View, StyleSheet } from "react-pdf/renderer";
+// import { Document, Page, Text, View, StyleSheet } from "react-pdf/renderer";
 
 function getCurrentYear() {
   const now = new Date();
@@ -148,44 +148,44 @@ export const scoutOrder = ({}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: "1cm",
-  },
-  header: {
-    textAlign: "right",
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 24,
-    margin: "1cm 0",
-  },
-  text: {
-    textAlign: "right",
-    marginBottom: "0.5cm",
-  },
-  footer: {
-    textAlign: "center",
-    fontSize: 12,
-    marginTop: "1cm",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     padding: "1cm",
+//   },
+//   header: {
+//     textAlign: "right",
+//   },
+//   title: {
+//     textAlign: "center",
+//     fontSize: 24,
+//     margin: "1cm 0",
+//   },
+//   text: {
+//     textAlign: "right",
+//     marginBottom: "0.5cm",
+//   },
+//   footer: {
+//     textAlign: "center",
+//     fontSize: 12,
+//     marginTop: "1cm",
+//   },
+// });
 
-export const MyPDF = ({ day, month, year, currentYear, patternTexts }) => (
-  <Document>
-    <Page>
-      <View style={styles.container}>
-        <Text style={styles.header}>
-          {day}.{month}.{year}
-        </Text>
-        <Text style={styles.title}>Rozkaz L. 3/{currentYear}</Text>
-        {patternTexts}
-        <Text style={styles.text}>Czuwaj!</Text>
-        <Text style={styles.text}>phm.</Text>
-        <Text style={styles.footer}>
-          Wygenerowane za pomocą aplikacji Harcownik
-        </Text>
-      </View>
-    </Page>
-  </Document>
-);
+// // export const MyPDF = ({ day, month, year, currentYear, patternTexts }) => (
+// //   <Document>
+// //     <Page>
+// //       <View style={styles.container}>
+// //         <Text style={styles.header}>
+// //           {day}.{month}.{year}
+// //         </Text>
+// //         <Text style={styles.title}>Rozkaz L. 3/{currentYear}</Text>
+// //         {patternTexts}
+// //         <Text style={styles.text}>Czuwaj!</Text>
+// //         <Text style={styles.text}>phm.</Text>
+// //         <Text style={styles.footer}>
+// //           Wygenerowane za pomocą aplikacji Harcownik
+// //         </Text>
+// //       </View>
+// //     </Page>
+// //   </Document>
+// // );
