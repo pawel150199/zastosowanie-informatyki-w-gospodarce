@@ -2,7 +2,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
-
 import { getLevelApplications, getUsersData } from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
@@ -45,48 +44,57 @@ function Efficiency() {
   const handleCheckboxChange = (event, report) => {
     if (event.target.checked && report.status == "zgłoszona") {
       setSelectedItemsReported([...selectedItemsReported, report]);
-      console.log("Selected_level_reports_reported:", [
-        ...selectedItemsReported,
-        report,
-      ]);
     } else if (event.target.checked && report.status == "zakończona") {
       setSelectedItemsEnded([...selectedItemsEnded, report]);
-      console.log("Selected_level_reports_ended:", [
-        ...selectedItemsEnded,
-        report,
-      ]);
     } else {
       if (report.status == "zgłoszona") {
         const updatedItems = selectedItemsReported.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsReported(updatedItems);
-        console.log("Selected_level_reports_reported:", updatedItems);
       } else {
         const updatedItems = selectedItemsEnded.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsEnded(updatedItems);
-        console.log("Selected_level_reports_ended:", updatedItems);
       }
     }
   };
 
-  const addReportedLevelToRaport = () => {
-    console.log("user:", usersData);
+  const handleAllCheckboxChange = (checkedIds) => {
+    checkedIds.forEach((id) => {
+      const numericId = parseInt(id);
+      const selectedBadge = badgesApplications.find(
+        (badge) => badge.id === numericId
+      );
+      if (selectedBadge) {
+        if (selectedBadge.status === "zgłoszona") {
+          setSelectedItemsReported((prevItems) => [
+            ...prevItems,
+            selectedBadge,
+          ]);
+        } else if (selectedBadge.status === "zakończona") {
+          setSelectedItemsEnded((prevItems) => [...prevItems, selectedBadge]);
+        }
+      }
+    });
+  };
 
+  const clearSelectedBadges = () => {
+    setSelectedItemsReported([]);
+    setSelectedItemsEnded([]);
+  };
+
+  const addReportedLevelToRaport = () => {
     selectedItemsReported.forEach((item) => {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;
-      console.log("username:", name);
       tabs[9].patternText += "- " + item.title + ": " + name + "\n";
     });
-    console.log(tabs[9].patternText);
 
     selectedItemsEnded.forEach((item) => {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;
-      console.log("username:", name);
       tabs[8].patternText += "- " + item.title + ": " + name + ",\n";
     });
   };
@@ -122,7 +130,7 @@ function Efficiency() {
                         type="checkbox"
                         value=""
                         name="efficiency"
-                        id="flexCheckDefault"
+                        id={`flexCheckDefault_${report.id}`}
                         onChange={(event) =>
                           handleCheckboxChange(event, report)
                         }
@@ -142,22 +150,37 @@ function Efficiency() {
             })}
           </tbody>
         </Table>
-        {/* <button
-          type="button"
-          className="btn btn-dark"
-          onClick={eventCheckBoxTrue}
-          style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
-        >
-          Zaznacz wszystko
-        </button>
-        <button
-          type="button"
-          className="btn btn-dark"
-          onClick={eventCheckBoxFalse}
-          style={{ marginBottom: "3%", marginTop: "1%" }}
-        >
-          Odznacz wszystko
-        </button> */}
+        <div>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => {
+              eventCheckBoxTrue();
+              const checkedCheckboxes = Array.from(
+                document.querySelectorAll('input[type="checkbox"]:checked')
+              );
+              const checkedIds = checkedCheckboxes.map((checkbox) =>
+                checkbox.id.replace("flexCheckDefault_", "")
+              );
+              handleAllCheckboxChange(checkedIds);
+            }}
+            style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
+          >
+            Zaznacz wszystko
+          </button>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => {
+              clearSelectedBadges();
+              eventCheckBoxFalse();
+            }}
+            style={{ marginBottom: "3%", marginTop: "1%" }}
+          >
+            Odznacz wszystko
+          </button>
+        </div>
+
         {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
           <button
             type="button"

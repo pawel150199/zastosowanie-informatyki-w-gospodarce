@@ -137,7 +137,7 @@ export const scoutOrder = ({}) => {
       <h4 style={{ textAlign: "right" }}>
         {day}.{month}.{year}
       </h4>
-      <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{Year}</h1>
+      <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{year}</h1>
       {patternTexts}
       <p style={{ textAlign: "right" }}>Czuwaj!</p>
       <p style={{ textAlign: "right" }}>phm. </p>

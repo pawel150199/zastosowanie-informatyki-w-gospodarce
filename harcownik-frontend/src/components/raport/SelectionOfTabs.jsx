@@ -29,6 +29,7 @@ export default function SelectionOfTabs() {
   }, []);
 
   const handleSelect = (eventKey) => {
+    // console.log("handleselect:", eventKey);
     if (!selectedItems.includes(eventKey)) {
       setSelectedItems([...selectedItems, eventKey]);
     }
@@ -48,7 +49,10 @@ export default function SelectionOfTabs() {
     });
     updateTabs(updatedTabs);
   };
-
+  const handleSelectAll = () => {
+    const allTabIds = tabs.map((tab) => tab.id);
+    setSelectedItems(allTabIds);
+  };
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
@@ -58,6 +62,14 @@ export default function SelectionOfTabs() {
     // console.log("raport:", orderContent);
   }
 
+  const chooseAllTabs = () => {
+    tabs.forEach((tab) => {
+      tab.isChecked = true;
+      // console.log("tab_id:", tab.id);
+      handleSelect(tab.id);
+    });
+    // console.log("TABS:", tabs);
+  };
   return (
     <div className="jumbotron jumbotronStyle_2 rounded">
       <h1>Podpunkty do rozkazu</h1>
@@ -70,6 +82,7 @@ export default function SelectionOfTabs() {
               id={tab.id}
               checked={selectedItems.includes(tab.id)}
               onChange={(e) => {
+                console.log("e", e);
                 if (e.target.checked) {
                   handleSelect(tab.id);
                   tab.isChecked = true;
@@ -94,6 +107,16 @@ export default function SelectionOfTabs() {
           </div>
         ))}
       </Form>
+      <Button
+        variant="primary"
+        className="mt-3 badge"
+        onClick={() => {
+          chooseAllTabs();
+          handleSelectAll();
+        }}
+      >
+        Zaznacz wszystko
+      </Button>
       <Link to="/raport/raport_view" id="raport_view">
         <Button
           variant="primary"
