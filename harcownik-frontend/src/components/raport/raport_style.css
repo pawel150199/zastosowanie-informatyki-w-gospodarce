@@ -2,9 +2,7 @@
   .jumbotronStyle_0 {
     height: 100px;
     background-color: #a1aebb;
-    /* margin: 1%; */
     overflow: auto;
-    /* display: flex; */
     text-align: center;
     margin-bottom: 2.5%;
   }
@@ -15,7 +13,6 @@
     background-color: #b4b1ad;
     margin-right: 0.5%;
     margin-bottom: 10px;
-    /* display: flex; */
     text-align: center;
     margin-bottom: 5%;
   }
@@ -43,7 +40,6 @@
     overflow: auto;
     background-color: #b4b1ad;
     margin-right: 0.5%;
-    /* display: flex; */
     text-align: center;
     margin-bottom: 5%;
   }
