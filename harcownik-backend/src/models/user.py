@@ -1,8 +1,10 @@
 from xmlrpc.client import Boolean
-from sqlalchemy import DateTime, Column, ForeignKey, Integer, String, Boolean
+
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from src.db.db import Base
+
 
 class User(Base):
     __tablename__ = "user"

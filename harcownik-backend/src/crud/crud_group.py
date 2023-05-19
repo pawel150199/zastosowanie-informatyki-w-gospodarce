@@ -1,17 +1,15 @@
-from sqlalchemy.orm import Session
-from typing import Dict, Union, Any
-from fastapi.encoders import jsonable_encoder
+from typing import Any, Dict, Union
 
+from fastapi.encoders import jsonable_encoder
+from sqlalchemy.orm import Session
 from src.models.group import Group as GroupModel
 from src.schemas.group import CreateGroup, UpdateGroup
 
+
 # POST
-def create_group(db:Session, group: CreateGroup):
+def create_group(db: Session, group: CreateGroup):
     db_group = GroupModel(
-        name=group.name,
-        number=group.number,
-        szczep=group.szczep,
-        city=group.city
+        name=group.name, number=group.number, szczep=group.szczep, city=group.city
     )
 
     db.add(db_group)
@@ -19,12 +17,15 @@ def create_group(db:Session, group: CreateGroup):
     db.refresh(db_group)
     return db_group
 
+
 # GET
 def get_group(db: Session, group_id: int):
     return db.query(GroupModel).filter(GroupModel.id == group_id).first()
 
+
 def get_groups(db: Session):
     return db.query(GroupModel).all()
+
 
 # DELETE
 def delete_group(db: Session, group_id: int):
@@ -33,8 +34,11 @@ def delete_group(db: Session, group_id: int):
     db.commit()
     return db_group
 
+
 # UPDATE
-def update_group(db: Session, group_obj: GroupModel, group_in: Union[UpdateGroup, Dict[str, Any]]) -> GroupModel:
+def update_group(
+    db: Session, group_obj: GroupModel, group_in: Union[UpdateGroup, Dict[str, Any]]
+) -> GroupModel:
     obj_data = jsonable_encoder(group_obj)
     if isinstance(group_in, dict):
         update_data = group_in
@@ -42,8 +46,8 @@ def update_group(db: Session, group_obj: GroupModel, group_in: Union[UpdateGroup
         update_data = group_in.dict(exclude_unset=True)
 
     for field in obj_data:
-            if field in update_data:
-                setattr(group_obj, field, update_data[field])
+        if field in update_data:
+            setattr(group_obj, field, update_data[field])
     db.add(group_obj)
     db.commit()
     db.refresh(group_obj)

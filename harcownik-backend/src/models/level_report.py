@@ -1,7 +1,8 @@
-from sqlalchemy import DateTime, Column, ForeignKey, Integer, String
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from src.db.db import Base
+
 
 class LevelReport(Base):
     __tablename__ = "level_report"

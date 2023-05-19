@@ -1,6 +1,7 @@
-from sqlalchemy import DateTime, Column, Integer, String
+from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.sql import func
 from src.db.db import Base
+
 
 class Group(Base):
     __tablename__ = "group"

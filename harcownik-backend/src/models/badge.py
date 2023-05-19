@@ -1,6 +1,7 @@
-from sqlalchemy import DateTime, Column, Integer, String, JSON
+from sqlalchemy import JSON, Column, DateTime, Integer, String
 from sqlalchemy.sql import func
 from src.db.db import Base
+
 
 class Badge(Base):
     __tablename__ = "badge"

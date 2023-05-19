@@ -1,22 +1,25 @@
 import secrets
 from typing import Any, Dict, List, Optional, Union
-from pydantic import AnyHttpUrl, BaseSettings, HttpUrl, PostgresDsn
+
+from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn
+
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Harcownik"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
     SERVER_NAME: str = "localhost"
-    SERVER_HOST: str = "localhost"
     ALGORITHM: str = "HS256"
     SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
+        "http://localhost:3000"
+    ]
 
     # DATABASE
-    POSTGRES_SERVER: str = "localhost"
-    POSTGRES_USER: str = "postgres"
-    POSTGRES_PASSWORD: str = "admin"
-    POSTGRES_DB: str = "postgres"
+    POSTGRES_SERVER: str = None
+    POSTGRES_USER: str = None
+    POSTGRES_PASSWORD: str = None
+    POSTGRES_DB: str = None
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 
     # SMTP
