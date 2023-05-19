@@ -28,18 +28,19 @@ export const getBadges = async (group) => {
   }
 };
 
-export const postBadge = async (data, userID, badgeID) => {
+export const postBadge = async (data, userID, badgeID, status) => {
   try {
     const response = await axios.post(
       "http://localhost:8000/badge_reports/",
       {
         title: data,
-        status: "zgłoszona",
+        status: status,
         user_id: userID,
         badge_id: badgeID,
       },
       authHeader()
     );
+    console.log("postBadge:", response);
   } catch (error) {
     console.error(error);
   }

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { orderContent } from "./SelectionOfTabs";
 

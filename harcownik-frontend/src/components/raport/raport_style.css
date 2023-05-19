@@ -1,29 +1,26 @@
   /* eslint-disable */
   .jumbotronStyle_0 {
     height: 100px;
-    background-color: #778899;
-    /* margin: 1%; */
-    overflow: scroll;
-    /* display: flex; */
+    background-color: #a1aebb;
+    overflow: auto;
     text-align: center;
     margin-bottom: 2.5%;
   }
 
   .jumbotronStyle_1 {
     height: 400px;
-    overflow: scroll;
-    background-color: #D2BBA0;
+    overflow: auto;
+    background-color: #b4b1ad;
     margin-right: 0.5%;
     margin-bottom: 10px;
-    /* display: flex; */
     text-align: center;
     margin-bottom: 5%;
   }
 
   .jumbotronStyle_2 {
-    height: 400px;
-    overflow: scroll;
-    background-color: #D2BBA0;
+    height: 35rem;
+    overflow: auto;
+    background-color: #b4b1ad;
     margin-left: 0.5%;
     margin-bottom: 10px;
     text-align: center;
@@ -31,8 +28,8 @@
 
  .jumbotronStyle_3 {
     height: 400px;
-    overflow: scroll;
-    background-color: #D2BBA0;
+    overflow: auto;
+    background-color: #b4b1ad;
     margin-left: 0.5%;
     margin-right: 0%;
     text-align: center;
@@ -40,10 +37,9 @@
 
   .jumbotronStyle_4 {
     height: 400px;
-    overflow: scroll;
-    background-color: #D2CAB0;
+    overflow: auto;
+    background-color: #b4b1ad;
     margin-right: 0.5%;
-    /* display: flex; */
     text-align: center;
     margin-bottom: 5%;
   }
@@ -56,7 +52,7 @@
   }
 
   .dropDownStyle {
-    background-color: #D2BBA0;
+    background-color: #94908b;
     margin-left: 0.5%;
     margin-right: 0%;
     text-align: center;

@@ -3,12 +3,14 @@ import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
 import { getBadgesApplications, getUsersData } from "./RaportFunction";
-
+import { tabs } from "./raportOrder";
 import "./raport_style.css";
 
 function Submissions() {
   const [badgesApplications, setBadgesApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
+  const [selectedItemsReported, setSelectedItemsReported] = useState([]);
+  const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,64 @@ function Submissions() {
     }
   };
 
+  const handleCheckboxChange = (event, report) => {
+    if (event.target.checked && report.status == "zgłoszona") {
+      setSelectedItemsReported([...selectedItemsReported, report]);
+    } else if (event.target.checked && report.status == "zakończona") {
+      setSelectedItemsEnded([...selectedItemsEnded, report]);
+    } else {
+      if (report.status == "zgłoszona") {
+        const updatedItems = selectedItemsReported.filter(
+          (item) => item.id !== report.id
+        );
+        setSelectedItemsReported(updatedItems);
+      } else {
+        const updatedItems = selectedItemsEnded.filter(
+          (item) => item.id !== report.id
+        );
+        setSelectedItemsEnded(updatedItems);
+      }
+    }
+  };
+
+  const handleAllCheckboxChange = (checkedIds) => {
+    checkedIds.forEach((id) => {
+      const numericId = parseInt(id);
+      const selectedBadge = badgesApplications.find(
+        (badge) => badge.id === numericId
+      );
+      if (selectedBadge) {
+        if (selectedBadge.status === "zgłoszona") {
+          setSelectedItemsReported((prevItems) => [
+            ...prevItems,
+            selectedBadge,
+          ]);
+        } else if (selectedBadge.status === "zakończona") {
+          setSelectedItemsEnded((prevItems) => [...prevItems, selectedBadge]);
+        }
+      }
+    });
+  };
+
+  const clearSelectedBadges = () => {
+    setSelectedItemsReported([]);
+    setSelectedItemsEnded([]);
+  };
+
+  const addReportedBadgesToRaport = () => {
+    selectedItemsReported.forEach((item) => {
+      const username = usersData.find((user) => user.id === item.user_id);
+      const name = username.first_name + " " + username.last_name;
+      tabs[11].patternText += "- " + item.title + ": " + name + "\n";
+    });
+
+    selectedItemsEnded.forEach((item) => {
+      const username = usersData.find((user) => user.id === item.user_id);
+      const name = username.first_name + " " + username.last_name;
+      tabs[10].patternText += "- " + item.title + ": " + name + ",\n";
+    });
+  };
+
   return (
     <div className="jumbotron jumbotronStyle_1 rounded ">
       <h1>Zgłoszone wnioski o nowe sprawności</h1>
@@ -56,6 +116,12 @@ function Submissions() {
           <tbody>
             {badgesApplications.map((report) => {
               const user = usersData.find((user) => user.id === report.user_id);
+              if (
+                report.status !== "zgłoszona" &&
+                report.status !== "zakończona"
+              ) {
+                return null;
+              }
               return (
                 <tr key={report.id}>
                   <td>
@@ -65,7 +131,10 @@ function Submissions() {
                         type="checkbox"
                         value=""
                         name="submissions"
-                        id="flexCheckDefault"
+                        id={`flexCheckDefault_${report.id}`}
+                        onChange={(event) =>
+                          handleCheckboxChange(event, report)
+                        }
                       />
                       <label
                         className="form-check-label"
@@ -80,22 +149,46 @@ function Submissions() {
             })}
           </tbody>
         </Table>
-        <button
-          type="button"
-          className="btn btn-dark"
-          onClick={eventCheckBoxTrue}
-          style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
-        >
-          Zaznacz wszystko
-        </button>
-        <button
-          type="button"
-          className="btn btn-dark"
-          onClick={eventCheckBoxFalse}
-          style={{ marginBottom: "3%", marginTop: "1%" }}
-        >
-          Odznacz wszystko
-        </button>
+        <div>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => {
+              eventCheckBoxTrue();
+              const checkedCheckboxes = Array.from(
+                document.querySelectorAll('input[type="checkbox"]:checked')
+              );
+              const checkedIds = checkedCheckboxes.map((checkbox) =>
+                checkbox.id.replace("flexCheckDefault_", "")
+              );
+              handleAllCheckboxChange(checkedIds);
+            }}
+            style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
+          >
+            Zaznacz wszystko
+          </button>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => {
+              clearSelectedBadges();
+              eventCheckBoxFalse();
+            }}
+            style={{ marginBottom: "3%", marginTop: "1%" }}
+          >
+            Odznacz wszystko
+          </button>
+        </div>
+        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={addReportedBadgesToRaport}
+            style={{ marginLeft: "4%", marginTop: "1%", marginBottom: "3%" }}
+          >
+            Dodaj do raportu
+          </button>
+        )}
       </Container>
     </div>
   );
