@@ -11,8 +11,11 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       marginBottom: 20,
     },
+    info: {
+      color: "red",
+    },
     input: {
-      width: "40%", // adjust the width to make it smaller
+      width: "40%",
       height: 50,
       borderWidth: 1,
       borderColor: "#ccc",
@@ -21,7 +24,7 @@ const styles = StyleSheet.create({
       marginBottom: 20,
     },
     button: {
-      width: "40%", // adjust the width to make it smaller
+      width: "40%",
       height: 50,
       backgroundColor: "#007bff",
       borderRadius: 5,

@@ -6,7 +6,7 @@ import React from "react";
 import About from "./components/about/About";
 import User from "./components/user/User";
 import Login from "./components/login/Login";
-import Register from "./components/register/Register";
+import RegisterScout from "./components/registerScout/RegisterScout";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 import Home from "./components/home/Home";
 import Badges from "./components/badges/Badges";
@@ -28,7 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register_scout" element={<RegisterScout />} />
             <Route path="/reset_password" element={<ResetPassword />} />
             <Route path="/about" element={<About />} />
             <Route path="/user" element={<User />} />

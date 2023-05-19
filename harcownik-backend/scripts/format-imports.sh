@@ -2,5 +2,5 @@
 set -x
 
 # Sort imports one per line, so autoflake can remove unused imports
-isort --recursive  --force-single-line-imports --apply src
-sh ./scripts/format.sh
+isort --recursive  --force-single-line-imports --apply ../src
+sh ./format.sh
