@@ -17,7 +17,7 @@ wait_seconds = 1
 def init() -> None:
     try:
         db = SessionLocal()
-        db.execute("SELCET 1")
+        db.execute("SELECT 1")
     except Exception as e:
         logger.error(e)
         raise e

@@ -1,6 +1,8 @@
 import secrets
 from typing import Any, Dict, List, Optional, Union
-from pydantic import AnyHttpUrl, BaseSettings, HttpUrl, PostgresDsn
+
+from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn
+
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Harcownik"
@@ -9,13 +11,15 @@ class Settings(BaseSettings):
     SERVER_NAME: str = "localhost"
     ALGORITHM: str = "HS256"
     SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
+        "http://localhost:3000"
+    ]
 
     # DATABASE
-    POSTGRES_SERVER: str = "localhost"
-    POSTGRES_USER: str = "postgres"
-    POSTGRES_PASSWORD: str = "admin"
-    POSTGRES_DB: str = "postgres"
+    POSTGRES_SERVER: str = None
+    POSTGRES_USER: str = None
+    POSTGRES_PASSWORD: str = None
+    POSTGRES_DB: str = None
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 
     # SMTP
@@ -30,6 +34,5 @@ class Settings(BaseSettings):
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
     EMAILS_ENABLED: bool = True
     EMAIL_TEST_USER: str = None
-    USERS_OPEN_REGISTRATION: bool = False
 
 settings = Settings()

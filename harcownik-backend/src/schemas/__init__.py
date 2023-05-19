@@ -1,7 +1,11 @@
-from .user import User, UserBase, CreateUser, UserWithId
-from .badge import Badge, BadgeBase, CreateBadge, BadgeGroup, BadgeAll, BadgeBaseWithId
-from .group import Group, GroupBase, CreateGroup
-from .badge_report import BadgeReport, BadgeReportBase, CreateBadgeReport
-from .level_report import LevelReport, LevelReportBase, CreateLevelReport
-from .token import Token, TokenPayload
+from .badge import (Badge, BadgeAll, BadgeBase, BadgeBaseWithId, BadgeGroup,
+                    CreateBadge)
+from .badge_report import (BadgeReport, BadgeReportBase, CreateBadgeReport,
+                           CreateMyBadgeReport, UpdateBadgeReport)
+from .group import CreateGroup, Group, GroupBase, UpdateGroup
+from .level_report import (CreateLevelReport, CreateMyLevelReport, LevelReport,
+                           LevelReportBase, UpdateLevelReport)
 from .message import Message
+from .token import Token, TokenPayload
+from .user import (CreateScout, CreateUser, UpdateUser, User, UserBase,
+                   UserWithId)

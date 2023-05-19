@@ -1,11 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.core.settings import settings
 from src.api.api import api_router
+from src.core.settings import settings
 
-app = FastAPI(
-    title=settings.PROJECT_NAME, openapi_url="/openapi.json"
-)
+app = FastAPI(title=settings.PROJECT_NAME, openapi_url="/openapi.json")
 
 if settings.BACKEND_CORS_ORIGINS:
 

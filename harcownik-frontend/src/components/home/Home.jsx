@@ -34,11 +34,6 @@ function Home() {
           <p className="lead">
             Jesteś jeden krok od ułatwienia zarządzania grupą harcerzyków
           </p>
-          <Link to="/register" id="register">
-            <Button variant="primary" className="mt-3 badge">
-              Zarejestruj się
-            </Button>
-          </Link>
           <Link to="/login" className="text-center">
             <Button variant="primary" className="mt-3 badge">
               Zaloguj się

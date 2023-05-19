@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput} from "react-native";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
-import styles from "./RegisterStyle";
+import axios from "../../api/api"
+
+import styles from "./RegisterScoutStyle";
+import authHeader from "../../api/authHeader";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,17 +15,39 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [group, setGroup] = useState("");
-// eslint-disable-next-line
-  const [badges, setBadges] = useState("");
+  const [info, setInfo] = useState("");
 
-  const handleRegister = () => {
-    // perform registration authentication
+  const handleRegister = async () => {
+    try {
+      console.log(password, confirmPassword)
+      if (password === confirmPassword) {
+        const response = await axios.post(
+          "/users/scout/",
+          {
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            level: level,
+            function: func,
+            password: password,
+          },
+          authHeader()
+        );
+        if (response.status === 200  || response.status === 201) {
+          setInfo("Harcerz został poprrawnie dodany");
+        } else{
+          setInfo("Harcerz nie został poprawnie dodany");
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Rejestracja</Text>
+      <Text style={styles.title}>Dodawanie nowego harcerza do drużyny</Text>
+      <Text style={styles.title}>{info}</Text>
       <TextInput
         style={styles.input}
         placeholder="Imie"
@@ -44,7 +68,7 @@ const Register = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Pełniona funkcja w harcerstwie"
+        placeholder="Funkcja harcerza"
         value={func}
         onChangeText={setFunc}
       />
@@ -69,23 +93,12 @@ const Register = () => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Drużyna do której należy harcerz"
-        value={group}
-        onChangeText={setGroup}
-      />
       <Button
         style={styles.button}
-        onPress={handleRegister}
+        onClick={handleRegister}
       >
-        Załóż konto
+        Dodaj Harcerza
       </Button>
-      <TouchableOpacity>
-        <Link to="/login">
-            <Text style={styles.link}>Masz już konto? Zaloguj się</Text>
-        </Link>
-      </TouchableOpacity>
     </View>
   );
 };
