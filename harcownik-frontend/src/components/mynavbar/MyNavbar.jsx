@@ -4,19 +4,25 @@ import { useState } from "react";
 import React from "react";
 
 import getMe from "../../api/getMe";
-import {
-  getLoginStatus,
-  removeLocalToken,
-  removeLoginStatus,
-} from "../../api/utils";
+import { removeLocalToken } from "../../api/utils";
+import isLogged from "../../api/isLogged";
+import { isScout, isTeamAdmin, isWebAdmin } from "../../api/isLogged";
 
 import "./mynavbar.css";
 
 const MyNavbar = () => {
   const [username, setUsername] = useState("");
+  const [scout, setScout] = useState(false);
+  const [teamAdmin, setTeamAdmin] = useState(false);
+  const [webAdmin, setWebAdmin] = useState(false);
+
+  const checkUserRole = async () => {
+    setScout(await isScout());
+    setTeamAdmin(await isTeamAdmin());
+    setWebAdmin(await isWebAdmin());
+  }
 
   const handleLogout = () => {
-    removeLoginStatus("isLogged");
     removeLocalToken("token");
     window.location.reload();
   };
@@ -26,8 +32,10 @@ const MyNavbar = () => {
     setUsername(response.first_name);
   };
 
-  if (getLoginStatus("isLogged")) {
+  if (isLogged()) {
     getName();
+    checkUserRole();
+
   }
 
   return (
@@ -50,16 +58,24 @@ const MyNavbar = () => {
               {" "}
               Sprawności
             </Nav.Link>
-            <Nav.Link className="box" href="/user_requests">
-              Zgłoszenia użytkownika
-            </Nav.Link>
-            <Nav.Link className="box" href="/raport">
-              {" "}
-              Raport
-            </Nav.Link>
+            {scout ? (
+              <Nav.Link className="box" href="/user_requests">
+                Zgłoszenia użytkownika
+              </Nav.Link>
+            ) : null}
+            {teamAdmin ? (
+              <Nav.Link className="box" href="/raport">
+                Raport
+              </Nav.Link>
+            ) : null}
+            {teamAdmin ? (
+              <Nav.Link className="box" href="/register_scout">
+                Nowy harcerz
+              </Nav.Link>
+            ) : null}
           </Nav>
           <Nav className="navbar-nav navbar-dark mr-auto">
-            {getLoginStatus("isLogged") ? (
+            {isLogged ? (
               <NavDropdown title={username} id="basic-nav-dropdown">
                 <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
                 <NavDropdown.Item href="/reset_password">

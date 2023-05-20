@@ -7,7 +7,8 @@ import {
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
 import getMe from "../../api/getMe";
-import { getLoginStatus } from "../../api/utils";
+import isLogged from "../../api/isLogged";
+
 import "./UserRequests.css";
 
 function ApplicationStatus() {
@@ -17,7 +18,7 @@ function ApplicationStatus() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (getLoginStatus("isLogged")) {
+      if (isLogged()) {
         const response = await getMe();
         const id = response.id;
         const badges = await getBadgeApplicationStatus(id);

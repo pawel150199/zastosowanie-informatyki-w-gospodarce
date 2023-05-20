@@ -57,14 +57,14 @@ function Home() {
         </p>
         <br></br>
         <div className="text-center p-3 mb-5 bg-white rounded" id="features">
-          <h2 className="text-center">Features</h2>
+          <h2 className="text-center">Założenia</h2>
           <Image src={images[index]} alt="home1" id="img" />
           <p>{features[index]}</p>
           <p>
             Slide {index + 1} of {features.length}
           </p>
           <Button variant="primary" className="mt-3" onClick={handleSlide}>
-            Next
+            Następny
           </Button>
         </div>
       </Container>

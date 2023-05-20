@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 import axios from "../../api/api";
-import { getLoginStatus, getLocalToken } from "../../api/utils";
+import { getLocalToken } from "../../api/utils";
+import isLogged from "../../api/isLogged";
 
 import styles from "./ResetPasswordStyle";
 
@@ -13,7 +14,7 @@ const ResetPassword = () => {
   const [newRepeatedPassword, setNewRepeatedPassword] = useState("");
 
   const handleResetPassword = async () => {
-    if (getLoginStatus("isLogged")) {
+    if (isLogged()) {
         if (newPassword ===  newRepeatedPassword) {
             axios.post("/reset-password", {
                 token: getLocalToken("token"),
