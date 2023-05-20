@@ -3,7 +3,8 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
 import axios from "../../api/api";
 import { loginHeader } from "../../api/authHeader";
-import { saveLocalToken, getLoginStatus, setLoginStatus } from "../../api/utils";
+import { saveLocalToken } from "../../api/utils";
+import isLogged from "../../api/isLogged";
 
 import styles from "./LoginStyle";
 
@@ -21,9 +22,8 @@ const Login = () => {
       console.log(response.data.access_token);
       const accessToken = response.data.access_token;
       saveLocalToken(accessToken);
-      setLoginStatus("isLogged", true);
 
-      console.log("You are Logged: ", getLoginStatus("isLogged"));
+      console.log("You are Logged: ", isLogged());
       
       window.location.href = "/user";
     } catch (error) {

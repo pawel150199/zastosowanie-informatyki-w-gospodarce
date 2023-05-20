@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
 import { getLevel, postLevelRaports } from "./UserRanksFunction";
-import { getLoginStatus } from "../../api/utils";
+import isLogged from "../../api/isLogged";
 import getMe from "../../api/getMe";
 
 import "./UserRequests.css";
@@ -25,7 +25,7 @@ function UserRanks() {
   ];
 
   const getId = async () => {
-    if (getLoginStatus("isLogged")) {
+    if (isLogged()) {
       const response = await getMe();
       const id = response.id;
       setUserId(id);

@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import { getLoginStatus } from "../../api/utils";
+
 import getMe from "../../api/getMe";
-import { scoutOrder, createTextFile } from "./raportOrder";
+import { scoutOrder} from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";
+import isLogged from "../../api/isLogged";
 
 import "./raport_style.css";
 
@@ -19,7 +20,7 @@ export default function SelectionOfTabs() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (getLoginStatus("isLogged")) {
+      if (isLogged()) {
         const response = await getMe();
         const userData = response.first_name + "  " + response.last_name;
         return userData;

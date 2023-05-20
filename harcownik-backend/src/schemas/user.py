@@ -42,6 +42,8 @@ class User(UserBase):
     function: str
     group_id: Optional[int]
     badge_id: Optional[int]
+    is_teamadmin: bool
+    is_webadmin: bool
 
     class Config:
         orm_mode = True
