@@ -29,7 +29,6 @@ export default function SelectionOfTabs() {
   }, []);
 
   const handleSelect = (eventKey) => {
-    // console.log("handleselect:", eventKey);
     if (!selectedItems.includes(eventKey)) {
       setSelectedItems([...selectedItems, eventKey]);
     }
@@ -58,17 +57,13 @@ export default function SelectionOfTabs() {
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
 
     orderContent = scoutOrder(userData);
-    // orderContent = createTextFile();
-    // console.log("raport:", orderContent);
   }
 
   const chooseAllTabs = () => {
     tabs.forEach((tab) => {
       tab.isChecked = true;
-      // console.log("tab_id:", tab.id);
       handleSelect(tab.id);
     });
-    // console.log("TABS:", tabs);
   };
   return (
     <div className="jumbotron jumbotronStyle_2 rounded">
@@ -108,20 +103,22 @@ export default function SelectionOfTabs() {
         ))}
       </Form>
       <Button
-        variant="primary"
-        className="mt-3 badge"
+        type="button"
+        className="btn btn-dark"
         onClick={() => {
           chooseAllTabs();
           handleSelectAll();
         }}
+        style={{ marginRight: "1%", marginTop: "1%" }}
       >
         Zaznacz wszystko
       </Button>
       <Link to="/raport/raport_view" id="raport_view">
         <Button
-          variant="primary"
-          className="mt-3 badge"
+          type="button"
+          className="btn btn-dark"
           onClick={handleDownload}
+          style={{ marginLeft: "1%", marginTop: "1%" }}
         >
           Przygotuj raport
         </Button>
