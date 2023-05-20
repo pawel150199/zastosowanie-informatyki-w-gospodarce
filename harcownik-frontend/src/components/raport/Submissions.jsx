@@ -153,6 +153,7 @@ function Submissions() {
           <button
             type="button"
             className="btn btn-dark"
+            variant="dark"
             onClick={() => {
               eventCheckBoxTrue();
               const checkedCheckboxes = Array.from(
@@ -170,6 +171,7 @@ function Submissions() {
           <button
             type="button"
             className="btn btn-dark"
+            variant="dark"
             onClick={() => {
               clearSelectedBadges();
               eventCheckBoxFalse();

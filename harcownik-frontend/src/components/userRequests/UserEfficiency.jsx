@@ -70,6 +70,7 @@ function UserEfficiency() {
         alignRight
         title="Wybierz grupę"
         Id="dropdown-menu-align-right"
+        variant="dark"
         onSelect={selectGroup}
       >
         {badgesGroups.map((report) => (
@@ -81,6 +82,7 @@ function UserEfficiency() {
       {choosenGroup && <h4>Grupa sprawności: {choosenGroup}</h4>}
       {choosenGroup && (
         <DropdownButton
+          variant="dark"
           alignRight
           title="Wybierz sprawność"
           Id="dropdown-menu-align-right"
@@ -97,6 +99,7 @@ function UserEfficiency() {
       {choosenBadge && <h4>Sprawność: {choosenBadge}</h4>}
       {choosenBadge && (
         <DropdownButton
+          variant="dark"
           alignRight
           title="Wybierz status"
           Id="dropdown-menu-align-right"
@@ -112,6 +115,7 @@ function UserEfficiency() {
       {choosenStatus && <h4>Zgłaszany status: {choosenStatus}</h4>}
       {choosenStatus && (
         <Button
+          className="btn btn-dark"
           onClick={() =>
             postBadge(choosenBadge, userId, choosenBadgeId, choosenStatus)
           }

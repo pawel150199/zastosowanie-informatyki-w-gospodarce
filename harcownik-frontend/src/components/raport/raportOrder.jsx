@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from "react";
+import { saveAs } from "file-saver";
 // import { Document, Page, Text, View, StyleSheet } from "react-pdf/renderer";
 
 function getCurrentYear() {
@@ -131,6 +132,21 @@ export const scoutOrder = ({}) => {
       ))}
     </div>
   ));
+
+  const handleClick = () => {
+    const textToSave = `
+      ${day}.${month}.${year}
+      Rozkaz L. 3/${year}
+      ${patternTexts}
+      Czuwaj!
+      phm.
+      Wygenerowane za pomocą aplikacji Harcownik
+    `;
+
+    const blob = new Blob([textToSave], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "wygenerowany_tekst.txt");
+  };
+  handleClick();
 
   return (
     <div>
