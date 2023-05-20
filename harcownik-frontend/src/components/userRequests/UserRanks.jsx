@@ -51,6 +51,7 @@ function UserRanks() {
         title="Wybierz stopień"
         Id="dropdown-menu-align-right"
         onSelect={selectLevel}
+        variant="dark"
       >
         {levels.map((level, index) => (
           <Dropdown.Item key={index} eventKey={level}>
@@ -66,6 +67,7 @@ function UserRanks() {
           title="Wybierz status"
           Id="dropdown-menu-align-right"
           onSelect={selectStatus}
+          variant="dark"
         >
           {status.map((status, index) => (
             <Dropdown.Item key={index} eventKey={status}>
@@ -77,6 +79,8 @@ function UserRanks() {
       {choosenStatus && <h4>Zgłaszany status: {choosenStatus}</h4>}
       {choosenStatus && (
         <Button
+          type="button"
+          className="btn btn-dark"
           onClick={() => postLevelRaports(choosenLevel, userId, choosenStatus)}
         >
           Rozpocznij nowy stopień

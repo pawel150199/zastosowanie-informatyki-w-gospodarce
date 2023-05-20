@@ -153,6 +153,7 @@ function Submissions() {
           <button
             type="button"
             className="btn btn-dark"
+            variant="dark"
             onClick={() => {
               eventCheckBoxTrue();
               const checkedCheckboxes = Array.from(
@@ -163,18 +164,19 @@ function Submissions() {
               );
               handleAllCheckboxChange(checkedIds);
             }}
-            style={{ marginRight: "4%", marginTop: "1%", marginBottom: "3%" }}
+            style={{ marginRight: "1%" }}
           >
             Zaznacz wszystko
           </button>
           <button
             type="button"
             className="btn btn-dark"
+            variant="dark"
             onClick={() => {
               clearSelectedBadges();
               eventCheckBoxFalse();
             }}
-            style={{ marginBottom: "3%", marginTop: "1%" }}
+            style={{ marginLeft: "1%" }}
           >
             Odznacz wszystko
           </button>
@@ -184,7 +186,7 @@ function Submissions() {
             type="button"
             className="btn btn-dark"
             onClick={addReportedBadgesToRaport}
-            style={{ marginLeft: "4%", marginTop: "1%", marginBottom: "3%" }}
+            style={{ marginTop: "1%" }}
           >
             Dodaj do raportu
           </button>
