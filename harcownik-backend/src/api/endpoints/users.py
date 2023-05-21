@@ -52,10 +52,7 @@ def create_scout(
 
 
 @router.post("/users/admin", response_model=schemas.User)
-def create_user(
-    user: schemas.CreateUser,
-    db: Session = Depends(get_db)
-) -> Any:
+def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(

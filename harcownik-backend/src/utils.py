@@ -2,7 +2,7 @@ import smtplib
 import ssl
 from datetime import datetime, timedelta
 from email.message import EmailMessage
-from typing import Any, Dict, Optional
+from typing import Optional
 
 from jose import jwt
 from src.core.settings import settings
@@ -71,7 +71,7 @@ def send_reset_password_email(email_to: str, email: str, token: str) -> None:
 def send_new_account_email(email_to: str, username: str, password: str) -> None:
     project_name = settings.PROJECT_NAME
     subject = f"{project_name} - New account for user {username}"
-    link = settings.SERVER_HOST
+    settings.SERVER_HOST
 
     body = f"""
         Hi {username},
