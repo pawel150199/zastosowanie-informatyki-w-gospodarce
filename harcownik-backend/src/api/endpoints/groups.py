@@ -12,8 +12,7 @@ router = APIRouter()
 @router.post("/groups/", response_model=schemas.Group)
 def create_group(
     group: schemas.CreateGroup,
-    db: Session = Depends(get_db),
-    _: models.User = Depends(get_current_teamadmin),
+    db: Session = Depends(get_db)
 ) -> Any:
     return crud.create_group(db=db, group=group)
 
