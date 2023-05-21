@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Button } from "react-bootstrap";
@@ -27,10 +28,11 @@ const RegisterAdmin = () => {
 
   // Info
   // eslint-disable-next-line
-  const [info, setInfo] = useState("");
+  const [info, setInfo] = useState(" ");
 
   const handleRegisterAdmin = async () => {
-    const group = null;
+    const group = "";
+    const user = "";
     // Add group
     try {
       // eslint-disable-next-line
@@ -48,7 +50,7 @@ const RegisterAdmin = () => {
       console.log("group.data.id: ", group.data.id);
       setGroupId(group.data.id);
     } catch (error) {
-    console.error(error);
+      console.error(error);
     }
 
     // Add teamadmin and add him to created group
@@ -76,12 +78,14 @@ const RegisterAdmin = () => {
         console.error(error);
       }
     }
-    window.location.href = "/login";
-    //if (user.status === 200  || user.status === 201 || group.status === 200 || group.status === 201) {
-    //  setInfo("Drużynowy i grupa stworzono pomyślnie!");
-    //} else {
-    //  setInfo("Wystąpił błąd!");
-    //}
+    if (user.status === 201 || group.status === 201) {
+      window.location.href = "/login";
+    }
+    if (user.status === 200  || user.status === 201 || group.status === 200 || group.status === 201) {
+      setInfo("Drużynowy i grupa stworzono pomyślnie!");
+    } else {
+      setInfo("Wystąpił błąd!");
+    }
   };
 
   return (
@@ -166,6 +170,7 @@ const RegisterAdmin = () => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
+      {info && <p className="error">{info}</p>}
       <Button
         style={styles.button}
         onClick={handleRegisterAdmin}

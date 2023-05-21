@@ -10,6 +10,7 @@ import styles from "./LoginStyle";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [info, setInfo] = useState(" ");
 
   const handleLogin = async () => {
     const headers = loginHeader();
@@ -18,12 +19,12 @@ const Login = () => {
         username: username,
         password: password
       }, { headers });
-      console.log(response.data.access_token);
       const accessToken = response.data.access_token;
-      saveLocalToken(accessToken);  
+      saveLocalToken(accessToken);
       window.location.href = "/user";
     } catch (error) {
       console.error("Error!", error);
+      setInfo("Niepoprawne dane! Sprawdz dane i spóbuj ponownie.");
     }
   };
 
@@ -43,6 +44,7 @@ const Login = () => {
         value={password}
         onChangeText={setPassword}
       />
+      {info && <p className="error">{info}</p>}
       <TouchableOpacity
         style={styles.button}
         onPress={handleLogin}
