@@ -51,12 +51,13 @@ const MyNavbar = () => {
               Strona Główna
             </Nav.Link>
             <Nav.Link className="box" href="/about">
-              {" "}
               O nas
             </Nav.Link>
             <Nav.Link className="box" href="/badges">
-              {" "}
               Sprawności
+            </Nav.Link>
+            <Nav.Link className="box" href="/register_admin">
+              Zarejestruj Drużynę
             </Nav.Link>
             {scout ? (
               <Nav.Link className="box" href="/user_requests">
@@ -75,9 +76,10 @@ const MyNavbar = () => {
             ) : null}
           </Nav>
           <Nav className="navbar-nav navbar-dark mr-auto">
-            {isLogged ? (
+            {isLogged() ? (
               <NavDropdown title={username} id="basic-nav-dropdown">
                 <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
+                <NavDropdown.Item href="/team_members">Twoja Drużyna</NavDropdown.Item>
                 <NavDropdown.Item href="/reset_password">
                   Zmień hasło
                 </NavDropdown.Item>

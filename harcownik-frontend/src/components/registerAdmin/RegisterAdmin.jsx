@@ -1,11 +1,16 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import styles from "./RegisterScoutStyle";
+import axios from "../../api/api"
+import authHeader from "../../api/authHeader";
 
-const Register = () => {
+import styles from "./RegisterAdminStyle";
+
+const RegisterAdmin = () => {
+  // Team Admin
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [level, setLevel] = useState("");
@@ -14,36 +19,112 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleRegister = async () => {
+  // Group
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [szczep, setSzczep] = useState("");
+  const [city, setCity] = useState("");
+  const [groupId, setGroupId] = useState("");
+
+  // Info
+  // eslint-disable-next-line
+  const [info, setInfo] = useState(" ");
+
+  const handleRegisterAdmin = async () => {
+    const group = "";
+    const user = "";
+    // Add group
     try {
-      console.log(password, confirmPassword)
-      if (password === confirmPassword) {
-        const response = await axios.post(
-          "/users/scout/",
-          {
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            level: level,
-            function: func,
-            password: password,
-          },
-          authHeader()
-        );
-        if (response.status === 200  || response.status === 201) {
-          setInfo("Harcerz został poprrawnie dodany");
-        } else{
-          setInfo("Harcerz nie został poprawnie dodany");
-        }
-      }
+      // eslint-disable-next-line
+      group = await axios.post(
+        "/groups",
+        {
+          name: name,
+          number: number,
+          szczep: szczep,
+          city: city,
+        },
+        authHeader()
+      );
+      console.log("group.data: ", group.data);
+      console.log("group.data.id: ", group.data.id);
+      setGroupId(group.data.id);
     } catch (error) {
       console.error(error);
+    }
+
+    // Add teamadmin and add him to created group
+    if (group.status === 200 || group.status === 201) {
+      try {
+        console.log("Group ID: ", groupId);
+        if (password === confirmPassword) {
+          // eslint-disable-next-line
+          const user = await axios.post(
+            "/users/admin/",
+            {
+              first_name: firstName,
+              last_name: lastName,
+              email: email,
+              level: level,
+              function: func,
+              password: password,
+              group_id: groupId,
+              is_teamadmin: true
+            },
+            authHeader()
+          );
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    if (user.status === 201 || group.status === 201) {
+      window.location.href = "/login";
+    }
+    if (user.status === 200  || user.status === 201 || group.status === 200 || group.status === 201) {
+      setInfo("Drużynowy i grupa stworzono pomyślnie!");
+    } else {
+      setInfo("Wystąpił błąd!");
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dodawanie nowego harcerza do drużyny</Text>
+      <small>{info}</small>
+      <br></br>
+      <Text style={styles.title}>Załóż nową drużynę Harcerską</Text>
+      <small>Jeśli twoja dryżyna jest już w aplikacji harcownik, poproś swojego drużynowego o dodanie :)</small>
+      <br></br>
+      <TextInput
+        style={styles.input}
+        placeholder="Nazwa Drużyny"
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Numer drużyny"
+        value={number}
+        onChangeText={setNumber}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Nazwa Szczepu Drużyny"
+        value={szczep}
+        onChangeText={setSzczep}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Miasto Drużyny"
+        value={city}
+        onChangeText={setCity}
+      />
+
+
+      <br></br>
+      <Text style={styles.title}>Załóż konto Drużynowego</Text>
+      <small>Konto Drużynowego zostanie automatycznie zostanie dodane do drużyny</small>
+      <br></br>
       <TextInput
         style={styles.input}
         placeholder="Imie"
@@ -65,7 +146,7 @@ const Register = () => {
       <TextInput
         style={styles.input}
         placeholder="Funkcja harcerza"
-        value={level}
+        value={func}
         onChangeText={setFunc}
       />
       <TextInput
@@ -89,25 +170,21 @@ const Register = () => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Drużyna do której należy Druży"
-        value={group}
-        onChangeText={setGroup}
-      />
+      {info && <p className="error">{info}</p>}
       <Button
         style={styles.button}
-        onPress={handleRegister}
+        onClick={handleRegisterAdmin}
       >
-        Załóż konto
+        Załóż konto Drużynowego
       </Button>
       <TouchableOpacity>
         <Link to="/login">
             <Text style={styles.link}>Masz już konto? Zaloguj się</Text>
         </Link>
       </TouchableOpacity>
+      <br></br>
     </View>
   );
 };
 
-export default Register;
+export default RegisterAdmin;

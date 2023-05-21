@@ -1,0 +1,54 @@
+button.accordion-button {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-items: left;
+}
+
+div.card-title.h5 {
+    color: white;
+}
+
+div.card {
+    margin-bottom: 1rem;
+}
+
+button.accordion-button {
+    box-shadow: 2px 3px 4px gray;
+    background-color: aliceblue;
+}
+
+p.card-text {
+    margin: 0.5rem 0;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+#badges {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+#item-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: "0.6rem",
+}
+
+#item-1 {
+    position: relative;
+    height: auto;
+    text-align: center;
+    margin-top: 3%;
+    background-size: cover;
+}
+
+#scout {
+    width: 3.5rem;
+    margin-right: 10px;
+}

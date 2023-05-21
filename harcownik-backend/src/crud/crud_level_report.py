@@ -2,7 +2,6 @@ from typing import Any, Dict, Union
 
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
-from src.core.security import get_password_hash
 from src.models.level_report import LevelReport as LevelReportModel
 from src.models.user import User
 from src.schemas.level_report import CreateLevelReport, UpdateLevelReport

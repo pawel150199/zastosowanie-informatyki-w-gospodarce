@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 from src import crud, schemas
-from src.core.settings import settings
 
 
 def init_badges(db: Session) -> None:
@@ -438,7 +437,7 @@ def init_badges(db: Session) -> None:
             ],
             group="Wyrobienie Harcerskie",
         ),
-        #Kucharskie
+        # Kucharskie
         schemas.CreateBadge(
             name="KUCHCIK *",
             description=[
@@ -471,7 +470,7 @@ def init_badges(db: Session) -> None:
             ],
             group="Kucharskie",
         ),
-        #FINANSOWO-EKONOMICZNE
+        # FINANSOWO-EKONOMICZNE
         schemas.CreateBadge(
             name="OSZCZĘDNA / OSZCZĘDNY *",
             description=[
@@ -581,7 +580,7 @@ def init_badges(db: Session) -> None:
             ],
             group="Finansowo-ekonomiczne",
         ),
-        #KWATERMISTRZOWSKIE
+        # KWATERMISTRZOWSKIE
         schemas.CreateBadge(
             name="SOBIERADEK OBOZOWY *",
             description=[
@@ -657,7 +656,7 @@ def init_badges(db: Session) -> None:
             ],
             group="Kwatermistrzowskie",
         ),
-        #TERENOZNAWCZE, KRAJOZNAWCZE I TURYSTYCZNE
+        # TERENOZNAWCZE, KRAJOZNAWCZE I TURYSTYCZNE
         schemas.CreateBadge(
             name="OBSERWATORKA / OBSERWATOR *",
             description=[
@@ -934,7 +933,7 @@ def init_badges(db: Session) -> None:
             ],
             group="Terenoznawcze, krajoznawcze i turystyczne",
         ),
-        #ŁĄCZNOŚCIOWE
+        # ŁĄCZNOŚCIOWE
         schemas.CreateBadge(
             name="GONIEC *",
             description=[
