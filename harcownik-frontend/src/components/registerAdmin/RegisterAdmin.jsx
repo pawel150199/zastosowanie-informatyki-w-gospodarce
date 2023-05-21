@@ -29,9 +29,10 @@ const RegisterAdmin = () => {
   const [info, setInfo] = useState("");
 
   const handleRegisterAdmin = async () => {
+    const group = null;
     // Add group
     try {
-      const group = await axios.post(
+      group = await axios.post(
         "/groups",
         {
           name: name,
@@ -41,32 +42,38 @@ const RegisterAdmin = () => {
         },
         authHeader()
       );
-      setGroupId(group.group_id);
+      console.log("group.data: ", group.data);
+      console.log("group.data.id: ", group.data.id);
+      setGroupId(group.data.id);
     } catch (error) {
     console.error(error);
     }
 
     // Add teamadmin and add him to created group
-    try {
-      if (password === confirmPassword) {
-        const user = await axios.post(
-          "/users/admin/",
-          {
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            level: level,
-            function: func,
-            password: password,
-            group_id: groupId,
-            is_teamadmin: true
-          },
-          authHeader()
-        );
+    if (group.status === 200 || group.status === 201) {
+      try {
+        console.log("Group ID: ", groupId);
+        if (password === confirmPassword) {
+          const user = await axios.post(
+            "/users/admin/",
+            {
+              first_name: firstName,
+              last_name: lastName,
+              email: email,
+              level: level,
+              function: func,
+              password: password,
+              group_id: groupId,
+              is_teamadmin: true
+            },
+            authHeader()
+          );
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
+    window.location.href = "/login";
     //if (user.status === 200  || user.status === 201 || group.status === 200 || group.status === 201) {
     //  setInfo("Drużynowy i grupa stworzono pomyślnie!");
     //} else {

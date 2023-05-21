@@ -21,10 +21,7 @@ const Login = () => {
       }, { headers });
       console.log(response.data.access_token);
       const accessToken = response.data.access_token;
-      saveLocalToken(accessToken);
-
-      console.log("You are Logged: ", isLogged());
-      
+      saveLocalToken(accessToken);  
       window.location.href = "/user";
     } catch (error) {
       console.error("Error!", error);

@@ -9,6 +9,7 @@ import Login from "./components/login/Login";
 import RegisterScout from "./components/registerScout/RegisterScout";
 import RegisterAdmin from "./components/registerAdmin/RegisterAdmin";
 import ResetPassword from "./components/resetPassword/ResetPassword";
+import TeamMembers from "./components/teamMembers/TeamMembers";
 import Home from "./components/home/Home";
 import Badges from "./components/badges/Badges";
 import MyNavbar from "./components/mynavbar/MyNavbar";
@@ -36,6 +37,7 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/badges" element={<Badges />} />
             <Route path="/raport" element={<Raport />} />
+            <Route path="/team_members" element={<TeamMembers />} />
             <Route path="/raport/raport_view" element={<RaportView />} />
             <Route path="/user_requests" element={<UserRequests />} />
             <Route path="*" element={<NotFound />} />

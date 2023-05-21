@@ -79,6 +79,7 @@ const MyNavbar = () => {
             {isLogged() ? (
               <NavDropdown title={username} id="basic-nav-dropdown">
                 <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
+                <NavDropdown.Item href="/team_members">Twoja Drużyna</NavDropdown.Item>
                 <NavDropdown.Item href="/reset_password">
                   Zmień hasło
                 </NavDropdown.Item>
