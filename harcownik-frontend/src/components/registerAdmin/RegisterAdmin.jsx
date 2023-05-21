@@ -116,7 +116,7 @@ const RegisterAdmin = () => {
 
       <br></br>
       <Text style={styles.title}>Załóż konto Drużynowego</Text>
-      <small>Konto Drużynowego zostanie automatycznie zostanie dodane do </small>
+      <small>Konto Drużynowego zostanie automatycznie zostanie dodane do drużyny</small>
       <br></br>
       <TextInput
         style={styles.input}
