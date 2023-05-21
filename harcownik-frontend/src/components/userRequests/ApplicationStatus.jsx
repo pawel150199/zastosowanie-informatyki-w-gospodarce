@@ -18,14 +18,15 @@ function ApplicationStatus() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (isLogged()) {
-        const response = await getMe();
-        const id = response.id;
-        const badges = await getBadgeApplicationStatus(id);
-        getBadgeStatus(badges);
-        const level = await getLevelApplicationStatus(id);
-        getLevelStatus(level);
-      }
+      // if (isLogged()) {
+      // const response = await getMe();
+      // const id = response.id;
+      const badges = await getBadgeApplicationStatus();
+      console.log("Error:", badges);
+      getBadgeStatus(badges);
+      const level = await getLevelApplicationStatus();
+      getLevelStatus(level);
+      // }
     };
 
     fetchData();

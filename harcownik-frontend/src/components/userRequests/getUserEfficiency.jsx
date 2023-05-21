@@ -31,7 +31,7 @@ export const getBadges = async (group) => {
 export const postBadge = async (data, userID, badgeID, status) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/badge_reports/",
+      "http://localhost:8000/me/badge_reports/",
       {
         title: data,
         status: status,
