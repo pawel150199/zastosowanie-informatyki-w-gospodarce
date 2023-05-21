@@ -26,12 +26,14 @@ const RegisterAdmin = () => {
   const [groupId, setGroupId] = useState("");
 
   // Info
+  // eslint-disable-next-line
   const [info, setInfo] = useState("");
 
   const handleRegisterAdmin = async () => {
     const group = null;
     // Add group
     try {
+      // eslint-disable-next-line
       group = await axios.post(
         "/groups",
         {
@@ -54,6 +56,7 @@ const RegisterAdmin = () => {
       try {
         console.log("Group ID: ", groupId);
         if (password === confirmPassword) {
+          // eslint-disable-next-line
           const user = await axios.post(
             "/users/admin/",
             {

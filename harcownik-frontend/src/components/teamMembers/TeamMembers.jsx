@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Container, Spinner, Card, Button, Image} from "react-bootstrap";
+import { Accordion, Container, Spinner, Card, Image} from "react-bootstrap";
 
 import axios from "../../api/api";
 import authHeader from "../../api/authHeader";

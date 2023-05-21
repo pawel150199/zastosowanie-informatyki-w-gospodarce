@@ -4,7 +4,6 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import axios from "../../api/api";
 import { loginHeader } from "../../api/authHeader";
 import { saveLocalToken } from "../../api/utils";
-import isLogged from "../../api/isLogged";
 
 import styles from "./LoginStyle";
 
