@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 
 import getMe from "../../api/getMe";
-import { scoutOrder} from "./raportOrder";
+import { scoutOrder } from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";
 import isLogged from "../../api/isLogged";
 
@@ -66,6 +66,7 @@ export default function SelectionOfTabs() {
       handleSelect(tab.id);
     });
   };
+
   return (
     <div className="jumbotron jumbotronStyle_2 rounded">
       <h1>Podpunkty do rozkazu</h1>
@@ -74,8 +75,10 @@ export default function SelectionOfTabs() {
           <div key={tab.id}>
             <Form.Check
               type="checkbox"
+              className={selectedItems.includes(tab.id) ? "black-checkbox" : ""}
               label={tab.label}
               id={tab.id}
+              // variant="secondary"
               checked={selectedItems.includes(tab.id)}
               onChange={(e) => {
                 console.log("e", e);
