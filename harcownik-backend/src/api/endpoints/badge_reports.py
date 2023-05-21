@@ -49,7 +49,7 @@ def read_badge_reports_in_my_group(
     return badge_reports
 
 
-@router.get("/me/badge_reports", response_model=list[schemas.BadgeReport])
+@router.get("/me/badge_reports", response_model=schemas.BadgeReport)
 def read_my_badges_reports(
     db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)
 ) -> Any:
