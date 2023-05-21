@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, TextInput} from "react-native";
+import { View, Text, TextInput } from "react-native";
 import { Button } from "react-bootstrap";
 
-import axios from "../../api/api"
+import axios from "../../api/api";
 
 import styles from "./RegisterScoutStyle";
 import authHeader from "../../api/authHeader";
@@ -19,7 +19,7 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      console.log(password, confirmPassword)
+      console.log(password, confirmPassword);
       if (password === confirmPassword) {
         const response = await axios.post(
           "/users/scout/",
@@ -33,9 +33,9 @@ const Register = () => {
           },
           authHeader()
         );
-        if (response.status === 200  || response.status === 201) {
+        if (response.status === 200 || response.status === 201) {
           setInfo("Harcerz został poprrawnie dodany");
-        } else{
+        } else {
           setInfo("Harcerz nie został poprawnie dodany");
         }
       }
@@ -93,10 +93,7 @@ const Register = () => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <Button
-        style={styles.button}
-        onClick={handleRegister}
-      >
+      <Button style={styles.button} onClick={handleRegister}>
         Dodaj Harcerza
       </Button>
     </View>

@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class BadgeReportBase(BaseModel):
-    title: str
+    title: Optional[str]
 
 
 class UpdateBadgeReport(BadgeReportBase):

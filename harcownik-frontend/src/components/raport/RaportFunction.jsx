@@ -6,7 +6,7 @@ import authHeader from "../../api/authHeader";
 export const getLevelApplications = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/level_reports/",
+      "http://localhost:8000/group/level_reports/",
       authHeader()
     );
     return response.data;
@@ -18,7 +18,7 @@ export const getLevelApplications = async () => {
 export const getBadgesApplications = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/badge_reports/",
+      "http://localhost:8000/group/badge_reports/",
       authHeader()
     );
     return response.data;
@@ -33,6 +33,7 @@ export const getUsersData = async () => {
       "http://localhost:8000/users/",
       authHeader()
     );
+    console.log("users:", response);
     return response.data;
   } catch (error) {
     console.error(error);

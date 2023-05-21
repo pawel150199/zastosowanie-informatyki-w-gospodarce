@@ -7,7 +7,7 @@ import authHeader from "../../api/authHeader";
 export const getLevel = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/level_reports",
+      "http://localhost:8000/me/level_reports",
       authHeader()
     );
     return response.data;
@@ -19,7 +19,7 @@ export const getLevel = async () => {
 export const postLevelRaports = async (level, userId, status) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/level_reports/",
+      "http://localhost:8000/me/level_reports/",
       {
         title: level,
         status: status,
