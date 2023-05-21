@@ -126,11 +126,12 @@ function Efficiency() {
                   <td>
                     <div className="form-check">
                       <input
-                        className="form-check-input ef"
+                        className={"form-check-input"}
                         type="checkbox"
-                        value=""
+                        variant="dark"
                         name="efficiency"
                         id={`flexCheckDefault_${report.id}`}
+                        checked={report.checked}
                         onChange={(event) =>
                           handleCheckboxChange(event, report)
                         }

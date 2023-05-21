@@ -67,7 +67,6 @@
 
   .dropDownStyle {
     background-color: #c4c2c1;
-    /* background-color: #94908b; */
     margin-left: 0.5%;
     margin-right: 0%;
     text-align: center;
@@ -86,3 +85,5 @@
   .black-checkbox .form-check-input:checked {
     background-color: black !important;
     border-color: black !important;}
+
+  
