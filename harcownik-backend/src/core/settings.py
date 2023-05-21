@@ -11,9 +11,7 @@ class Settings(BaseSettings):
     SERVER_NAME: str = "localhost"
     ALGORITHM: str = "HS256"
     SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
-        "http://localhost:3000"
-    ]
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
 
     # DATABASE
     POSTGRES_SERVER: str = None
@@ -32,7 +30,8 @@ class Settings(BaseSettings):
 
     # EMAIL
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
-    EMAILS_ENABLED: bool = True
+    EMAILS_ENABLED: bool = False
     EMAIL_TEST_USER: str = None
+
 
 settings = Settings()

@@ -7,6 +7,7 @@ from src.api.helper import get_current_teamadmin, get_db
 
 router = APIRouter()
 
+
 # POST
 @router.post("/badges/", response_model=schemas.Badge)
 def create_badge(
@@ -34,11 +35,11 @@ def read_badges(db: Session = Depends(get_db)) -> Any:
 
     result = []
     for group in groups:
-        badges = crud.get_badges_by_group(db, str(group["group"]))
+        badges = crud.get_badges_by_group(db, str(group.group))
         if badges is None or badges == []:
             raise HTTPException(status_code=404, detail="Badges not found")
         one_group = {
-            **group,
+            "group": group.group,
             "badges": [
                 {"name": badge.name, "description": badge.description}
                 for badge in badges

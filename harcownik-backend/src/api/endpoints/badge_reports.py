@@ -3,11 +3,16 @@ from typing import Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
-from src.api.helper import (get_current_teamadmin, get_current_user,
-                            get_current_webadmin,
-                            get_current_webadmin_or_teamadmin, get_db)
+from src.api.helper import (
+    get_current_teamadmin,
+    get_current_user,
+    get_current_webadmin,
+    get_current_webadmin_or_teamadmin,
+    get_db,
+)
 
 router = APIRouter()
+
 
 # POST
 @router.post("/me/badge_reports/", response_model=schemas.BadgeReport)
@@ -44,12 +49,12 @@ def read_badge_reports_in_my_group(
     return badge_reports
 
 
-@router.get("/me/badge_reports", response_model=schemas.BadgeReport)
+@router.get("/me/badge_reports", response_model=list[schemas.BadgeReport])
 def read_my_badges_reports(
     db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)
 ) -> Any:
     me = current_user.id
-    db_badge_report = crud.get_badge_report(db, badge_report_id=me)
+    db_badge_report = crud.get_badge_report_by_user(db, user_id=me)
     if db_badge_report is None or db_badge_report == []:
         raise HTTPException(status_code=404, detail="Badge reports not found")
     return db_badge_report
@@ -64,6 +69,7 @@ def read_my_badges_reports(
 #            detail="Badge report not found"
 #        )
 #    return db_badge_report
+
 
 # DELETE
 @router.delete(

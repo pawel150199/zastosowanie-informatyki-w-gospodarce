@@ -5,24 +5,26 @@ import authHeader from "../../api/authHeader";
 
 import "./UserRequests.css";
 
-export const getBadgeApplicationStatus = async (userID) => {
+export const getBadgeApplicationStatus = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/badge_reports/user/${userID}`,
+      `http://localhost:8000/me/badge_reports`,
       authHeader()
     );
+    console.log("me/badge_reports:", response.data);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getLevelApplicationStatus = async (userID) => {
+export const getLevelApplicationStatus = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/level_reports/user/${userID}`,
+      `http://localhost:8000/me/level_reports`,
       authHeader()
     );
+    console.log("me/level_reports:", response.data);
     return response.data;
   } catch (error) {
     console.error(error);

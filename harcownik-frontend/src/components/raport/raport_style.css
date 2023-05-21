@@ -1,7 +1,10 @@
   /* eslint-disable */
   .jumbotronStyle_0 {
     height: 100px;
-    background-color: #a1aebb;
+    background-color: #c4c2c1;
+    border: 2px solid #5e5d5d; 
+    padding: 20px; 
+    /* background-color: #b4b1ad; */
     overflow: auto;
     text-align: center;
     margin-bottom: 2.5%;
@@ -10,7 +13,10 @@
   .jumbotronStyle_1 {
     height: 400px;
     overflow: auto;
-    background-color: #b4b1ad;
+    background-color: #c4c2c1;
+    border: 2px solid #5e5d5d; 
+    padding: 20px; 
+    /* background-color: #b4b1ad; */
     margin-right: 0.5%;
     margin-bottom: 10px;
     text-align: center;
@@ -20,7 +26,10 @@
   .jumbotronStyle_2 {
     height: 35rem;
     overflow: auto;
-    background-color: #b4b1ad;
+    background-color: #c4c2c1;
+    border: 2px solid #5e5d5d; 
+    padding: 20px; 
+    /* background-color: #b4b1ad; */
     margin-left: 0.5%;
     margin-bottom: 10px;
     text-align: center;
@@ -29,7 +38,10 @@
  .jumbotronStyle_3 {
     height: 400px;
     overflow: auto;
-    background-color: #b4b1ad;
+    background-color:#c4c2c1;
+    border: 2px solid #5e5d5d; 
+    padding: 20px; 
+    /* background-color: #b4b1ad; */
     margin-left: 0.5%;
     margin-right: 0%;
     text-align: center;
@@ -38,7 +50,9 @@
   .jumbotronStyle_4 {
     height: 400px;
     overflow: auto;
-    background-color: #b4b1ad;
+    background-color: #c4c2c1;
+    border: 2px solid #5e5d5d; 
+    padding: 20px; 
     margin-right: 0.5%;
     text-align: center;
     margin-bottom: 5%;
@@ -52,7 +66,7 @@
   }
 
   .dropDownStyle {
-    background-color: #94908b;
+    background-color: #c4c2c1;
     margin-left: 0.5%;
     margin-right: 0%;
     text-align: center;
@@ -67,4 +81,9 @@
   .container {
     margin-top: 0;
   }
+  
+  .black-checkbox .form-check-input:checked {
+    background-color: black !important;
+    border-color: black !important;}
+
   
