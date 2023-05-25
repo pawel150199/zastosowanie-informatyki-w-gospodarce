@@ -2,7 +2,7 @@
 
 set -x
 
-mypy src
+mypy ../src
 black ../src --check
 isort --recursive --check-only ../src
 flake8
