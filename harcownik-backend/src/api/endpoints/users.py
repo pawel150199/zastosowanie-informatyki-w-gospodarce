@@ -56,7 +56,7 @@ def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
-            status_code=401,
+            status_code=400,
             detail="The user with this username already exist in the system",
         )
     if settings.EMAILS_ENABLED and user.email:
@@ -143,7 +143,7 @@ def delete_user(
 ) -> Any:
     user = crud.get_user(db=db, user_id=user_id)
     if user.group_id != current_user.group_id:
-        raise HTTPException(status_code=401, detail="Not enough privileges")
+        raise HTTPException(status_code=403, detail="Not enough privileges")
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     user = crud.delete_user(db=db, user_id=user_id)

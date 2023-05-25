@@ -27,6 +27,10 @@ def get_groups(db: Session):
     return db.query(GroupModel).all()
 
 
+def get_group_by_number(db: Session, number: int):
+    return db.query(GroupModel).filter(GroupModel.number == number).first()
+
+
 # DELETE
 def delete_group(db: Session, group_id: int):
     db_group = db.query(GroupModel).get(group_id)

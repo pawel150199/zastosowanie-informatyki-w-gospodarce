@@ -3,7 +3,7 @@ from typing import Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
-from src.api.helper import (get_current_teamadmin,
+from src.api.helper import (get_current_user, get_current_webadmin,
                             get_current_webadmin_or_teamadmin, get_db)
 
 router = APIRouter()
@@ -11,12 +11,20 @@ router = APIRouter()
 # POST
 @router.post("/groups/", response_model=schemas.Group)
 def create_group(group: schemas.CreateGroup, db: Session = Depends(get_db)) -> Any:
+    group_in = crud.get_group_by_number(db, number=group.number)
+    if group_in:
+        raise HTTPException(
+            status_code=400,
+            detail="The group exist in system!",
+        )
     return crud.create_group(db=db, group=group)
 
 
 # GET
 @router.get("/groups/", response_model=list[schemas.Group])
-def read_groups(db: Session = Depends(get_db)) -> Any:
+def read_groups(
+    db: Session = Depends(get_db), _: models.User = Depends(get_current_user)
+) -> Any:
     groups = crud.get_groups(db)
     if groups is None or groups == []:
         raise HTTPException(status_code=404, detail="Groups not found")
@@ -24,7 +32,11 @@ def read_groups(db: Session = Depends(get_db)) -> Any:
 
 
 @router.get("/groups/{group_id}", response_model=schemas.Group)
-def read_group(group_id: int, db: Session = Depends(get_db)) -> Any:
+def read_group(
+    group_id: int,
+    db: Session = Depends(get_db),
+    _: models.User = Depends(get_current_user),
+) -> Any:
     db_group = crud.get_group(db, group_id=group_id)
     if db_group is None:
         raise HTTPException(status_code=404, detail="Group not found")
@@ -36,7 +48,7 @@ def read_group(group_id: int, db: Session = Depends(get_db)) -> Any:
 def delete_group(
     group_id: int,
     db: Session = Depends(get_db),
-    _: models.User = Depends(get_current_teamadmin),
+    _: models.User = Depends(get_current_webadmin),
 ) -> Any:
     group = crud.get_group(db=db, group_id=group_id)
     if not group:
