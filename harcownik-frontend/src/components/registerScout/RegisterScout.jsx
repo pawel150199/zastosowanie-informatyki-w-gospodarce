@@ -1,8 +1,9 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import { View, Text, TextInput } from "react-native";
 import { Button } from "react-bootstrap";
 
-import axios from "../../api/api"
+import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
 
 import styles from "./RegisterScoutStyle";

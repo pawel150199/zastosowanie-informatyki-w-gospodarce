@@ -14,7 +14,11 @@ export const getBadgeApplicationStatus = async () => {
     console.log("me/badge_reports:", response.data);
     return response.data;
   } catch (error) {
-    console.error(error);
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
   }
 };
 
@@ -27,6 +31,10 @@ export const getLevelApplicationStatus = async () => {
     console.log("me/level_reports:", response.data);
     return response.data;
   } catch (error) {
-    console.error(error);
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
   }
 };
