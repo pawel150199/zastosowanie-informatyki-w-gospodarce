@@ -19,7 +19,6 @@ function Efficiency() {
         setBadgesApplications(levelBadgesData);
       } catch (error) {
         setBadgesApplications([]);
-        console.log("ERROR", error);
       }
 
       const usersInformation = await getUsersData();

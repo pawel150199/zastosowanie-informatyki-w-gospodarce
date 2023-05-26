@@ -11,7 +11,6 @@ export const getBadgeApplicationStatus = async () => {
       `http://localhost:8000/me/badge_reports`,
       authHeader()
     );
-    console.log("me/badge_reports:", response.data);
     return response.data;
   } catch (error) {
     if (error.response.status === 404) {
@@ -28,7 +27,6 @@ export const getLevelApplicationStatus = async () => {
       `http://localhost:8000/me/level_reports`,
       authHeader()
     );
-    console.log("me/level_reports:", response.data);
     return response.data;
   } catch (error) {
     if (error.response.status === 404) {

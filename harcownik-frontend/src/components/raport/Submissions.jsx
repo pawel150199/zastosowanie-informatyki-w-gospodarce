@@ -19,7 +19,6 @@ function Submissions() {
         setlevelApplications(levelBadgesData);
       } catch (error) {
         setlevelApplications([]);
-        console.log("ERROR", error);
       }
 
       const usersInformation = await getUsersData();

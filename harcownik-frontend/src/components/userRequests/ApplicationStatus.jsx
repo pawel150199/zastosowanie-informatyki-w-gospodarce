@@ -23,18 +23,15 @@ function ApplicationStatus() {
       // const id = response.id;
       try {
         const badges = await getBadgeApplicationStatus();
-        console.log("Error:", badges);
         getBadgeStatus(badges);
       } catch (error) {
         getBadgeStatus([]);
-        console.log("ERROR", error);
       }
       try {
         const level = await getLevelApplicationStatus();
         getLevelStatus(level);
       } catch (error) {
         getLevelStatus([]);
-        console.log("ERROR", error);
       }
 
       // }
