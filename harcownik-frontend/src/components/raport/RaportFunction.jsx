@@ -11,7 +11,11 @@ export const getLevelApplications = async () => {
     );
     return response.data;
   } catch (error) {
-    console.error(error);
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
   }
 };
 
@@ -23,7 +27,11 @@ export const getBadgesApplications = async () => {
     );
     return response.data;
   } catch (error) {
-    console.error(error);
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
   }
 };
 

@@ -7,15 +7,19 @@ import { tabs } from "./raportOrder";
 import "./raport_style.css";
 
 function Submissions() {
-  const [badgesApplications, setBadgesApplications] = useState([]);
+  const [levelApplications, setlevelApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
   const [selectedItemsReported, setSelectedItemsReported] = useState([]);
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const levelBadgesData = await getBadgesApplications();
-      setBadgesApplications(levelBadgesData);
+      try {
+        const levelBadgesData = await getBadgesApplications();
+        setlevelApplications(levelBadgesData);
+      } catch (error) {
+        setlevelApplications([]);
+      }
 
       const usersInformation = await getUsersData();
       setUsersData(usersInformation);
@@ -65,7 +69,7 @@ function Submissions() {
   const handleAllCheckboxChange = (checkedIds) => {
     checkedIds.forEach((id) => {
       const numericId = parseInt(id);
-      const selectedBadge = badgesApplications.find(
+      const selectedBadge = levelApplications.find(
         (badge) => badge.id === numericId
       );
       if (selectedBadge) {
@@ -114,7 +118,7 @@ function Submissions() {
             </tr>
           </thead>
           <tbody>
-            {badgesApplications.map((report) => {
+            {levelApplications.map((report) => {
               const user = usersData.find((user) => user.id === report.user_id);
               if (
                 report.status !== "zgłoszona" &&

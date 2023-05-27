@@ -14,8 +14,12 @@ function Efficiency() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const levelBadgesData = await getLevelApplications();
-      setBadgesApplications(levelBadgesData);
+      try {
+        const levelBadgesData = await getLevelApplications();
+        setBadgesApplications(levelBadgesData);
+      } catch (error) {
+        setBadgesApplications([]);
+      }
 
       const usersInformation = await getUsersData();
       setUsersData(usersInformation);

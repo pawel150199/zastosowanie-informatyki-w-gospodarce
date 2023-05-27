@@ -21,11 +21,19 @@ function ApplicationStatus() {
       // if (isLogged()) {
       // const response = await getMe();
       // const id = response.id;
-      const badges = await getBadgeApplicationStatus();
-      console.log("Error:", badges);
-      getBadgeStatus(badges);
-      const level = await getLevelApplicationStatus();
-      getLevelStatus(level);
+      try {
+        const badges = await getBadgeApplicationStatus();
+        getBadgeStatus(badges);
+      } catch (error) {
+        getBadgeStatus([]);
+      }
+      try {
+        const level = await getLevelApplicationStatus();
+        getLevelStatus(level);
+      } catch (error) {
+        getLevelStatus([]);
+      }
+
       // }
     };
 
