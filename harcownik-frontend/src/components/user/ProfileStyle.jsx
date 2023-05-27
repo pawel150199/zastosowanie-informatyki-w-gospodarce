@@ -3,17 +3,16 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   cardcontainer: {
     flex: 1,
-    // backgroundColor: "green",
-    alignItems: "left",
+    alignItems: "center",
     justifyContent: "center",
     height: "30rem",
   },
-  //   skillsContainer: {
-  //     // flex: 1,
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //     height: "30rem",
-  //   },
+  skillsContainer: {
+    flex: 1,
+    alignItems: "left",
+    justifyContent: "flex-start",
+    height: "30rem",
+  },
   imageContainer: {
     width: "10rem",
     height: "10rem",
@@ -29,32 +28,15 @@ const styles = StyleSheet.create({
   textContainer: {
     alignItems: "center",
   },
-  // title: {
-  //   fontSize: 24,
-  //   fontWeight: "bold",
-  //   marginBottom: 20,
-  // },
-  // input: {
-  //   width: "40%",
-  //   height: 50,
-  //   borderWidth: 1,
-  //   borderColor: "#ccc",
-  //   borderRadius: 5,
-  //   paddingHorizontal: 10,
-  //   marginBottom: 20,
-  // },
-  // button: {
-  //   width: "40%",
-  //   height: 50,
-  //   backgroundColor: "#007bff",
-  //   borderRadius: 5,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   marginBottom: 20,
-  // },
-  //   link: {
-  //     color: "#007bff",
-  //   },
+  textInformation: {
+    alignItems: "center",
+  },
+  customBadge: {
+    backgroundColor: "gray",
+    fontSize: 16,
+    padding: "10px 15px",
+    borderRadius: 5,
+  },
 });
 
 export default styles;

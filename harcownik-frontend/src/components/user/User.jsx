@@ -4,6 +4,7 @@ import { Container, Row, Col, Badge, Image } from "react-bootstrap";
 import { FaMedal } from "react-icons/fa";
 import ProfileCard from "./ProfileCard";
 import SkillsCard from "./SkillsCard";
+import TeamMembers from "../teamMembers/TeamMembers";
 
 const UserPage = () => {
   // User data mockup
@@ -74,6 +75,9 @@ const UserPage = () => {
       </Row>
       <Row>
         <SkillsCard />
+      </Row>
+      <Row>
+        <TeamMembers />
       </Row>
     </Container>
   );
