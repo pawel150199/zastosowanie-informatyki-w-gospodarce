@@ -1,47 +1,60 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { FaMedal } from "react-icons/fa";
+import { View, Text } from "react-native";
 import Badge from "react-bootstrap/Badge";
 import styles from "./ProfileStyle";
-
-import authHeader from "../../api/authHeader";
+import { getMeData, getMyBadge } from "./ProfileFunctions";
 
 function SkillsCard() {
+  const [meData, setMeData] = useState([]);
+  const [myBadge, setMyBadge] = useState([]);
+
+  const getMe = async () => {
+    try {
+      const response = await getMeData();
+      setMeData(response.data);
+      getBadge(response.data.badge_id);
+    } catch (error) {
+      setMeData([]);
+    }
+  };
+
+  const getBadge = async (id) => {
+    try {
+      const response = await getMyBadge(id);
+      console.log("Get me response:", response.data.name);
+      setMyBadge(response.data.name);
+    } catch (error) {
+      setMyBadge([]);
+    }
+  };
+
+  useEffect(() => {
+    getMe();
+  }, []);
+
   return (
-    // console.log("dupa"),
-    <View className="jumbotron" style={styles.skillsContainer}>
-      <h1>Twoje umiejętności:</h1>
-      <div className="d-flex flex-wrap">
-        <Badge
-          // variant="secondary"
-          // className="mr-3 mb-3"
-          style={styles.customBadge}
-        >
-          Buszmen
+    <View style={styles.skillsContainer}>
+      <Text style={styles.heading}>
+        Twoje umiejętności <FaMedal size={40} />
+      </Text>
+      <View style={styles.divider} />
+
+      <View style={styles.badgeContainer}>
+        <Badge containerStyle={styles.customBadge}>
+          <Text style={styles.badgeText}>{myBadge}</Text>
         </Badge>
-        <Badge
-          // variant="secondary"
-          // className="mr-3 mb-3"
-          style={styles.customBadge}
-        >
-          Lekarz
+        {/* <Badge containerStyle={styles.customBadge}>
+          <Text style={styles.badgeText}>Lekarz</Text>
         </Badge>
-        <Badge
-          // variant="secondary"
-          // className="mr-3 mb-3"
-          style={styles.customBadge}
-        >
-          Nawigator
+        <Badge containerStyle={styles.customBadge}>
+          <Text style={styles.badgeText}>Nawigator</Text>
         </Badge>
-        <Badge
-          // variant="secondary"
-          // className="mr-3 mb-3"
-          style={styles.customBadge}
-        >
-          Wojownik
-        </Badge>
-      </div>
+        <Badge containerStyle={styles.customBadge}>
+          <Text style={styles.badgeText}>Wojownik</Text>
+        </Badge> */}
+      </View>
     </View>
   );
 }

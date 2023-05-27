@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
   skillsContainer: {
     flex: 1,
     alignItems: "left",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    padding: 20,
     height: "30rem",
   },
   imageContainer: {
@@ -31,11 +32,26 @@ const styles = StyleSheet.create({
   textInformation: {
     alignItems: "center",
   },
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: "black",
+    marginVertical: 10,
+  },
+  badgeContainer: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   customBadge: {
     backgroundColor: "gray",
-    fontSize: 16,
-    padding: "10px 15px",
-    borderRadius: 5,
+  },
+  badgeText: {
+    color: "white",
+    fontSize: 22,
+  },
+  heading: {
+    fontSize: 40,
+    marginBottom: 10,
   },
 });
 
