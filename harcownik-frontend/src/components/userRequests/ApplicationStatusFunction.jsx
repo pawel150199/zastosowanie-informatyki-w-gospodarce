@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios from "axios";
+import axios from "../../api/api";
 
 import authHeader from "../../api/authHeader";
 
@@ -8,7 +8,7 @@ import "./UserRequests.css";
 export const getBadgeApplicationStatus = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/me/badge_reports`,
+      `/me/badge_reports`,
       authHeader()
     );
     return response.data;
@@ -24,7 +24,7 @@ export const getBadgeApplicationStatus = async () => {
 export const getLevelApplicationStatus = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/me/level_reports`,
+      `/me/level_reports`,
       authHeader()
     );
     return response.data;

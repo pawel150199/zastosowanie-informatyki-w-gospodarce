@@ -20,7 +20,6 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      console.log(password, confirmPassword);
       if (password === confirmPassword) {
         const response = await axios.post(
           "/users/scout/",

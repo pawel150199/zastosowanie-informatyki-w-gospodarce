@@ -1,12 +1,11 @@
 /* eslint-disable */
-import axios from "axios";
-import { async } from "regenerator-runtime";
+import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
 
 export const getLevelApplications = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/group/level_reports/",
+      "/group/level_reports/",
       authHeader()
     );
     return response.data;
@@ -22,7 +21,7 @@ export const getLevelApplications = async () => {
 export const getBadgesApplications = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/group/badge_reports/",
+      "/group/badge_reports/",
       authHeader()
     );
     return response.data;
@@ -38,7 +37,7 @@ export const getBadgesApplications = async () => {
 export const getUsersData = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/users/",
+      "/users/",
       authHeader()
     );
     console.log("users:", response);

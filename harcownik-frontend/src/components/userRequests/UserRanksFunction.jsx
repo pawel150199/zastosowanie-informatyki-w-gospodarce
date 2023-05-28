@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios from "axios";
+import axios from "../../api/api";
 
 import "./UserRequests.css";
 import authHeader from "../../api/authHeader";
@@ -7,7 +7,7 @@ import authHeader from "../../api/authHeader";
 export const getLevel = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/me/level_reports",
+      "/me/level_reports",
       authHeader()
     );
     return response.data;
@@ -19,7 +19,7 @@ export const getLevel = async () => {
 export const postLevelRaports = async (level, userId, status) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/me/level_reports/",
+      "/me/level_reports/",
       {
         title: level,
         status: status,
@@ -28,6 +28,7 @@ export const postLevelRaports = async (level, userId, status) => {
       authHeader()
     );
     console.log("postLevelRaport:", response);
+    window.location.reload();
   } catch (error) {
     console.error(error);
   }

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Image } from "react-native";
 import styles from "./ProfileStyle";
+
 import { getMeData, getMyGroupData } from "./ProfileFunctions";
 
 function ProfileCard() {
@@ -38,7 +39,7 @@ function ProfileCard() {
   return (
     <View classname="jumbotron rounded" style={styles.cardcontainer}>
       <View style={styles.imageContainer}>
-        <Image source={require("./Default_pfp.png")} style={styles.image} />
+        <Image source="/img/default.png" style={styles.image} />
       </View>
       <View style={styles.textInformation}>
         <h1>

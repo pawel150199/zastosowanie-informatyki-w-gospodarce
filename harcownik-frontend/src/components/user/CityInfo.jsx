@@ -21,7 +21,7 @@ const CityInfo = ({ city }) => {
         setFlag(flagUrl);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, [city]);
 

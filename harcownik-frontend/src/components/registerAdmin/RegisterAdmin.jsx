@@ -1,11 +1,13 @@
 /* eslint-disable */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import axios from "../../api/api"
 import authHeader from "../../api/authHeader";
+import addAdmin from "./addAdmin";
+import addGroup from "./addGroup";
 
 import styles from "./RegisterAdminStyle";
 
@@ -30,61 +32,19 @@ const RegisterAdmin = () => {
   // eslint-disable-next-line
   const [info, setInfo] = useState(" ");
 
-  const handleRegisterAdmin = async () => {
-    const group = "";
-    const user = "";
-    // Add group
-    try {
-      // eslint-disable-next-line
-      group = await axios.post(
-        "/groups",
-        {
-          name: name,
-          number: number,
-          szczep: szczep,
-          city: city,
-        },
-        authHeader()
-      );
-      console.log("group.data: ", group.data);
-      console.log("group.data.id: ", group.data.id);
-      setGroupId(group.data.id);
-    } catch (error) {
-      console.error(error);
-    }
+  useEffect(() => {
+    handleRegisterAdmin();
+  },[]);
 
-    // Add teamadmin and add him to created group
-    if (group.status === 200 || group.status === 201) {
-      try {
-        console.log("Group ID: ", groupId);
-        if (password === confirmPassword) {
-          // eslint-disable-next-line
-          const user = await axios.post(
-            "/users/admin/",
-            {
-              first_name: firstName,
-              last_name: lastName,
-              email: email,
-              level: level,
-              function: func,
-              password: password,
-              group_id: groupId,
-              is_teamadmin: true
-            },
-            authHeader()
-          );
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    if (user.status === 201 || group.status === 201) {
-      window.location.href = "/login";
-    }
-    if (user.status === 200  || user.status === 201 || group.status === 200 || group.status === 201) {
+  const handleRegisterAdmin = async () => {
+    try {
+      const group = await addGroup(name, number, szczep, city);
+      const admin = await addAdmin(firstName, lastName, email, level, func, password, confirmPassword, group.data.id);
       setInfo("Drużynowy i grupa stworzono pomyślnie!");
-    } else {
+      window.location.href = "/login";
+    } catch (error) {
       setInfo("Wystąpił błąd!");
+      console.error(error);
     }
   };
 
