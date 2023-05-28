@@ -1,5 +1,5 @@
 /* eslint-disable */
-import axios from "axios";
+import axios from "../../api/api";
 
 import "./UserRequests.css";
 import authHeader from "../../api/authHeader";
@@ -7,7 +7,7 @@ import authHeader from "../../api/authHeader";
 export const getBadgeGroups = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8000/badges/groups",
+      "/badges/groups",
       authHeader()
     );
     return response.data;
@@ -19,7 +19,7 @@ export const getBadgeGroups = async () => {
 export const getBadges = async (group) => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/badges/group/${group}`,
+      `/badges/group/${group}`,
       authHeader()
     );
     return response.data;
@@ -31,7 +31,7 @@ export const getBadges = async (group) => {
 export const postBadge = async (data, userID, badgeID, status) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/me/badge_reports/",
+      "/me/badge_reports/",
       {
         title: data,
         status: status,
@@ -41,6 +41,7 @@ export const postBadge = async (data, userID, badgeID, status) => {
       authHeader()
     );
     console.log("postBadge:", response);
+    window.location.reload();
   } catch (error) {
     console.error(error);
   }

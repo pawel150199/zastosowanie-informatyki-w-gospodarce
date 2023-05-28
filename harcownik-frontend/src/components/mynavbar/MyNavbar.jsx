@@ -24,7 +24,7 @@ const MyNavbar = () => {
 
   const handleLogout = () => {
     removeLocalToken("token");
-    window.location.reload();
+    window.location.href = "/";
   };
 
   const getName = async () => {

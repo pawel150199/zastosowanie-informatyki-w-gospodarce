@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     marginBottom: 10,
+    textAlign: "center",
   },
 });
 

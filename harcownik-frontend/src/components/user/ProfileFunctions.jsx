@@ -1,10 +1,10 @@
 /* eslint-disable */
-import axios from "axios";
+import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
 
 export const getMeData = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/me", authHeader());
+    const response = await axios.get("/me", authHeader());
     return response;
   } catch (error) {
     if (error.response.status === 404) {
@@ -18,7 +18,7 @@ export const getMeData = async () => {
 export const getMyGroupData = async (groupId) => {
   try {
     const response = await axios.get(
-      `http://localhost:8000/groups/${groupId}`,
+      `/groups/${groupId}`,
       authHeader()
     );
     return response;
@@ -33,9 +33,8 @@ export const getMyGroupData = async (groupId) => {
 
 export const getMyBadge = async (badgeId) => {
   try {
-    console.log("BadgeId:", badgeId);
     const response = await axios.get(
-      `http://localhost:8000/badges/${badgeId}`,
+      `/badges/${badgeId}`,
       authHeader()
     );
     return response;

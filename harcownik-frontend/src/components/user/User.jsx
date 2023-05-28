@@ -1,12 +1,11 @@
 /* eslint-disable */
 import React from "react";
-import { Container, Row, Col, Badge, Image } from "react-bootstrap";
-import { FaMedal } from "react-icons/fa";
+import { Container, Row, Col } from "react-bootstrap";
+
 import ProfileCard from "./ProfileCard";
 import SkillsCard from "./SkillsCard";
-import TeamMembers from "../teamMembers/TeamMembers";
 
-const UserPage = () => {
+const User = () => {
   return (
     <Container>
       <Row>
@@ -17,11 +16,8 @@ const UserPage = () => {
           <SkillsCard />
         </Col>
       </Row>
-      {/* <Row>
-        <TeamMembers />
-      </Row> */}
     </Container>
   );
 };
 
-export default UserPage;
+export default User;
