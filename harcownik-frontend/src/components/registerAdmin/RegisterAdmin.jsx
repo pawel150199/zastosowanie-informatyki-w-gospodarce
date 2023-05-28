@@ -39,9 +39,7 @@ const RegisterAdmin = () => {
   const handleRegisterAdmin = async () => {
     try {
       const group = await addGroup(name, number, szczep, city);
-      console.log("GroupID: ", group.data);
       const admin = await addAdmin(firstName, lastName, email, level, func, password, confirmPassword, group.data.id);
-      console.log("ADMIN: ", admin.data);
       setInfo("Drużynowy i grupa stworzono pomyślnie!");
       window.location.href = "/login";
     } catch (error) {
