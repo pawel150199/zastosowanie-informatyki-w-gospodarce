@@ -21,7 +21,7 @@ export const getLevelApplications = async () => {
 export const getBadgesApplications = async () => {
   try {
     const response = await axios.get(
-      "group/badge_reports/",
+      "/group/badge_reports/",
       authHeader()
     );
     return response.data;
