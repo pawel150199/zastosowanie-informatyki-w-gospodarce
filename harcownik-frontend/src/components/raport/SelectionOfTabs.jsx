@@ -8,12 +8,16 @@ import getMe from "../../api/getMe";
 import { scoutOrder } from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";
 import isLogged from "../../api/isLogged";
+import { getMyGroupData } from "./RaportFunction";
+// import { getMeData } from "../../user/ProfileFunctions.jsx";
 
 import "./raport_style.css";
 
 export let orderContent = "";
 export let fileContent = "";
 export const userData = "";
+export let scoutSign = "";
+export let scoutCity = "";
 
 export default function SelectionOfTabs() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -23,7 +27,11 @@ export default function SelectionOfTabs() {
       if (isLogged()) {
         const response = await getMe();
         const userData = response.first_name + "  " + response.last_name;
-        return userData;
+        scoutSign = response.first_name + " " + response.last_name;
+
+        const responseData = await getMyGroupData();
+        // console.log("Scout:", response);
+        scoutCity = responseData.city;
       }
     };
     fetchData();

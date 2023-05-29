@@ -3,7 +3,7 @@ import React from "react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { useState, useEffect } from "react";
-
+import { scoutSign, scoutCity } from "./SelectionOfTabs";
 import { getMeData } from "./RaportFunction";
 
 function getCurrentYear() {
@@ -144,6 +144,23 @@ export const scoutOrder = ({}) => {
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
 
+  const monthNames = [
+    "stycznia",
+    "lutego",
+    "marca",
+    "kwietnia",
+    "maja",
+    "czerwca",
+    "lipca",
+    "sierpnia",
+    "września",
+    "października",
+    "listopada",
+    "grudnia",
+  ];
+
+  const monthWord = monthNames[month - 1];
+
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
 
   // console.log("USER:", sign);
@@ -167,7 +184,11 @@ export const scoutOrder = ({}) => {
       author: "Harcownik App",
     },
     content: [
-      { text: `${day}.${month}.${year}`, style: "date", alignment: "right" },
+      {
+        text: `${scoutCity}, ${day} ${monthWord} ${year}`,
+        style: "date",
+        alignment: "right",
+      },
       {
         text: `Rozkaz L. ${month}/${year}`,
         style: "title",
@@ -175,7 +196,7 @@ export const scoutOrder = ({}) => {
       },
       ...patternTexts,
       { text: "Czuwaj!", style: "rightAlign" },
-      { text: `phm.`, style: "rightAlign" },
+      { text: `phm.${scoutSign}`, style: "rightAlign" },
       {
         text: "Wygenerowane za pomocą aplikacji Harcownik",
         style: "centerAlign",
@@ -214,28 +235,27 @@ export const scoutOrder = ({}) => {
   //   </div>
   // );
 
-  return (
-    <div>
-      <h4 style={{ textAlign: "right" }}>
-        {day}.{month}.{year}
-      </h4>
-      <h1 style={{ textAlign: "center" }}>
-        Rozkaz L. {month}/{year}
-      </h1>
-      {patternTexts.map((pattern, index) => (
-        <div key={index}>
-          <h3>{pattern.text[0].text}</h3>
-          {pattern.text[1].text.split("\n").map((line, lineIndex) => (
-            <p key={lineIndex}>{line}</p>
-          ))}
-        </div>
-      ))}
-      <p style={{ textAlign: "right" }}>Czuwaj!</p>
-      <p style={{ textAlign: "right" }}>phm. </p>
-      <p style={{ textAlign: "center" }}>
-        Wygenerowane za pomocą aplikacji Harcownik
-      </p>
-      <button onClick={generatePDF}>Generuj PDF</button>
-    </div>
-  );
+  return generatePDF();
+  // <div>
+  //   <h4 style={{ textAlign: "right" }}>
+  //     {day}.{month}.{year}
+  //   </h4>
+  //   <h1 style={{ textAlign: "center" }}>
+  //     Rozkaz L. {month}/{year}
+  //   </h1>
+  //   {patternTexts.map((pattern, index) => (
+  //     <div key={index}>
+  //       <h3>{pattern.text[0].text}</h3>
+  //       {pattern.text[1].text.split("\n").map((line, lineIndex) => (
+  //         <p key={lineIndex}>{line}</p>
+  //       ))}
+  //     </div>
+  //   ))}
+  //   <p style={{ textAlign: "right" }}>Czuwaj!</p>
+  //   <p style={{ textAlign: "right" }}>phm.{scoutSign} </p>
+  //   <p style={{ textAlign: "center" }}>
+  //     Wygenerowane za pomocą aplikacji Harcownik
+  //   </p>
+  //   <button onClick={generatePDF}>Generuj PDF</button>
+  // </div>
 };
