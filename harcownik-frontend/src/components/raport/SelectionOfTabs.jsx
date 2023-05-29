@@ -56,7 +56,6 @@ export default function SelectionOfTabs() {
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
-
     orderContent = scoutOrder(userData);
   }
 

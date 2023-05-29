@@ -1,7 +1,10 @@
 /* eslint-disable */
 import React from "react";
-import { saveAs } from "file-saver";
-// import { Document, Page, Text, View, StyleSheet } from "react-pdf/renderer";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import { useState, useEffect } from "react";
+
+import { getMeData } from "./RaportFunction";
 
 function getCurrentYear() {
   const now = new Date();
@@ -9,10 +12,10 @@ function getCurrentYear() {
 }
 
 const currentYear = getCurrentYear();
+export let userSign = null;
 export function updateTabs(updatedTabs) {
   tabs = updatedTabs;
 }
-export let selectedLevels = [];
 export let tabs = [
   {
     id: "0",
@@ -72,25 +75,25 @@ export let tabs = [
     id: "8",
     label: "Zamknięcie próby na stopień ",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny zamykam próbę i przyznaję stopień:\n`,
+    patternText: `\nNa wniosek Rady Drużyny z dnia ……… zamykam próbę i przyznaję stopień …….\n`,
   },
   {
     id: "9",
     label: "Otwarcie próby na stopień",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny otwieram próbę na stopień:\n`,
+    patternText: `\nNa wniosek Rady Drużyny z dnia ………. otwieram próbę na stopień ……:\n`,
   },
   {
     id: "10",
     label: "Zamknięcie próby na sprawność",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny zamykam próbę na sprawność:\n`,
+    patternText: `\nNa wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:\n`,
   },
   {
     id: "11",
     label: "Otwarcie próby na sprawność",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny otwieram próbę na sprawność :\n`,
+    patternText: `\nNa wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:\n`,
   },
   {
     id: "12",
@@ -119,32 +122,120 @@ export let tabs = [
 ];
 
 export const scoutOrder = ({}) => {
+  // const [usersData, setUsersData] = useState([]);
+  let userData = [];
+
+  // const getSign = async () => {
+  //   try {
+  //     const usersInformation = await getMeData();
+  //     const userData = usersInformation.data;
+  //     const sign_ = userData.first_name + " " + userData.last_name;
+  //     console.log("TABLICA:", sign_);
+  //     return sign_;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+  // const sign = getSign();
+
+  pdfMake.vfs = pdfFonts.pdfMake.vfs;
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
+
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
-  const patternTexts = selectedTabs.map((tab, index) => (
-    <div key={tab.id}>
-      <h3>{`${index + 1}. ${tab.label}`}</h3>
-      {tab.patternText.split("\n").map((line, lineIndex) => (
-        <p key={lineIndex}>{line}</p>
-      ))}
-    </div>
-  ));
+
+  // console.log("USER:", sign);
+  // const patternTexts = selectedTabs.map((tab, index) => (
+  //   <div key={tab.id}>
+  //     <h3>{`${index + 1}. ${tab.label}`}</h3>
+  //     <p>{tab.patternText}</p>
+  //   </div>
+  // ));
+
+  const patternTexts = selectedTabs.map((tab, index) => ({
+    text: [
+      { text: `${index + 1}. ${tab.label}\n`, fontSize: 14, bold: true },
+      { text: tab.patternText.split("\n").join("\n\n") },
+    ],
+  }));
+
+  const documentDefinition = {
+    info: {
+      title: `Rozkaz ${month}/${year}`,
+      author: "Harcownik App",
+    },
+    content: [
+      { text: `${day}.${month}.${year}`, style: "date", alignment: "right" },
+      {
+        text: `Rozkaz L. ${month}/${year}`,
+        style: "title",
+        alignment: "center",
+      },
+      ...patternTexts,
+      { text: "Czuwaj!", style: "rightAlign" },
+      { text: `phm.`, style: "rightAlign" },
+      {
+        text: "Wygenerowane za pomocą aplikacji Harcownik",
+        style: "centerAlign",
+      },
+    ],
+    styles: {
+      date: { fontSize: 12 },
+      title: { fontSize: 18, bold: true, margin: [0, 20, 0, 20] },
+      rightAlign: { alignment: "right", margin: [0, 10, 0, 0] },
+      centerAlign: { alignment: "center", margin: [0, 10, 0, 20] },
+    },
+  };
+
+  const generatePDF = () => {
+    // pdfMake.createPdf(documentDefinition).open();
+    pdfMake
+      .createPdf(documentDefinition)
+      .open(
+        {},
+        window.open("", "_blank"),
+        null,
+        null,
+        null,
+        null,
+        null,
+        "filename.pdf"
+      );
+  };
+
+  // return (
+  //   <div>
+  //     <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{currentYear}</h1>
+  //     <p>{patternTexts}</p>
+  //     <p style={{ textAlign: "right" }}>Czuwaj!</p>
+  //     <p style={{ textAlign: "right" }}>phm. </p>
+  //   </div>
+  // );
 
   return (
     <div>
       <h4 style={{ textAlign: "right" }}>
         {day}.{month}.{year}
       </h4>
-      <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{year}</h1>
-      {patternTexts}
+      <h1 style={{ textAlign: "center" }}>
+        Rozkaz L. {month}/{year}
+      </h1>
+      {patternTexts.map((pattern, index) => (
+        <div key={index}>
+          <h3>{pattern.text[0].text}</h3>
+          {pattern.text[1].text.split("\n").map((line, lineIndex) => (
+            <p key={lineIndex}>{line}</p>
+          ))}
+        </div>
+      ))}
       <p style={{ textAlign: "right" }}>Czuwaj!</p>
       <p style={{ textAlign: "right" }}>phm. </p>
       <p style={{ textAlign: "center" }}>
         Wygenerowane za pomocą aplikacji Harcownik
       </p>
+      <button onClick={generatePDF}>Generuj PDF</button>
     </div>
   );
 };
