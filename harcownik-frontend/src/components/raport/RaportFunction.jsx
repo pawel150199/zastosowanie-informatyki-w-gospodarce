@@ -49,3 +49,16 @@ export const getMeData = async () => {
     }
   }
 };
+
+export const getMyGroupData = async () => {
+  try {
+    const response = await axios.get("/me/group", authHeader());
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};

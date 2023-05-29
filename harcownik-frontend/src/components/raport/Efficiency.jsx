@@ -5,6 +5,7 @@ import { Container, Table } from "react-bootstrap";
 import { getLevelApplications, getUsersData } from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
+import isLogged from "../../api/isLogged";
 
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);
@@ -14,15 +15,17 @@ function Efficiency() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const levelBadgesData = await getLevelApplications();
-        setBadgesApplications(levelBadgesData);
-      } catch (error) {
-        setBadgesApplications([]);
-      }
+      if (isLogged()) {
+        try {
+          const levelBadgesData = await getLevelApplications();
+          setBadgesApplications(levelBadgesData);
+        } catch (error) {
+          setBadgesApplications([]);
+        }
 
-      const usersInformation = await getUsersData();
-      setUsersData(usersInformation);
+        const usersInformation = await getUsersData();
+        setUsersData(usersInformation);
+      }
     };
     fetchData();
   }, []);

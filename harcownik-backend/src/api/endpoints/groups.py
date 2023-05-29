@@ -3,10 +3,15 @@ from typing import Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
-from src.api.helper import (get_current_user, get_current_webadmin,
-                            get_current_webadmin_or_teamadmin, get_db)
+from src.api.helper import (
+    get_current_user,
+    get_current_webadmin,
+    get_current_webadmin_or_teamadmin,
+    get_db,
+)
 
 router = APIRouter()
+
 
 # POST
 @router.post("/groups/", response_model=schemas.Group)
@@ -38,6 +43,17 @@ def read_group(
     _: models.User = Depends(get_current_user),
 ) -> Any:
     db_group = crud.get_group(db, group_id=group_id)
+    if db_group is None:
+        raise HTTPException(status_code=404, detail="Group not found")
+    return db_group
+
+
+@router.get("/me/group", response_model=schemas.Group)
+def read_group(
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user),
+) -> Any:
+    db_group = crud.get_group(db, group_id=current_user.group_id)
     if db_group is None:
         raise HTTPException(status_code=404, detail="Group not found")
     return db_group

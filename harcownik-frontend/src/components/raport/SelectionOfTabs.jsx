@@ -18,6 +18,7 @@ export let fileContent = "";
 export const userData = "";
 export let scoutSign = "";
 export let scoutCity = "";
+export let scoutLevel = "";
 
 export default function SelectionOfTabs() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -26,8 +27,9 @@ export default function SelectionOfTabs() {
     const fetchData = async () => {
       if (isLogged()) {
         const response = await getMe();
-        const userData = response.first_name + "  " + response.last_name;
+        // const userData = response.first_name + "  " + response.last_name;
         scoutSign = response.first_name + " " + response.last_name;
+        scoutLevel = response.level;
 
         const responseData = await getMyGroupData();
         // console.log("Scout:", response);

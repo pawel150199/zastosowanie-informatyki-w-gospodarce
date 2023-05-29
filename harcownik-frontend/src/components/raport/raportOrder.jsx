@@ -2,16 +2,16 @@
 import React from "react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { useState, useEffect } from "react";
-import { scoutSign, scoutCity } from "./SelectionOfTabs";
-import { getMeData } from "./RaportFunction";
+// import { useState, useEffect } from "react";
+import { scoutSign, scoutCity, scoutLevel } from "./SelectionOfTabs";
+// import { getMeData } from "./RaportFunction";
 
 function getCurrentYear() {
   const now = new Date();
   return now.getFullYear();
 }
 
-const currentYear = getCurrentYear();
+// const currentYear = getCurrentYear();
 export let userSign = null;
 export function updateTabs(updatedTabs) {
   tabs = updatedTabs;
@@ -97,7 +97,7 @@ export let tabs = [
   },
   {
     id: "12",
-    label: "\nOtwarcia i Zamknięcia inne\n",
+    label: "Otwarcia i Zamknięcia inne\n",
     isChecked: false,
     patternText: `...`,
   },
@@ -122,22 +122,6 @@ export let tabs = [
 ];
 
 export const scoutOrder = ({}) => {
-  // const [usersData, setUsersData] = useState([]);
-  let userData = [];
-
-  // const getSign = async () => {
-  //   try {
-  //     const usersInformation = await getMeData();
-  //     const userData = usersInformation.data;
-  //     const sign_ = userData.first_name + " " + userData.last_name;
-  //     console.log("TABLICA:", sign_);
-  //     return sign_;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-  // const sign = getSign();
-
   pdfMake.vfs = pdfFonts.pdfMake.vfs;
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -160,17 +144,7 @@ export const scoutOrder = ({}) => {
   ];
 
   const monthWord = monthNames[month - 1];
-
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
-
-  // console.log("USER:", sign);
-  // const patternTexts = selectedTabs.map((tab, index) => (
-  //   <div key={tab.id}>
-  //     <h3>{`${index + 1}. ${tab.label}`}</h3>
-  //     <p>{tab.patternText}</p>
-  //   </div>
-  // ));
-
   const patternTexts = selectedTabs.map((tab, index) => ({
     text: [
       { text: `${index + 1}. ${tab.label}\n`, fontSize: 14, bold: true },
@@ -196,7 +170,7 @@ export const scoutOrder = ({}) => {
       },
       ...patternTexts,
       { text: "Czuwaj!", style: "rightAlign" },
-      { text: `phm.${scoutSign}`, style: "rightAlign" },
+      { text: `${scoutLevel} ${scoutSign}`, style: "rightAlign" },
       {
         text: "Wygenerowane za pomocą aplikacji Harcownik",
         style: "centerAlign",
@@ -211,7 +185,6 @@ export const scoutOrder = ({}) => {
   };
 
   const generatePDF = () => {
-    // pdfMake.createPdf(documentDefinition).open();
     pdfMake
       .createPdf(documentDefinition)
       .open(
@@ -225,15 +198,6 @@ export const scoutOrder = ({}) => {
         "filename.pdf"
       );
   };
-
-  // return (
-  //   <div>
-  //     <h1 style={{ textAlign: "center" }}>Rozkaz L. 3/{currentYear}</h1>
-  //     <p>{patternTexts}</p>
-  //     <p style={{ textAlign: "right" }}>Czuwaj!</p>
-  //     <p style={{ textAlign: "right" }}>phm. </p>
-  //   </div>
-  // );
 
   return generatePDF();
   // <div>
