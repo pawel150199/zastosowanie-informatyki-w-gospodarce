@@ -56,9 +56,16 @@ const MyNavbar = () => {
             <Nav.Link className="box" href="/badges">
               Sprawności
             </Nav.Link>
-            <Nav.Link className="box" href="/register_admin">
-              Zarejestruj Drużynę
-            </Nav.Link>
+            {!isLogged() ? (
+              <>
+                <Nav.Link className="box" href="/login">
+                  Zaloguj
+                </Nav.Link>
+                <Nav.Link className="box" href="/register_admin">
+                  Zarejestruj Drużynę
+                </Nav.Link>
+              </>
+            ) : null}
             {scout ? (
               <Nav.Link className="box" href="/user_requests">
                 Zgłoszenia użytkownika
