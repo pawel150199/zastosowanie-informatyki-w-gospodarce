@@ -34,14 +34,16 @@ p.card-text {
     bottom: 0;
     left: 0;
     right: 0;
+    margin-top: 0.2rem;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
     padding: "0.6rem",
 }
 
 #item-1 {
-    position: relative;
+    position: static;
     height: auto;
+    align-items: top;
     text-align: center;
     margin-top: 3%;
     background-size: cover;

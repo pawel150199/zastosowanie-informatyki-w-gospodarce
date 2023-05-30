@@ -16,6 +16,9 @@ def create_level_report(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(get_current_user),
 ) -> Any:
+    level_report_in = crud.get_level_report_by_user(db, user_id=current_user.id)
+    if any(level_report.title == report.title and level_report.status == report.status for report in level_report_in):
+        raise HTTPException(status_code=400, detail="Similar report exist")
     return crud.create_level_report(
         db=db, level_report=level_report, user_id=current_user.id
     )
