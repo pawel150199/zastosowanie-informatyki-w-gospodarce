@@ -33,7 +33,9 @@ function UserRanks() {
   };
 
   useEffect(() => {
-    getId();
+    if (isLogged()) {
+      getId();
+    }
   }, []);
 
   const selectLevel = (level) => {

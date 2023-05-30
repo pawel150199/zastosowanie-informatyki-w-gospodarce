@@ -4,6 +4,7 @@ import { View, Image } from "react-native";
 import styles from "./ProfileStyle";
 
 import { getMeData, getMyGroupData } from "./ProfileFunctions";
+import isLogged from "../../api/isLogged";
 
 function ProfileCard() {
   const [meData, setMeData] = useState([]);
@@ -34,7 +35,9 @@ function ProfileCard() {
   };
 
   useEffect(() => {
-    getMe();
+    if (isLogged()) {
+      getMe();
+    }
   }, []);
 
   return (

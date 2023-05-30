@@ -1,12 +1,14 @@
 /* eslint-disable */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import isLogged from "../../api/isLogged";
 
 const CityInfo = ({ city }) => {
   const [country, setCountry] = useState("");
   const [flag, setFlag] = useState("");
 
   useEffect(() => {
+    if (isLogged()) {
     axios
       .get(
         `http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=YOUR_USERNAME`
@@ -24,6 +26,7 @@ const CityInfo = ({ city }) => {
         console.error(error);
       });
   }, [city]);
+
 
   return (
     <div>

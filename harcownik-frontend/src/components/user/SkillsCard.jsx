@@ -5,6 +5,7 @@ import { View, Text } from "react-native";
 import Badge from "react-bootstrap/Badge";
 
 import { getMeData, getMyBadge } from "./ProfileFunctions";
+import isLogged from "../../api/isLogged";
 
 import styles from "./ProfileStyle";
 
@@ -32,7 +33,9 @@ function SkillsCard() {
   };
 
   useEffect(() => {
-    getMe();
+    if (isLogged()) {
+      getMe();
+    }
   }, []);
 
   return (

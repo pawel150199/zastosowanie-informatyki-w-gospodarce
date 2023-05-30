@@ -2,16 +2,8 @@
 import React from "react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-// import { useState, useEffect } from "react";
 import { scoutSign, scoutCity, scoutLevel } from "./SelectionOfTabs";
-// import { getMeData } from "./RaportFunction";
 
-function getCurrentYear() {
-  const now = new Date();
-  return now.getFullYear();
-}
-
-// const currentYear = getCurrentYear();
 export let userSign = null;
 export function updateTabs(updatedTabs) {
   tabs = updatedTabs;
@@ -181,6 +173,12 @@ export const scoutOrder = ({}) => {
       title: { fontSize: 18, bold: true, margin: [0, 20, 0, 20] },
       rightAlign: { alignment: "right", margin: [0, 10, 0, 0] },
       centerAlign: { alignment: "center", margin: [0, 10, 0, 20] },
+    },
+
+    footer: {
+      text: `Wygenerowane za pomocą aplikacji Harcownik`,
+      alignment: "center",
+      fontSize: 8,
     },
   };
 

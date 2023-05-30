@@ -33,8 +33,9 @@ function UserEfficiency() {
       const badgesGroupData = await getBadgeGroups();
       setBadgesGroups(badgesGroupData);
     };
-
-    fetchData();
+    if (isLogged()) {
+      fetchData();
+    }
   }, []);
 
   const selectGroup = (group) => {
