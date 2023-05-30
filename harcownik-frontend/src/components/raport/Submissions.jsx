@@ -6,6 +6,8 @@ import { getBadgesApplications, getUsersData } from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
 
+import isLogged from "../../api/isLogged";
+
 function Submissions() {
   const [levelApplications, setlevelApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
@@ -14,15 +16,17 @@ function Submissions() {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const levelBadgesData = await getBadgesApplications();
-        setlevelApplications(levelBadgesData);
-      } catch (error) {
-        setlevelApplications([]);
-      }
+      if (isLogged()) {
+        try {
+          const levelBadgesData = await getBadgesApplications();
+          setlevelApplications(levelBadgesData);
+        } catch (error) {
+          setlevelApplications([]);
+        }
 
-      const usersInformation = await getUsersData();
-      setUsersData(usersInformation);
+        const usersInformation = await getUsersData();
+        setUsersData(usersInformation);
+      }
     };
 
     fetchData();
