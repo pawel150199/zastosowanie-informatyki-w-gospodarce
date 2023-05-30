@@ -198,26 +198,4 @@ export const scoutOrder = ({}) => {
   };
 
   return generatePDF();
-  // <div>
-  //   <h4 style={{ textAlign: "right" }}>
-  //     {day}.{month}.{year}
-  //   </h4>
-  //   <h1 style={{ textAlign: "center" }}>
-  //     Rozkaz L. {month}/{year}
-  //   </h1>
-  //   {patternTexts.map((pattern, index) => (
-  //     <div key={index}>
-  //       <h3>{pattern.text[0].text}</h3>
-  //       {pattern.text[1].text.split("\n").map((line, lineIndex) => (
-  //         <p key={lineIndex}>{line}</p>
-  //       ))}
-  //     </div>
-  //   ))}
-  //   <p style={{ textAlign: "right" }}>Czuwaj!</p>
-  //   <p style={{ textAlign: "right" }}>phm.{scoutSign} </p>
-  //   <p style={{ textAlign: "center" }}>
-  //     Wygenerowane za pomocą aplikacji Harcownik
-  //   </p>
-  //   <button onClick={generatePDF}>Generuj PDF</button>
-  // </div>
 };

@@ -27,12 +27,10 @@ export default function SelectionOfTabs() {
     const fetchData = async () => {
       if (isLogged()) {
         const response = await getMe();
-        // const userData = response.first_name + "  " + response.last_name;
         scoutSign = response.first_name + " " + response.last_name;
         scoutLevel = response.level;
 
         const responseData = await getMyGroupData();
-        // console.log("Scout:", response);
         scoutCity = responseData.city;
       }
     };

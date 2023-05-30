@@ -6,7 +6,6 @@ import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
 } from "./ApplicationStatusFunction";
-// import getMe from "../../api/getMe";
 import isLogged from "../../api/isLogged";
 
 import "./UserRequests.css";
@@ -14,7 +13,6 @@ import "./UserRequests.css";
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
   const [levelStatus, getLevelStatus] = useState([]);
-  // const [userId, setuserId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,8 +28,6 @@ function ApplicationStatus() {
       } catch (error) {
         getLevelStatus([]);
       }
-
-      // }
     };
     if (isLogged()) {
       fetchData();
