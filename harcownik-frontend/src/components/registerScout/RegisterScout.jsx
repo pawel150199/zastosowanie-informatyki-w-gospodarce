@@ -1,10 +1,12 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Picker} from "react-native";
 import { Button } from "react-bootstrap";
 
 import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
+import scoutFunctions from "../scoutData/scoutFunctions";
+import scoutLevels from "../scoutData/scoutLevels";
 
 import styles from "./RegisterScoutStyle";
 
@@ -60,18 +62,24 @@ const Register = () => {
         value={lastName}
         onChangeText={setLastName}
       />
-      <TextInput
+      <Picker
         style={styles.input}
-        placeholder="Poziom harcerza"
-        value={level}
-        onChangeText={setLevel}
-      />
-      <TextInput
+        selectedValue={level}
+        onValueChange={setLevel}
+      >
+        {scoutLevels.map((scoutLevel, index) => (
+          <Picker.Item key={index} label={scoutLevel} value={scoutLevel} />
+        ))}
+      </Picker>
+      <Picker
         style={styles.input}
-        placeholder="Funkcja harcerza"
-        value={func}
-        onChangeText={setFunc}
-      />
+        selectedValue={func}
+        onValueChange={setFunc}
+      >
+        {scoutFunctions.map((scoutFunctions, index) => (
+          <Picker.Item key={index} label={scoutFunctions} value={scoutFunctions} />
+        ))}
+      </Picker>
       <TextInput
         style={styles.input}
         placeholder="Adres email"

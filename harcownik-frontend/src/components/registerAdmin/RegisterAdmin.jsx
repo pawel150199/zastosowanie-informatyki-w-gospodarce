@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Picker } from "react-native";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,8 @@ import axios from "../../api/api"
 import authHeader from "../../api/authHeader";
 import addAdmin from "./addAdmin";
 import addGroup from "./addGroup";
+import scoutLevels from "../scoutData/scoutLevels";
+import scoutFunctions from "../scoutData/scoutFunctions";
 
 import styles from "./RegisterAdminStyle";
 
@@ -97,18 +99,24 @@ const RegisterAdmin = () => {
         value={lastName}
         onChangeText={setLastName}
       />
-      <TextInput
+      <Picker
         style={styles.input}
-        placeholder="Poziom harcerza"
-        value={level}
-        onChangeText={setLevel}
-      />
-      <TextInput
+        selectedValue={level}
+        onValueChange={setLevel}
+      >
+        {scoutLevels.map((scoutLevel, index) => (
+          <Picker.Item key={index} label={scoutLevel} value={scoutLevel} />
+        ))}
+      </Picker>
+      <Picker
         style={styles.input}
-        placeholder="Funkcja harcerza"
-        value={func}
-        onChangeText={setFunc}
-      />
+        selectedValue={func}
+        onValueChange={setFunc}
+      >
+        {scoutFunctions.map((scoutFunctions, index) => (
+          <Picker.Item key={index} label={scoutFunctions} value={scoutFunctions} />
+        ))}
+      </Picker>
       <TextInput
         style={styles.input}
         placeholder="Adres email"
