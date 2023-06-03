@@ -1,0 +1,30 @@
+const scoutFunctions = [
+    "Zastępowy",
+    "Przyboczny",
+    "Oboźny",
+    "Drużynowy",
+    "Drużynowy gromady zuchowej",
+    "Szczepowy",
+    "Hufcowy",
+    "Zastępca hufcowego",
+    "Członek rady hufca",
+    "Komendant chorągwi",
+    "Zastępca komendanta chorągwi",
+    "Członek komendy chorągwi",
+    "Przewodniczący zarządu Okręgu",
+    "Zastępca przewodniczącego Okręgu",
+    "Członek zarządu Okręgu",
+    "Naczelnik harcerzy",
+    "Zastępca naczelnika",
+    "Członek naczelnictwa",
+    "Przewodniczący ZHR",
+    "Zastępca przewodniczącego",
+    "Członek głównej kwatery",
+    "Przewodniczący Rady Duszpasterskiej Związku",
+    "Kapelan (ksiądz)",
+    "Przewodniczący Komisji Rewizyjnej Związku",
+    "Zastępca przewodniczącego Komisji Rewizyjnej Związku",
+]
+  
+
+export default scoutFunctions;
