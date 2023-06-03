@@ -38,7 +38,7 @@ const ResetPassword = () => {
       }
     } catch (error) {
       console.error(error);
-      setInfo("Password has not been succesfully changed! Please check data and try one more time.");
+      setInfo("Hasło nie zostało poprawnie zmienione!  Sprawdz dane i spróbuj ponownie.");
     }
   };
 
