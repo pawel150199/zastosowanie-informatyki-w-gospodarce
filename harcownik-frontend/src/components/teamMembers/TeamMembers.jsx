@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Container, Spinner, Card, Image} from "react-bootstrap";
+import { Accordion, Container, Spinner, Card, Image, Button } from "react-bootstrap";
 
 import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
+import isLogged, { isTeamAdmin } from "../../api/isLogged";
 
 import "./team_member.css";
 
 const TeamMembers = () => {
   const [members, setMembers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [info, setInfo] = useState("");
+  const [teamAdmin, setTeamAdmin] = useState(false);
+
+  const checkUserRole = async () => {
+    setTeamAdmin(await isTeamAdmin());
+  }
+
+  const handleDeleteMember = async (user_id) => {
+    try {
+      axios.delete(
+        `/user/group/delete/${user_id}`,authHeader());
+        setInfo("Harcerz został poprawnie usunięty");
+        window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  if (isLogged()) {
+    checkUserRole();
+  }
 
   useEffect(() => {
     axios
@@ -43,6 +65,11 @@ const TeamMembers = () => {
                     <Image src="/img/scout.png" id="scout" className="align-left" />
                     {member.first_name} {member.last_name}
                 </Accordion.Header>
+                {teamAdmin? (
+                  <Accordion.Body className="text-center"> 
+                    <Button variant="danger" onClick={() => handleDeleteMember(member.id)}>Usuń</Button>
+                  </Accordion.Body>
+                ) : null}
             </Accordion.Item>
           </Card>
         ))}

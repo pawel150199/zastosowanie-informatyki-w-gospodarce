@@ -40,6 +40,10 @@ p.card-text {
     padding: "0.6rem",
 }
 
+#delete-button {
+    align-items: center;
+}
+
 #item-1 {
     position: relative;
     height: auto;
