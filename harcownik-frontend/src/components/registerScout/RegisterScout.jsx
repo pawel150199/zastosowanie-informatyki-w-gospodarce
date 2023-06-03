@@ -21,6 +21,15 @@ const Register = () => {
   const [info, setInfo] = useState("");
 
   const handleRegister = async () => {
+    const clearInputs = () => {
+      setFirstName("");
+      setLastName("");
+      setLevel("");
+      setFunc("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+    }
     try {
       if (password === confirmPassword) {
         const response = await axios.post(
@@ -35,10 +44,11 @@ const Register = () => {
           },
           authHeader()
         );
+        clearInputs();
         if (response.status === 200 || response.status === 201) {
-          setInfo("Harcerz został poprrawnie dodany");
+          setInfo("Harcerz został poprawnie dodany");
         } else {
-          setInfo("Harcerz nie został poprawnie dodany");
+          setInfo("Harcerz nie został poprawnie dodany! Spróbuj ponownie");
         }
       }
     } catch (error) {
@@ -49,7 +59,6 @@ const Register = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Dodawanie nowego harcerza do drużyny</Text>
-      <Text style={styles.title}>{info}</Text>
       <TextInput
         style={styles.input}
         placeholder="Imie"
@@ -101,6 +110,7 @@ const Register = () => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
+      {info && <p className="error">{info}</p>}
       <Button style={styles.button} onClick={handleRegister}>
         Dodaj Harcerza
       </Button>

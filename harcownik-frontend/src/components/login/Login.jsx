@@ -12,6 +12,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [info, setInfo] = useState(" ");
 
+  const clearInputs = () => {
+    setUsername("");
+    setPassword("");
+  }
+
   const handleLogin = async () => {
     const headers = loginHeader();
     try {
@@ -24,6 +29,7 @@ const Login = () => {
       window.location.href = "/user";
     } catch (error) {
       console.error("Error!", error);
+      clearInputs();
       setInfo("Niepoprawne dane! Sprawdz dane i spóbuj ponownie.");
     }
   };

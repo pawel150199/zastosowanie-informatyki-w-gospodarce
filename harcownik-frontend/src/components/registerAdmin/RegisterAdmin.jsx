@@ -52,7 +52,6 @@ const RegisterAdmin = () => {
 
   return (
     <View style={styles.container}>
-      <small>{info}</small>
       <br></br>
       <Text style={styles.title}>Załóż nową drużynę Harcerską</Text>
       <small>Jeśli twoja dryżyna jest już w aplikacji harcownik, poproś swojego drużynowego o dodanie :)</small>
