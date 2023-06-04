@@ -49,7 +49,6 @@ export default function SelectionOfTabs() {
 
   const handleTextValueChange = (event, tab) => {
     let updatedTabs = tabs.map((t) => {
-      console.log("Wybrane opcje:", event.target.value);
       if (t.id === tab.id) {
         return { ...t, patternText: event.target.value };
       } else {
