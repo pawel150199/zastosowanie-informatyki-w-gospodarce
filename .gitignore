@@ -88,6 +88,7 @@ atlassian-ide-plugin.xml
 __pycache__/
 *.py[cod]
 *$py.class
+.venv
 
 # Distribution / packaging
 .Python
