@@ -1969,6 +1969,318 @@ def init_badges(db: Session) -> None:
         ),
         # HOBBYSTYCZNE (23)
         schemas.CreateBadge(
+            name="PRZYJACIEL KSIĄŻKI *",
+            description=[
+                "1. Systematycznie czyta książki. Zgromadziła / zgromadził własną biblioteczkę ulubionych pozycji.",
+                "2. Samodzielnie wykonała / wykonał kilka zakładek do swoich książek.",
+                "3. Brała / brał udział w konkursie czytelniczym organizowanym np. w szkole, drużynie, przez redakcję czasopisma lub portalu internetowego.",
+                "4. Wykonała / wykonał drobne naprawy introligatorskie kilku książek, pełniła / pełnił dyżur w bibliotece szkolnej lub publicznej.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="BIBLIOTEKARKA / BIBLIOTEKARZ **",
+            description=[
+                "1. Prowadziła / prowadził w czasie próby na sprawność bibliotekę drużyny (szczepu) lub obozu.",
+                "2. W czasie dyżurów w bibliotece szkolnej lub publicznej sprawnie posługiwała / posługiwał się katalogiem książek. Przygotowała / przygotował dla osoby prowadzącej zajęcia materiały na określony temat.",
+                "3. Zorganizowała / zorganizował wieczór literacki w drużynie, szkole, domu kultury.",
+                "4. Zorganizowała / zorganizował w szczepie lub szkole kiermasz książek.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="BIBLIOFIL ***",
+            description=[
+                "1. Zgromadziła / zgromadził własny księgozbiór i prowadzi jego katalog.",
+                "2. Wykonała / wykonał ekslibris do biblioteki domowej, szkolnej lub publicznej.",
+                "3. Urządziła / urządził w drużynie wystawę ciekawych książek, prezentując na niej także własne zbiory.",
+                "4. Urządziła / urządził w szkole lub szczepie wieczór wspólnego czytania wybranej książki, spotkanie z autorem lub podobną imprezę.",
+                "5. Nawiązała / nawiązał kontakt z antykwariatem, poznał sposoby gromadzenia wydawnictw antykwarycznych i przechowywania oraz zabezpieczania starodruków.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="KRONIKARKA / KRONIKARZ *",
+            description=[
+                "1. Prowadziła / prowadził w okresie próby kronikę zastępu (drużyny), posługując się kilkoma rodzajami pisma.",
+                "2. Sporządziła / sporządził notatki z wydarzeń na podstawie relacji świadków.",
+                "3. Dopilnowała / dopilnował przez co najmniej jeden rok, aby kronika była zawsze tam, gdzie drużyna.",
+                "4. Zapoznała/zapoznał się z twórczością najbardziej znanych polskich kronikarzy.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="REPORTERKA / REPORTER **",
+            description=[
+                "1. Przygotowała / przygotował rzeczowe relacje z biwaku lub obozu drużyny, z uroczystości szkolnej, z wydarzeń mających miejsce w okolicy.",
+                "2. Posługiwała / posługiwał się sprzętem reporterskim (dyktafon, aparat fotograficzny, kamera), przygotowując materiały dla szkolnego (lokalnego) radia, telewizji, gazety.",
+                "3. Napisała / napisał dwa reportaże: na wybrany i na zadany temat. Dobrała / dobrał ilustrujące je rysunki lub zdjęcia. Przedstawiła/ przedstawił je w drużynie.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="DZIENNIKARKA / DZIENNIKARZ ***",
+            description=[
+                "1. Poznała / poznał cechy, jakimi powinni charakteryzować się dziennikarze oraz zasady, jakie obowiązują w ich zawodzie.",
+                "2. Przeprowadziła / przeprowadził wywiad na określony temat.",
+                "3. Przez okres próby brała / brał udział w pracy redakcji harcerskiej, pisząc do wybranego działu.",
+                "4. Nawiązała / nawiązał stały kontakt z gazetą młodzieżową lub dla dzieci i systematycznie dostarcza jej swoje artykuły.",
+                "5. Przekazała / przekazał napisany przez siebie reportaż z imprezy harcerskiej do lokalnej gazety.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="WYDAWCA (mistrzowska)",
+            description=[
+                "1. Poznała / poznał pracę redakcji gazety lub wydawnictwa książkowego.",
+                "2. Rozróżniła / rozróżnił rodzaje czcionek drukarskich i typy edytorów komputerowych, stosując je w swojej gazecie lub publikacjach książkowych.",
+                "3. Złożyła / złożył na komputerze gazetę lub inną publikację.",
+                "4. Rozprowadzała / rozprowadzał wydawnictwa przygotowane przez drużynę, hufiec, szkołę, dom kultury itp."
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MIŁOŚNICZKA ARCHITEKTURY / MIŁOŚNIK ARCHITEKTURY **",
+            description=[
+                "1. Rozpoznaje sześć podstawowych nowożytnych stylów w architekturze. Odwiedziła / odwiedził znajdujące się w okolicy budowle charakterystyczne dla tych stylów. Wyniki zwiadu zaprezentowała / zaprezentował na zbiórce zastępu.",
+                "2. Zorganizowała / zorganizował wyprawę do ciekawego obiektu, opowiedziała / opowiedział o cechach charakterystycznych tej budowli, jej stylu i historii.",
+                "3. Zorganizowała / zorganizował zbiórkę poświęconą znanym polskim architektom.",
+                "4. Zaprojektowała / zaprojektował rozmieszczenie mebli i wystrój swego pokoju.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="ARCHITEKT ***",
+            description=[
+                "1. Umie opowiedzieć o prekursorach poszczególnych stylów w architekturze.",
+                "2. Wykonała / wykonał rejestr lub przewodnik po ciekawych budynkach nowoczesnych i zabytkowych w swojej miejscowości lub gminie.",
+                "3. Zorganizowała / zorganizował wyprawę (zastępu lub drużyny) do innej miejscowości w celu zwiedzenia ciekawych budowli. Przygotowała / przygotował wystawę fotograficzną lub inną formę prezentacji ciekawych rozwiązań architektonicznych, które mogłyby być zastosowane na tym terenie.",
+                "4. Pomogła / pomógł innym harcerkom/harcerzom w zaprojektowaniu urządzenia ich pokoi.",
+                "5. Zaprojektowała / zaprojektował wygląd i rozmieszczenie namiotów oraz urządzeń na obozie drużyny. Swój projekt przedstawiła / przedstawił radzie drużyny.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="IGIEŁKA *",
+            description=[
+                "1. Wykonała / wykonał drobne prace: przyszyła/przyszył guziki do koszuli, obrębiła / obrębił chusteczkę, naszyła / naszył łatę na spodnie, zacerowała / zacerował dziurę w swetrze.",
+                "2. Uszyła / uszył ręcznie lub na maszynie drobny przedmiot, np. łapki do garnków, kieszeń na grzebienie w łazience, fartuszek kuchenny, worek na kapcie.",
+                "3. Wyszyła / wyszył swój monogram lub znaczek sprawności na rękawie munduru.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="KRAWCOWA / KRAWIEC **",
+            description=[
+                "1. Rozróżniła / rozróżnił podstawowe rodzaje tkanin: bawełna, wełna, jedwab, sztuczne tworzywa.",
+                "2. Nauczyła / nauczył się szyć na maszynie. Uszyła/uszył według gotowego wykroju spódnicę lub szorty, obrębiła / obrębił obrus, wszyła / wszył suwak, uszyła / uszył poszewkę na poduszkę.",
+                "3. Nauczyła / nauczył się konserwować maszynę do szycia.",
+                "4. Uszyła / uszył chusty dla drużyny lub zastępu.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZYNI IGŁY / MISTRZ IGŁY ***",
+            description=[
+                "1. Zaprezentowała / zaprezentował własny styl ubierania się, szyjąc samodzielnie lub adaptując gotowe ubrania do własnych potrzeb.",
+                "2. Uszyła / uszył samodzielnie bluzkę, mundur, szorty lub spodnie, pobierając uprzednio miarę i przygotowując wykrój.",
+                "3. Zorganizowała / zorganizował pokaz mody na zbiórce, wykorzystując ubrania członków zastępu i posługując się aktualnymi żurnalami.",
+                "4. Przeprowadziła / przeprowadził w drużynie naukę podstaw szycia.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZYNI / MISTRZ RĘCZNYCH ROBÓTEK **",
+            description=[
+                "1. Wykonała / wykonał różne prace: na drutach lub na maszynie dziewiarskiej lub splotła/splótł makramę według własnego wzoru.",
+                "2. Przedstawiła / przedstawił na zbiórce zastępu lub drużyny własnoręcznie wykonane prace.",
+                "3. Zorganizowała / zorganizował w drużynie (szczepie lub w szkole) wystawę robótek ręcznych, zapraszając na nią znanych w okolicy mistrzów i mistrzynie.",
+                "4. Nauczyła / nauczył młodszych wykonania prostych  makram.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="PROJEKTANTKA MODY / PROJEKTANT MODY **",
+            description=[
+                "1. Wymieniła / wymienił kilku polskich i zagranicznych projektantów mody.",
+                "2. Czyta systematycznie w czasopismach i w Internecie artykuły prezentujące aktualne trendy w modzie.",
+                "3. Przedstawiła / przedstawił swoje zbiory projektów ubrań i wykrojów.",
+                "4. Przedstawiła/przedstawił zaprojektowany samodzielnie strój na zbiórce zastępu lub drużyny.",
+                "5. Zaprezentowała / zaprezentował cztery stylizacje,np.:doszkoły(pracy), na dyskotekę, na wycieczkę, na ważne spotkanie. Wyjaśniła/wyjaśnił w zastępie lub drużynie zasady doboru stroju odpowiedniego do okazji, typu urody, sylwetki.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="KOLEKCJONERKA / KOLEKCJONER ***",
+            description=[
+                "1. Posiada własne zbiory.",
+                "2. Opracowała / opracował system katalogowania własnych zbiorów i posługuje się nim, uzupełniając swoją kolekcję.",
+                "3. Skompletowała / skompletował specjalistyczną biblioteczkę i utrzymuje kontakty z innymi kolekcjonerami o podobnym hobby.",
+                "4. Zorganizowała / zorganizował wystawę swoich eksponatów.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="ROWERZYSTKA / ROWERZYSTA *",
+            description=[
+                "1. Potrafi jeździć na rowerze.",
+                "2. Zdobyła / zdobył kartę rowerową.",
+                "3. Konserwowała / konserwował rower przed wycieczką i po niej.",
+                "4. Uczestniczyła / uczestniczył w trzech całodniowych wycieczkach rowerowych.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="CYKLISTA **",
+            description=[
+                "1. Zna zasady bezpiecznego poruszania się pieszych i rowerzystów po drogach.",
+                "2. Zna budowę i potrafi konserwować rower. Potrafi zmienić dętkę.",
+                "3. Brała / brał udział w kilku wycieczkach rowerowych.",
+                "4. Wie, jaka jest różnica pomiędzy wymijaniem, omijaniem i wyprzedzaniem oraz zna zasady pierwszeństwa przejazdu (m.in. na skrzyżowaniach). Poznała / poznał dziesięć znaków poziomych (na jezdni) i pokazała / pokazał je zastępowi podczas wycieczki po mieście.",
+                "5. Wykonała / wykonał planszę ze znakami drogowymi, obejmującą: 10 znaków ostrzegawczych, 10 znaków zakazu, 12 znaków nakazu oraz 10 znaków informacyjnych. Wytłumaczyła / wytłumaczył ich znaczenie na zbiórce zastępu.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA RUCHU DROGOWEGO ***",
+            description=[
+                "1. W okresie próby systematycznie pełniła / pełniił służbę ruchu w miejscach i przy okazjach tego wymagających.",
+                "2. Uczestniczyła / uczestniczył w spotkaniu z policjantem na temat bezpieczeństwa na drogach i obowiązujących przepisów.",
+                "3. Zorganizowała / zorganizował wraz z zastępem zawody na rowerowym torze przeszkód lub w miasteczku ruchu drogowego, popularyzując w ten sposób obowiązujące przepisy w drużynie, szczepie lub szkole.",
+                "4. Zorganizowała / zorganizował dla młodszych kolegów pokaz prawidłowego poruszania się po drogach, połączony z konkursem.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="STRAŻNICZKA BEZPIECZEŃSTWA / STRAŻNIK BEZPIECZEŃSTWA **",
+            description=[
+                "1. Zapoznała / zapoznał się, wspólnie z osobą dorosłą, ze stanem technicznym maszyn używanych w gospodarstwie.",
+                "2. Spisała / spisał, jakich napraw należy dokonać, aby wszystkie urządzenia były bezpieczne. Wnioski przedstawiła / przedstawił osobie dorosłej.",
+                "3. Zapoznała / zapoznał się ze znakami oznaczającymi niebezpieczne narzędzia, miejsca oraz czynności.",
+                "4. Przygotowała / przygotował i przedstawiła / przedstawił na zbiórce drużyny zasady bezpiecznego posługiwania się sprzętem w gospodarstwie.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY STRATEG *",
+            description=[
+                "1. Zagrał co najmniej w trzy różne gry planszowe lub karciane, w tym przynajmniej jedną o tematyce harcerskiej lub historycznej, dobrze zna zasady tych gier.",
+                "2. Wziął udział w turnieju gier planszowych lub karcianych.",
+                "3. Wie, na czym polega system szwajcarski.",
+                "4. Zaprezentował i zagrał z zastępem lub drużyną w wybraną przez siebie grę planszową lub karcianą.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="STRATEG **",
+            description=[
+                "1. Zagrał w pięć różnych gier planszowych lub karcianych, w tym w co najmniej dwie gry o tematyce historycznej lub harcerskiej. Potrafi wytłumaczyć ich zasady.",
+                "2. Na zbiórce drużyny zaprezentował historię, twórców oraz rodzaje gier planszowych i karcianych.",
+                "3. Zorganizował w swoim środowisku (drużyna, szkoła, kółko zainteresowań) akcję promującą gry planszowe i karciane.",
+                "4. Wziął udział w konkursie organizowanym przez wydawnictwo gier planszowych lub karcianych.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="TRZY KOŚCI ***",
+            description=[
+                "1. Zorganizował warsztaty dla co najmniej ośmiu osób na temat gier planszowych i karcianych, przeprowadził podczas nich turniej w wybraną grę.",
+                "2. Opracował grę planszową lub karcianą z dziedziny swoich zainteresowań lub za- adaptował już istniejącą grę. Upowszechnił grę w swoim środowisku (szczepie, hufcu, szkole).",
+                "3. Wziął udział w konwencie lub festiwalu, którego tematów były gry planszowe lub karciane.",
+                "4. Zorganizował wraz z zastępem lub drużyną akcję zarobkową, z której dochód przeznaczył na zakup gry planszowej lub karcianej dla drużyny lub zastępu.",
+            ],
+            group="Hobbystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZ GRY (mistrzowska)",
+            description=[
+                "1. Zorganizował turniej gier planszowych lub karcianych na poziomie hufca, szkoły, domu kultury.",
+                "2. Samodzielnie lub wraz z zespołem stworzył grę planszową lub karcianą o tematyce harcerskiej i upowszechnił ją w środowisku harcerskim.",
+                "3. Zdobył fundusze na zakup pięciu gier lub pozyskał pięć gier dla swojego środowiska. Regularnie powiększa zbiór gier drużyny (szczepu, hufca).",
+                "4. Stworzył grupę lub uczestniczy w grupie miłośników gier planszowych, z którą regularnie prowadził otwarte spotkania i warsztaty gier.",
+            ],
+            group="Hobbystyczne",
+        ),
+        # DLA HARCEREK I HARCERZY NIEDOWIDZĄCYCH (2)
+        schemas.CreateBadge(
+            name="UWAŻNY PIESZY",
+            description=[
+                "1 Poznała / poznał zasady ruchu drogowego w mieście, uczestnicząc w zajęciach organizowanych w miasteczku ruchu drogowego.",
+                "2. Samodzielnie, pod okiem drużynowego, przeprowadziła/przeprowadził zastęp przez dwa ruchliwe skrzyżowania oznakowane sygnalizacją świetlną.",
+                "3. Poznała / poznał zasady poruszania się w terenie niezabudowanym i zastosowała / zastosował je w praktyce, np. prowadząc zastęp na wędrówce.",
+                "4. Spopularyzowała / spopularyzował wśród kolegów w interesującej formie podstawowe zasady bezpiecznego poruszania się po ulicach i drogach.",
+            ],
+            group="Dla harcerek i harcerzy niedowidzących",
+        ),
+        schemas.CreateBadge(
+            name="MAŁY OPTYK",
+            description=[
+                "1. Poznała / poznał zasady higieny wzroku i przestrzega ich podczas pracy, nauki, w domu, na wycieczce itp., a także propaguje je wśród kolegów.",
+                "2. Poznała / poznał rodzaje szkieł optycznych i zrealizowała / zrealizował co najmniej trzy recepty okulistyczne.",
+                "3. Dokonała / dokonał drobnych napraw okularów swoich i kolegów.",
+                "4. Wyczyściła / wyczyścił za pomocą odpowiednich środków szkła korekcyjne, utrzymuje je w czystości.",
+            ],
+            group="Dla harcerek i harcerzy niedowidzących",
+        ),
+        # DLA HARCEREK I HARCERZY NIEWIDOMYCH (3)
+        schemas.CreateBadge(
+            name="KUCHARKA DOMOWA / KUCHARZ DOMOWY",
+            description=[
+                "1. Poznała / poznał cechy podstawowych produktów żywnościowych i potrafi zakupić ich potrzebną ilość.",
+                "2. Potrafi obsługiwać urządzenia grzejne (kuchnie gazowe, elektryczne, grzałkę).",
+                "3. Potrafi samodzielnie przygotować śniadanie i kolację: pokroiła / pokroił chleb, przygotowała / przygotował kanapki (kroiła / kroił wędlinę, ser itp.), parzyła / parzył herbatę, ugotowała / ugotował jajka, przygotowała / przygotował jajecznicę.",
+                "4. Nakryła / nakrył do stołu prawidłowo i estetycznie.",
+                "5. Przestrzegała / przestrzegał zasad higieny przy przygotowaniu posiłków.",
+            ],
+            group="Dla harcerek i harcerzy niewidomych",
+        ),
+        schemas.CreateBadge(
+            name="WIOŚLARKA / WIOŚLARZ",
+            description=[
+                "1. Poznała / poznał co najmniej dwa typy jednostek wiosłowych (kajak, ponton, łódź), potrafi przygotować jednostkę do pływania, prawidłowo wiosłować, wykonywać podstawowe manewry za pomocą steru i bez steru.",
+                "2. Poznała / poznał i prawidłowo stosuje podstawowy sprzęt ratowniczy (potrafi prawidłowo założyć kamizelkę ratunkową). Poznała / poznał zasady bezpieczeń- stwa na wodzie.",
+                "3. Poznała / poznał zasady prawidłowego biwakowania nad wodą i spędziła / spędził co najmniej siedem dni nad wodą.",
+                "4. Potrafi zaśpiewać trzy piosenki wodniackie, upowszechniła / upowszechnił w swoim środowisku sporty wodniackie.",
+                "5. Wie, co to jest PTTK. Zna zasady zdobywania turystycznej odznaki kajakowej.",
+            ],
+            group="Dla harcerek i harcerzy niewidomych",
+        ),
+        schemas.CreateBadge(
+            name="CHODZĘ SAMA / CHODZĘ SAM",
+            description=[
+                "1. Potrafi dojść do wyznaczonych punktów na terenie ośrodka, pomagała / pomagał słabszym w trafieniu do wyznaczonego miejsca.",
+                "2. Przestrzega przepisów bezpiecznego poruszania się na terenie ośrodka.",
+                "3. Potrafi rozróżnić rodzaje podłoża.",
+                "4. Umie korzystać z pomocy przewodnika.",
+                "5. Umie określić słuchowo na ulicy (drodze) kierunek i rodzaj jadącego pojazdu, potrafi np. za pomocą węchu określić mijane obiekty.",
+                "6. Poznała / poznał zasady poruszania się w ruchu ulicznym.",
+            ],
+            group="Dla harcerek i harcerzy niewidomych",
+        ),
+        # DLA HARCEREK I HARCERZY GŁUCHYCH (2)
+        schemas.CreateBadge(
+            name="MÓWIĘ I MIGAM",
+            description=[
+                "1. Opanowała / opanował język migowy polski w stopniu wystarczającym do porozumiewania się w życiu codziennym.",
+                "2. Stale pogłębia znajomość zunifikowanego języka migowego.",
+                "3. Potrafi swobodnie porozumieć się językiem polskim w sprawach życia codziennego. Rozumie, co do niej/niego mówią i jest rozumiana/rozumiany przez słyszących.",
+                "4. Wywiązała / wywiązał się z roli tłumacza „na żywo” podczas spotkania grupy osób głuchych i grupy osób słyszących.",
+                "5. Pomogła / pomógł osobie głuchej, słabo mówiącej, załatwić sprawy np. w urzędzie lub dziecku głuchemu porozumieć się z osobą dorosłą nieznającą „migów”.",
+            ],
+            group="Dla harcerek i harcerzy głuchych",
+        ),
+        schemas.CreateBadge(
+            name="TŁUMACZ NA MIGI",
+            description=[
+                "1. Opanowała / opanował język migowy polski i wybrany język migowy obcy w stopniu wystarczającym do porozumiewania się w życiu codziennym.",
+                "2. Była / była tłumaczem „na migi” w czasie spotkania grupy głuchych polskich z wycieczką głuchych obcokrajowców.",
+                "3. Opowiedziała / opowiedział „na migi” wycieczce głuchych obcokrajowców o pracy drużyny, do której należy.",
+                "4. Stale pogłębia znajomość zunifikowanego języka migowego.",
+            ],
+            group="Dla harcerek i harcerzy głuchych",
+        ),
+        # JEŹDZIECKIE I KAWALERYJSKIE (23)
+        schemas.CreateBadge(
             name="",
             description=[
                 "",
@@ -1977,12 +2289,8 @@ def init_badges(db: Session) -> None:
                 "",
                 "",
             ],
-            group="Hobbystyczne",
+            group="Jeździeckie i kawaleryjskie",
         ),
-        # DLA HARCEREK I HARCERZY NIEDOWIDZĄCYCH (2)
-        # DLA HARCEREK I HARCERZY NIEWIDOMYCH (3)
-        # DLA HARCEREK I HARCERZY GŁUCHYCH (2)
-        # JEŹDZIECKIE I KAWALERYJSKIE (23)
         # POCZTOWE (3)
         # WODNE I ŻEGLARSKIE (9)
         # METEOROLOGICZNE (4)
