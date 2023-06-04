@@ -6,47 +6,45 @@ import { getLocalToken } from "../../api/utils";
 import isLogged from "../../api/isLogged";
 
 import styles from "./ResetPasswordStyle";
+import authHeader from "../../api/authHeader";
 
 const ResetPassword = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newRepeatedPassword, setNewRepeatedPassword] = useState("");
+  const [info, setInfo] = useState("");
 
   const handleResetPassword = async () => {
-    if (isLogged()) {
-        if (newPassword ===  newRepeatedPassword) {
-            axios.post("/reset-password", {
-                token: getLocalToken("token"),
-                new_password: newPassword
-            })
-                .then(() => {
-                    console.log("Password succesfully changed");
-                    window.location.href = "/user";
-                })
-                .catch((error) => {
-                    console.error("Error: ",  error);
-                });
+    const clearInputs = () => {
+      setNewPassword("");
+      setNewRepeatedPassword("");
+    }
+
+    try {
+      if (isLogged()) {
+        if (newPassword === newRepeatedPassword) {
+          const response = await axios.post(
+            "/reset-password",
+            {
+              token: getLocalToken("token"),
+              new_password: newPassword,
+            },
+            authHeader()
+          );
+          clearInputs();
+          if (response.status === 200 || response.status === 201) {
+            window.location.href = "/user";
+          }
         }
+      }
+    } catch (error) {
+      console.error(error);
+      setInfo("Hasło nie zostało poprawnie zmienione!  Sprawdz dane i spróbuj ponownie.");
     }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Reset Hasła</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Stare hasło"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={setPassword}
-      />
       <TextInput
         style={styles.input}
         placeholder="Nowe hasło"
@@ -61,6 +59,7 @@ const ResetPassword = () => {
         value={newRepeatedPassword}
         onChangeText={setNewRepeatedPassword}
       />
+      {info && <p className="error">{info}</p>}
       <TouchableOpacity
         style={styles.button}
         onPress={handleResetPassword}

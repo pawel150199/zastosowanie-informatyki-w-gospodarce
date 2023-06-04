@@ -32,7 +32,7 @@ const RegisterAdmin = () => {
 
   // Info
   // eslint-disable-next-line
-  const [info, setInfo] = useState(" ");
+  const [info, setInfo] = useState("");
 
   useEffect(() => {
     handleRegisterAdmin();

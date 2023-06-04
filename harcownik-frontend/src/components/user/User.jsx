@@ -1,11 +1,21 @@
 /* eslint-disable */
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 
 import ProfileCard from "./ProfileCard";
 import SkillsCard from "./SkillsCard";
 
 const User = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) {
+    return (
+      <Container className="text-center">
+        <Spinner animation="border" variant="primary" />
+        <div>Loading profile...</div>
+      </Container>
+    );
+  }
   return (
     <Container>
       <Row>
