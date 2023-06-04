@@ -20,7 +20,7 @@ jobs:
       run: |
         cd harcownik-frontend
         npm cache clean --force
-        npm  start &
+        npm  start-dev &
     
     - name: Test server
       run: |
