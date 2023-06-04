@@ -15,8 +15,5 @@ jobs:
       run: |
         cd harcownik-frontend
         npm install
-
-    - name: Start server
-      run: |
-        cd harcownik-frontend
         npm start
+        
