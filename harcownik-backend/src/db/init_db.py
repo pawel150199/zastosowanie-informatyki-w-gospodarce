@@ -977,21 +977,1034 @@ def init_badges(db: Session) -> None:
             ],
             group="Łącznościowe",
         ),
+        # JĘZYKOWE
+        schemas.CreateBadge(
+            name="JĘZYKOZNAWCA *",
+            description=[
+                "1. Wyraża się poprawnie, nauczyła / nauczył się umiejętnie korzystać ze słowników języka polskiego i poprawnej polszczyzny.",
+                "2. Nauczyła / nauczył się podstawowych zwrotów grzecznościowych w językach: angielskim, francuskim, niemieckim, rosyjskim.",
+                "3. W wybranym przez siebie języku obcym nauczyła / nauczył się podstawowego słownictwa związanego z harcerstwem (co najmniej 20 słówek).",
+                "4. Uczy się systematycznie wybranego języka obcego.",
+            ],
+            group="Językowe",
+        ),
+        schemas.CreateBadge(
+            name="TŁUMACZKA / TŁUMACZ **",
+            description=[
+                "1. Pogłębiła / pogłębił w czasie próby znajomość języka obcego.",
+                "2. Przetłumaczyła / przetłumaczył na język polski kilka gier skautowych.",
+                "3. Napisała / napisał słowniczek o tematyce harcerskiej, zawierający ok. 100 słówek w języku, którego się uczy.",
+                "4. Uczestnicząc w spotkaniu skautowym, pomagała / pomagał innym porozumieć się w języku, którego się uczy.",
+            ],
+            group="Językowe",
+        ),
+        schemas.CreateBadge(
+            name="POLIGLOTKA / POLIGLOTA ***",
+            description=[
+                "1. Potrafi porozumieć się w podstawowych sprawach w co najmniej dwóch językach obcych i tłumaczyć rozmowę z wybranego języka.",
+                "2. Przetłumaczyła / przetłumaczył artykuły o tematyce skautowej, upowszechniając ich treść w swoim środowisku.",
+                "3. Zaoferowała / zaoferował swoją służbę jako tłumacz podczas spotkania skautowego organizowanego przez szczep, hufiec lub chorągiew.",
+                "4. Nauczyła / nauczył młodszych kilku zwrotów obcojęzycznych.",
+            ],
+            group="Językowe",
+        ),
+        # NAUKOWE
+        schemas.CreateBadge(
+            name="SZPERACZ *",
+            description=[
+                "1. Przygotowując żądaną informację, umiejętnie posłużyła / posłużył się przewodnikiem, encyklopedią, Internetem.",
+                "2. Zlokalizowała / zlokalizował wybrany obiekt w nieznanym terenie, wykorzystując dostępne źródła informacji.",
+                "3. Przeprowadziła / przeprowadził wywiad dotyczący ciekawostek wybranej miejscowości i zaprezentowała / zaprezentował go na zbiórce zastępu.",
+                "4. W czasie obozu, biwaku lub rajdu zebrała/zebrał ciekawostki na temat odwiedzanych miejsc i ludzi, prezentując je potem kolegom.",
+            ],
+            group="Naukowe",
+        ),
+        schemas.CreateBadge(
+            name="POSZUKIWACZ **",
+            description=[
+                "1. Wybrała / wybrał dziedzinę swoich zainteresowań i stale pogłębia swą wiedzę, odwiedzając miejsca związane z tym tematem.",
+                "2. Zorganizowała / zorganizował wycieczkę zastępu (drużyny) do miejsc, w których znajdują się eksponaty z dziedziny jej/jego zainteresowań.",
+                "3. Przeprowadziła / przeprowadził zwiad społeczny w czasie obozu lub biwaku,zdobywając wiedzę na temat historii i ważnych spraw mieszkańców regionu.",
+                "4. Wykazała / wykazał się znajomością krain geograficznych i okresów dziejowych Polski.",
+            ],
+            group="Naukowe",
+        ),
+        schemas.CreateBadge(
+            name="BADACZKA / BADACZ ***",
+            description=[
+                "1. Wykazała / wykazał się zainteresowaniami w wybranej dziedzinie (doświadczenia fizyczne, chemiczne, biologiczne, badania etnograficzne, archeologiczne, historyczne, religioznawcze, geologiczne itp.).",
+                "2. Interesująco przedstawiła / przedstawił dziedzinę swoich zainteresowań.",
+                "3. Spopularyzowała / spopularyzował w drużynie (w szkole) wybrane odkrycie naukowe lub wydarzenie historyczne (społeczne), wyjątkowo ważne dla dziejów ludzkości.",
+                "4. Zorganizowała/zorganizował młodzieżową debatę naukową na wybrany przez siebie temat.",
+            ],
+            group="Naukowe",
+        ),
+        # SPORTOWE
+        schemas.CreateBadge(
+            name="SPORTOWIEC *",
+            description=[
+                "1. Interesuje się wybraną dyscypliną sportu i popularyzuje ją, wymieniła / wymienił nazwiska swoich ulubionych sportowców.",
+                "2. Codziennie wykonuje poranną gimnastykę.",
+                "3. Zademonstrowała / zademonstrował swój zestaw ćwiczeń treningowych.",
+                "4. Zorganizowała / zorganizował spotkanie z zawodnikiem lub trenerem wybranej dyscypliny albo zaprezentowała / zaprezentował film o życiu sportowców.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="[NAZWA DYSCYPLINY] np. PIŁKARZ, NARCIARZ **",
+            description=[
+                "1. Uprawia wybraną dyscyplinę sportu.",
+                "2. Zademonstrowała / zademonstrował swoje umiejętności w tej dyscyplinie.",
+                "3. Zorganizowała / zorganizował dla harcerzy zajęcia zapoznające z uprawianą dyscypliną sportu (pokazy, zawody, naukę zasad i techniki itd.).",
+                "4. Uczestniczyła / uczestniczył kilkakrotnie w zawodach sportowych, zawsze przestrzegając zasady fair play.",
+                "5. Stara się systematycznie poprawiać swoje wyniki.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="OLIMPIJCZYK ***",
+            description=[
+                "1. Uprawia wybraną dyscyplinę sportu pod fachowym kierunkiem.",
+                "2. Uczestniczyła / uczestniczył w olimpiadzie sportowej (np. szkolnej, obozowej,międzyszkolnej), poprawiając swoje wyniki.",
+                "3. Spopularyzowała / spopularyzował ideę olimpijską w swoim środowisku: w szkole, w drużynie (szczepie).",
+                "4. Reprezentowała / reprezentował szkołę na zawodach sportowych, starając się przyczynić do sukcesów swojej drużyny.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="GIMNASTYCZKA / GIMNASTYK *",
+            description=[
+                "1. Opracowała / opracował własne zestawy ćwiczeń w domu i na powietrzu.",
+                "2. Poznała / poznał sławne gimnastyczki i gimnastyków i ich kariery sportowe.",
+                "3. Prowadziła / prowadził gimnastykę zastępu, drużyny, grupy dzieci.",
+                "4. Brała / brał udział w zawodach sportowych w drużynie, starając się osiągać najlepsze wyniki.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZYNI GIMNASTYKI / MISTRZ GIMNASTYKI **",
+            description=[
+                "1. Nauczyła / nauczył się poprawnie wykonywać ćwiczenia z wybranego rodzaju gimnastyki.",
+                "2. Zrozumiała / zrozumiał rolę ćwiczeń gimnastycznych dla organizmu.",
+                "3. Uczestniczy regularnie w zajęciach wybranej gimnastyki prowadzonych przez fachowca.",
+                "4. Dobrała / dobrał muzykę do uprawianych przez siebie codziennie ćwiczeń.",
+                "5. Przeprowadziła / przeprowadził gimnastykę zastępu lub drużyny na obozie lub biwaku, zwracając uwagę na dokładność wykonywania ćwiczeń.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="MŁODA PŁYWACZKA / MŁODY PŁYWAK *",
+            description=[
+                "1. Przepłynęła / przepłynął 100 m, w tym połowę na plecach.",
+                "2. Wytrzymała / wytrzymał pod wodą 20 sekund.",
+                "3. Nauczyła / nauczył się prawidłowo zakładać kamizelkę ratunkową.",
+                "4. Poznała / poznał zasady bezpieczeństwa i higieny kąpieli.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="PŁYWACZKA / PŁYWAK **",
+            description=[
+                "1. Przepłynęła / przepłynął 200 m, w tym połowę na plecach.",
+                "2. Skoczyła / skoczył do wody z wysokości co najmniej 1 m i przepłynęła / przepłynął pod lustrem wody 10 m.",
+                "3. Wyciągnęła / wyciągnął przedmiot znajdujący się 1,5 m pod wodą.",
+                "4. Nauczyła / nauczył młodszych zakładania kamizelki ratunkowej i podawania koła ratunkowego.",
+                "5. Poznała / poznał zasady bezpieczeństwa kąpieli oraz ratowania tonącego.",
+            ],
+            group="Sportowe",
+        ),
+        schemas.CreateBadge(
+            name="PŁYWACZKA DOSKONAŁA / PŁYWAK DOSKONAŁY ***",
+            description=[
+                "1. Przepłynęła / przepłynął 400 m (dziewczęta) i 600 m (chłopcy) w wodzie stojącej lub 800 m (dziewczęta) i 1000 m (chłopcy) z prądem co najmniej dwoma stylami.",
+                "2. Przepłynęła / przepłynął pod wodą 15 metrów.",
+                "3. Uczestniczyła / uczestniczył w wyznaczaniu kąpieliska zgodnie z przepisami.",
+                "4. Zademonstrowała / zademonstrował w wodzie sposób ratowania tonącego.",
+            ],
+            group="Sportowe",
+        ),
+        # ARTYSTYCZNE
+        schemas.CreateBadge(
+            name="ŚPIEWACZKA / ŚPIEWAK *",
+            description=[
+                "1. Rozpoczęła / rozpoczął śpiew kilku piosenek na zbiórce zastępu.",
+                "2. Nauczyła / nauczył zastęp jednej piosenki.",
+                "3. Zaśpiewała / zaśpiewał z pamięci dziesięć piosenek (np. harcerskich lub żołnierskich).",
+                "4. Występowała / występował z zastępem, śpiewając kilka piosenek oraz brała / brał udział w inscenizacji piosenki.",
+                "5. Prowadzi na bieżąco swój śpiewnik harcerski, ma w nim zapisanych co najmniej 20 piosenek.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="PIEŚNIARKA / PIEŚNIARZ **",
+            description=[
+                "1. Przedstawiła / przedstawił prowadzony przez siebie śpiewnik lub swoją płytotekę.",
+                "2. Śpiewała / śpiewał na uroczystościach harcerskich, szkolnych lub kościelnych.",
+                "3. Nauczyła / nauczył zastęp lub drużynę kilku tradycyjnych i współczesnych piosenek harcerskich oraz turystycznych.",
+                "4. Wymieniła / wymienił swoich ulubionych piosenkarzy, śpiewaków i zespoły, uzasadniając wybór w sposób przekonujący.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="WODZIREJKA / WODZIREJ ***",
+            description=[
+                "1. Przygotowała / przygotował program i przeprowadził pięć ognisk harcerskich dla szczepu lub kilku drużyn, w tym co najmniej dwa ogniska tematyczne.",
+                "2. Zorganizowała / zorganizował bal harcerski, tematyczną zabawę taneczną lub dyskotekę, zapewniając w przerwach konkursy, zabawy i pląsy.",
+                "3. Przedstawiła / przedstawił prowadzony przez siebie notatnik, w którym zapisuje pomysły pląsów, zabaw i okrzyków.",
+                "4. Przygotowała / przygotował młodszych do próby na sprawności „tancerza”, „muzyka” lub „piosenkarza”.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="GRAJEK **",
+            description=[
+                "1. Nauczyła / nauczył się grać przynajmniej na jednym instrumencie, zagrała / zagał na nim melodię.",
+                "2. Brała / brał udział w przygotowaniu uroczystości harcerskiej, organizując orkiestrę.",
+                "3. Nauczyła / nauczył zastęp lub drużynę piosenki na podstawie zapisu nutowego.",
+                "4. Zorganizowała / zorganizował w drużynie naukę piosenek, akompaniując na instrumencie.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MUZYCZKA / MUZYK ***",
+            description=[
+                "1. Zagrała / zagrał kilka melodii na wybranym instrumencie.",
+                "2. Scharakteryzowała / scharakteryzował okresy w dziejach polskiej muzyki, wymieniając najsłynniejszych kompozytorów i ich utwory.",
+                "3. Zorganizowała / zorganizował wyjście drużyny na koncert do filharmonii lub opery.",
+                "4. Akompaniowała / akompaniował na ognisku, dobierając wcześniej związany z tematem zestaw piosenek.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="ARTYSTKA / ARTYSTA (mistrzowska)",
+            description=[
+                "1. Doskonale orientuje się w życiu artystycznym i kulturalnym swojego regionu i Polski.",
+                "2. Animuje działalność artystyczną w swoim środowisku harcerskim.",
+                "3. Brała / brał udział w warsztatach specjalistycznych, doskonalących umiejętności w wybranej przez siebie dziedzinie artystycznej.",
+                "4. Odniosła / odniósł sukces na festiwalu, przeglądzie, konkursie, wystawie itp.",
+                "5. Wyznaczyła / wyznaczył sobie dodatkowe zadania mistrzowskie.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="PLASTYCZKA / PLASTYK *",
+            description=[
+                "1. Nauczyła / nauczył się wykonywać różnymi technikami rysunki, plakaty i obrazy, loga, napisy (co najmniej pięć rodzajów)",
+                "2. Wykonała / wykonał ilustrację do kroniki i plakat reklamowy.",
+                "3. Rozpoznała / rozpoznał wskazane dzieła rzeźby i malarstwa polskiego.",
+                "4. Wykonała / wykonał ozdobę do harcówki lub totem obozowy.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="DEKORATORKA / DEKORATOR **",
+            description=[
+                "1. Nauczyła / nauczył się wykonywać różnymi technikami rysunki, plakaty i obrazy, loga, napisy (co najmniej dziesięć rodzajów technik plastycznych).",
+                "2. Rozpoznała / rozpoznał różne style w malarstwie.",
+                "3. Przygotowała / przygotował dekorację wybranej sali według projektu.",
+                "4. Wymieniła/wymienił filmy, które mają najciekawszą jej/jego zdaniem scenografię.",
+                "5. Przedstawiła / przedstawił zaprojektowane przez siebie urządzenie pokoju, harcówki, namiotu, świetlicy obozowej",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="SCENOGRAFKA / SCENOGRAF ***",
+            description=[
+                "1. Poznała / poznał zasady projektowania kostiumów i dekoracji.",
+                "2. Opracowała / opracował scenografię do przedstawienia w sali i w plenerze, opra- cowała/opracował rzuty do scenografii.",
+                "3. Zorganizowała / zorganizował wykonanie oraz pokierowała / pokierował zespoła- mi wykonującymi dekorację wystawy lub innej imprezy kulturalnej.",
+                "4. Wykonała / wykonał detal scenograficzny, wykorzystując różne materiały.",
+                "5. Przygotowała / przygotował młodszych do zdobycia sprawności „plastyka” lub „dekoratora”.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="RECYTATORKA / RECYTATOR *",
+            description=[
+                "1. Uczestniczyła / uczestniczył w pracach koła żywego słowa lub konkursie recytatorskim.",
+                "2. Zaprezentowała / zaprezentował utwory swoich ulubionych autorów na zbiórce zastępu.",
+                "3. Umiejętnie zinterpretowała / zinterpretował nieznany sobie utwór poetycki lub prozatorski, dobierając barwę głosu, modulację, tempo i rytm.",
+                "4. Uczestniczyła / uczestniczył w przygotowaniu wieczoru poezji, prezentując na nim swoje ulubione utwory.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="AKTORKA / AKTOR **",
+            description=[
+                "1. Opowiedziała / opowiedział na zbiórce o swoich ulubionych aktorach i ich największych rolach.",
+                "2. Przygotowała / przygotował kostium i rekwizyty, charakteryzując się do wybranej roli i zagrała/zagrał ją w trakcie przedstawienia w szkole lub drużynie.",
+                "3. Uczęszcza na kółko teatralne lub wzięła / wziął udział w przedstawieniu przygotowanym przez drużynę.",
+                "4. Zaprezentowała / zaprezentował się w różnych formach na scenie, np. monolog,dialog, pantomima.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="REŻYSER ***",
+            description=[
+                "1. Skompletowała / skompletował literaturę, materiały repertuarowe i recenzje na temat widowisk scenicznych.",
+                "2. Opracowała / opracował reżyserię wybranej przez siebie sztuki lub programu, planując wykorzystanie sceny, zagospodarowanie planu, ruch sceniczny, miejsce muzyki i tańca w przedstawieniu i oczekiwania wobec scenografa oraz ustalając próby.",
+                "3. Przygotowała / przygotował do wystawienia sztukę lalkową, program kabaretowy lub montaż literacki.",
+                "4. Zna nazwiska słynnych reżyserów polskich i światowych. Zaprezentowała / zaprezentował sylwetkę jednego z nich na zbiórce zastępu lub drużyny.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="LALKARKA / LALKARZ **",
+            description=[
+                "1. Wykonała / wykonał różne lalki, np. pacynki, marionetki, kukiełki.",
+                "2. Urządziła / urządził scenę i dekoracje dla teatru lalek.",
+                "3. Zorganizowała / zorganizował z zastępem przedstawienie kukiełkowe.",
+                "4. Zagrała / zagrał rolę w teatrzyku kukiełkowym, poruszając lalką, lub w teatrzyku cieni.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="GAWĘDZIARKA / GAWĘDZIARZ **",
+            description=[
+                "1. Poznała / poznał legendy, opowieści ludowe i wykorzystała / wykorzystał je w swoich gawędach.",
+                "2. Opowiedziała / opowiedział jedną z przeczytanych w czasie próby książek, zainteresowując słuchaczy losami bohaterów.",
+                "3. Opowiadając na ogniskach i kominkach, każdą historię wzbogaciła / wzbogacił o morał, przysłowie.",
+                "4. Opowiedziała / opowiedział „na zamówienie” trzy gawędy: jedną na wskazany temat, drugą na podstawie zaobserwowanego wydarzenia i trzecią dostosowaną do sytuacji, w której się aktualnie znalazła / znalazł.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="TANCERKA / TANCERZ *",
+            description=[
+                "1. Poprowadziła / przeprowadził kilka pląsów i zabaw z muzyką na zbiórce zastępu.",
+                "2. Zatańczyła / zatańczył publicznie wybrany taniec narodowy, ludowy, towarzyski,dyskotekowy.",
+                "3. Nauczyła / nauczył tańczyć wybrany taniec koleżanki lub kolegów w zastępie / drużynie.",
+                "4. Zaimprowizowała / zaimprowizował ruchy taneczne do melodii.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZYNI TAŃCA / MISTRZ TAŃCA **",
+            description=[
+                "1. Rozróżniła / rozróżnił melodię i kroki dziesięciu tańców.",
+                "2. Uczestniczyła / uczestniczył w zajęciach klubu lub zespołu tanecznego.",
+                "3. Wzięła / wziął udział w konkursie tanecznym, starając się uzyskać najlepszą ocenę.",
+                "4. Przeprowadziła / przeprowadził kurs tańca w drużynie lub klasie.",
+                "5. Zna nazwiska słynnych tancerek i tancerzy. Przedstawiła / przeprowadził sylwetkę jednego z nich na zbiórce zastępu.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="FOTOAMATORKA / FOTOAMATOR *",
+            description=[
+                "1. Poznała / poznał budowę aparatu fotograficznego, rodzaje aparatów fotograficznych oraz zasady wykonywania zdjęć.",
+                "2. Wykonała / wykonał zdjęcie tematyczne, odpowiednio ustawiając aparat.",
+                "3. Na biwaku lub obozie robiła / robił zdjęcia drużynie, a następnie wybierała / wybrał najlepsze na wystawę.",
+                "4. Przygotowała / przygotował na konkurs lub wystawę w szkole lub w szczepie własny serwis zdjęciowy.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="FOTOGRAF **",
+            description=[
+                "1. Przedstawiła / przedstawił album zdjęć przez siebie wykonanych.",
+                "2. Fotografując, stosowała/stosował prawidłowe ustawienie aparatu i oświetlenia.",
+                "3. Wykonała / wykonał portret osoby lub zjawiska przyrody.",
+                "4. Zorganizowała / zorganizował wystawę fotograficzną w drużynie (szkole, szczepie), prezentując na niej również swoje prace.",
+            ],
+            group="Artystyczne",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZYNI OBIEKTYWU / MISTRZ OBIEKTYWU ***",
+            description=[
+                "1. Poznała / poznał zasady działania kamery, wykonując na niej film, dokumentujący wydarzenie w drużynie, szkole lub rodzinie.",
+                "2. Rozróżniła / rozróżnił zaprezentowane gatunki filmowe, potrafi zareklamować film stosownie do oczekiwań odbiorcy.",
+                "3. Nakręciła/nakręcił film (telefonem komórkowym, kamerą cyfrową) według własnego scenariusza i przygotowała / przygotował go samodzielnie do prezentacji.",
+                "4. Zorganizowała/zorganizował w drużynie lub szczepie wieczór filmowy, prezentujący filmy nakręcone w trakcie różnych przedsięwzięć harcerskich lub szkolnych. Zachęciła/zachęcił innych do dokumentowania wydarzeń za pomocą filmów.",
+            ],
+            group="Artystyczne",
+        ),
+        # Społeczne i obywatelskie
+        schemas.CreateBadge(
+            name="MŁODA OBYWATELKA / MŁODY OBYWATEL *",
+            description=[
+                "1. Poznała / poznał historię godła i barw narodowych. Wie, co oznaczają i potrafi się wobec nich zachować.",
+                "2. Potrafi zaśpiewać hymn państwowy.",
+                "3. Odszukała / odszukał na mapie Polski miejsca, które dotąd odwiedziła / odwie- dził lub chciałaby / chciałby odwiedzić.",
+                "4. Zapoznała / zapoznał się z częścią statutu szkoły, zawierającą prawa i obowiązki ucznia. Angażuje się w życie swojej klasy.",
+                "5. Poznała/poznał daty polskich świąt narodowych. Wie, na pamiątkę jakich wydarzeń zostały ustanowione. Przygotowała/przygotował z zastępem zbiórkę z okazji jednego z nich.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="OBYWATELKA / OBYWATEL **",
+            description=[
+                "1. Współpracuje z samorządem szkolnym. Przygotowała / przygotował kampanię promującą prawa i obowiązki uczniowskie.",
+                "2. Angażuje się w życie szkoły.",
+                "3. Poznała / poznał najważniejsze fakty z historii najnowszej Polski.",
+                "4. Dowiedziała / dowiedział się, gdzie znajdują się najważniejsze urzędy w jej / jego miejscowości i gminie. Przygotowała/przygotował mapę miasta przedstawiającą ich lokalizację oraz główne sprawy, jakimi się zajmują.",
+                "5. Zorganizowała / zorganizował dla drużyny wycieczkę do urzędu gminy lub miasta.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="OBYWATELKA / OBYWATEL RZECZYPOSPOLITEJ ***",
+            description=[
+                "1. Zapoznała / zapoznał się z najważniejszymi prawami i obowiązkami obywateli Rzeczypospolitej Polskiej.",
+                "2. Wie, na czym polega demokracja. Brała / brał udział w demokratycznym podejmowaniu decyzji.",
+                "3. Zgromadziła / zgromadził własną biblioteczkę książek o historii najnowszej Polski. W drużynie, zastępie, klasie przygotowała / przygotował i przeprowadziła / przeprowadził grę o historii najnowszej kraju.",
+                "4. Orientuje się w bieżących wydarzeniach politycznych, gospodarczych i kulturalnych kraju. Zapoznała / zapoznał się z podziałem polskiej sceny politycznej. Dowiedziała / dowiedział się, kto sprawuje najważniejsze funkcje państwowe.",
+                "5. Angażuje się w pracę parlamentu młodzieży lub jednej z młodzieżowych organizacji. W swojej działalności godnie reprezentuje ZHP.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA WŁASNEJ MIEJSCOWOŚCI **",
+            description=[
+                "1. Na podstawie wywiadów z mieszkańcami ustaliła / ustalił najważniejsze wydarzenia w swojej miejscowości w XX wieku.",
+                "2. Dowiedziała / dowiedział się, czy istnieje w jej / jego miejscowości lista honorowych mieszkańców. Wie, kto jest na tej liście i dlaczego.",
+                "3. Przedstawiła / przedstawił historię swojej miejscowości w formie pisanej (artykuł w gazecie) lub ustnej (gawęda na zbiórce).",
+                "4. Zorganizowała / zorganizował wraz z zastępem grę miejską dla drużyny.",
+                "5. Dowiedziała / dowiedział się, jak przedstawia się aktualna sytuacja mieszkańców (gdzie pracują, jak spędzają czas wolny, co robią najmłodsi mieszkańcy itd.).",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="PRZEWODNICZKA PO REGIONIE / PRZEWODNIK PO REGIONIE **",
+            description=[
+                "1. Wzięła / wziął udział w zwiadzie etnograficznym zastępu w wybranej okolicy. Zwróciła / zwrócił uwagę na styl budownictwa, elementy sztuki ludowej, język mieszkańców.",
+                "2. Zaprezentowała / zaprezentował drużynie swoje spostrzeżenia, zdjęcia, szkice oraz co najmniej jeden przedmiot będący wyrobem rzemiosła ludowego z wybranej okolicy.",
+                "3. Skompletowała / skompletował biblioteczkę zawierającą pozycje opisujące interesujący ją / jego region.",
+                "4. Poznała / poznał co najmniej jeden taniec, piosenkę lub przyśpiewkę ludową z wybranego regionu.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA REGIONU ***",
+            description=[
+                "1. Zwiedziła / zwiedził z zastępem muzeum regionalne lub skansen.",
+                "2. Wskazała / wskazał atuty kulturowe regionu i zagrożenia dla jego rozwoju.",
+                "3. Poznała / poznał główne problemy ochrony środowiska swojego regionu. Zainicjowała / zainicjował w drużynie działania zmierzające do ich rozwiązania.",
+                "4. Odwiedza strony internetowe własnego województwa. Śledzi na bieżąco ukazujące się tam informacje.",
+                "5. Nawiązała / nawiązał kontakt z redakcją lokalnego radia lub gazety, pomogła / pomógł w przygotowaniu cyklu artykułów o ciekawostkach regionu lub zamieściła/zamieścił artykuł o regionie na portalu dziennikarstwa obywatelskiego.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ETNOGRAFKA / ETNOGRAF ***",
+            description=[
+                "1. Poznała/poznał gwarę regionu, w którym mieszka, lub język mniejszości zamieszkującej na tym terenie i inne charakterystyczne elementy kultury regionu.",
+                "2. Przedstawiła / przedstawił swoje zbiory opowieści i pieśni ludowych oraz publikacji o działalności twórców ludowych, zespołów folklorystycznych.",
+                "3. Na wycieczce drużyny pełniła / pełnił rolę przewodnika po obiektach kultury ludowej.",
+                "4. Zaznaczyła/zaznaczył na mapie Polski regiony etnograficzne oraz scharakteryzowała/scharakteryzował je.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="MŁODA EUROPEJKA / MŁODY EUROPEJCZYK *",
+            description=[
+                "1. Dowiedziała / dowiedział się, kim był Robert Schuman i czym jest Unia Europejska.",
+                "2. Przygotowała / przygotował do harcówki mapę Polski z zaznaczonymi sąsiadami naszego kraju.",
+                "3. Przygotowała / przygotował dla zastępu / drużyny / szkoły konkurs na najlepszy plakat o Europie.",
+                "4. Zna symbole jednoczącej się Europy. Wykonała / wykonał flagę europejską do harcówki.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="EUROPEJKA / EUROPEJCZYK **",
+            description=[
+                "1. Dowiedziała / dowiedział się, czym była Deklaracja Schumana i jakie miała znaczenie w pokojowym jednoczeniu kontynentu.",
+                "2. Umie wymienić kraje należące do Unii Europejskiej.",
+                "3. Przygotowała / przygotował dla drużyny kwiz o Europie, którego pytania dotyczyły krajów, stolic, głównych rzek i najbardziej znanych zabytków.",
+                "4. Poznała / poznał hymn Unii Europejskiej. Na zbiórce nauczyła / nauczył innych go śpiewać.",
+                "5. Poznała / poznał główne instytucje zjednoczonej Europy.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="OBYWATELKA EUROPY / OBYWATEL EUROPY ***",
+            description=[
+                "1. Poznała / poznał główne etapy tworzenia się Unii Europejskiej. Potrafiła / potrafił wymienić założycieli zjednoczonej Europy. Dowiedziała / dowiedział się, jaki mieli wkład w integrowanie Europy.",
+                "2. Poznała / poznał instytucje europejskie oraz ich kompetencje. Przygotowała / przygotował do harcówki planszę przedstawiającą te instytucje.",
+                "3. Dowiedziała / dowiedzał się, czym jest obywatelstwo europejskiej i jakie płyną z niego korzyści.",
+                "4. Rozumie proces integracji Polski z instytucjami europejskimi.",
+                "5. Przygotowała / przygotował dla drużyny debatę nad przyszłością Europy.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA EUROPY (mistrzowska)",
+            description=[
+                "1. Poznała / poznał wkład polskich myślicieli w proces jednoczenia Europy.",
+                "2. Poznała / poznał historię integracji europejskiej. Rozumie różne podejścia do przyszłości Europy.",
+                "3. Dowiedziała / dowiedział się, jaka jest procedura podejmowania decyzji w Unii Europejskiej oraz jaka jest waga polskiego głosu.",
+                "4. Przygotowała / przygotował warsztaty na temat integracji europejskiej lub zagadnienia szczegółowego dla wybranej grupy.",
+                "5. Dowiedziała / dowiedział się, jakie instytucje oraz organizacje w Polsce zajmują się tematyką integracji europejskiej. Zgłosiła / zgłosił się do współpracy z Regionalnym Centrum Integracji Europejskiej lub inną instytucją.",
+                "6. Poznała / poznał sposoby pozyskiwania funduszy europejskich, np. program „Młodzież”, programy dla studentów.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA PRAW CZŁOWIEKA **",
+            description=[
+                "1. Wie, czym są prawa i wolności człowieka. Rozumie pojęcie godności.",
+                "2. Wie, jakie dokumenty międzynarodowe ustanawiają podstawowe prawa i wolności człowieka. Przygotowała / przygotował do harcówki / klasy plakat z katalogiem podstawowych praw i wolności człowieka.",
+                "3. Wie, jakie organizacje pozarządowe w Polsce podejmują tematykę praw człowieka.",
+                "4. Wie, w których krajach prawa człowieka nadal są łamane. Przygotowała / przygotował wraz z drużyną akcję propagującą prawa człowieka. W tym celu nawiązała / nawiązał współpracę z organizacją zajmującą się tą problematyką.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="OBROŃCA PRAW CZŁOWIEKA ***",
+            description=[
+                "1. Wie, skąd pochodzi idea praw człowieka oraz jakie wydarzenia miały największy wpływ na ich rozwój. Rozumie, czym są kolejne generacje praw człowieka.",
+                "2. Zna najważniejsze dokumenty międzynarodowe dotyczące praw człowieka. Wie, które organizacje międzynarodowe odpowiadają za przestrzeganie praw człowieka.",
+                ".3. Wybrała / wybrał jedną dziedzinę praw człowieka, którą poznała /poznał szczególnie dokładnie (np. prawa kobiet, prawa dzieci, prawa uchodźców).",
+                "4. Przygotowała/przygotował zbiórkę drużyny na temat wybranej grupy i jej praw oraz akcję (w szczepie, hufcu, szkole) na rzecz ochrony tej grupy. W tym celu nawiązała/nawiązał współpracę z Amnesty International lub inną organizacją.",
+                "5. Wie, w jakich krajach prawa człowieka są nadal łamane. Przygotowała / przygo/tował w dowolnej formie prezentację na ten temat, przedstawiła / przedstawił ją na zbiórce drużyny.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY WYBORCA ***",
+            description=[
+                "1. Wyraziła / wyraził i uzasadniła / uzasadnił swoje zdanie na temat udziału harcerzy i harcerek w samorządzie szkolnym.",
+                "2. Określiła / określił, w jaki sposób jej / jego zastęp i zastępowa / zastępowy uczestniczą w samorządnym realizowaniu zadań w drużynie.",
+                "3. Wzięła / wziął udział w tworzeniu programu wyborczego do samorządu szkolnego.",
+                "4. Zapoznała / zapoznał się z podstawowymi zasadami wyborczymi w Polsce. Wie, jakie wybory odbywają się w naszym kraju i co to jest referendum.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="WYBORCA (mistrzowska)",
+            description=[
+                "1. Wyraziła / wyraził i uzasadniła / uzasadnił swoje zdanie na temat udziału obywateli w formach demokratycznego sprawowania władzy samorządowej i państwowej. Zna istotę społeczeństwa obywatelskiego.",
+                "2. Potrafi wskazać, na czym polega samorządność drużyny w realizacji zadań.",
+                "3. Prześledziła / prześledził programy partii politycznych w Polsce, zwracając uwa- gę na główne problemy społeczne, na które one odpowiadają. Zapoznała / zapoznał się z układami sił partyjnych w Niemczech, Anglii i Francji oraz w innych krajach.",
+                "4. Wzięła / wziął udział w wyborach do samorządu uczniowskiego lub władz samorządowych i państwowych.",
+                "5. Rozumie mechanizmy sprawowania władzy w państwie demokratycznym, rolę wyborów i zasadę pomocniczości państwa.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="NEGOCJATORKA / NEGOCJATOR ***",
+            description=[
+                "1. Przeprowadziła / przeprowadził ćwiczenie, dyskusję lub debatę, podczas której skuteczne negocjowała / negocjował między dorosłymi a dziećmi.",
+                "2. Przedstawiła / przedstawił zastępowi podstawowe zasady negocjacji.",
+                "3. Przeprowadziła / przeprowadził dla zastępu warsztaty z komunikacji.",
+                "4. Doprowadziła / doprowadził do porozumienia między stronami konfliktu.",
+                "5. Łagodziła / łagodził konflikty w zastępie, klasie lub drużynie różnymi sposobami.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ORGANIZATORKA NAUKI / ORGANIZATOR NAUKI *",
+            description=[
+                "1. Opracowała / opracował tygodniowy rozkład zajęć, w którym uwzględniła / uwzględnił wszystkie swoje zajęcia (lekcje, zajęcia pozalekcyjne, obowiązki domowe, czas odpoczynku).",
+                "2. Zorganizowała / zorganizował sobie miejsce do nauki w domu (oświetlenie, ustawienie krzesła itp.).",
+                "3. Przedstawiła/przedstawił kolegom zestaw ćwiczeń odprężających, stosowanych podczas przerw w nauce.",
+                "4. Dowiedziała / dowiedział się, w jakich zajęciach pozalekcyjnych i na jakich zasa- dach można brać udział w szkole, okolicznych klubach lub domach kultury. Wyniki zwiadu przedstawiła / przedstawił na zbiórce zastępu. Zrobiła / zrobił mapkę okolicy, z informacjami, gdzie odbywają się zajęcia pozalekcyjne.",
+                "5. Dowiedziała / dowiedział się, jakie czasopisma popularnonaukowe są dostępne na rynku, zastanowiła / zastanowił się, które są przeznaczone dla niej / niego, przeczytała / przeczytał jeden wybrany numer i zaprezentowała / zaprezentował zastępowi najciekawszy artykuł w dowolnej formie, zwracając uwagę na różne możliwości poszerzania wiedzy.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ORGANIZATORKA CZASU / ORGANIZATOR CZASU **",
+            description=[
+                "1. Planując swój czas, korzysta z kalendarza i terminarza.",
+                "2. Przedstawiła / przedstawił zastępowi różne propozycje aktywnego spędzenia wolnego czasu i zorganizowała / zorganizował wybraną przez zastęp propozycję wspólnego spędzenia czasu.",
+                "3. Przeprowadziła / przeprowadził sondę wśród uczniów klasy lub szkoły na temat spędzania wolnego czasu, z wynikami sondy zapoznała / zapoznał drużynę.",
+                "4. Zna zasady gospodarowania czasem.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="PLANISTA ***",
+            description=[
+                "1. Zorganizowała/zorganizował dla drużyny udział w wybranym przedsięwzięciu pozaharcerskim.",
+                "2. Współorganizowała / współorganizował biwak drużyny, brała/brał udział w podziale zadań, była/był odpowiedzialna/odpowiedzialny za wybrane zadania (np. lista zakupów, dojazdy, zamówienie autokaru).",
+                "3. Sporządziła / sporządził plan, program i preliminarz wybranego przedsięwzięcia drużyny.",
+                "4. Zaplanowała / zaplanował kilka ciekawych propozycji do planu pracy drużyny, propozycje przedstawiła/przedstawił radzie drużyny, a po zatwierdzeniu uczestniczyła / uczestniczył w ich realizacji.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="",
+            description=[
+                "",
+                "",
+                "",
+                "",
+                "",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="STARSZA SIOSTRA / STARSZY BRAT *",
+            description=[
+                "1. Opiekowała / opiekował się młodszym dzieckiem przez kilka godzin, umiejętnie je zabawiając.",
+                "2. Pod opieką rodziców zadbała / zadbał o powierzone dziecko: przestrzegała / przestrzegał godzin karmienia, przygotowała / przygotował do wyjścia na spacer w odpowiednim ubraniu, towarzyszyła / towarzyszył przy toalecie porannej i wieczornej, ułożyła / ułożył do snu.",
+                "3. Potrafi zapewnić bezpieczeństwo zabawy w domu i na spacerze.",
+                "4. Przygotowała / przygotował i przeprowadziła / przeprowadził grę lub zabawę dla dzieci w wieku przedszkolnym.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="PIASTUNKA / PIASTUN **",
+            description=[
+                "1. Systematycznie opiekowała / opiekował się młodszym dzieckiem (rodzeństwem, dzieckiem sąsiadów itp.) przez dłuższy okres (miesiąc, wakacje): przygotowywała / przygotowywał odpowiednie posiłki, wyprowadzała / wyprowadzał na spacer w odpowiednim ubraniu, myła / mył i kładła / kładł do snu, zapewniała / zapewniał bezpieczną zabawę, pomagała / pomagał w nauce (w przypadku opieki nad dzieckiem w wieku szkolnym).",
+                "2. Własnoręcznie przygotowała / przygotował niespodziankę dla dziecka (zabawka, ubranko, ulubiony podwieczorek).",
+                "3. Opracowała / opracował krótki wykaz książek, dotyczących opieki nad dzieckiem. Zapoznała / zapoznał zastęp z jedną z nich.",
+                "4. Opracowała / opracował kilka interesujących zabaw i gier dla dzieci.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="POMOCNA DŁOŃ *",
+            description=[
+                "1. Opiekowała / opiekował się młodszym rodzeństwem lub innym dzieckiem pod nieobecność rodziców, zapewniając bezpieczeństwo i przygotowując posiłki.",
+                "2. Pomagała / pomagał rodzicom w organizacji dużego rodzinnego wydarzenia (remont, uroczystość, przeprowadzka).",
+                "3. Opiekowała / opiekował się chorym domownikiem lub sąsiadem, podając posiłki i lekarstwa oraz umilając czas.",
+                "4. Wyręczyła / wyręczył inną osobę w wykonaniu jakiegoś jej obowiązku.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="UCZYNNA / UCZYNNY **",
+            description=[
+                "1. Samodzielnie lub razem z zastępem dotarła / dotarł do osób potrzebujących pomocy w okolicy (osoby starsze, niepełnosprawne, samotne), przedstawiła / przedstawił wykaz takich osób radzie drużyny.",
+                "2. Sprawdziła / sprawdził, jakiej pomocy potrzebują od niego członkowie rodziny (rodzice, dziadkowie, rodzeństwo), przyjęła / przyjął na siebie kolejny, nowy obowiązek rodzinny (np. pomoc w nauce rodzeństwu, pomoc w ogrodzie dziad- kom, mycie samochodu rodziców) i wypełniała / wypełniał go rzetelnie przez co najmniej miesiąc.",
+                "3. Przez dłuższy okres, np. zimą, w wakacje, pomagała / pomagał osobie starszej, niepełnosprawnej, samotnej, potrzebującej opieki.",
+                "4. Pełniła / pełnił służbę w szkolnej stołówce, świetlicy lub bibliotece, pomagając młodszym.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="DOMOWNICZKA / DOMOWNIK *",
+            description=[
+                "1. Estetycznie nakryła / nakrył stół do codziennego posiłku i uroczystego obiadu rodzinnego.",
+                "2. Posprzątała / posprzątał kuchnię, umieszczając wszystko na właściwym miejscu.",
+                "3. Zabezpieczyła / zabezpieczył przed zepsuciem wędliny, masło, pieczywo, mleko.",
+                "4. Odkurzyła / odkurzył mieszkanie, stosując właściwy sprzęt i środki do podłóg, mebli, dywanów.",
+                "5. Przygotowała / przygotował podwieczorek dla członków rodziny, zadbała / zadbał o właściwy wystrój miejsca spożywania posiłku.",
+                "6. Pielęgnowała / pielęgnował kwiaty domowe (podlewanie, przesadzanie).",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="GOSPODYNI / GOSPODARZ * *",
+            description=[
+                "1. Zrobiła / zrobił pranie, prawidłowo segregując rzeczy do prania, stosując odpowiednie proszki i płyny.",
+                "2. Pod opieką osoby dorosłej umyła / umył okna",
+                "3. Zna środki czystości używane do utrzymania porządku w domu, wie, jak się je stosuje. Zna domowe sposoby i środki stosowane do czyszczenia, mycia różnych urządzeń domowych, zabezpieczania przed owadami itp.",
+                "4. Nauczyła / nauczył się posługiwać sprzętem gospodarstwa domowego.",
+                "5. Zrobiła / zrobił listę zakupów oraz zakupy potrzebne do całodziennego wyżywienia rodziny. Samodzielnie przygotowała/przygotował posiłek dla domowników.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="PANI DOMU / PAN DOMU ***",
+            description=[
+                "1. Przez kilka dni zajmowała / zajmował się prowadzeniem domu: utrzymywała / utrzymywał czystość i porządek w mieszkaniu, przyrządzała / przyrządzał wszystkie posiłki zgodnie z opracowanym przez siebie tygodniowym jadłospisem, zorganizowała / zorganizował tygodniowe zakupy według wcześniej przygotowanej listy.",
+                "2. Zorganizowała / zorganizował uroczystość rodzinną dla kilku osób, przygotowała / przygotował potrawy. Zadbała / zadał o odpowiednią oprawę przyjęcia (muzyka, eleganckie nakrycie, wystrój pokoju).",
+                "3. Skompletowała / skompletował lub przejrzała / przejrzał apteczką domową. Po uzgodnieniu z rodzicami uzupełniła / uzupełnił ewentualne braki.",
+                "4. Dokonała / dokonał miesięcznych opłat za mieszkanie, telefon, gaz.",
+                "5. Odczytała / odczytał liczniki na wodę i gaz, przygotowała / przygotował dom do dłuższej nieobecności (wyłączenie wody, gazu, zabezpieczenie mieszkania przed kradzieżą, zalaniem).",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="OPIEKUNKA CHORYCH / OPIEKUN CHORYCH **",
+            description=[
+                "1. Opiekowała / opiekował się chorym w domu lub na obozie. Wykonywała / wykonywał następujące czynności: sprzątała / sprzątał w pomieszczeniu, w którym przebywał chory, ścieliła / ścielił łóżko i zmieniała / zmieniał pościel, podawała / podawał posiłki i lekarstwa według zaleceń lekarza.",
+                "2. Przygotowała / przygotował dietetyczny posiłek odpowiedni do rodzaju choroby osoby, którą się opiekowała / opiekował",
+                "3. Pomogła / pomógł chorej osobie w załatwieniu spraw osobistych, np. przekazując wiadomości do szkoły lub pracy, robiąc zakupy.",
+                "4. Zorganizowała / zorganizował choremu rozrywkę, starając się ulżyć jego dolegliwościom.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="HISTORYK RODZINNY **",
+            description=[
+                "1. Poznała / poznał historię swojej rodziny, wykonała / wykonał wykaz ważnych rodzinnych wydarzeń.",
+                "2. Uporządkowała / uporządkował album rodzinny, opisała /opisał zdjęcia, ułożyła / ułożył je chronologicznie",
+                "3. Odtworzyła / odtworzył drzewo genealogiczne swojej rodziny przynajmniej trzy pokolenia wstecz, korzystając np. z ksiąg kościelnych lub dokumentów rodzinnych. Uporządkowała / uporządkował dokumentację i pamiątki rodzinne (świadectwa, dyplomy, listy, pamiątki).",
+                "4. Prowadziła / prowadził kronikę rodziny, zapisała / zapisał w niej np. kilka ciekawych przygód rodziny, wywiady przeprowadzone ze starszymi członkami rodziny, słowniczek pierwszych słów młodszego rodzeństwa.",
+                "5. Współorganizowała / współorganizował i uczestniczyła / współuczestniczył w rodzinnej wycieczce do miejsc ważnych dla rodziny (np. miejscowość, z której pochodzą dziadkowie, kościół, w którym brali ślub, miejsce, gdzie poznali się rodzice, miejsce walki, w której uczestniczył ktoś z rodziny).",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="POSZUKIWACZ NIEZNANEGO ŚWIATA **",
+            description=[
+                "1. Dowiedziała / dowiedział się, gdzie w najbliższej okolicy mieszkają osoby niepełnosprawne.",
+                "2. Nawiązała / nawiązał kontakt z dzieckiem (rówieśnikiem) niepełnosprawnym, dowiedziała/dowiedział się, na czym polega jego niepełnosprawność.",
+                "3. Zaprosiła / zaprosił niepełnosprawnego kolegę na zbiórkę.",
+                "4. W dowolnej formie pomagała / pomagał niepełnosprawnej koleżance lub niepełnosprawnemu koledze.",
+                "5. Poznała / poznał kilka zwrotów grzecznościowych w języku migowym.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ODKRYWCA NIEZNANEGO ŚWIATA ***",
+            description=[
+                "1. Poznała / poznał system pomocy społecznej w swojej gminie, odnalazła / odnalazł instytucje wspomagające osoby niepełnosprawne.",
+                "2. Wraz z zastępem przeprowadziła / przeprowadził zwiad po swojej miejscowości, odnalazła / odnalazł miejsca trudne do pokonania przez osoby niepełnosprawne ruchowo. Przedstawiła / przedstawił projekt ich likwidacji.",
+                "3. Przygotowała / przygotował oraz przeprowadziła /przeprowadził kilka gier i zabaw na zbiórce zastępu, w której uczestniczyły też dzieci niepełnosprawne.",
+                "4. Przeprowadziła / przeprowadził krótką rozmowę w języku migowym, poznała / poznał technikę posługiwania się alfabetem Braille’a.",
+                "5. Brała / brał udział w kweście ulicznej, sprzedaży cegiełek lub innej akcji zbierania pieniędzy na cele społeczne.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA KRWIODAWSTWA **",
+            description=[
+                "1. Wie, co to jest krew i zna jej rolę w organizmie człowieka.",
+                "2. Wie, kto może zostać honorowym dawcą krwi i gdzie w najbliższej okolicy można oddać krew.",
+                "3. Zaprosiła /zaprosił na zbiórkę zastępu lub drużyny zasłużonego honorowego dawcę krwi.",
+                "4. Przygotowała/przygotował program na uroczystość lub apel z okazji Dni Honorowego Krwiodawstwa PCK albo wykonał plakat zachęcający do honorowego oddawania krwi.",
+                "5. Namówił co najmniej dwie osoby do oddania krwi.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="POPULARYZATOR KRWIODAWSTWA ***",
+            description=[
+                "1. Wie, jakie znaczenie mają poszczególne składniki krwi dla prawidłowego funkcjonowania organizmu człowieka oraz jakie choroby leczone są z wykorzystaniem leków krwiopochodnych i w jakich sytuacjach wykorzystywania jest krew dla ratowania zdrowia i życia człowieka.",
+                "2. Wie, jakie organizacje i instytucje zajmują się promocją krwiodawstwa i pobieraniem krwi.",
+                "3. Wraz z zastępem lub drużyną odwiedził regionalne centrum krwiodawstwa i krwiolecznictwa (punkt krwiodawstwa) lub wziął udział w otwartej akcji poboru krwi. Poznał procedury związane z pobieraniem krwi.",
+                "4. Przygotował prezentację multimedialną promującą honorowe krwiodawstwo, którą zaprezentował na zbiórce drużyny lub przed swoją klasą. Prezentację zamieścił na stronie internetowej.",
+                "5. Do oddania krwi namówił co najmniej trzy osoby.",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        schemas.CreateBadge(
+            name="AMBASADOR KRWIODAWSTWA (mistrzowska)",
+            description=[
+                "1. Zna budowę tkanki krwi i rolę składników krwi dla prawidłowego funkcjonowania organizmu człowieka. Wie, jakie jest wykorzystanie poszczególnych składników krwi dla ratowania zdrowia i życia człowieka.",
+                "2. Potrafi omówić historię leczenia z wykorzystaniem krwi ludzkiej, w tym rozwój krwiodawstwa w Polsce. Zna zadania organizacji i instytucji zajmujących się organizacją i promocją krwiodawstwa w Polsce.",
+                "3. Odnalazł w swoim otoczeniu osobę, która otrzymała krew lub preparaty krwiopochodne. Przeprowadził z nią wywiad, który zaprezentował swojej drużynie.",
+                "4. Nawiązał kontakt z Klubem Honorowych Dawców Krwi PCK lub placówką publicznej służby krwi. Poznał drogę krwi od dawcy do biorcy, potrafi omówić etapy pobierania krwi i jej przygotowania dla celów leczniczych.",
+                "5. Zorganizował w środowisku szkolnym lub lokalnym akcję promującą honorowe krwiodawstwo. Do oddania krwi namówił co najmniej cztery osoby.",
+                "6. Do wyboru: chce oddać honorowo krew, prowadzi zdrowy styl życia, zapoznał się z kwestionariuszem dla krwiodawcy i sprawdził, czy spełnia wymagania dla dawcy (oprócz wieku) – dla osób poniżej 18 roku życia, oddał honorowo krew – dla osób, które ukończyły 18 lat (nie dotyczy osób, który z powodów zdrowotnych nie zostały zakwalifikowane do oddania krwi).",
+            ],
+            group="Społeczne i obywatelskie",
+        ),
+        # KOMPUTEROWE
+        schemas.CreateBadge(
+            name="KOMPUTEROWIEC *",
+            description=[
+                "1. Wykonała / wykonał podstawowe czynności na komputerze: napisała / napisał tekst w edytorze tekstu, korzystając z arkusza kalkulacyjnego, wykonała / wykonał prostą operację, np. ▪ sumowanie komórek, założyła / założył własną skrzynkę e-mail, napisała / napisał i wysłała / wysłał wiadomość pocztą elektroniczną.",
+                "2. Zebrała / zebrał biblioteczkę informatyczną i przygotowała /przygotował do wykorzystania w drużynie.",
+                "3. Znalazła / znalazł w Internecie informacje z dziedziny, którą się interesuje.",
+                "4. Zainstalowała / zainstalował nowy program komputerowy i skonfigurowała / skonfigurował go do własnych potrzeb.",
+                "5. Obsługując komputer, przestrzega zasad higieny pracy.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA KOMPUTERÓW **",
+            description=[
+                "1. Wskazała / wskazał najlepsze modele monitorów, skanerów, drukarek, modemów oraz innych podzespołów komputerowych w zależności od potrzeb i możliwości użytkownika, uzasadniła / uzasadnił swój wybór. Systematycznie czyta prasę komputerową.",
+                "2. Zainstalowała / zainstalował w komputerze i właściwie skonfigurowała / skonfigurował dodatkowy sprzęt: kartę muzyczną, twardy dysk, CD-ROM, skaner.",
+                "3. Zaradziła / zaradził w kilku przypadkach awarii sprzętu komputerowego.",
+                "4. Zaprezentowała / zaprezentował młodszym harcerzom budowę i zasadę działania komputera oraz innych urządzeń, np. drukarki, skanera.",
+                "5. Poznaje dowolny język programowania, wykorzystując nabyte umiejętności napisała / napisał prostą aplikację.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="INFORMATYK ***",
+            description=[
+                "1. Przedstawiła / przedstawił młodszym harcerzom rolę i perspektywy rozwoju informatyki we współczesnym świecie. Zorganizowała / zorganizował w drużynie (szczepie) zajęcia z obsługi wybranego programu użytkowego.",
+                "2. Poznała / poznał co najmniej jeden język programowania, uczy się następnego, opracowała / opracował aplikację na użytek drużyny, szczepu, hufca.",
+                "3. Poznała / poznał podstawowe rodzaje licencji na oprogramowanie komputerowe, promuje stosowanie legalnych programów.",
+                "4. Samodzielnie złożyła / złożył komputer i właściwie go skonfigurowała / skonfigurował (na poziomie BIOS-u i systemu operacyjnego).",
+                "5. Pełni stałą służbę opartą na wiedzy informatycznej, np. administrator stronwww (hufca, szczepu, drużyny), serwisant sprzętu komputerowego w komendzie hufca, administrator elektronicznej bazy danych.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="INTERNAUTKA / INTERNAUTA **",
+            description=[
+                "1. Wskazała / wskazał najciekawsze jej / jego zdaniem strony w Internecie i uzasadniła / uzasadnił swój wybór. Odszukała / odszukał strony zaprzyjaźnionych środowisk harcerskich.",
+                "2. Znalazła / znalazł w Internecie potrzebne mu informacje, wykorzystała / wykorzystał je na zbiórce.",
+                "3. Skonfigurowała / skonfigurował konto w programie pocztowym, przesłała / przesłał i odebrała / odebrał informacje za pomocą poczty elektronicznej, subskrybuje minimum jedną grupę dyskusyjną.",
+                "4. Zapoznała / zapoznał się z popularnymi nazwami związanymi z Internetem.",
+                "5. Umie znaleźć w sieci potrzebne oprogramowanie, zna rodzaje licencji i stosuje się do nich.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="MISTRZYNI INTERNETU / MISTRZ INTERNETU ***",
+            description=[
+                "1 Nawiązała / nawiązał współpracę z zespołem GK ZHP zajmującym się Internetem, uczestniczyła / uczestniczył w zadaniu realizowanym przez ten zespół.",
+                "2. Zna zasady budowania ośrodków www z zakresu wizualizacji projektu, zagadnień PR i oprogramowania.",
+                "3. Skompletowała / skompletował zespół do realizacji projektu internetowego (serwisu www), rozdzieliła / rozdzielił zadania w zespole: przygotowanie i korekta tekstów, przygotowanie grafiki, kodowanie serwisu, promocja itp., gotowy serwis opublikowała / opublikował w Internecie.",
+                "4. Stale rozwija swoje umiejętności w zakresie języków programowania stosowanych w budowaniu ośrodków www, zna co najmniej dwa, w tym jeden z grupy języków server-side, przygotowała / przygotował layout strony stosując optymalizację grafiki.",
+                "5. Przeprowadziła / przeprowadził formę kształceniową dotyczącą tematyki Internetu.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="DTP-owiec ***",
+            description=[
+                "1. Sprawnie posługuje się fachową terminologią: bękart, interlinia, szeryf, kerning, punktura, tekstura itp.",
+                "2. Zna zasady składu komputerowego i wykorzystuje je w wykonywanych pracach.",
+                "3. Wykonała / wykonał zaawansowane prace DTP i zaprezentowała / zaprezentował je na zbiórce lub w szkole.",
+                "4. Swoje umiejętności wykorzystała / wykorzystał, przygotowując śpiewnik, poradnik lub inne wydawnictwo dla drużyny, szczepu, hufca.",
+                "5. Na zbiórce wytłumaczyła / wytłumaczył młodszym, jakie zagrożenia wynikają z piractwa komputerowego.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="GRAFIK KOMPUTEROWY (mistrzowska)",
+            description=[
+                "1. Samodzielnie wykonała / wykonał zaawansowane prace graficzne na komputerze i zaprezentowała / zaprezentował je na zbiórce lub w szkole.",
+                "2. Swoje umiejętności wykorzystała / wykorzystał, wykonując prace graficzne dla drużyny, szczepu, hufca.",
+                "3. Potrafi sprawnie wykonać zaawansowane operacje: skanować i obrabiać grafikę, importować do i eksportować z innych programów, przygotować dokument do druku, wykonywać retusze itp.",
+                "4. Nauczyła / nauczył młodszych harcerzy podstaw obsługi programu graficznego.",
+                "5. Na zbiórce wytłumaczyła / wytłumaczył zagrożenia wynikające z piractwa komputerowego, zna zasady dotyczące ochrony praw autorskich do grafiki komputerowej.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="",
+            description=[
+                "",
+                "",
+                "",
+                "",
+                "",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA.... *** (nazwa programu komputerowego)",
+            description=[
+                "1. Zainstalowała / zainstalował wybrany program, poznała / poznał jego tajniki, skonfigurowała / skonfigurował program odpowiednio do swoich potrzeb.",
+                "2. Zgromadziła / zgromadził biblioteczkę informatyczną związaną z wybranym programem.",
+                "3. Wykonała / wykonał w wybranym programie materiały i pomoce potrzebne drużynie, szczepowi, hufcowi.",
+                "4. Nauczyła / nauczył młodszych harcerzy podstawowej obsługi wybranego programu, zaprezentowała / zaprezentował efekty swojej pracy z programem.",
+                "5. Na zbiórce wytłumaczyła / wytłumaczył istotę i zagrożenia wynikające z piractwa komputerowego.",
+            ],
+            group="Komputerowe",
+        ),
+        schemas.CreateBadge(
+            name="PROGRAMISTKA / PROGRAMISTA... (nazwa języka programowania) (mistrzowska)",
+            description=[
+                "1. Poznała / poznał genezę i historię wybranego języka programowania, wskazała / wskazał najważniejsze udoskonalenia w jego ostatnich wersjach.",
+                "2. Zgromadziła / zgromadził biblioteczkę informatyczną związaną z wybranym językiem programowania.",
+                "3. Samodzielnie napisała / napisał dużą aplikację i zaprezentowała / zaprezentował ją w szkole, na studiach lub w drużynie.",
+                "4. Napisała / napisał program pomocny w pracy drużyny, szczepu, hufca.",
+                "5. Zna wymagania dotyczące praw autorskich do programów komputerowych i kodów źródłowych.",
+            ],
+            group="Komputerowe",
+        ),
+        # WSPIERAJĄCE WYCHOWANIE DUCHOWE I RELIGIJNE
+        schemas.CreateBadge(
+            name="BETLEJEMSKIE ŚWIATŁO POKOJU *",
+            description=[
+                "1. Poznała / poznał Dobra Nowinę związaną z narodzinami Jezusa oraz przesłanie Betlejemskiego Światła Pokoju. Wie, jaką drogą dociera ono do Polski.",
+                "2. Poznała / poznał tradycje bożonarodzeniowe oraz uczestniczyła / uczestniczył w wigilii harcerskiej.",
+                "3. Pomogła / pomógł w zorganizowaniu w swoim domu świąt Bożego Narodzenia.",
+                "4. Uczestniczyła/uczestniczył w uroczystości przekazania Betlejemskiego Światła Pokoju (np. w hufcu, w instytucjach miejskich, w szkole, na harcerskiej mszy).",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="OPIEKUNKA / OPIEKUN BETLEJEMSKIEGO ŚWIATŁA POKOJU **",
+            description=[
+                "1. Zapoznała / zapoznał drużynę z przesłaniem Betlejemskiego Światła Pokoju.",
+                "2. Samodzielnie lub z zastępem odwiedziła / odwiedził samotną osobę mieszkającą w sąsiedztwie, przekazując jej Światło.",
+                "3. Przyniosła/przyniósł Betlejemskie Światło Pokoju do swego domu i zapoznała/zapoznał rodzinę z jego ideą. Wysłała/wysłał kartki z życzeniami bożonarodzeniowymi rodzinie lub przyjaciołom.",
+                "4. Zorganizowała / zorganizował wspólnie z zastępem wigilię dla zaprzyjaźnionego środowiska harcerskiego, przekazując mu Światło.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="STRAŻNICZKA / STRAŻNIK BETLEJEMSKIEGO ŚWIATŁA POKOJU ***",
+            description=[
+                "1. Wspólnie z drużyną co roku organizuje zbiórkę, na której zapoznaje zaprzyjaźnioną drużynę z przesłaniem i tradycjami Betlejemskiego Światła Pokoju.",
+                "2. Zorganizowała / zorganizował udział drużyny w przekazaniu Betlejemskiego Światła Pokoju do kościołów, urzędów i innych instytucji oraz mieszkańcom.",
+                "3. Wspólnie z drużyną pomogła / pomógł w zorganizowaniu wigilii dla osób samotnych, podczas której przekazano im Betlejemskie Światło Pokoju.",
+                "4. W porozumieniu z rodziną lub drużyną zaprosiła / zaprosił na kolację wigilijną do domu lub na zbiórkę wigilijną samotną osobę z sąsiedztwa, przekazując jej Betlejemskie Światło Pokoju.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="PRZEWODNIK DUCHOWY ***",
+            description=[
+                "1. Brała / brał udział jako przedstawiciel drużyny lub hufca w służbach (medycznej, porządkowej itp.) w swojej parafii lub diecezji. Zaangażowała / zaangażował do tej służby chętnych harcerzy ze swojego środowiska.",
+                "2. Zadbała/zadbał, by wszyscy przygotowali się do tych wydarzeń od strony duchowej (sakrament pokuty, czynny udział w nabożeństwach, przyjęcie komunii św.)",
+                "3. Przeczytała / przeczytał Dzieje Apostolskie. W gawędzie przedstawiła / przedstawił drużynie losy jednego z apostołów, np. podróże misyjne św. Pawła.",
+                "4. Wspólnie z chętnymi osobami z drużyny nawiązała / nawiązał kontakt z duszpasterzami w swojej parafii, zaoferowała / zaoferował pomoc i współpracę (np. organizowanie spotkań modlitewnych, wieczorów skupienia, służby liturgicznej, znalezienie kapelana dla hufca).",
+                "5. Zadbała / zadbał o zorganizowanie rekolekcji dla harcerzy ze swego środowiska.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY PIELGRZYM **",
+            description=[
+                "1.Potrafi wyjaśnić, jaki jest cel pielgrzymowania.",
+                "2. Uczestniczyła / uczestniczył w dwóch pielgrzymkach harcerskich (pieszych lub autokarowych), zrealizowanych od chwili otwarcia próby.",
+                "3. W czasie pielgrzymki brała / brał czynny udział w rekolekcjach (zaangażowanie w życie grupy, przygotowanie duchowe, przyjęcie sakramentów).",
+                "4. Opisała / opisał swoje doświadczenia pielgrzymkowe i przedstawiła / przedstawił na zbiórce zastępu.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="PIELGRZYM ***",
+            description=[
+                "1. Zapoznała / zapoznał się z historią pielgrzymowania. Przedstawiła / przedstawił ją w formie gawędy na zbiórce drużyny.",
+                "2. Zorganizowała/zorganizowałwyjazddrużynynapielgrzymkęharcerską(pieszą lub autokarową).",
+                "3. Zorganizowała / zorganizował wyjazdowe rekolekcje dla harcerzy ze swojego środowiska.",
+                "4. Opracowała / opracował mapę ciekawych miejsc w Polsce, do których pielgrzymują wierni. Przedstawiła / przedstawił ją w drużynie (w szczepie, w hufcu itp.) i opowiedziała / opowiedział o swoich doświadczeniach pielgrzymowania.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="PRZYJACIEL LITURGII (DO WYBORU, np.KATOLICKIEJ, PRAWOSŁAWNEJ, PROTESTANCKIEJ) **",
+            description=[
+                "1. Pobożnie i aktywnie uczestniczy w nabożeństwie / mszy św, stanowiąc wzór dla innych.",
+                "2. Potrafi posługiwać się kalendarzem liturgicznym. Wie, kiedy obchodzi się podstawowe święta i jakie nabożeństwa są odprawiane w ciągu roku liturgicznego.",
+                "3. Pomagała / pomagał w przygotowaniu nabożeństwa mszy św., tzn. komentarze do czytań, procesję z darami, dobrać odpowiednie pieśni, ułożyć modlitwę wiernych itp.",
+                "4. Nauczyła / nauczył chętnych harcerzy z drużyny odpowiedniego zachowania na nabożeństwie mszy.",
+                "5. Uczestniczyła / uczestniczył w budowaniu ołtarza polowego na obozie drużyny. Zadbała / zadbał o urządzenie miejsca wokół niego, tak by atmosfera sprzyjała wyciszeniu i modlitwie.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="ZNAWCA LITURGII (DO WYBORU, np. KATOLICKIEJ, PRAWOSŁAWNEJ, PROTESTANCKIEJ) ***",
+            description=[
+                "1. Zna strukturę mszy św. (np. nabożeństwa protestanckiego, mszy prawosławnej), poprawnie odmawia modlitwy i wykonuje gesty podczas uczestnictwa w takiej mszy.",
+                "2. Zna podstawowe paramenty liturgiczne i umie wyjaśnić ich znaczenie (np. lichtarz, krzyż procesyjny, trybularz, cyborium). Umie przygotować ołtarz do nabożeństwa mszy św. (odpowiednio do wybranej religii).",
+                "3. Zna ceremoniał sztandarowy stosowany podczas uroczystości religijnych (odpowiednio do wybranej religii). Potrafi wydawać odpowiednie komendy pocztom sztandarowym.",
+                "4. Nauczyła / nauczył chętnych harcerzy z drużyny odpowiedniego zachowania na mszy / nabożeństwie, z uwzględnieniem również tych, którzy nie są bezpośrednio zaangażowani religijnie w liturgię.",
+                "5. Zadbała/zadbał wspólnie z chętnymi osobami o urządzenie na obozie lub biwaku miejsca modlitwy (skupienia, wyciszenia), w którym każdy może realizować swoje potrzeby duchowe (np. ołtarza polowego, kapliczki obozowej, namiotu skupienia, gdzie można udostępnić odpowiednie lektury ku pokrzepieniu ducha, polany, na której można pobyć sam na sam z sobą i z naturą).",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY RELIGIOZNAWCA * *",
+            description=[
+                "1. Wie, jak nazywa się pięć głównych religii świata. Opowiedział o nich zainteresowanym osobom z drużyny (zastępu).",
+                "2. Wie, gdzie w okolicy znajdują się świątynie lub miejsca modlitwy różnych wyznań. Zorganizował wycieczkę zastępu do jednego z tych miejsc i przedstawił w interesujący sposób podstawowe informacje z nim związane.",
+                "3. Zapoznała / zapoznał się z życiorysem założyciela wybranej religii i przedstawił jego osobę na zbiórce drużyny.",
+                "4. Nawiązała / nawiązał kontakt z osobą z kręgów skautowych lub harcerskich, która wyznaje inną religię.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="RELIGIOZNAWCA ***",
+            description=[
+                "1. Potrafi wymienić pięć głównych religii świata i ich założycieli. Umie wyjaśnić ich główne dogmaty wiary. Wskaże w Polsce miejsca głównych skupisk wyznawców różnych religii.",
+                "2. Zorganizowała/zorganizował wyjście zastępu lub drużyny do świątyni wyznawców wybranej religii (meczet, synagoga itp.) i przedstawiła/przedstawił kilka informacji z nią związanych.",
+                "3. Przeprowadziła / przeprowadził w zastępie lub w drużynie dyskusję na temat tolerancji religijnej (na czym ona polega, jakie są skutki nietolerancji w społeczeństwie itp.).",
+                "4. Zapoznała / zapoznał się z najważniejszymi dokumentami na temat dialogu międzyreligijnego (np. Deklaracja o stosunku Kościoła katolickiego do religii niechrześcijańskich, Deklaracja o wolności religijnej).",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY EKUMENISTA ***",
+            description=[
+                "1. Umie wyjaśnić, czym jest ekumenizm.",
+                "2. Zapoznała / zapoznał zastęp z ideą Tygodnia Modlitw o Jedność Chrześcijan.",
+                "3. Poznała / poznał zwyczaje świąteczne wybranych wyznań chrześcijańskich, np. Boże Narodzenie u katolików i prawosławnych lub obchody świąt maryjnych w różnych rejonach Polski i zapoznała/zapoznał z nimi zainteresowane osoby z drużyny.",
+                "4. Zapoznała / zapozał się z treścią jednego z dokumentów kościelnych autorstwa Jana Pawła II na temat ekumenizmu i w przystępny sposób przedstawi swoje przemyślenia na ten temat na zbiórce drużyny.",
+                "5. Nauczyła / nauczył się modlitwy „Ojcze nasz” w obcym języku.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="EKUMENISTA (mistrzowska)",
+            description=[
+                "1. Umie wyjaśnić, czym jest ekumenizm. Zna istotne różnice między najważniej- szymi wyznaniami chrześcijańskimi (katolicyzm, prawosławie, protestantyzm).",
+                "2. Zorganizowała / zorganizował w zastępie lub w drużynie dyskusję z udziałem przedstawicieli różnych wyznań chrześcijańskich.",
+                "3. Wzięła/wziął udział w spotkaniu ekumenicznym (np. w Taizè) lub w obchodach Tygodnia Modlitw o Jedność Chrześcijan. Nauczyła / nauczył się trzech kanonów śpiewanych przez braci z Taizè.",
+                "4. Zapoznała / zapoznał się z nauczaniem Jana Pawła II na temat dialogu ekumenicznego.",
+                "5. Umie przygotować modlitwę ekumeniczną dla zastępu (drużyny, obozu, na biwaku), np. na zakończenie dnia.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="POSZUKUJĄCA WARTOŚCI / POSZUKUJĄCY WARTOŚCI **",
+            description=[
+                "1. Umie opowiedzieć, czym jest rozwój duchowy i religijny, potrafi wyjaśnić różnicę między pojęciami „duchowość” i „religijność”.",
+                "2. Prowadzi dzienniczek, w którym dokumentuje swoje przemyślenia i doświadczenia duchowe.",
+                "3. Nauczyła / nauczył się wybierać wartościową lekturę, filmy, spektakle teatralne i opowiedział o swoich przeżyciach z tym związanych.",
+                "4. Wie, jak nazywa się pięć głównych religii świata. Potrafi wyjaśnić, dlaczego na świecie jest wiele tradycji religijnych i duchowych.",
+                "5. Zorganizowała / zorganizował dla zastępu /drużyny zbiórkę, w czasie której harcerze mogli porozmawiać o swoim światopoglądzie i nauczyć się tolerowania różnic w tym względzie.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="POSZUKUJĄCA AUTORYTETU / POSZUKUJĄCY AUTORYTETU ***",
+            description=[
+                "1. Zapoznała / zapoznał się z biografią osoby znanej z etycznego postępowania, której życiowe dokonania inspirują do podążania tą samą drogą, np. świętego, mędrca, autorytetu moralnego.",
+                "2. Zapoznała / zapoznał się z filozofią życia, poglądami tej osoby oraz z metodami pracy nad sobą, które stosowała ona w swoim życiu.",
+                "3. Opracowała / opracował na tej podstawie plan osobistego rozwoju duchowego i zastosowała / zastosował ten program w swoim życiu.",
+                "4. Zorganizowała / zorganizował kominek, na którym interesująco przedstawiła / przedstawił biografię wybranej osoby harcerzom swojej drużyny.",
+                "5. Przeczytała / przeczytał lekturę z zakresu duchowości, np. A. Glassa Podstawy duchowości instruktora harcerskiego, Dzienniki św. Tereski od Dzieciątka Jezus, pisma R. Cantalamessa, opowiadania B. Ferrero.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="SZARA LILIJKA **",
+            description=[
+                "1. Na 24 godziny oderwała / oderwał się od codziennych spraw, nie kontaktowała / kontaktował się z nikim (polecana samotna wycieczka na cały dzień do lasu). W tym czasie przemyślała / przemyślał Prawo Harcerskie i swój dotychczasowy do niego stosunek, oceniła / ocenił swoją wolę wypełniania Przyrzeczenia i Prawa Harcer- skiego całym życiem (w każdej chwili, w każdym miejscu, każdym swoim czynem).",
+                "2. Zastanowiła/zastanowił się też nad swoimi wadami i pomyślała/pomyślał nad tym, jak skuteczniej z nimi walczyć. Zdobywający przyznają sobie sprawność sami, jeżeli szczerze potwierdzą w swoim sumieniu, że chcą żyć zgodnie z zasadami harcerskimi zawartymi w Przyrzeczeniu i Prawie Harcerskim.",
+                "3. Obrzędowe przyznanie sprawności można połączyć z odnowieniem Przyrzeczenia. Sprawność tę trzeba zdobywać co roku od nowa. Po upływie terminu jej „ważności” wymagana jest powtórna próba lub przystąpienie do zdobywania sprawności „mężnego” lub „chwata”.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="MĘŻNY **",
+            description=[
+                "Przez siedem dni od chwili przystąpienia do próby (po otrzymaniu od opiekuna lub drużynowego listu otwierającego próbę) w tajemnicy przed osoba zdobywająca tę sprawność prowadzi walkę z wadą, słabością, kompleksem, który w szczególny sposób komplikuje jej współżycie z innymi ludźmi (np. kłótliwość, zarozumiałość, nietolerancja, nieśmiałość, spóźnianie się, nierzetelność).",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        schemas.CreateBadge(
+            name="CHWAT ***",
+            description=[
+                "Słowo „chwat” tworzą pierwsze litery następujących nazw cech charakteru: C − cnota (postępowanie zgodne z zasadami moralnymi),H − hart (wytrwałość wobec przeciwności losu), W − wola (siła woli, umiejętność konsekwentnego dążenia do celu), A − altruizm (poświęcanie swoich talentów na rzecz innych), T − tężyzna (ćwiczenie sprawnego i wytrzymałego ciała i ducha).Aby zdobyć tę sprawność, harcerka / harcerz musi się zastanowić, brak których z wymienionych cech jest jej/jego wadą. Następnie opracowuje zadania (dla każdej litery po jednym), które mogą pomóc w walce z tymi słabościami. Powinny to być zadania realizowane specjalnie na potrzeby tej sprawności, niepowtarzające się np. przy zdobywaniu stopnia. Kiedy już harcerka/harcerz wymyśli zadania, wy- biera opiekuna próby (przyjaciela, kogoś zaufanego), którego zapoznaje z wybrany- mi zadaniami. Bardzo ważne jest, by opiekunem została osoba, która będzie umiała wspierać i motywować podopiecznego w walce ze słabością.",
+            ],
+            group="Wspierające wychowanie duchowe i religijne",
+        ),
+        # HOBBYSTYCZNE (23)
+        schemas.CreateBadge(
+            name="",
+            description=[
+                "",
+                "",
+                "",
+                "",
+                "",
+            ],
+            group="Hobbystyczne",
+        ),
+        # DLA HARCEREK I HARCERZY NIEDOWIDZĄCYCH (2)
+        # DLA HARCEREK I HARCERZY NIEWIDOMYCH (3)
+        # DLA HARCEREK I HARCERZY GŁUCHYCH (2)
+        # JEŹDZIECKIE I KAWALERYJSKIE (23)
+        # POCZTOWE (3)
+        # WODNE I ŻEGLARSKIE (9)
+        # METEOROLOGICZNE (4)
+        # LOTNICZE (16)
+        # STRAŻACKIE (3)
+        # HARCERSKA SŁUŻBA GRANICZNA (3)
+        # ŁĄCZNOŚCIOWE (6)
     ]
 
     for badge in badges:
         crud.create_badge(db, badge=badge)
 
 
-def init_groups(db: Session) -> None:
-    groups = [
-        schemas.CreateGroup(
-            name="Forward", number=7, szczep="Zielona Siódemka", city="Bydgoszcz"
-        )
-    ]
-
-    for group in groups:
-        crud.create_group(db, group=group)
+#def init_groups(db: Session) -> None:
+#    groups = [
+#        schemas.CreateGroup(
+#            name="Forward", number=7, szczep="Zielona Siódemka", city="Bydgoszcz"
+#        )
+#    ]
+#
+#    for group in groups:
+#        crud.create_group(db, group=group)
 
 
 def init_users(db: Session) -> None:

@@ -1,6 +1,6 @@
 import logging
 
-from src.db.init_db import init_badges, init_groups, init_users
+from src.db.init_db import init_badges, init_users
 from src.db.db import SessionLocal
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
@@ -11,9 +11,6 @@ def init() -> None:
     try:
         init_badges(db)
         logger.info("Badges data has been successfully injected")
-
-        init_groups(db)
-        logger.info("Groups data has been successfully injected")
 
         init_users(db)
         logger.info("Users data has been successfully injected")
