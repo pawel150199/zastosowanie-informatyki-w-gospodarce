@@ -10,7 +10,6 @@ import "./team_member.css";
 const TeamMembers = () => {
   const [members, setMembers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [info, setInfo] = useState("");
   const [teamAdmin, setTeamAdmin] = useState(false);
 
   const checkUserRole = async () => {
@@ -21,7 +20,6 @@ const TeamMembers = () => {
     try {
       axios.delete(
         `/user/group/delete/${user_id}`,authHeader());
-        setInfo("Harcerz został poprawnie usunięty");
         window.location.reload();
     } catch (error) {
       console.error(error);
