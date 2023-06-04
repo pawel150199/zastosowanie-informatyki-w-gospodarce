@@ -10,5 +10,5 @@ on:
     branches: 'master'
 
 jobs: 
-  run-jest-tests:
+  install_frontend:
     uses: ./.github/workflows/test_frontend.yaml
