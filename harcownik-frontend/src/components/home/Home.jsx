@@ -27,15 +27,10 @@ function Home() {
 
   return (
     <div>
-      <center>
-        <Container>
-          <Image src="/img/logo_with_name.png" id="img_name" />
-        </Container>
-      </center>
       <div className="jumbotron jumbotron-fluid bg-dark text-light text-center rounded-4">
         <Container>
           <br></br>
-          <h1>Witaj w aplikacji</h1>
+          <h1>Witaj w aplikacji Harcownik</h1>
           <p className="lead">
             Jesteś jeden krok od ułatwienia zarządzania grupą harcerzyków
           </p>
