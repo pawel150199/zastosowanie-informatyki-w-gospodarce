@@ -2,7 +2,7 @@ name: Install and test frontend
 
 on:
   workflow_dispatch:
-  worflow_call:
+  workflow_call:
 
 jobs:
   frontend_installation:
