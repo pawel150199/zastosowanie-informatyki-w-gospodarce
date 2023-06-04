@@ -15,15 +15,19 @@ const Login = () => {
   const clearInputs = () => {
     setUsername("");
     setPassword("");
-  }
+  };
 
   const handleLogin = async () => {
     const headers = loginHeader();
     try {
-      const response = await axios.post("/login/access-token", {
-        username: username,
-        password: password
-      }, { headers });
+      const response = await axios.post(
+        "/login/access-token",
+        {
+          username: username,
+          password: password,
+        },
+        { headers }
+      );
       const accessToken = response.data.access_token;
       saveLocalToken(accessToken);
       window.location.href = "/user";
@@ -51,10 +55,7 @@ const Login = () => {
         onChangeText={setPassword}
       />
       {info && <p className="error">{info}</p>}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleLogin}
-      >
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity>

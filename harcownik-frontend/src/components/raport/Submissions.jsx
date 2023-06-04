@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import { getBadgesApplications, getUsersData } from "./RaportFunction";
+import {
+  getBadgesApplications,
+  getUsersData,
+  updateBadgesApplications,
+} from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
 
@@ -13,6 +17,8 @@ function Submissions() {
   const [usersData, setUsersData] = useState([]);
   const [selectedItemsReported, setSelectedItemsReported] = useState([]);
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
+  const [endedItemsToObsoleted, setEndedItemsToObsoleted] = useState([]);
+  const [reportedItemsToObsoleted, setReportedItemsToObsoleted] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,19 +59,31 @@ function Submissions() {
   const handleCheckboxChange = (event, report) => {
     if (event.target.checked && report.status == "zgłoszona") {
       setSelectedItemsReported([...selectedItemsReported, report]);
+      reportedItemsToObsoleted.push(report.id);
     } else if (event.target.checked && report.status == "zakończona") {
       setSelectedItemsEnded([...selectedItemsEnded, report]);
+      endedItemsToObsoleted.push(report.id);
     } else {
       if (report.status == "zgłoszona") {
         const updatedItems = selectedItemsReported.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsReported(updatedItems);
+
+        const updatedObsoletedItems = reportedItemsToObsoleted.filter(
+          (item) => item !== report.id
+        );
+        setReportedItemsToObsoleted(updatedObsoletedItems);
       } else {
         const updatedItems = selectedItemsEnded.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsEnded(updatedItems);
+
+        const updatedObsoletedItems = endedItemsToObsoleted.filter(
+          (item) => item !== report.id
+        );
+        setEndedItemsToObsoleted(updatedObsoletedItems);
       }
     }
   };
@@ -82,8 +100,10 @@ function Submissions() {
             ...prevItems,
             selectedBadge,
           ]);
+          reportedItemsToObsoleted.push(selectedBadge.id);
         } else if (selectedBadge.status === "zakończona") {
           setSelectedItemsEnded((prevItems) => [...prevItems, selectedBadge]);
+          endedItemsToObsoleted.push(selectedBadge.id);
         }
       }
     });
@@ -92,9 +112,19 @@ function Submissions() {
   const clearSelectedBadges = () => {
     setSelectedItemsReported([]);
     setSelectedItemsEnded([]);
+    setEndedItemsToObsoleted([]);
+    setReportedItemsToObsoleted([]);
   };
 
   const addReportedBadgesToRaport = () => {
+    endedItemsToObsoleted.forEach((item) => {
+      updateBadgesApplications(item, "zakończona/wykorzystana");
+    });
+
+    reportedItemsToObsoleted.forEach((item) => {
+      updateBadgesApplications(item, "zgłoszona/wykorzystana");
+    });
+
     selectedItemsReported.forEach((item) => {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;

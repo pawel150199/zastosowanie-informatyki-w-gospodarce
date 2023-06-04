@@ -46,12 +46,17 @@ function ApplicationStatus() {
             </tr>
           </thead>
           <tbody>
-            {badgeStatus.map((Status) => (
-              <tr key={Status.id}>
-                <td>{Status.title}</td>
-                <td>{Status.status}</td>
-              </tr>
-            ))}
+            {badgeStatus
+              .filter(
+                (badge) =>
+                  badge.status === "zakończona" || badge.status === "zgłoszona"
+              )
+              .map((badge) => (
+                <tr key={badge.id}>
+                  <td>{badge.title}</td>
+                  <td>{badge.status}</td>
+                </tr>
+              ))}
           </tbody>
         </Table>
         <h2>Zgłoszenia dotyczące stopni</h2>
@@ -63,12 +68,17 @@ function ApplicationStatus() {
             </tr>
           </thead>
           <tbody>
-            {levelStatus.map((level) => (
-              <tr key={level.id}>
-                <td>{level.title}</td>
-                <td>{level.status}</td>
-              </tr>
-            ))}
+            {levelStatus
+              .filter(
+                (level) =>
+                  level.status === "zakończona" || level.status === "zgłoszona"
+              )
+              .map((level) => (
+                <tr key={level.id}>
+                  <td>{level.title}</td>
+                  <td>{level.status}</td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </Container>

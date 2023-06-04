@@ -13,13 +13,13 @@ export let tabs = [
     id: "0",
     label: "Wstęp",
     isChecked: false,
-    patternText: `\nWstęp okolicznościowy (Proszę uzupełnić święta państwowe, rocznice, szczególne wydarzenia w Związku).\n`,
+    patternText: `Wstęp okolicznościowy (Proszę uzupełnić święta państwowe, rocznice, szczególne wydarzenia w Związku).\n`,
   },
   {
     id: "1",
     label: "Wyjątki z rozkazu",
     isChecked: false,
-    patternText: `\nWyjątki z rozkazu komendanta Hufca ZHP ......
+    patternText: `Wyjątki z rozkazu komendanta Hufca ZHP ......
       (Proszę uzupełnić sprawy ogólnohufcowe lub dotyczące drużyny, m.in.: pełnienie funkcji na wyższych szczeblach
       struktury, przyznanie odznaczeń lub stopni instruktorskich instruktorom danej drużyny).\n`,
   },
@@ -27,32 +27,32 @@ export let tabs = [
     id: "2",
     label: "Zarządzenia",
     isChecked: false,
-    patternText: `\nZwołuję …………………..\n`,
+    patternText: `Zwołuję …………………..\n`,
   },
   {
     id: "3",
     label: "Informacje",
     isChecked: false,
-    patternText: `\nPodaję do wiadomości, że ………
+    patternText: `Podaję do wiadomości, że ………
       Informuję o decyzji ….\n`,
   },
   {
     id: "4",
     label: "Mianowania",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny mianuję ….. na …… z dniem ……..\n`,
+    patternText: `Na wniosek Rady Drużyny mianuję ….. na …… z dniem ……..\n`,
   },
   {
     id: "5",
     label: "Zwolnienia",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny zwalniam  ……… z …….z dniem ………\n`,
+    patternText: `Na wniosek Rady Drużyny zwalniam  ……… z …….z dniem ………\n`,
   },
   {
     id: "6",
     label: "Utworzenie zastępu",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny powołuję zastęp  w składzie:
+    patternText: `Na wniosek Rady Drużyny powołuję zastęp  w składzie:
       •	… 
       •	…
       \n`,
@@ -61,55 +61,55 @@ export let tabs = [
     id: "7",
     label: "Rozwiązanie zastępu",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny rozwiązuję zastęp …\n`,
+    patternText: `Na wniosek Rady Drużyny rozwiązuję zastęp …\n`,
   },
   {
     id: "8",
     label: "Zamknięcie próby na stopień ",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny z dnia ……… zamykam próbę i przyznaję stopień …….\n`,
+    patternText: `Na wniosek Rady Drużyny z dnia ……… zamykam próbę i przyznaję stopień …….\n`,
   },
   {
     id: "9",
     label: "Otwarcie próby na stopień",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny z dnia ………. otwieram próbę na stopień ……:\n`,
+    patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na stopień ……:\n`,
   },
   {
     id: "10",
     label: "Zamknięcie próby na sprawność",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:\n`,
+    patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:\n`,
   },
   {
     id: "11",
     label: "Otwarcie próby na sprawność",
     isChecked: false,
-    patternText: `\nNa wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:\n`,
+    patternText: `Na wniosek Rady Drużyny z dnia ………. otwieram próbę na sprawność …..:\n`,
   },
   {
     id: "12",
     label: "Otwarcia i Zamknięcia inne\n",
     isChecked: false,
-    patternText: `...`,
+    patternText: `...\n`,
   },
   {
     id: "13",
     label: "Sprawy członkowskie",
     isChecked: false,
-    patternText: `\n...\n`,
+    patternText: `...\n`,
   },
   {
     id: "14",
     label: "Kary organizacyjne",
     isChecked: false,
-    patternText: `\nUdzielam upomnienia  *komu* *za co*\n`,
+    patternText: `Udzielam upomnienia  *komu* *za co*\n`,
   },
   {
     id: "15",
     label: "Pochwały, wyróżnienia, nagrody",
     isChecked: false,
-    patternText: `\nUdzielam pochwały *komu* *za co*\n`,
+    patternText: `Udzielam pochwały *komu* *za co*\n`,
   },
 ];
 
