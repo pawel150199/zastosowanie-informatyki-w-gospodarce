@@ -18,4 +18,5 @@ jobs:
 
     - name: Start server
       run: |
+        cd harcownik-frontend
         npm start
