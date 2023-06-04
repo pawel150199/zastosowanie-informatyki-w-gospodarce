@@ -1,4 +1,3 @@
----
 name: Install and test frontend
 
 on:
@@ -6,7 +5,7 @@ on:
   worflow_call:
 
 jobs:
-  install_frontend:
+  frontend_installation:
     runs-on: ubuntu-latest
     steps:
     - name:  Checkout repository
