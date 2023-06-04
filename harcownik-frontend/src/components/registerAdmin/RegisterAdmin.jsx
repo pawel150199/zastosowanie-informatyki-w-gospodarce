@@ -103,6 +103,7 @@ const RegisterAdmin = () => {
         selectedValue={level}
         onValueChange={setLevel}
       >
+        <Picker.Item label="Wybierz stopień" value="Wartość domyślna" />
         {scoutLevels.map((scoutLevel, index) => (
           <Picker.Item key={index} label={scoutLevel} value={scoutLevel} />
         ))}
@@ -112,6 +113,7 @@ const RegisterAdmin = () => {
         selectedValue={func}
         onValueChange={setFunc}
       >
+        <Picker.Item label="Wybierz pełnioną funkcje" value="WWartość domyślna" />
         {scoutFunctions.map((scoutFunctions, index) => (
           <Picker.Item key={index} label={scoutFunctions} value={scoutFunctions} />
         ))}
