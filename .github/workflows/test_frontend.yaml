@@ -14,7 +14,10 @@ jobs:
     - name: Install packages
       run: |
         cd harcownik-frontend
-        npm cache clean --force
         npm install
-        npm start
-        
+
+    - name: Start server
+      run: |
+        cd harcownik-frontend
+        npm cache clean --force
+        npm start --openssl-legacy-provider start
