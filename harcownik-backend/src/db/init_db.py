@@ -2281,23 +2281,722 @@ def init_badges(db: Session) -> None:
         ),
         # JEŹDZIECKIE I KAWALERYJSKIE (23)
         schemas.CreateBadge(
-            name="",
+            name="SANITARIUSZKA WETERYNARYJNA / SANITARIUSZ WETERYNARYJNY **",
             description=[
-                "",
-                "",
-                "",
-                "",
-                "",
+                "1. Poznała / poznał ogólną budowę kostnoszkieletową konia i położenie najważniejszych narządów wewnętrznych.",
+                "2. Potrafi zmierzyć temperaturę, tętno i liczbę oddechów konia, zna ich prawidłowe wartości.",
+                "3. Udzieliła / udzielił pierwszej pomocy w przypadku zranienia konia, ochwatu, morzyska (kolki).",
+                "4. Zna skład apteczki weterynaryjnej. Wie, jak się stosuje podstawowe leki i maście.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="WETERYNARZ ***",
+            description=[
+                "1. Zna dokładną budowę konia (szkielet, położenie narządów).",
+                "2. Udzieliła /udzielił pierwszej pomocy przy zranieniu, ochwacie, kolce, zmierzyć temperaturę, tętno i liczbę oddechów.",
+                "3. Przygotowała / przygotował pacjenta i środki potrzebne do zabiegu przed przybyciem lekarza.",
+                "4. Pełniła / pełnił służbę weterynaryjną na obozie.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="SZERMIERZ *",
+            description=[
+                "1. Dobrze jeździ konno.",
+                "2. Poznała / poznał rodzaje białej broni i techniki władania nią, zademonstrowała / zademonstrował podstawowe pchnięcia (pieszo).",
+                "3. Poznała / poznał zasady bezpieczeństwa i przepisy sportowe dotyczace władania białą bronią.",
+                "4. Swoje umiejętności zaprezentowała / zaprezentował zastępowi / drużynie.",
+                "5. W ciekawej formie przedstawiła / przedstawił klasie, drużynie lub zastępowi historię wybranego pułku kawalerii II RP.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="LANSJER **",
+            description=[
+                "1. Bardzo dobrze jeździ konno.",
+                "2. Poznała / poznał budowę i zastosowanie lancy. Zna kilka wzorów szabel.",
+                "3. Przygotowała / przygotował pokaz władania lancą dla swojego środowiska (drużyny, szczepu), prezentując prawidłowe pchnięcia i zasłony, pomagała / pomagał w szkoleniu jeździeckim i nauczyła / nauczył władania lancą swój zastęp.",
+                "4. Rozróżniła / rozróżnił proporczyki pułków kawalerii 20-lecia.",
+                "5. Przedstawiła / przedstawił w ciekawy sposób na szerszym forum (np. w formie strony www, spotkania w domu kultury) historię wybranego pułku kawalerii, uzasadniając swój wybór i korzystając ze źródeł.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="SZWOLEŻER ***",
+            description=[
+                "1. Opanowała / opanował podstawowe ćwiczenia woltyżerskie.",
+                "2. Poznała / poznał budowę szabli i zasady walki z konia: cięcie łóz w cwale, cięcie glinianej gomóły, cięcie z góry w prawo, w prawo od ucha, z dołu i z góry w lewo. Opanowała / opanował pchnięcia i zasłony.",
+                "3. Złożyła / złożył egzamin składający się z pokazu władania szablą konno i woltyżerki.",
+                "4. Przygotowała / przygotował młodszych kolegów do zdobycia sprawności „szermierza” lub „lansjera”. Nauczyła / nauczył ich musztry z szablą pieszo.",
+                "5. Potrafi prawidłowo stroczyć i założyć na konia rząd wojskowy (szeregowego) wz. 36.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="POMOCNIK PODKUWACZA *",
+            description=[
+                "1. Poznała / poznał zasady postępowania w przypadku gnicia strzałki i obluzowania podków.",
+                "2. Poznała / poznał rodzaje podków i ich przeznaczenie oraz zasady prawidłowego podkuwania koni.",
+                "3. Pomagała / pomagał podczas rozczyszczania kopyta konia, wykonując polecenia podkuwacza (kowala). Umie prawidłowo trzymać nogi konia.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="PODKUWACZ **",
+            description=[
+                "1. Poznała / poznał budowę anatomiczną końskiego kopyta i występujące w nim nieprawidłowości oraz zasadę narastania rogu kopytnego.",
+                "2. Uczestniczyła / uczestniczył w podkuwaniu koni, zdejmując stare podkowy, prawidłowo rozczyszczając kopyto.",
+                "3. Nauczyła / nauczył młodszych kolegów zasady trzymania nóg do podkuwania i pielęgnacji kopyt.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="KOWAL ***",
+            description=[
+                "1. Zna budowę anatomiczną końskiego kopyta.",
+                "2. Poznała / poznał narzędzia kowalskie i nauczyła / nauczył się nimi posługiwać.",
+                "3. Nauczyła / nauczył młodszych harcerzy zasad obchodzenia się z końskimi kopytami podczas podkuwania (rozczyszczanie, zdejmowanie starych podków).",
+                "4. Podkuła / podkuł samodzielnie dwie nogi konia (pod okiem fachowca!), prawidłowo dobierając rozmiar podkowy.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="STAJENNA / STAJENNY *",
+            description=[
+                "1. Poznała / poznał podstawowe zasady bezpieczeństwa pracy przy koniach.",
+                "2. Rozróżniła / rozróżnił stanowisko i boks, omawiając ich wady i zalety, potrafi je prawidłowo pościelić.",
+                "3. Poznała / poznał zasady żywienia koni.",
+                "4. Pielęgnowała / pielęgnował konia, czyszcząc i siodłając go, zadając paszę i pojąc według przyjętej kolejności, ścieląc stanowisko, sprzątając stajnię.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="MASZTALERZ **",
+            description=[
+                "1. Poznała / poznał pasze stosowane w żywieniu koni i potrafi prawidłowo zaplanować dzienną dawkę pokarmową w zależności od pracy wykonanej przez konia.",
+                "2. Poznała / poznał zagadnienia z zakresu hodowli koni: najważniejsze rasy hodowlane w Polsce i na świecie, okres trwania ciąży u konia, termin przeprowadzania stanówki i odsadzania źrebiąt.",
+                "3. Zna podstawowe narowy i nałogi u koni i potrafi im zapobiegać.",
+                "4. Współopiekowała / współopiekował się koniem przez wyznaczony czas (czyszczenie, siodłanie, karmienie, pojenie, ścielenie boksu/stanowiska), zachowując zasady bezpieczeństwa.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="KONIUSZY ***",
+            description=[
+                "1. Kierowała / kierował pracą wachty stajennej na obozie lub w klubie.",
+                "2. Kierowała / kierował żywieniem koni, stosując zasady zmian pasz (pod nadzore instruktora).",
+                "3. Opiekowała / opiekował się jednym lub kilkoma końmi.",
+                "4. Brała / brał udział w ujeżdżaniu młodych koni pod siodłem lub w zaprzęgu.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="ADEPTKA JEŹDZIECKA / ADEPT JEŹDZIECKI *",
+            description=[
+                "1. Poznała / poznał budowę zewnętrzną, maści i odmiany koni. Wiedzę tę przekazała / przekazał swojemu zastępowi podczas zbiórki.",
+                "2. Zna zasady bezpieczeństwa podczas jazdy konnej i przebywania z końmi, stosuje je w praktyce.",
+                "3. Poznała / poznał budowę siodła ogólnoużytkowego i rozróżnia typy nachrapników: polski, hanowerski i meksykański.",
+                "4. Czyściła / czyścił konia i prawidłowo zakładała / zakładał rząd jeździecki (siodło i ogłowie). Wie, jak zapobiec zapoprężeniu i grudzie.",
+                "5. Jeżdżąc konno, prawidłowo trzymała / trzymał się w stępie i kłusie, potrafi anglezować na prawidłową nogę.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="AMAZONKA / JEŹDZIEC **",
+            description=[
+                "1. Poznała / poznał sposoby użytkowania, typy i rasy koni w Polsce.",
+                "2. Rozróżnia typy i rodzaje siodeł.",
+                "3. Pielęgnowała / pielęgnował konia czyszcząc go przed i po jeździe.",
+                "4. Poznała / poznał zasady poruszania się konno w terenie.",
+                "5. Kreśliła / kreślił figury na ujeżdżalni w każdym chodzie konia.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="AMAZONKA DOSKONAŁA / JEŹDZIEC DOSKONAŁY ***",
+            description=[
+                "1. Potrafi udzielić pierwszej pomocy.",
+                "2. Wymieniła / wymienił główne regiony hodowli koni na świecie, poznała / poznał zwyczaje, tradycje i piosenki jeździeckie.",
+                "3. Wykonywała / wykonywał wszelkie prace stajenne, pomagając przy żniwach lub zwózce siana, konserwując sprzęt jeździecki, zadając paszę i sprzątając sta- nowiska lub boksy koni. Nauczyła / nauczył zastęp podstawowych umiejętności w zakresie obsługi koni.",
+                "4. Poznała / poznał ważniejsze schorzenia koni, potrafi im zapobiec i udzielić pierwszej pomocy weterynaryjnej.",
+                "5. Wykonała / wykonał zwroty na przodzie i na zadzie, ustępowanie od łydki, branie przeszkody (do 100 cm), potrafi prowadzić konia kontrgalopem.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="SKÓRNIK *",
+            description=[
+                "1. Wyczyściła / wyczyścił, zmiękczyła / zmiękczył, zakonserwowała / zakonserwował skórzane elementy ekwipunku jeździeckiego.",
+                "2. Poznała / poznał podstawowe narzędzia pracy rymarskiej (igły rymarskie, szydło,koń rymarski, nóż, dratwa, dziurkacz), posłużyła / posłużył się nimi.",
+                "3. Prawidłowo przygotowała / przygotował dratwę do szycia, szyła / szył na dwie igły.",
+                "4. Wszyła / wszył oderwaną sprzączkę, wycięła / wyciął nową dziurkę w skórze.",
+                "5. Poznała / poznał ogólną budowę siodła ogólnoużytkowego i rozróżniła / rozróżnił typy nachrapników: polski, hanowerski, meksykański.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="CZELADNIK RYMARSKI **",
+            description=[
+                "1. Połączyła / połączył skórę różnymi sposobami.",
+                "2. Zszyła / zszył rozerwany kantar lub uzdę, puśliska lub przystuły.",
+                "3. Poznała / poznał różne rodzaje rzędów jeździeckich, rozróżnia różne rodzaje uprzęży.",
+                "4. Wykonała / wykonał najprostszy kantar dla konia (np. z taśmy, ze sznurka).",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="RYMARZ ***",
+            description=[
+                "1. Rozróżniła / rozróżnił różne rodzaje skóry, poznała / poznał ich cechy i przeznaczenie.",
+                "2. Posługując się sprawnie narzędziami rymarskimi, połączyła / połączył skórę nitami, zastosowała / zastosował jedną z technik zdobienia skóry.",
+                "3. Wykonała / wykonał kantar ze skóry, ozdobiła / ozdobił go według własnego pomysłu.",
+                "4. Nauczyła / nauczył harcerzy prostych prac rymarskich.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="POMOCNIK LUZAKA *",
+            description=[
+                "1. Potrafi rozpoznać trzy różne rodzaje kiełzna, zna ich działanie.",
+                "2. Wie, czym różnią się szory od chomąta.",
+                "3. Opiekowała / opiekował się koniem podczas zawodów lub pokazu, czyszcząc go, zaplatając grzywę i ogon, pojąc, karmiąc i ścieląc boks.",
+                "4. Pomagała / pomagał przy zaprzęganiu konia, zapoznając się z budową użytkowanej uprzęży.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="LUZAK **",
+            description=[
+                "1. Wymieniła / wymienił rodzaje uprzęży i typy pojazdów, rozpoznając je na rysunkach lub zdjęciach.",
+                "2. Poznała / poznał zasady zaprzęgania koni w pojedynkę i w parze, powożąc w łatwym terenie.",
+                "3. Ubierała / ubierał konia w szory i chomąto, rozróżniając prawidłowo poszczególne części uprzęży.",
+                "4. Brała / brał udział w przygotowaniach do zawodów zaprzęgów, pełniąc funkcję luzaka.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="WOŹNICA ***",
+            description=[
+                "1. Poznała / poznał budowę uprzęży. Wie, co to jest munsztuk zaprzęgowy, pehlam liverpool, fasculce itp.",
+                "2. Rozróżniła / rozróżnił style zaprzęgów: angielski, węgierski, bałagulski i inne.",
+                "3. Jeździła / jeździł parokonnym zaprzęgiem w różnorodnym terenie",
+                "4. Prowadziła / prowadził wóz taborowy podczas rajdu konnego.",
+                "5. Potrafi opisać zasady zawodów w powożeniu. W ciekawy sposób przedstawiła / przedstawił je na forum drużyny.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="ADEPTKA WOLTYŻERKI / ADEPT WOLTYŻERKI *",
+            description=[
+                "1. Bez problemu wsiada i zsiada z konia zarówno z lewej, jak i prawej strony.",
+                "2. Prawidłowo wykonuje następujące ćwiczenia: na koniu gimnastycznym: nożyce, wskok, sztandar, stanie na siodle, na stojącym koniu: 4 strony świata, martwy Indianin, rybka w przód i w tył, na koniu chodzącym na lonży: ćwiczenia na równowagę, jazda bokiem i tyłem.",
+                "3. Potrafi nazwać ćwiczenia woltyżerskie (wykonywane przez kogoś innego, na filmie itp.).",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="WOLTYŻERKA / WOLTYŻER **",
+            description=[
+                "1. Regularnie jeździ konno (stęp, kłus, galop).",
+                "2. Zna zasady bezpieczeństwa podczas jazdy konnej i stosuje się do nich.",
+                "3. ▪Wykonała / wykonał następujące ćwiczenia: na koniu stojącym: stanie na siodle, nożyce, wskok, sztandar, na koniu chodzącym na lonży (stęp, kłus, galop): 4 strony świata, martwy Indianin, rybka w przód i w tył.",
+                "4. Zna budowę rzędu woltyżerskiego.",
+            ],
+            group="Jeździeckie i kawaleryjskie",
+        ),
+        schemas.CreateBadge(
+            name="WOLTYŻERKA DOSKONAŁA / WOLTYŻER DOSKONAŁY ***",
+            description=[
+                "1. Ukończyła / ukończył podstawowy kurs jazdy konnej i regularnie jeŹdzi konno.",
+                "2. Poznała / poznał przepisy dotyczące bezpieczeństwa ćwiczeń woltyżerskich i stosuje je w praktyce.",
+                "3. Wykonała / wykonał następujące ćwiczenia: na konia stojącego: wskok trzema sposobami, na konia chodzącego na lonży w stępie, kłusie i galopie: wskok, zeskok, zeskok-wyskok, rybka, nożyce, stanie na siodle, sztandar, przeskok przez konia, na konia biegnącego luzem: wskok.",
+                "4. Prawidłowo założyła / założył rząd woltyżerski.",
+                "5. Nauczyła / nauczył młodszych podstawowych ćwiczeń na koniu gimnastycznym.",
             ],
             group="Jeździeckie i kawaleryjskie",
         ),
         # POCZTOWE (3)
+        schemas.CreateBadge(
+            name="POCZTOWIEC **",
+            description=[
+                "1. Poznała / poznał zasady działania poczt harcerskich oraz ich historię.",
+                "2. Poznała / poznał zasady kolekcjonowania zbiorów filatelistycznych.",
+                "3. Wykonała / wykonał projekt wydawnictwa poczty harcerskiej do druku.",
+                "4. Przygotowała / przygotował własne zbiory wydawnictw poczty harcerskiej do wystawy.",
+                "5. Brała / brał czynny udział w przygotowaniu wystawy.",
+            ],
+            group="Pocztowe",
+        ),
+        schemas.CreateBadge(
+            name="POCZTYLION ***",
+            description=[
+                "1. Poznała / poznał zasady prowadzenia dokumentacji poczty harcerskiej i różnemtechniki powielania (drukowania).",
+                "2. Wykonała / wykonał samodzielnie klisze lub pieczątkę dla poczty harcerskiej (np. linoryt).",
+                "3. Zorganizowała / zorganizował sieć obsługi pocztowej na obozie lub złazie.",
+                "4. Nawiązała / nawiązał współpracę z inną pocztą harcerską.",
+                "5. Poznała / poznał zakres zadań, jakimi zajmuje się współcześnie Poczta Polska.",
+            ],
+            group="Pocztowe",
+        ),
+        schemas.CreateBadge(
+            name="POCZTMISTRZ (mistrzowska)",
+            description=[
+                "1. Kierowała / kierował co najmniej kilkoma projektami tematycznymi poczty.",
+                "2. Współpracowała / współpracował z Pocztą Polską, Polskim Związkiem Filatelistycznym lub odpowiednią organizacją/firmą spedycyjną lub logistyczną.",
+                "3. Nadesłała / nadesłał wydawnictwa swojej poczty do Centralnego Archiwum Poczt Harcerskich.",
+                "4. Wyznaczyła / wyznaczył sobie dodatkowe zadanie mistrzowskie w porozumieniu z naczelnikiem macierzystej PH.",
+            ],
+            group="Pocztowe",
+        ),
         # WODNE I ŻEGLARSKIE (9)
+        schemas.CreateBadge(
+            name="ZAŁOGANT *",
+            description=[
+                "1. Nazwała / nazwał części jachtu mieczowego.",
+                "2. Zna zasady bezpiecznego zachowania się na pokładzie jachtu.",
+                "3. Potrafi określić kurs względem wiatru,wyjaśnić zasady działania miecza i steru.",
+                "4. W czasie żeglugi obsługiwała / obsługiwał ster, trzymała / trzymał żagle i balastowała / balastował przy przechyłach łodzi.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="JUNGA **",
+            description=[
+                "1. Poznała / poznał regulamin i zasady służby jachtowej oraz komendy żeglarskie.",
+                "2. Pełniła / pełnił wachtę w czasie rejsu zatokowego.",
+                "3. Wykonywała / wykonywał manewry proste i złożone jachtem dwumasztowym.",
+                "4. Klarowała / klarował jacht przed i po pływaniu.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="SZYPER ***",
+            description=[
+                "1. Zna teorię manewrowania jachtem mieczowym o powierzchni żagla do 20 m2 i komendy żeglarskie.",
+                "2. Wykonała / wykonał proste i złożone manewry jachtem mieczowym.",
+                "3. Pełniła / pełnił funkcje załogi na wszystkich stanowiskach manewrowych.",
+                "4. Brała / brał udział w kilku wielodniowych rejsach żeglarskich.",
+                "5. Zna zasady bezpieczeństwa podczas rejsu, potrafi udzielić pomocy tonącemu, przy udarze słonecznym i cieplnym oraz przy wychłodzeniu organizmu. Potrafi wezwać pomoc, znajdując się na wodzie, zna numer telefonu alarmowego WOPR.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="SZKUTNIK *",
+            description=[
+                "1. Poznała / poznał zasady budowy jachtów, konstrukcję łodzi i nazewnictwo jej części oraz rodzaje poszycia, drzewca, osprzętu, olinowania i ożaglowania.",
+                "2. Zna konstrukcję pięciu najczęściej używanych łodzi żaglowych.",
+                "3. Brała / brał udział w zabezpieczaniu sprzętu wodnego przed zimą.",
+                "4. Wykonała / wykonał sploty lin miękkich, zeszlifowała / zeszlifował na równo laminowany element.",
+                "5. Malowała / malował elementy jachtu farbami rozpuszczalnikowymi, zadbała / zadbał o narzędzia po zakończeniu malowania.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="BOSMAN **",
+            description=[
+                "1. Poznała / poznał zasady bezpieczeństwa podczas prac bosmańskich w porcie oraz w czasie pływania.",
+                "2. Zna konstrukcję i budowę najpopularniejszych typów łodzi żaglowych i wiosłowych.",
+                "3. Remontowała / remontował sprzęt żeglarski naprawiając również uszkodzenia żagli.",
+                "4. Zacumowała / zacumował jacht w różnych warunkach, stosując podstawowe węzły.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="SYGNALISTA MORSKI *",
+            description=[
+                "1. Rozpoznała / rozpoznał polskie bandery i flagi: marynarki wojennej i handlowej, PZŻ, klubowe jednostki pływającej.",
+                "2. Poznała / poznał zasady ceremoniału morskiego i etykiety jachtowej.",
+                "3. Poznała / poznał zasady wywieszania banderek odwiedzanych państw oraz flag kodu MKS przy wejściu do obcego portu.",
+                "4. Umie wezwać pomoc według MPZZM.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY NAWIGATOR *",
+            description=[
+                "1. Zna instrumenty nawigacyjne.",
+                "2. Umie odczytać głębokość na mapie, wysokość latarni.",
+                "3. Zna zasadę podziału kuli ziemskiej z siatką geograficzną.",
+                "4. Potrafi zmierzyć szybkość jachtu i głębokość wody.",
+                "5. Potrafi porównać wskazanie kompasu jachtowego oraz kompasu wniesionego i trzymanego w różnych miejscach.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="NAWIGATOR **",
+            description=[
+                "1. Potrafi odczytać z mapy długość i szerokość geograficzną wskazanego punktu oraz zaznaczyć punkt o podanych współrzędnych.",
+                "2. Potrafi odczytać z mapy morskiej odległość między dwoma wskazanymi punktami",
+                "3. Potrafi wyznaczyć pozycję obserwowaną z dwóch namiarów (rzeczywistych) jednoczesnych.",
+                "4. Potrafi prowadzić nawigację zliczeniową i przenieść pozycję zliczoną na określoną pozycję obserwowaną.",
+                "5. Potrafi prawidłowo opisać na mapie czynności z pkt. 3−4.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
+        schemas.CreateBadge(
+            name="NAWIGATOR MORSKI ***",
+            description=[
+                "1. Odczytała / odczytał z mapy morskiej: przebieg farwaterów, występujące przeszkody nawigacyjne i wartość deklinacji w roku.",
+                "2. Zmierzyła / zmierzył szybkość logiem burtowym i głębokość sondą ręczną.",
+                "3. Posługiwała / posługiwał się polskimi locjami i spisem świateł. W nocy na podstawie widocznych świateł określiła / określił swą pozycję.",
+                "4. Wykreśliła / wykreślił na mapie namiary, zaznaczając pozycję obserwowaną oraz kursy, odkładając przebytą drogę i zaznaczając pozycję zliczoną Przeliczyła / przeliczył kursy i namiary kompasowe na rzeczywiste, dokonała / dokonał zapisów w dzienniku jachtowym.",
+                "5. Prowadziła / prowadził zliczeniówkę podczas rejsu; po określeniu różnicy pozycji obserwowanej i zliczonej (np. po nocy) potrafiła/potrafił ją wytłumaczyć.",
+            ],
+            group="Wodne i żeglarskie",
+        ),
         # METEOROLOGICZNE (4)
+        schemas.CreateBadge(
+            name="ASPIRANT METEOROLOGICZNY *",
+            description=[
+                "1. Potrafi zauważyć nadchodzący szkwał (burzę).",
+                "2. Potrafi wyjaśnić zjawisko rosy naturalnej i na okularach po wejściu zimą do ciepłego pomieszczenia.",
+                "3. Potrafi rozpoznać i nazwać chmury deszczowe.",
+            ],
+            group="Meterologiczne",
+        ),
+        schemas.CreateBadge(
+            name="METEOROLOG **",
+            description=[
+                "1. Potrafi ocenić siłę wiatru w skali Bouforta (lub m/s).",
+                "2. Na planie akwenu szkoleniowego (lub strefy pilotażowej) zaznaczyła / zaznaczył lokalne, specyficzne obszary wiatrowe (oraz prądy wstępujące).",
+                "3. Potrafi nazwać widoczne na niebie chmury i powiedzieć, skąd się wzięły (jak powstały) i co zwiastują.",
+                "4. Rozpoznała / rozpoznał różne rodzaje chmur i określiła / określił ich wysokość. Rozróżnia rodzaje mas powietrza.",
+            ],
+            group="Meterologiczne",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY SYNOPTYK ***",
+            description=[
+                "1. Potrafi na podstawie układu chmur i innych zjawisk określić sytuację baryczną (np. nadejście ciepłego frontu).",
+                "2. Potrafi rozpoznać moment przejścia frontu i podać przewidywany rozwój sytuacji meteorologicznej.",
+                "3. Potrafi odebrać i wyjaśnić specjalistyczną (morską, lotniczą) prognozę pogody. Wie, gdzie ją można znaleźć.",
+                "4. Przyjmie i zapisze telefoniczną prognozę pogody.",
+                "5. Przeprowadziła / przeprowadził obserwacje meteorologiczne i zapisywała / zapisywał wyniki pomiarów co najmniej przez dwa tygodnie.",
+            ],
+            group="Meterologiczne",
+        ),
+        schemas.CreateBadge(
+            name="SYNOPTYK (mistrzowskie)",
+            description=[
+                "1. Na podstawie mapki synoptycznej sporządził krótkoterminową prognozę.",
+                "2. Zna typowe trasy niżów i statystyczny rozkład kierunków wiatru na terenie Polski w różnych porach roku.",
+                "3. Potrafi odebrać i zrozumieć prognozę meteo w języku obcym.",
+                "4. Potrafi odczytać i zinterpretować prognozę NAVTEX lub ATIS.",
+                "5. Zinterpretował zarejestrowany przez siebie barogram w odniesieniu do panujących warunków meteorologicznych.",
+            ],
+            group="Meterologiczne",
+        ),
         # LOTNICZE (16)
+        schemas.CreateBadge(
+            name="MODELARKA KARTONOWA / MODELARZ KARTONOWY *",
+            description=[
+                "1. Wyjaśnił, jakie siły działają na szybowiec w locie.",
+                "2. Wyważyła / wyważył i wyregulowała / wyregulował latający kartonowy model szybowca, aby wykonał lot prosty.",
+                "3. Na modelu zademonstrowała / zademonstrował działanie sterów i lotek.",
+                "4. Wykonała / wykonał z papieru strzałę i gołębia oraz model latający szybowca z kartonu bez użycia kleju.",
+                "5. Brała / brał udział w zawodach kartonówek.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="MODELARKA REDUKCYJNA / MODELARZ REDUKCYJNY **",
+            description=[
+                "1. Rozpoznaje pięć najważniejszych typów polskich szybowców i dziesięć typów używanych w Polsce samolotów.",
+                "2. Wykazała / wykazał się znajomością nazw części samolotu, wyjaśniła / wyjaśnił działanie sterów.",
+                "3. Zbudowała / zbudował latający model sylwetkowy (tj. o sylwetce istniejącego samolotu lub szybowca) z kartonu lub styropianu na procę lub na wędkę oraz brała / brał udział w zawodach akrobacji modeli.",
+                "4. Skleiła / skleił estetycznie plastikowy model z gotowego zestawu oraz prawidłowo umieściła / umieścił na nim znaki i numery.",
+                "5. Wzięła / wziął udział w konkursie modeli samolotów z tworzyw sztucznych lub zademonstrowała / zademonstrował swoje modele w zastępie.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="MODELARKA KONSTRUKTORKA / MODELARZ KONSTRUKTOR ***",
+            description=[
+                "1. Rozpoznaje typy współczesnych szybowców, samolotów i śmigłowców polskiej konstrukcji i używanych w Polsce oraz najważniejsze zagraniczne.",
+                "2. Rozpoznaje rodzaje drewna i tworzyw sztucznych (styropian, polistyren, szkło organiczne), potrafi je kleić i obrabiać.",
+                "3. Zbudowała / zbudował trzy modele z drewna lub kartonu wiernie oddające wygląd samolotów lub skleiła / skleił pięć modeli plastikowych, estetycznie i prawidłowo je malując.",
+                "4. Wykazując się znajomością zasad rysunku technicznego, narysowała / narysował plan samolotu, którego model zbudowała / zbudował, uzupełniając go o szczegóły konstrukcji i malowanie według fotografii.",
+                "5. Opowiedziała / opowiedział o dziejach, konstrukcji i osiągnięciach samolotów, śmigłowców, szybowców, których modele zbudowała / zbudował.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="KONSTRUKTORKA LATAWCÓW / KONSTRUKTOR LATAWCÓW *",
+            description=[
+                "1. Rozpoznaje różne rodzaje latawców. Wie, jaka jest konstrukcja każdego z nich i zna ich zastosowania dawniej i dziś.",
+                "2. Wyjaśniła / wyjaśnił, jakie siły działają na latawce w locie i od czego zależy prawidłowy lot.",
+                "3. Potrafi wyregulować latawiec, aby prawidłowo wzbijał się w powietrze i latał.",
+                "4. Zbudowała / zbudował dwa latawce − płaski i skrzynkowy. Zbudowała / zbudował wyciąg do latawca i zastosowała / zastosował go.",
+                "5. Uczestniczyła / uczestniczył ze swym latawcem w zawodach latawcowych, np. z okazji Święta Latawca.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="RADIOMODELARKA / RADIOMODELARZ **",
+            description=[
+                "1. Zna przynajmniej dwa systemy zdalnego sterowania. Wie, czym się charakteryzują. Wie, jaką rolę w urządzeniu zdalnie sterowanym spełniają przekaźniki elektromechaniczne, czujniki i silniki elektryczne.",
+                "2. Wyjaśniła / wyjaśnił, gdzie i na jakich warunkach można uzyskać zezwolenie na budowę urządzeń nadawczo-odbiorczych do sterowania radiomodelarskiego.",
+                "3. Narysowała / narysował i objaśniła / objaśnił schemat blokowy jednokanałowego nadajnika i odbiornika sterowania falami radiowymi.",
+                "4. Zademonstrowała / zademonstrował na zbiórce zastępu lub drużyny funkcjonowanie zestawu zdalnego sterowania modeli, wyjaśniła / wyjaśnił kolegom, na czym ono polega.",
+                "5. Przeprowadziła / przeprowadził pokaz akrobacji lotniczej z wykorzystaniem zestawu zdalnego sterowania.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="KONSTRUKTORKA LOTNICZA / KONSTRUKTOR LOTNICZY ***",
+            description=[
+                "1. Opowiedziała / opowiedział o kilku najnowszych osiągnięciach techniki lotniczej, rodzajach doświadczalnych samolotów i różnych układach aerodynamicznych samolotów. Objaśniła / objaśnił zasady lotu różnych rodzajów statków latających.",
+                "2. Wyjaśniła / wyjaśnił, jaką rolę spełniają poszczególne elementy konstrukcyjne i urządzenia aerodynamiczne samolotów.",
+                "3. Objaśniła / objaśnił, do czego służy wirnik ogonowy śmigłowca oraz jak się steruje śmigłowcem. Wyważyła / wyważył i wyregulowała / wyregulował model o układzie nietypowym: kaczki lub bezogonowca.",
+                "4. Zbudowała / zbudował model latający o układzie nietypowym: kaczki lub bezogonowca.",
+                "5. Zbudowała / zbudował model doświadczalny własnego pomysłu dowolnego statku powietrznego (np. śmigłowiec, pionowzlot, samolot skróconego startu, poduszkowiec) lub ze specjalnymi urządzeniami aerodynamicznymi (sploty, zaburzacze, hamulce aerodynamiczne, interceptory zamiast lotek itp.) i zademonstrowała / zademonstrował jego działanie.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY BALONIARZ *",
+            description=[
+                "1. Wyjaśniła / wyjaśnił zasady unoszenia się balonu w powietrzu oraz budowę balonu sportowego.",
+                "2. Rozpoznaje rodzaje balonów i zna ich zastosowanie.",
+                "3. Stosuje przepisy bezpiecznego wypuszczania balonów na ogrzane powietrze.",
+                "4. Zbudowała / zbudował razem z kolegami balon z bibułki na ogrzane powietrze.",
+                "5. Brała / brał udział w pokazie wypuszczania balonu na ogrzane powietrze lub w zawodach balonów.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="TECHNIK BALONOWY **",
+            description=[
+                "1. Opowiedziała / opowiedział o dziejach baloniarstwa w Polsce i na świecie.",
+                "2. Rozpoznała / rozpoznał różne rodzaje balonów oraz wykazał się znajomością ich budowy, teorii lotu oraz sposobów kierowania nimi.",
+                "3. Wykazała / wykazał się umiejętnością obsługi balonu na ogrzane powietrze przy starcie.",
+                "4. Brała / brał czynny udział w przygotowaniach do wzlotu balonu.",
+                "5. Jako pasażer brała / brał udział w locie balonem na ogrzane powietrze.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="ASPIRANT SZYBOWCOWY *",
+            description=[
+                "1. Zna najważniejsze fakty z historii sportu szybowcowego i największe osiągnięcia w tej dziedzinie.",
+                "2. Wie, w jakich konkurencjach odbywają się szybowcowe loty wyczynowe, zna nazwiska polskich szybowników, zdobywców Medalu Lilienthala.",
+                "3. Wyjaśniła / wyjaśnił,jakie wymagania podwzględem zdrowia, cech psychicznych i cech charakteru stawiane są pilotowi. Zna i stosuje zasady higieny lotniczej.",
+                "4. Wie, jak wyglądają odznaki szybowcowe i jakie wymagania trzeba na nie spełnić.",
+                "5. Rozpoznaje rodzaje i typy szybowców produkowanych w Polsce. Prawidłowo nazwała / nazwał poszczególne elementy konstrukcji szybowca i potrafi określić ich rolę w czasie lotu szybowca lub modelu.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="MŁODA SZYBOWNICZKA / MŁODY SZYBOWNIK **",
+            description=[
+                "1. Wie, jakie siły działają na szybowiec w locie i jakie warunki sprzyjają lotom szybowcowym. W terenie lub na mapie wskaże, gdzie powstają prądy wznoszące.",
+                "2. Zna zasady bezpieczeństwa obowiązujące na starcie szybowcowym. Pełniła / pełnił funkcję dyżurnego i chronometrażysty na starcie.",
+                "3. Uczestniczyła / uczestniczył w wykładaniu, wyhangarowywaniu i transporcie szybowca, wykładaniu znaków startowych i przygotowywaniu szybowca do lotu − samodzielnie podpinała / podpinał linę holowniczą i wypuszczała / wypuszczał szybowiec przy starcie.",
+                "4. Zapoznała / zapoznał się z co najmniej jedną książką o tematyce szybowcowej.",
+                "5. Wykonała / wykonał lot pasażerski szybowcem.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="ASPIRANT LOTNICZY *",
+            description=[
+                "1. Wymieniła / wymienił wymagania zdrowotne i psychiczne stawiane lotnikom. Zna warunki przyjęcia na szkolenia lotnicze (wiek, wykształcenie) i główne rodzaje pracy w lotnictwie.",
+                "2. Zna nazwy głównych części samolotu.",
+                "3. Rozpoznaje polskie cywilne i wojskowe odznaki lotnicze.",
+                "4. Potrafi poruszać się po lotnisku zgodnie z obowiązującymi zasadami i rozpoznaje znaki startowe.",
+                "5. Odbyła / odbył lot pasażerski samolotem sportowym lub turystycznym.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="MŁODY LOTNIK **",
+            description=[
+                "1. Określiła / określił nawigacyjną prędkość, meteorologiczny kierunek i prędkość wiatru oraz możliwości latania w danych warunkach.",
+                "2. Zna przeznaczenie dźwigara, kesonu, wręgi, żebra, okucia i pokrycia.",
+                "3. Scharakteryzuje różnice w konstrukcji kratownicowej i półskorupowej.",
+                "4. Zademonstruje ruchy sterami samolotu oraz opisze główne przyrządy pokładowe.",
+                "5. Wskaże podstawowe typy silników lotniczych i najpopularniejszych producentów.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="OBSERWATORKA LOTNICZA / OBSERWATOR LOTNICZY *",
+            description=[
+                "1. Rozpoznaje podstawowe rodzaje statków powietrznych, zna ich prawidłowe nazwy oraz podział samolotów według ich przeznaczenia i budowy.",
+                "2. Zna meteorologiczne warunki odbywania lotów dziennych i nocnych, zasady obserwacji nieba oraz zasadę działania urządzeń radiolokacyjnych.",
+                "3. Zna sygnały alarmowe obrony cywilnej i wie, jak się zachować po ich usłyszeniu.",
+                "4. Zmierzyła / zmierzył wysokość lotu samolotu za pomocą lornetki polowej oraz oceniła / ocenił „na oko” w przybliżeniu wysokość, na jakiej leci samolot, jego prędkość i kierunek lotu.",
+                "5. Potrafi rozpoznać najważniejsze polskie i zagraniczne samoloty (co najmniej piętnaście typów) cywilne i wojskowe oraz rozróżnić znaki rozpoznawcze i rejestracyjne samolotów przynajmniej dziesięciu państw.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="ASPIRANT LOTNIARZ *",
+            description=[
+                "1. Wyjaśniła / wyjaśnił zasady lotu i pilotażu lotni.",
+                "2. Wykazała / wykazał,że zna siły działające na lotnię w locie oraz wie, w jakich warunkach można wykonywać loty. Zna podstawowe zasady wykonywania lotów.",
+                "3. Rozróżniła / rozróżnił przynajmniej trzy rodzaje uprzęży dla pilotów lotniowych i ich zastosowanie.",
+                "4. Opowiedziała / opowiedział o najważniejszych faktach z historii lotniarstwa i sportu lotniarskiego.",
+                "5. Wymieniła / wymienił najważniejsze zawody lotniowe organizowane w Polsce.",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="MŁODA LOTNIARKA / MŁODY LOTNIARZ **",
+            description=[
+                "1. Określiła / określił kierunek i prędkość wiatru względem zbocza oraz możliwości latania w danych warunkach.",
+                "2. Zademonstrowała / zademonstrował i wyjaśniła / wyjaśnił kolegom zasady sterowania lotnią.",
+                "3. Brała / brał udział w składaniu i rozkładaniu lotni i przygotowaniu jej do lotów. Prawidłowo założyła / założył i przypięła / przypiął uprząż do lotni.",
+                "4. Wykonała / wykonał ćwiczenia przygotowawcze do wstępnego szkolenia w pilotażu lotni (rozbieg i dobieg z lotnią, utrzymanie lotni w łożu wiatru, lot latawcowy na uwięzi).",
+            ],
+            group="Lotnicze",
+        ),
+        schemas.CreateBadge(
+            name="DYŻURNY STARTU SPADOCHRONOWEGO **",
+            description=[
+                "1. Zna przepisy organizacji skoków spadochronowych w zakresie obowiązującym skoczków uczniów.",
+                "2. Zna obowiązki dyżurnego startu spadochronowego i zrzutowiska, a także obowiązki i zakres uprawnień osób funkcjonujących na starcie spadochronowym.",
+                "3. Zna wszystkie obowiązujące znaki i sygnały używane podczas prowadzenia skoków spadochronowych.",
+                "4. Potrafi w terenie i na podstawie mapy dokonać wyboru lądowiska i zrzutowiska oraz określić, jakim powinno odpowiadać warunkom.",
+                "5. Pełniła / pełnił obowiązki dyżurnego lub pomocnika dyżurnego na starcie spadochronowym lub zrzutowisku, wykładała / wykładał znaki, dokonywała / dokonywał pomiaru wiatru anemometrem, określała / określał jego kierunek meteorologiczny i nawigacyjny.",
+            ],
+            group="Lotnicze",
+        ),
         # STRAŻACKIE (3)
+        schemas.CreateBadge(
+            name="STRAŻAK *",
+            description=[
+                "1. Zna stopnie Państwowej Straży Pożarnej oraz stopnie funkcyjnych Ochotniczej Straży Pożarnej.",
+                "2. Potrafi wymienić podstawowe przyczyny powstawania pożarów.",
+                "3. Potrafi szybko ubrać się w osobiste uzbrojenie strażaka.",
+                "4. Zna rodzaje i wyposażenie węży oraz sprzęt do ich obsługi i zasady konserwacji.",
+                "5. Wspólnie z zastępem budowała/budował linię wężową.",
+            ],
+            group="Strażckie",
+        ),
+        schemas.CreateBadge(
+            name="MECHANIK SPRZĘTU POŻARNICZEGO **",
+            description=[
+                "1. Zna zasady działania, budowę i obsługę motopompy.",
+                "2. Sprawnie posługuje się gaśnicą, hydronetką, kocem gaśniczym, bosakiem, sprzętem burzącym i tłumicą.",
+                "3. Potrafi wymienić środki transportowe używane przez straże pożarne.",
+                "4. Potrafi rozwinąć skróty określeń samochodów strażackich.",
+                "5. Potrafi udzielić pierwszej pomocy w przypadku oparzenia i porażenia prądem.",
+            ],
+            group="Strażckie",
+        ),
+        schemas.CreateBadge(
+            name="STRAŻAK RATOWNIK ***",
+            description=[
+                "1. Potrafi zebrać informacje o stanie zaopatrzenia miejscowości w wodę oraz ustalić najdogodniejsze miejsce na ustawienie motopompy.",
+                "2. Zna rodzaje prądów gaśniczych wodnych.",
+                "3. Kierowała / kierował budową linii wężowej oraz gaszeniem przez zastęp ognia podczas ćwiczeń.",
+                "4. Ukończyła / ukończył kurs pierwszej pomocy.",
+                "5. Prowadziła / prowadził służbową korespondencję radiową używając kryptonimów.",
+            ],
+            group="Strażckie",
+        ),
         # HARCERSKA SŁUŻBA GRANICZNA (3)
+        schemas.CreateBadge(
+            name="STRAŻNICZKA GRANICY / STRAŻNIK GRANICY *",
+            description=[
+                "1. Zna podstawowe zadania Straży Granicznej i jej strukturę.",
+                "2. Zna numer telefonu najbliższej jednostki Straży Granicznej.",
+                "3. Zna przebieg linii granicy w rejonie zamieszkania i potrafi wskazać jej charakterystyczne punkty.",
+                "4. Potrafi skrycie obserwować innych (samemu nie będąc widzianym). Sporządzła/ sporządził meldunek z zaobserwowanych zdarzeń.",
+                "5. Potrafi wymienić nazwy kilku miejscowości na terytorium państwa sąsiedniego w pobliżu swojego miejsca zamieszkania.",   
+            ],
+            group="Harcerska służba graniczna",
+        ),
+        schemas.CreateBadge(
+            name="TROPICIEL ŚLADÓW **",
+            description=[
+                "1. Umie rozpoznawać ślady ludzi, określając przy tym: ich wiek, kierunek marszu, długość kroku i sposób poruszania się.",
+                "2. Przeprowadziła / przeprowadził wywiad z funkcjonariuszem Straży Granicznej na temat rozpoznawania i zabezpieczania śladów.",
+                "3. Przeprowadziła / przeprowadził w terenie zajęcia dla zastępu z rozpoznawania śladów.",
+                "4. Samotnie spędziła / spędził w terenie 8 godzin, opisując ślady ujawnione na drogach dojazdu do linii granicy.",
+                "5. Sporządziła / sporządził odlew gipsowy śladu człowieka.",   
+            ],
+            group="Harcerska służba graniczna",
+        ),
+        schemas.CreateBadge(
+            name="POGRANICZNIK ***",
+            description=[
+                "1. Zna podział pogranicza (pas drogi granicznej, strefa nadgraniczna).",
+                "2. Umie wymienić elementy służby granicznej.",
+                "3. Zna strukturę Straży Granicznej.",
+                "4. Potrafi wymienić nazwy przejść granicznych w swoim województwie.",
+                "5. Zna podstawowe fakty z historii polskich formacji granicznych.",   
+            ],
+            group="Harcerska służba graniczna",
+        ),
         # ŁĄCZNOŚCIOWE (6)
+        schemas.CreateBadge(
+            name="NASŁUCHOWIEC *",
+            description=[
+                "1. Scharakteryzowała / scharakteryzował międzynarodowy podział pasm radiowych i służby je użytkujące.",
+                "2. Poznała / poznał zakresy amatorskich pasm KF i ich wewnętrzny podział oraz podstawowe wyrazy Q-kodu i podstawowe skróty służbowe.",
+                "3. Poznała / poznał zasady budowy znaków rozpoznawczych i prefiksy minimum pięciu państw.",
+                "4. Obsługiwała / obsługiwał odbiornik komunikacyjny, pełniła / pełnił dyżur nasłuchowy w pracy sieci i odebrała / odebrał kierowany doń radiogram.",
+                "5. Dokonała / dokonał stu nasłuchów z co najmniej dziesięciu krajów.",   
+            ],
+            group="Łącznościowe",
+        ),
+        schemas.CreateBadge(
+            name="RADIOOPERATORKA / RADIOOPERATOR **",
+            description=[
+                "1. Przeprowadziła / przeprowadził na stacji klubowej co najmniej dwadzieścia łączności.",
+                "2. Poznała / poznał procedurę pracy amatorskiej, międzynarodowy system głoskowania, sposoby budowy znaków rozpoznawczych oraz pamięta prefiksy krajów sąsiadujących z Polską, krajów Unii Europejskiej oraz USA. Zna organizację krótkofalarstwa w Polsce.",
+                "3. Pracowała / pracował w sieci służbowej łączności radiotelefonicznej i przekazała / przekazał co najmniej dwadzieścia radiogramów, zna procedurę pracy służbowej oraz sposób prowadzenia dokumentacji stacyjnej (radiogramy, log).",
+                "4. Poznała / poznał zasady rozchodzenia się fal KF i UKF, wybrała / wybrał właściwe miejsce w terenie dla usytuowania anteny oraz dobrała / dobrał odpowiedni typ anteny w zależności od wymaganego zasięgu.",
+                "5. Przygotowała / przygotował do pracy przenośną radiostację i przeprowadziła / przeprowadził szkolenie zastępu w tym zakresie.",   
+            ],
+            group="Łącznościowe",
+        ),
+        schemas.CreateBadge(
+            name="RADIOTELEGRAFISTKA / RADIOTELEGRAFISTA ***",
+            description=[
+                "1. Odebrała / odebrał i nadała / nadał kluczem 60 znaków na minutę według PARIS.",
+                "2. Poznała / poznał minimum 20 znaków Q-kodu oraz znaki służbowe dotyczące korespondencji radiowej.",
+                "3. Nawiązała / nawiązał co najmniej 20 łączności telegrafią na radiostacji klubowej i przekazała / przekazał telegrafią co najmniej 10 radiogramów podczas pracy amatorskiej lub służbowej.",
+                "4. Pracowała / pracował co najmniej raz z terenowego stanowiska (obóz, biwak), utrzymując łączność z wybranym korespondentem w macierzystej miejscowości.",
+                "5. Wykonała / wykonał proste urządzenie telegraficzne, np. generator do nauki telegrafii, wykorzystała / wykorzystał je podczas swoich zajęć z zastępem.",   
+            ],
+            group="Łącznościowe",
+        ),
+        schemas.CreateBadge(
+            name="ELEKTROTECHNIK **",
+            description=[
+                "1. Poznała / poznał zasady działania maszyn elektrycznych: prądnicy, transformatora, prostownika, akumulatora, silnika.",
+                "2. Zna i stosuje się do przepisów BHP w pracy w zakresie prądów silnych",
+                "3. Wykryła / wykrył − poszukując w systematyczny sposób − uszkodzenia w urządzeniach elektrycznych codziennego użytku (lampa, żelazko itp.), naprawiła / naprawił popsute urządzenie.",
+                "4. Wykonała / wykonał poprawnie sama / sam lub w zespole aparat, urządzenie lub część instalacji elektrycznej, np. napęd elektryczny do modelu, oświetlenie na obozie.",
+                "5. Nauczyła / nauczył młodszych kolegów obsługi lub naprawy prostego urządzenia elektrycznego.",   
+            ],
+            group="Łącznościowe",
+        ),
+        schemas.CreateBadge(
+            name="RADIOAMATOR ***",
+            description=[
+                "1. Wykonała / wykonał prosty odbiornik nasłuchowy lub radiolokacyjny.",
+                "2. Korzystała / korzystał z prostych schematów radiowych, wytłumaczyła / wytłumaczył na ich podstawie zasadę pracy urządzenia.",
+                "3. Poznała / poznał zasady racjonalnej eksploatacji sprzętu elektronicznego, którym się posługuje, zademonstrowała / zademonstrował drużynie poprawną obsługę.",
+                "4. Poznała / poznał i stosuje podstawowe zasady bezpieczeństwa w zakresie pracy ze sprzętem łączności.",
+                "5. Poznała / poznał zasady miernictwa, posługując się miernikiem uniwersalnym i generatorem−falomierzem.",   
+            ],
+            group="Łącznościowe",
+        ),
+        schemas.CreateBadge(
+            name="RADIOTROPICIELKA / RADIOTROPICIEL *",
+            description=[
+                "1. Startowała / startował w radiowych „łowach na lisa” i wytropiła / wytropił wszystkie ukryte nadajniki.",
+                "2. Przeprowadziła / przeprowadził skuteczne radionamierzanie „lisa” i wykreśliła / wykreślił jego stanowisko na mapie. Oszacowała / oszacował błąd pomiaru.",
+                "3. Zorientowała / zorientował mapę w terenie za pomocą radionamierzania na stacje radiofoniczne średnio- i długofalowe.",
+                "4. Przeprowadziła / przeprowadził pokaz wykrywania nadajnika „lisa” w terenie.",
+            ],
+            group="Łącznościowe",
+        ),
     ]
 
     for badge in badges:
