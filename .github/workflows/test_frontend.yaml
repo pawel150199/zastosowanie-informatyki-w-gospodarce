@@ -27,5 +27,9 @@ jobs:
         # Wait for the server to start
         sleep 60
         response=$(curl -sS -o /dev/null -w "%{http_code}" http://localhost:3000)
-        echo "Server response: $response"
+        if [ $response -eq 200 ]; then
+          echo "TEST SUCCESFULL"
+        else
+          echo "TEST NOT SUCCESFULL"
+        fi
         kill $(lsof -t -i :3000) 2> /dev/null || true

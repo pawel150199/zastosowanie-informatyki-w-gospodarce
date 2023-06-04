@@ -31,17 +31,20 @@ const TeamMembers = () => {
   }
 
   useEffect(() => {
-    axios
-      .get("/users/group", authHeader())
-      .then((response) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/users/group", authHeader());
         setMembers(response.data);
         setIsLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
-      });
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   if (isLoading) {
     return (
