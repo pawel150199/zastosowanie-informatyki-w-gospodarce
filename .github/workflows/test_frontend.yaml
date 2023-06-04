@@ -8,7 +8,7 @@ jobs:
   frontend_installation:
     runs-on: ubuntu-latest
     steps:
-    - name:  Checkout repository
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Install packages
@@ -16,16 +16,22 @@ jobs:
         cd harcownik-frontend
         npm install
 
+  test_frontend:
+    needs: frontend_installation
+    runs-on: ubuntu-latest
+    steps:
     - name: Start server
       run: |
         cd harcownik-frontend
         npm cache clean --force
         npm start --openssl-legacy-provider start
-    
+      background: true
+      
+    - name: Wait for server to start
+      run: sleep 60
+      
     - name: Test server
       run: |
-        # Wait for the server to start
-        sleep 60
         response=$(curl -sS -o /dev/null -w "%{http_code}" http://localhost:3000)
         echo "Server response: $response"
         kill $(lsof -t -i :3000) 2> /dev/null || true
