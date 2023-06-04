@@ -10,15 +10,5 @@ on:
     branches: 'master'
 
 jobs: 
-  #run-linter:
-  #  uses: ./.github/workflows/test.yaml
-  #  with:
-  #    test_type: flake8
-
-  #run-pytest:
-  #  uses: ./.github/workflows/test.yaml
-  #  with:
-  #    test_type: py310
-
   run-jest-tests:
-    uses: ./.github/workflows/test_js.yaml
+    uses: ./.github/workflows/test_frontend.yaml

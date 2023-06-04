@@ -1,0 +1,22 @@
+---
+name: Install and test frontend
+
+on:
+  workflow_dispatch:
+  worflow_call:
+
+jobs:
+  install_frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - name:  Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install packages
+      run: |
+        cd harcownik-frontend
+        npm install
+
+    - name: Start server
+      run: |
+        npm start
