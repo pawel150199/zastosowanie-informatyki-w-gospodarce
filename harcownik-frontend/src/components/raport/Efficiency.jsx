@@ -2,7 +2,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
-import { getLevelApplications, getUsersData } from "./RaportFunction";
+import {
+  getLevelApplications,
+  getUsersData,
+  updateLevelApplications,
+} from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
 import isLogged from "../../api/isLogged";
@@ -12,6 +16,8 @@ function Efficiency() {
   const [usersData, setUsersData] = useState([]);
   const [selectedItemsReported, setSelectedItemsReported] = useState([]);
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
+  const [endedItemsToObsoleted, setEndedItemsToObsoleted] = useState([]);
+  const [reportedItemsToObsoleted, setReportedItemsToObsoleted] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,19 +57,31 @@ function Efficiency() {
   const handleCheckboxChange = (event, report) => {
     if (event.target.checked && report.status == "zgłoszona") {
       setSelectedItemsReported([...selectedItemsReported, report]);
+      reportedItemsToObsoleted.push(report.id);
     } else if (event.target.checked && report.status == "zakończona") {
       setSelectedItemsEnded([...selectedItemsEnded, report]);
+      endedItemsToObsoleted.push(report.id);
     } else {
       if (report.status == "zgłoszona") {
         const updatedItems = selectedItemsReported.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsReported(updatedItems);
+
+        const updatedObsoletedItems = reportedItemsToObsoleted.filter(
+          (item) => item !== report.id
+        );
+        setReportedItemsToObsoleted(updatedObsoletedItems);
       } else {
         const updatedItems = selectedItemsEnded.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsEnded(updatedItems);
+
+        const updatedObsoletedItems = endedItemsToObsoleted.filter(
+          (item) => item !== report.id
+        );
+        setEndedItemsToObsoleted(updatedObsoletedItems);
       }
     }
   };
@@ -71,17 +89,19 @@ function Efficiency() {
   const handleAllCheckboxChange = (checkedIds) => {
     checkedIds.forEach((id) => {
       const numericId = parseInt(id);
-      const selectedBadge = badgesApplications.find(
-        (badge) => badge.id === numericId
+      const selectedLevel = badgesApplications.find(
+        (level) => level.id === numericId
       );
-      if (selectedBadge) {
-        if (selectedBadge.status === "zgłoszona") {
+      if (selectedLevel) {
+        if (selectedLevel.status === "zgłoszona") {
           setSelectedItemsReported((prevItems) => [
             ...prevItems,
-            selectedBadge,
+            selectedLevel,
           ]);
-        } else if (selectedBadge.status === "zakończona") {
-          setSelectedItemsEnded((prevItems) => [...prevItems, selectedBadge]);
+          reportedItemsToObsoleted.push(selectedLevel.id);
+        } else if (selectedLevel.status === "zakończona") {
+          setSelectedItemsEnded((prevItems) => [...prevItems, selectedLevel]);
+          endedItemsToObsoleted.push(selectedLevel.id);
         }
       }
     });
@@ -90,9 +110,19 @@ function Efficiency() {
   const clearSelectedBadges = () => {
     setSelectedItemsReported([]);
     setSelectedItemsEnded([]);
+    setEndedItemsToObsoleted([]);
+    setReportedItemsToObsoleted([]);
   };
 
   const addReportedLevelToRaport = () => {
+    endedItemsToObsoleted.forEach((item) => {
+      updateLevelApplications(item, "zakończona/wykorzystana");
+    });
+
+    reportedItemsToObsoleted.forEach((item) => {
+      updateLevelApplications(item, "zgłoszona/wykorzystana");
+    });
+
     selectedItemsReported.forEach((item) => {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;

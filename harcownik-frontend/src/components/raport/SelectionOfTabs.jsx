@@ -9,7 +9,6 @@ import { scoutOrder } from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";
 import isLogged from "../../api/isLogged";
 import { getMyGroupData } from "./RaportFunction";
-// import { getMeData } from "../../user/ProfileFunctions.jsx";
 
 import "./raport_style.css";
 
@@ -85,7 +84,6 @@ export default function SelectionOfTabs() {
               className={selectedItems.includes(tab.id) ? "black-checkbox" : ""}
               label={tab.label}
               id={tab.id}
-              // variant="secondary"
               checked={selectedItems.includes(tab.id)}
               onChange={(e) => {
                 console.log("e", e);

@@ -69,23 +69,20 @@ function Submissions() {
           (item) => item.id !== report.id
         );
         setSelectedItemsReported(updatedItems);
+
         const updatedObsoletedItems = reportedItemsToObsoleted.filter(
-          (item) => item.id !== report.id
+          (item) => item !== report.id
         );
-        console.log("UpdateItems", updatedObsoletedItems);
         setReportedItemsToObsoleted(updatedObsoletedItems);
       } else {
         const updatedItems = selectedItemsEnded.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsEnded(updatedItems);
-        // console.log("Report.id:", report);
-        // console.log("zawartość listy:", endedItemsToObsoleted);
 
         const updatedObsoletedItems = endedItemsToObsoleted.filter(
-          (item) => item.id !== report.id
+          (item) => item !== report.id
         );
-        // console.log("UpdateItems", updatedObsoletedItems);
         setEndedItemsToObsoleted(updatedObsoletedItems);
       }
     }
@@ -98,8 +95,6 @@ function Submissions() {
         (badge) => badge.id === numericId
       );
       if (selectedBadge) {
-        // endedItemsToObsoleted.push(selectedBadge.id);
-        // console.log("Selected badge:", selectedBadge.id);
         if (selectedBadge.status === "zgłoszona") {
           setSelectedItemsReported((prevItems) => [
             ...prevItems,
@@ -107,7 +102,6 @@ function Submissions() {
           ]);
           reportedItemsToObsoleted.push(selectedBadge.id);
         } else if (selectedBadge.status === "zakończona") {
-          console.log("Selected badge_2:", selectedBadge.id);
           setSelectedItemsEnded((prevItems) => [...prevItems, selectedBadge]);
           endedItemsToObsoleted.push(selectedBadge.id);
         }
@@ -124,12 +118,10 @@ function Submissions() {
 
   const addReportedBadgesToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      console.log("Item:", item);
-      updateBadgesApplications(item, "zgłoszona/wykorzystana");
+      updateBadgesApplications(item, "zakończona/wykorzystana");
     });
 
     reportedItemsToObsoleted.forEach((item) => {
-      console.log("Item:", item);
       updateBadgesApplications(item, "zgłoszona/wykorzystana");
     });
 
@@ -227,19 +219,16 @@ function Submissions() {
             Odznacz wszystko
           </button>
         </div>
-        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 &&
-          (console.log("Tablica zakończone:", endedItemsToObsoleted),
-          console.log("Tablica rozpoczęte:", reportedItemsToObsoleted),
-          (
-            <button
-              type="button"
-              className="btn btn-dark"
-              onClick={addReportedBadgesToRaport}
-              style={{ marginTop: "1%" }}
-            >
-              Dodaj do raportu
-            </button>
-          ))}
+        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={addReportedBadgesToRaport}
+            style={{ marginTop: "1%" }}
+          >
+            Dodaj do raportu
+          </button>
+        )}
       </Container>
     </div>
   );

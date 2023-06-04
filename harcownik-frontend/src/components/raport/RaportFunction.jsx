@@ -64,11 +64,28 @@ export const getMyGroupData = async () => {
 };
 
 export const updateBadgesApplications = async (badgeId, status) => {
-  console.log("badgeId:", badgeId, typeof badgeId);
-  console.log("status:", status);
   try {
     const response = await axios.put(
       `http://localhost:8000/badge_report/${badgeId}`,
+      {
+        status: status,
+      },
+      authHeader()
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};
+
+export const updateLevelApplications = async (badgeId, status) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/level_report/${badgeId}`,
       {
         status: status,
       },
