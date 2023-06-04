@@ -159,6 +159,11 @@ def update_user(
     current_user: models.User = Depends(get_current_webadmin_or_teamadmin),
 ) -> Any:
     user = crud.get_user(db, user_id=user_id)
+    if current_user.id == user_id:
+        raise HTTPException(
+            status_code=400,
+            detail="Can not delete logged user!"
+        )
     if not user:
         raise HTTPException(
             status_code=404,

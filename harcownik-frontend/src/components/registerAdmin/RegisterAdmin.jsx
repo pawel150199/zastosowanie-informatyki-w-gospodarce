@@ -54,7 +54,7 @@ const RegisterAdmin = () => {
     <View style={styles.container}>
       <br></br>
       <Text style={styles.title}>Załóż nową drużynę Harcerską</Text>
-      <small>Jeśli twoja dryżyna jest już w aplikacji harcownik, poproś swojego drużynowego o dodanie :)</small>
+      <small>Jeśli twoja drużyna jest już w aplikacji harcownik, poproś swojego drużynowego o dodanie :)</small>
       <br></br>
       <TextInput
         style={styles.input}
@@ -64,19 +64,19 @@ const RegisterAdmin = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Numer drużyny"
+        placeholder="Numer Szczepu"
         value={number}
         onChangeText={setNumber}
       />
       <TextInput
         style={styles.input}
-        placeholder="Nazwa Szczepu Drużyny"
+        placeholder="Nazwa Szczepu"
         value={szczep}
         onChangeText={setSzczep}
       />
       <TextInput
         style={styles.input}
-        placeholder="Miasto Drużyny"
+        placeholder="Miasto"
         value={city}
         onChangeText={setCity}
       />
@@ -84,7 +84,7 @@ const RegisterAdmin = () => {
 
       <br></br>
       <Text style={styles.title}>Załóż konto Drużynowego</Text>
-      <small>Konto Drużynowego zostanie automatycznie zostanie dodane do drużyny</small>
+      <small>Konto Drużynowego zostanie automatycznie dodane do drużyny</small>
       <br></br>
       <TextInput
         style={styles.input}

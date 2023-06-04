@@ -2205,7 +2205,7 @@ def init_badges(db: Session) -> None:
         schemas.CreateBadge(
             name="UWAŻNY PIESZY",
             description=[
-                "1 Poznała / poznał zasady ruchu drogowego w mieście, uczestnicząc w zajęciach organizowanych w miasteczku ruchu drogowego.",
+                "1. Poznała / poznał zasady ruchu drogowego w mieście, uczestnicząc w zajęciach organizowanych w miasteczku ruchu drogowego.",
                 "2. Samodzielnie, pod okiem drużynowego, przeprowadziła/przeprowadził zastęp przez dwa ruchliwe skrzyżowania oznakowane sygnalizacją świetlną.",
                 "3. Poznała / poznał zasady poruszania się w terenie niezabudowanym i zastosowała / zastosował je w praktyce, np. prowadząc zastęp na wędrówce.",
                 "4. Spopularyzowała / spopularyzował wśród kolegów w interesującej formie podstawowe zasady bezpiecznego poruszania się po ulicach i drogach.",

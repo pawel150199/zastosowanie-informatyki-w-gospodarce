@@ -45,14 +45,11 @@ const Register = () => {
           authHeader()
         );
         clearInputs();
-        if (response.status === 200 || response.status === 201) {
-          setInfo("Harcerz został poprawnie dodany");
-        } else {
-          setInfo("Harcerz nie został poprawnie dodany! Spróbuj ponownie");
-        }
+        setInfo("Harcerz został poprawnie dodany");
       }
     } catch (error) {
       console.error(error);
+      setInfo("Harcerz nie został poprawnie dodany! Spróbuj ponownie");
     }
   };
 
