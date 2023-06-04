@@ -34,6 +34,8 @@ const ResetPassword = () => {
           if (response.status === 200 || response.status === 201) {
             window.location.href = "/user";
           }
+        } else { 
+          setInfo("Hasła różnią się od siebie!");
         }
       }
     } catch (error) {
