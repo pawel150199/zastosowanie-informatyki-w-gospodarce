@@ -2,7 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
-import { getBadgesApplications, getUsersData } from "./RaportFunction";
+import {
+  getBadgesApplications,
+  getUsersData,
+  updateBadgesApplications,
+} from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
 
@@ -13,6 +17,8 @@ function Submissions() {
   const [usersData, setUsersData] = useState([]);
   const [selectedItemsReported, setSelectedItemsReported] = useState([]);
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
+  const [endedItemsToObsoleted, setEndedItemsToObsoleted] = useState([]);
+  const [reportedItemsToObsoleted, setReportedItemsToObsoleted] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,19 +59,34 @@ function Submissions() {
   const handleCheckboxChange = (event, report) => {
     if (event.target.checked && report.status == "zgłoszona") {
       setSelectedItemsReported([...selectedItemsReported, report]);
+      reportedItemsToObsoleted.push(report.id);
     } else if (event.target.checked && report.status == "zakończona") {
       setSelectedItemsEnded([...selectedItemsEnded, report]);
+      endedItemsToObsoleted.push(report.id);
     } else {
       if (report.status == "zgłoszona") {
         const updatedItems = selectedItemsReported.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsReported(updatedItems);
+        const updatedObsoletedItems = reportedItemsToObsoleted.filter(
+          (item) => item.id !== report.id
+        );
+        console.log("UpdateItems", updatedObsoletedItems);
+        setReportedItemsToObsoleted(updatedObsoletedItems);
       } else {
         const updatedItems = selectedItemsEnded.filter(
           (item) => item.id !== report.id
         );
         setSelectedItemsEnded(updatedItems);
+        // console.log("Report.id:", report);
+        // console.log("zawartość listy:", endedItemsToObsoleted);
+
+        const updatedObsoletedItems = endedItemsToObsoleted.filter(
+          (item) => item.id !== report.id
+        );
+        // console.log("UpdateItems", updatedObsoletedItems);
+        setEndedItemsToObsoleted(updatedObsoletedItems);
       }
     }
   };
@@ -77,13 +98,18 @@ function Submissions() {
         (badge) => badge.id === numericId
       );
       if (selectedBadge) {
+        // endedItemsToObsoleted.push(selectedBadge.id);
+        // console.log("Selected badge:", selectedBadge.id);
         if (selectedBadge.status === "zgłoszona") {
           setSelectedItemsReported((prevItems) => [
             ...prevItems,
             selectedBadge,
           ]);
+          reportedItemsToObsoleted.push(selectedBadge.id);
         } else if (selectedBadge.status === "zakończona") {
+          console.log("Selected badge_2:", selectedBadge.id);
           setSelectedItemsEnded((prevItems) => [...prevItems, selectedBadge]);
+          endedItemsToObsoleted.push(selectedBadge.id);
         }
       }
     });
@@ -92,9 +118,21 @@ function Submissions() {
   const clearSelectedBadges = () => {
     setSelectedItemsReported([]);
     setSelectedItemsEnded([]);
+    setEndedItemsToObsoleted([]);
+    setReportedItemsToObsoleted([]);
   };
 
   const addReportedBadgesToRaport = () => {
+    endedItemsToObsoleted.forEach((item) => {
+      console.log("Item:", item);
+      updateBadgesApplications(item, "zgłoszona/wykorzystana");
+    });
+
+    reportedItemsToObsoleted.forEach((item) => {
+      console.log("Item:", item);
+      updateBadgesApplications(item, "zgłoszona/wykorzystana");
+    });
+
     selectedItemsReported.forEach((item) => {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;
@@ -189,16 +227,19 @@ function Submissions() {
             Odznacz wszystko
           </button>
         </div>
-        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
-          <button
-            type="button"
-            className="btn btn-dark"
-            onClick={addReportedBadgesToRaport}
-            style={{ marginTop: "1%" }}
-          >
-            Dodaj do raportu
-          </button>
-        )}
+        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 &&
+          (console.log("Tablica zakończone:", endedItemsToObsoleted),
+          console.log("Tablica rozpoczęte:", reportedItemsToObsoleted),
+          (
+            <button
+              type="button"
+              className="btn btn-dark"
+              onClick={addReportedBadgesToRaport}
+              style={{ marginTop: "1%" }}
+            >
+              Dodaj do raportu
+            </button>
+          ))}
       </Container>
     </div>
   );

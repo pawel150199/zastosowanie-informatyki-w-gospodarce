@@ -124,7 +124,7 @@ export default function SelectionOfTabs() {
       >
         Zaznacz wszystko
       </Button>
-      <Link to="/raport/raport_view" id="raport_view">
+      <Link to="/" id="raport_view">
         <Button
           type="button"
           className="btn btn-dark"
