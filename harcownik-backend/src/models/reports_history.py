@@ -1,7 +1,9 @@
-from sqlalchemy import Column, DateTime, Integer, String, LargeBinary, ForeignKey
-from sqlalchemy.sql import func
+from sqlalchemy import (Column, DateTime, ForeignKey, Integer, LargeBinary,
+                        String)
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 from src.db.db import Base
+
 
 class PdfReport(Base):
     __tablename__ = "reports_history"

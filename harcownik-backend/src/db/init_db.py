@@ -2035,7 +2035,7 @@ def init_badges(db: Session) -> None:
                 "1. Poznała / poznał pracę redakcji gazety lub wydawnictwa książkowego.",
                 "2. Rozróżniła / rozróżnił rodzaje czcionek drukarskich i typy edytorów komputerowych, stosując je w swojej gazecie lub publikacjach książkowych.",
                 "3. Złożyła / złożył na komputerze gazetę lub inną publikację.",
-                "4. Rozprowadzała / rozprowadzał wydawnictwa przygotowane przez drużynę, hufiec, szkołę, dom kultury itp."
+                "4. Rozprowadzała / rozprowadzał wydawnictwa przygotowane przez drużynę, hufiec, szkołę, dom kultury itp.",
             ],
             group="Hobbystyczne",
         ),
@@ -2905,7 +2905,7 @@ def init_badges(db: Session) -> None:
                 "2. Zna numer telefonu najbliższej jednostki Straży Granicznej.",
                 "3. Zna przebieg linii granicy w rejonie zamieszkania i potrafi wskazać jej charakterystyczne punkty.",
                 "4. Potrafi skrycie obserwować innych (samemu nie będąc widzianym). Sporządzła/ sporządził meldunek z zaobserwowanych zdarzeń.",
-                "5. Potrafi wymienić nazwy kilku miejscowości na terytorium państwa sąsiedniego w pobliżu swojego miejsca zamieszkania.",   
+                "5. Potrafi wymienić nazwy kilku miejscowości na terytorium państwa sąsiedniego w pobliżu swojego miejsca zamieszkania.",
             ],
             group="Harcerska służba graniczna",
         ),
@@ -2916,7 +2916,7 @@ def init_badges(db: Session) -> None:
                 "2. Przeprowadziła / przeprowadził wywiad z funkcjonariuszem Straży Granicznej na temat rozpoznawania i zabezpieczania śladów.",
                 "3. Przeprowadziła / przeprowadził w terenie zajęcia dla zastępu z rozpoznawania śladów.",
                 "4. Samotnie spędziła / spędził w terenie 8 godzin, opisując ślady ujawnione na drogach dojazdu do linii granicy.",
-                "5. Sporządziła / sporządził odlew gipsowy śladu człowieka.",   
+                "5. Sporządziła / sporządził odlew gipsowy śladu człowieka.",
             ],
             group="Harcerska służba graniczna",
         ),
@@ -2927,7 +2927,7 @@ def init_badges(db: Session) -> None:
                 "2. Umie wymienić elementy służby granicznej.",
                 "3. Zna strukturę Straży Granicznej.",
                 "4. Potrafi wymienić nazwy przejść granicznych w swoim województwie.",
-                "5. Zna podstawowe fakty z historii polskich formacji granicznych.",   
+                "5. Zna podstawowe fakty z historii polskich formacji granicznych.",
             ],
             group="Harcerska służba graniczna",
         ),
@@ -2939,7 +2939,7 @@ def init_badges(db: Session) -> None:
                 "2. Poznała / poznał zakresy amatorskich pasm KF i ich wewnętrzny podział oraz podstawowe wyrazy Q-kodu i podstawowe skróty służbowe.",
                 "3. Poznała / poznał zasady budowy znaków rozpoznawczych i prefiksy minimum pięciu państw.",
                 "4. Obsługiwała / obsługiwał odbiornik komunikacyjny, pełniła / pełnił dyżur nasłuchowy w pracy sieci i odebrała / odebrał kierowany doń radiogram.",
-                "5. Dokonała / dokonał stu nasłuchów z co najmniej dziesięciu krajów.",   
+                "5. Dokonała / dokonał stu nasłuchów z co najmniej dziesięciu krajów.",
             ],
             group="Łącznościowe",
         ),
@@ -2950,7 +2950,7 @@ def init_badges(db: Session) -> None:
                 "2. Poznała / poznał procedurę pracy amatorskiej, międzynarodowy system głoskowania, sposoby budowy znaków rozpoznawczych oraz pamięta prefiksy krajów sąsiadujących z Polską, krajów Unii Europejskiej oraz USA. Zna organizację krótkofalarstwa w Polsce.",
                 "3. Pracowała / pracował w sieci służbowej łączności radiotelefonicznej i przekazała / przekazał co najmniej dwadzieścia radiogramów, zna procedurę pracy służbowej oraz sposób prowadzenia dokumentacji stacyjnej (radiogramy, log).",
                 "4. Poznała / poznał zasady rozchodzenia się fal KF i UKF, wybrała / wybrał właściwe miejsce w terenie dla usytuowania anteny oraz dobrała / dobrał odpowiedni typ anteny w zależności od wymaganego zasięgu.",
-                "5. Przygotowała / przygotował do pracy przenośną radiostację i przeprowadziła / przeprowadził szkolenie zastępu w tym zakresie.",   
+                "5. Przygotowała / przygotował do pracy przenośną radiostację i przeprowadziła / przeprowadził szkolenie zastępu w tym zakresie.",
             ],
             group="Łącznościowe",
         ),
@@ -2961,7 +2961,7 @@ def init_badges(db: Session) -> None:
                 "2. Poznała / poznał minimum 20 znaków Q-kodu oraz znaki służbowe dotyczące korespondencji radiowej.",
                 "3. Nawiązała / nawiązał co najmniej 20 łączności telegrafią na radiostacji klubowej i przekazała / przekazał telegrafią co najmniej 10 radiogramów podczas pracy amatorskiej lub służbowej.",
                 "4. Pracowała / pracował co najmniej raz z terenowego stanowiska (obóz, biwak), utrzymując łączność z wybranym korespondentem w macierzystej miejscowości.",
-                "5. Wykonała / wykonał proste urządzenie telegraficzne, np. generator do nauki telegrafii, wykorzystała / wykorzystał je podczas swoich zajęć z zastępem.",   
+                "5. Wykonała / wykonał proste urządzenie telegraficzne, np. generator do nauki telegrafii, wykorzystała / wykorzystał je podczas swoich zajęć z zastępem.",
             ],
             group="Łącznościowe",
         ),
@@ -2972,7 +2972,7 @@ def init_badges(db: Session) -> None:
                 "2. Zna i stosuje się do przepisów BHP w pracy w zakresie prądów silnych",
                 "3. Wykryła / wykrył − poszukując w systematyczny sposób − uszkodzenia w urządzeniach elektrycznych codziennego użytku (lampa, żelazko itp.), naprawiła / naprawił popsute urządzenie.",
                 "4. Wykonała / wykonał poprawnie sama / sam lub w zespole aparat, urządzenie lub część instalacji elektrycznej, np. napęd elektryczny do modelu, oświetlenie na obozie.",
-                "5. Nauczyła / nauczył młodszych kolegów obsługi lub naprawy prostego urządzenia elektrycznego.",   
+                "5. Nauczyła / nauczył młodszych kolegów obsługi lub naprawy prostego urządzenia elektrycznego.",
             ],
             group="Łącznościowe",
         ),
@@ -2983,7 +2983,7 @@ def init_badges(db: Session) -> None:
                 "2. Korzystała / korzystał z prostych schematów radiowych, wytłumaczyła / wytłumaczył na ich podstawie zasadę pracy urządzenia.",
                 "3. Poznała / poznał zasady racjonalnej eksploatacji sprzętu elektronicznego, którym się posługuje, zademonstrowała / zademonstrował drużynie poprawną obsługę.",
                 "4. Poznała / poznał i stosuje podstawowe zasady bezpieczeństwa w zakresie pracy ze sprzętem łączności.",
-                "5. Poznała / poznał zasady miernictwa, posługując się miernikiem uniwersalnym i generatorem−falomierzem.",   
+                "5. Poznała / poznał zasady miernictwa, posługując się miernikiem uniwersalnym i generatorem−falomierzem.",
             ],
             group="Łącznościowe",
         ),
@@ -3003,7 +3003,7 @@ def init_badges(db: Session) -> None:
         crud.create_badge(db, badge=badge)
 
 
-#def init_groups(db: Session) -> None:
+# def init_groups(db: Session) -> None:
 #    groups = [
 #        schemas.CreateGroup(
 #            name="Forward", number=7, szczep="Zielona Siódemka", city="Bydgoszcz"
