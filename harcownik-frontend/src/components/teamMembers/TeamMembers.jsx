@@ -13,38 +13,38 @@ const TeamMembers = () => {
   const [teamAdmin, setTeamAdmin] = useState(false);
 
   const checkUserRole = async () => {
+
     setTeamAdmin(await isTeamAdmin());
   }
 
   const handleDeleteMember = async (user_id) => {
-    try {
-      axios.delete(
-        `/user/group/delete/${user_id}`,authHeader());
+    axios.delete(
+      `/user/group/delete/${user_id}`,authHeader())
+      .then(() => {
         window.location.reload();
-    } catch (error) {
-      console.error(error);
+      })
+      .catch((error) => {
+        console.error("Wystąpił bład", error);
+        setIsLoading(false);
+      });
     }
-  }
   
   if (isLogged()) {
     checkUserRole();
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/users/group", authHeader());
+    axios
+      .get("/users/group", authHeader())
+      .then((response) => {
         setMembers(response.data);
         setIsLoading(false);
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
-      }
-    };
-  
-    fetchData();
+      });
   }, []);
-  
 
   if (isLoading) {
     return (

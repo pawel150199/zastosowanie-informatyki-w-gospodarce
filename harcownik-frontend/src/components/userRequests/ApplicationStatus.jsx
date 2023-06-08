@@ -37,7 +37,7 @@ function ApplicationStatus() {
   return (
     <div className="jumbotron ApplicationStatusStyle rounded">
       <Container>
-        <h2>Zgłoszenia dotyczące sprawności</h2>
+        <h2 id="request">Zgłoszenia dotyczące sprawności</h2>
         <Table responsive bordered striped style={{ marginTop: "50px" }}>
           <thead>
             <tr>
@@ -59,7 +59,7 @@ function ApplicationStatus() {
               ))}
           </tbody>
         </Table>
-        <h2>Zgłoszenia dotyczące stopni</h2>
+        <h2 id="request">Zgłoszenia dotyczące stopni</h2>
         <Table responsive bordered striped style={{ marginTop: "50px" }}>
           <thead>
             <tr>
