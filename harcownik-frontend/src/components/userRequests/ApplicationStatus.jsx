@@ -5,10 +5,14 @@ import { Container, Table } from "react-bootstrap";
 import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
-} from "./ApplicationStatusFunction";
+} from "./UserRequestsFunctions";
 import isLogged from "../../api/isLogged";
 
 import "./UserRequests.css";
+
+/*
+Tab where user can check created  report and their status
+*/
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
