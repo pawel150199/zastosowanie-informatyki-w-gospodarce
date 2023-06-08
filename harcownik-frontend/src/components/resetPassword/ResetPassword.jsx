@@ -17,7 +17,7 @@ const ResetPassword = () => {
     const clearInputs = () => {
       setNewPassword("");
       setNewRepeatedPassword("");
-    }
+    };
 
     try {
       if (isLogged()) {
@@ -34,13 +34,15 @@ const ResetPassword = () => {
           if (response.status === 200 || response.status === 201) {
             window.location.href = "/user";
           }
-        } else { 
+        } else {
           setInfo("Hasła różnią się od siebie!");
         }
       }
     } catch (error) {
       console.error(error);
-      setInfo("Hasło nie zostało poprawnie zmienione!  Sprawdz dane i spróbuj ponownie.");
+      setInfo(
+        "Hasło nie zostało poprawnie zmienione!  Sprawdz dane i spróbuj ponownie."
+      );
     }
   };
 
@@ -62,10 +64,7 @@ const ResetPassword = () => {
         onChangeText={setNewRepeatedPassword}
       />
       {info && <p className="error">{info}</p>}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleResetPassword}
-      >
+      <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
         <Text>Zmień hasło</Text>
       </TouchableOpacity>
     </View>

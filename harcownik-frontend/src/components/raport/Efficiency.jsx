@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
@@ -10,6 +9,10 @@ import {
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
 import isLogged from "../../api/isLogged";
+
+/*
+Tab provide tabel with reported badges, user can choose which be included in raport.
+*/
 
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);

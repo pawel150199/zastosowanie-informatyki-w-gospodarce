@@ -12,6 +12,10 @@ import "./raport_style.css";
 
 import isLogged from "../../api/isLogged";
 
+/*
+Tab provide tabel with reported submissions, user can choose which be included in raport.
+*/
+
 function Submissions() {
   const [levelApplications, setlevelApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
