@@ -122,11 +122,11 @@ function Submissions() {
 
   const addReportedBadgesToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      updateBadgesApplications(item, "zakończona/wykorzystana");
+      updateBadgesApplications(item, "zakończona-zaraportowana");
     });
 
     reportedItemsToObsoleted.forEach((item) => {
-      updateBadgesApplications(item, "zgłoszona/wykorzystana");
+      updateBadgesApplications(item, "zgłoszona-zaraportowana");
     });
 
     selectedItemsReported.forEach((item) => {

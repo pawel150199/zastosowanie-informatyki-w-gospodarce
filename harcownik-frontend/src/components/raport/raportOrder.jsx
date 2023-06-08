@@ -1,5 +1,4 @@
 /* eslint-disable */
-// import React from "react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { scoutSign, scoutCity, scoutLevel } from "./SelectionOfTabs";

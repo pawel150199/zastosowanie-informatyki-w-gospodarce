@@ -49,7 +49,10 @@ function ApplicationStatus() {
             {badgeStatus
               .filter(
                 (badge) =>
-                  badge.status === "zakończona" || badge.status === "zgłoszona"
+                  badge.status === "zakończona" ||
+                  badge.status === "zgłoszona" ||
+                  badge.status === "zakończona-zaraportowana" ||
+                  badge.status === "zgłoszona-zaraportowana"
               )
               .map((badge) => (
                 <tr key={badge.id}>
@@ -70,8 +73,11 @@ function ApplicationStatus() {
           <tbody>
             {levelStatus
               .filter(
-                (level) =>
-                  level.status === "zakończona" || level.status === "zgłoszona"
+                (badge) =>
+                  badge.status === "zakończona" ||
+                  badge.status === "zgłoszona" ||
+                  badge.status === "zakończona-zaraportowana" ||
+                  badge.status === "zgłoszona-zaraportowana"
               )
               .map((level) => (
                 <tr key={level.id}>

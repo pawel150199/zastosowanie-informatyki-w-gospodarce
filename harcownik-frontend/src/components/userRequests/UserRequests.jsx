@@ -8,6 +8,11 @@ import UserRequestsHeader from "./UserRequestsHeader";
 
 import "./UserRequests.css";
 
+/*
+Page on which user can create new level or badge status report. 
+User can also check reports which will be add to raport. 
+*/
+
 const UserRequests = () => {
   return (
     <div className="container">

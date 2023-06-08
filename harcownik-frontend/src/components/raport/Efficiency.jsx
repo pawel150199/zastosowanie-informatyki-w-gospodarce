@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
@@ -119,11 +120,11 @@ function Efficiency() {
 
   const addReportedLevelToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      updateLevelApplications(item, "zakończona/wykorzystana");
+      updateLevelApplications(item, "zakończona-zaraportowana");
     });
 
     reportedItemsToObsoleted.forEach((item) => {
-      updateLevelApplications(item, "zgłoszona/wykorzystana");
+      updateLevelApplications(item, "zgłoszona-zaraportowana");
     });
 
     selectedItemsReported.forEach((item) => {

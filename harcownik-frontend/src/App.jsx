@@ -16,7 +16,6 @@ import MyNavbar from "./components/mynavbar/MyNavbar";
 import Footer from "./components/footer/Footer";
 import NotFound from "./components/notfound/NotFound";
 import Raport from "./components/raport/Raport";
-import RaportView from "./components/raport/RaportView";
 import UserRequests from "./components/userRequests/UserRequests";
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
             <Route path="/badges" element={<Badges />} />
             <Route path="/raport" element={<Raport />} />
             <Route path="/team_members" element={<TeamMembers />} />
-            <Route path="/raport/raport_view" element={<RaportView />} />
             <Route path="/user_requests" element={<UserRequests />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
