@@ -47,7 +47,7 @@ function UserRanks() {
 
   return (
     <div className="jumbotron UserRanksStyle rounded">
-      <h1>Zakładka służąca rozpoczęcia nowego stopnia</h1>
+      <h2 id="request">Rozpocznij nowy stopnień</h2>
       <DropdownButton
         alignight
         title="Wybierz stopień"

@@ -1,8 +1,6 @@
 import secrets
-from typing import List, Optional
-
-from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn
-
+from typing import Any, Dict, List, Optional, Union
+from pydantic import AnyHttpUrl, BaseSettings, HttpUrl, PostgresDsn
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "Harcownik"
@@ -14,24 +12,24 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
 
     # DATABASE
-    POSTGRES_SERVER: str = None
-    POSTGRES_USER: str = None
-    POSTGRES_PASSWORD: str = None
-    POSTGRES_DB: str = None
+    POSTGRES_SERVER: str = "localhost"
+    POSTGRES_USER: str = "postgres"
+    POSTGRES_PASSWORD: str = "admin"
+    POSTGRES_DB: str = "postgres"
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 
     # SMTP
     SMTP_PORT: Optional[int] = 465
     SMTP_HOST: Optional[str] = "smtp.gmail.com"
     SMTP_USER: Optional[str] = "harcownikapp@gmail.com"
-    SMTP_PASSWORD: Optional[str] = None
+    SMTP_PASSWORD: Optional[str] = "zsjvososzmnhbeem"
     EMAILS_FROM_EMAIL: Optional[str] = "harcownikapp@gmail.com"
     EMAILS_FROM_NAME: Optional[str] = "Harcownik"
 
     # EMAIL
     EMAIL_RESET_TOKEN_EXPIRE_HOURS: int = 48
-    EMAILS_ENABLED: bool = False
-    EMAIL_TEST_USER: str = None
-
+    EMAILS_ENABLED: bool = True
+    EMAIL_TEST_USER: str = "pawel.polski99@gmail.com"
+    USERS_OPEN_REGISTRATION: bool = False
 
 settings = Settings()
