@@ -12,3 +12,4 @@ from .crud_user import (authenticate, create_scout, create_user, delete_user,
                         get_by_email, get_user, get_users, get_users_in_group,
                         is_teamadmin, is_webadmin, is_webadmin_or_teamadmin,
                         update_user)
+from .crud_reports_history import (create_file, get_file, get_files, get_files_by_user, delete_file)

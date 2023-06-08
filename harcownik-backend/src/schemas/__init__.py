@@ -9,3 +9,4 @@ from .message import Message
 from .token import Token, TokenPayload
 from .user import (CreateScout, CreateUser, UpdateUser, User, UserBase,
                    UserWithId)
+from .reports_history import PdfFileCreate, PdfFile

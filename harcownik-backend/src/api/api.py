@@ -1,8 +1,9 @@
 from fastapi import APIRouter
 from src.api.endpoints import (badge_reports, badges, groups, level_reports,
-                               login, users)
+                               login, users, reports_history)
 
 api_router = APIRouter()
+api_router.include_router(reports_history.router, tags=["reports_history"])
 api_router.include_router(login.router, tags=["login"])
 api_router.include_router(users.router, tags=["users"])
 api_router.include_router(groups.router, tags=["groups"])
