@@ -25,7 +25,7 @@ def create_pdf(
 # GET
 @router.get("/reports", response_model=list[schemas.PdfFile])
 def read_pdfs_data(db: Session = Depends(get_db)) -> Any:
-    pdfs = crud.get_files_data(db)
+    pdfs = crud.get_files(db)
     if pdfs is None or pdfs == []:
         raise HTTPException(status_code=404, detail="Files not found")
     return pdfs
@@ -33,7 +33,7 @@ def read_pdfs_data(db: Session = Depends(get_db)) -> Any:
 
 @router.get("/report", response_model=schemas.PdfFile)
 def read_pdf_data(pdf_id: int, db: Session = Depends(get_db)) -> Any:
-    pdf = crud.get_file_data(db, pdf_id=pdf_id)
+    pdf = crud.get_file(db, pdf_id=pdf_id)
     if pdf is None:
         raise HTTPException(status_code=404, detail="File not found")
     return pdf
@@ -41,7 +41,7 @@ def read_pdf_data(pdf_id: int, db: Session = Depends(get_db)) -> Any:
 
 @router.get("/reports/{user_id}", response_model=list[schemas.PdfFile])
 def read_pdfs_data(user_id: int, db: Session = Depends(get_db)) -> Any:
-    pdfs = crud.get_files_data_by_user(db, user_id=user_id)
+    pdfs = crud.get_files_by_user(db, user_id=user_id)
     if pdfs is None or pdfs == []:
         raise HTTPException(status_code=404, detail="Files not found")
     return pdfs
