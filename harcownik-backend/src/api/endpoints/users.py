@@ -143,10 +143,7 @@ def delete_user(
 ) -> Any:
     user = crud.get_user(db=db, user_id=user_id)
     if current_user.id == user_id:
-        raise HTTPException(
-            status_code=400,
-            detail="Can not delete logged user!"
-        )
+        raise HTTPException(status_code=400, detail="Can not delete logged user!")
     if user.group_id != current_user.group_id:
         raise HTTPException(status_code=403, detail="Not enough privileges")
     if not user:
