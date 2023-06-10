@@ -3,12 +3,8 @@ from typing import Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from src import crud, models, schemas
-from src.api.helper import (
-    get_current_user,
-    get_current_webadmin,
-    get_current_webadmin_or_teamadmin,
-    get_db,
-)
+from src.api.helper import (get_current_user, get_current_webadmin,
+                            get_current_webadmin_or_teamadmin, get_db)
 
 router = APIRouter()
 

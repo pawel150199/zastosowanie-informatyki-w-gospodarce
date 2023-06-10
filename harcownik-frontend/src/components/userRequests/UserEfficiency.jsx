@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 
 import { getBadges, getBadgeGroups, postBadge } from "./UserRequestsFunctions";
 import isLogged from "../../api/isLogged";
@@ -68,7 +68,7 @@ function UserEfficiency() {
 
   return (
     <div className="jumbotron UserEfficiencyStyle rounded">
-      <h1>Zakładka służąca rozpoczęcia nowej sprawności</h1>
+      <h2 id="request">Rozpocznij sprawność</h2>
       <DropdownButton
         className="dark"
         alignRight

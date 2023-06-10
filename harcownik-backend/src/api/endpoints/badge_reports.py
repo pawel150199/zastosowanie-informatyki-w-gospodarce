@@ -18,7 +18,10 @@ def create_badge_report(
     current_user: models.User = Depends(get_current_user),
 ) -> Any:
     badge_report_in = crud.get_badge_report_by_user(db, user_id=current_user.id)
-    if any(badge_report.title == report.title and badge_report.status == report.status for report in badge_report_in):
+    if any(
+        badge_report.title == report.title and badge_report.status == report.status
+        for report in badge_report_in
+    ):
         raise HTTPException(status_code=400, detail="Similar report exist")
     return crud.create_badge_report(
         db=db, badge_report=badge_report, user_id=current_user.id
