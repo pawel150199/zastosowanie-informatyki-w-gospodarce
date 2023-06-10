@@ -5,10 +5,14 @@ import { Container, Table } from "react-bootstrap";
 import {
   getBadgeApplicationStatus,
   getLevelApplicationStatus,
-} from "./ApplicationStatusFunction";
+} from "./UserRequestsFunctions";
 import isLogged from "../../api/isLogged";
 
 import "./UserRequests.css";
+
+/*
+Tab where user can check created  report and their status
+*/
 
 function ApplicationStatus() {
   const [badgeStatus, getBadgeStatus] = useState([]);
@@ -49,7 +53,10 @@ function ApplicationStatus() {
             {badgeStatus
               .filter(
                 (badge) =>
-                  badge.status === "zakończona" || badge.status === "zgłoszona"
+                  badge.status === "zakończona" ||
+                  badge.status === "zgłoszona" ||
+                  badge.status === "zakończona-zaraportowana" ||
+                  badge.status === "zgłoszona-zaraportowana"
               )
               .map((badge) => (
                 <tr key={badge.id}>
@@ -70,8 +77,11 @@ function ApplicationStatus() {
           <tbody>
             {levelStatus
               .filter(
-                (level) =>
-                  level.status === "zakończona" || level.status === "zgłoszona"
+                (badge) =>
+                  badge.status === "zakończona" ||
+                  badge.status === "zgłoszona" ||
+                  badge.status === "zakończona-zaraportowana" ||
+                  badge.status === "zgłoszona-zaraportowana"
               )
               .map((level) => (
                 <tr key={level.id}>

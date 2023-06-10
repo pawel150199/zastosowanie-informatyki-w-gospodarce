@@ -4,7 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Button } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
-import { getLevel, postLevelRaports } from "./UserRanksFunction";
+import { getLevel, postLevelRaports } from "./UserRequestsFunctions";
 import isLogged from "../../api/isLogged";
 import getMe from "../../api/getMe";
 

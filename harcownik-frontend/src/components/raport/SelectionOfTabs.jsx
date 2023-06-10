@@ -12,6 +12,10 @@ import { getMyGroupData } from "./RaportFunction";
 
 import "./raport_style.css";
 
+/*
+Tab where user decide which paragraph of raport will be included to final version. User can also modify text.
+*/
+
 export let orderContent = "";
 export let fileContent = "";
 export const userData = "";

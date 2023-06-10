@@ -2,6 +2,10 @@ import React from "react";
 
 import "./UserRequests.css";
 
+/*
+Header text of UserRequest page
+*/
+
 function UserRequestsHeader() {
   return (
     <div className="jumbotron UserRequestsHeaderStyle rounded">

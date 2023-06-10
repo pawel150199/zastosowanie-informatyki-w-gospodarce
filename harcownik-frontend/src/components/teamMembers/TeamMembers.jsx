@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Accordion, Container, Spinner, Card, Image, Button } from "react-bootstrap";
+import {
+  Accordion,
+  Container,
+  Spinner,
+  Card,
+  Image,
+  Button,
+} from "react-bootstrap";
 
 import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
@@ -15,7 +22,7 @@ const TeamMembers = () => {
   const checkUserRole = async () => {
 
     setTeamAdmin(await isTeamAdmin());
-  }
+  };
 
   const handleDeleteMember = async (user_id) => {
     axios.delete(
@@ -28,7 +35,6 @@ const TeamMembers = () => {
         setIsLoading(false);
       });
     }
-  
   if (isLogged()) {
     checkUserRole();
   }
@@ -43,7 +49,6 @@ const TeamMembers = () => {
       .catch((error) => {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
-      });
   }, []);
 
   if (isLoading) {
@@ -62,15 +67,20 @@ const TeamMembers = () => {
         {members.map((member, index) => (
           <Card key={index}>
             <Accordion.Item key={index} eventKey={index} className="mb-3">
-                <Accordion.Header id="header">
-                    <Image src="/img/scout.png" id="scout" className="align-left" />
-                    {member.first_name} {member.last_name}
-                </Accordion.Header>
-                {teamAdmin? (
-                  <Accordion.Body className="text-center"> 
-                    <Button variant="danger" onClick={() => handleDeleteMember(member.id)}>Usuń</Button>
-                  </Accordion.Body>
-                ) : null}
+              <Accordion.Header id="header">
+                <Image src="/img/scout.png" id="scout" className="align-left" />
+                {member.first_name} {member.last_name}
+              </Accordion.Header>
+              {teamAdmin ? (
+                <Accordion.Body className="text-center">
+                  <Button
+                    variant="danger"
+                    onClick={() => handleDeleteMember(member.id)}
+                  >
+                    Usuń
+                  </Button>
+                </Accordion.Body>
+              ) : null}
             </Accordion.Item>
           </Card>
         ))}

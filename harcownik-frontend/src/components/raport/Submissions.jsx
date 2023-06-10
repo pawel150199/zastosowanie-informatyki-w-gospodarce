@@ -12,6 +12,10 @@ import "./raport_style.css";
 
 import isLogged from "../../api/isLogged";
 
+/*
+Tab provide tabel with reported submissions, user can choose which be included in raport.
+*/
+
 function Submissions() {
   const [levelApplications, setlevelApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
@@ -118,11 +122,11 @@ function Submissions() {
 
   const addReportedBadgesToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      updateBadgesApplications(item, "zakończona/wykorzystana");
+      updateBadgesApplications(item, "zakończona-zaraportowana");
     });
 
     reportedItemsToObsoleted.forEach((item) => {
-      updateBadgesApplications(item, "zgłoszona/wykorzystana");
+      updateBadgesApplications(item, "zgłoszona-zaraportowana");
     });
 
     selectedItemsReported.forEach((item) => {

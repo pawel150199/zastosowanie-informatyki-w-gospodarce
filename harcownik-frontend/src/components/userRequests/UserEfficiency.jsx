@@ -4,12 +4,15 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { Button, Container } from "react-bootstrap";
 
-import { getBadges, getBadgeGroups, postBadge } from "./getUserEfficiency";
+import { getBadges, getBadgeGroups, postBadge } from "./UserRequestsFunctions";
 import isLogged from "../../api/isLogged";
 import getMe from "../../api/getMe";
 
 import "./UserRequests.css";
 
+/*
+Tab to create by user new Efficiency report
+*/
 function UserEfficiency() {
   const [badgesGroups, setBadgesGroups] = useState([]);
   const [badges, setBadges] = useState([]);

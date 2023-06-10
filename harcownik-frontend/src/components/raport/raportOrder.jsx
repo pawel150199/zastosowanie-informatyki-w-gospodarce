@@ -1,8 +1,11 @@
 /* eslint-disable */
-import React from "react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { scoutSign, scoutCity, scoutLevel } from "./SelectionOfTabs";
+
+/*
+Component responsible for storing the content of raport and generating it in pdf format.
+*/
 
 export let userSign = null;
 export function updateTabs(updatedTabs) {

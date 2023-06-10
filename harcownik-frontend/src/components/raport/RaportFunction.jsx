@@ -2,6 +2,9 @@
 import axios from "../../api/api";
 import authHeader from "../../api/authHeader";
 
+/*
+Component providing function for communication with database. 
+*/
 export const getLevelApplications = async () => {
   try {
     const response = await axios.get("/group/level_reports/", authHeader());

@@ -11,6 +11,10 @@ import { tabs } from "./raportOrder";
 import "./raport_style.css";
 import isLogged from "../../api/isLogged";
 
+/*
+Tab provide tabel with reported badges, user can choose which be included in raport.
+*/
+
 function Efficiency() {
   const [badgesApplications, setBadgesApplications] = useState([]);
   const [usersData, setUsersData] = useState([]);
@@ -116,11 +120,11 @@ function Efficiency() {
 
   const addReportedLevelToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      updateLevelApplications(item, "zakończona/wykorzystana");
+      updateLevelApplications(item, "zakończona-zaraportowana");
     });
 
     reportedItemsToObsoleted.forEach((item) => {
-      updateLevelApplications(item, "zgłoszona/wykorzystana");
+      updateLevelApplications(item, "zgłoszona-zaraportowana");
     });
 
     selectedItemsReported.forEach((item) => {
