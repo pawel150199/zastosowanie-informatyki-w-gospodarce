@@ -19,3 +19,6 @@ RUN poetry install --no-root
 RUN poetry config virtualenvs.create false
 
 RUN chmod +x ./pre_test_backend.sh
+RUN poetry run ./pre_test_backend.sh
+
+CMD ["poetry run uvicorn src.main:app --port 8000"]
