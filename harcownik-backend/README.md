@@ -10,6 +10,9 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 <br></br>
 
+## Instalacja aplikacji
+W celu instalacji należy zainstalować pythona w wersji 3.9 i doinstalować paczkę poetry.
+Po tym kroku można zainstalować wszystkie wymagane paczki komendą `poetry install`
 ## Jak uruchomić?
 W celu uruchomienia API należy użyć komendy `uvicorn src.main:app --reload`
 <br></br>

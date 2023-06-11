@@ -1,55 +1,32 @@
-######################DEVELOPMENT#VERSION########################
+# stage 1
+FROM node:16-alpine as builder
 
-# use node alpine version
-FROM node:16-alpine
+# workdir
+WORKDIR /app
 
-LABEL MAINTAINER=Pawel
+# copy packages
+COPY ./package.json /app/
 
-# environmental variable
-ENV NODE_ENV development
-ENV NPM_CONFIG_LOGLEVEL warn
-
-# all is in /frontend dir in docker container
-WORKDIR /frontend
-
-# copy all context to container
-COPY . .
-
-# use one run command to minimalize container size
+# install node modules
 RUN npm install
 
-# start react app
-CMD ["npm", "start"]
+# copy all context to container
+COPY . /app/
 
+ARG FRONTEND_ENV=production
 
-######################PRODUCTION#VERSION########################
-## stage 1
-#FROM node:16-alpine as builder
-#
-## workdir
-#WORKDIR /app
-#
-## copy pacckages
-#COPY package.json .
-#COPY package-lock.json .
-#
-## install node modules
-#RUN npm install
-#
-## copy all context to container
-#COPY . .
-#
-## build react app
-#RUN npm build
-#
-## stage 2
-#FROM nginx:1.19.0 as server
-#
-## workdir
-#WORKDIR /usr/share/nginx/html
-#
-## copy context from builder to  server
-#COPY --from=builder /app/build .
-#
-## start react app
-#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# build react app
+RUN npm run build
+
+# stage 2
+FROM nginx:1.15 as server
+
+# workdir
+WORKDIR /usr/share/nginx/html
+
+# copy context from builder to server
+COPY --from=builder /app/build/ .
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+
+# start nginx server
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
