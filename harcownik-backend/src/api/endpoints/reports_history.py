@@ -18,7 +18,6 @@ def create_pdf(
     db: Session = Depends(get_db),
 ) -> Any:
     file_content = file.file.read()
-    print(file_content)
     pdf = schemas.PdfFileCreate(name=name, user_id=user_id, content=file_content)
     return crud.create_file(db=db, pdf_report=pdf)
 
