@@ -1,7 +1,9 @@
 /* eslint-disable */
 import pdfMake from "pdfmake/build/pdfmake";
+import axios from "../../api/api";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { scoutSign, scoutCity, scoutLevel } from "./SelectionOfTabs";
+import { postPdfRaport } from "./RaportFunction";
 
 /*
 Component responsible for storing the content of raport and generating it in pdf format.
@@ -139,6 +141,7 @@ export const scoutOrder = ({}) => {
   ];
 
   const monthWord = monthNames[month - 1];
+  const tittle = `Rozkaz ${month}/${year}`;
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
   const patternTexts = selectedTabs.map((tab, index) => ({
     text: [
@@ -199,6 +202,35 @@ export const scoutOrder = ({}) => {
         "filename.pdf"
       );
   };
+
+  const generatePDF_ = () => {
+    return pdfMake.createPdf(documentDefinition).getBlob((blob) => {
+      const file = new File([blob], tittle, {
+        type: "application/pdf",
+      });
+    });
+  };
+
+  const uploadPDF = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("name", "");
+      formData.append("user_id", "2");
+      formData.append("file", generatePDF_());
+
+      const response = await axios.post("/report/pdf", formData, {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      console.log("PDF uploaded successfully!", response.data);
+    } catch (error) {
+      console.error("Error uploading PDF:", error);
+    }
+  };
+  uploadPDF();
 
   return generatePDF();
 };

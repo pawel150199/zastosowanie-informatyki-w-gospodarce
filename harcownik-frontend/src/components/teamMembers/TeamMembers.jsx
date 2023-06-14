@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import {
   Accordion,
@@ -20,13 +21,12 @@ const TeamMembers = () => {
   const [teamAdmin, setTeamAdmin] = useState(false);
 
   const checkUserRole = async () => {
-
     setTeamAdmin(await isTeamAdmin());
   };
 
   const handleDeleteMember = async (user_id) => {
-    axios.delete(
-      `/user/group/delete/${user_id}`,authHeader())
+    axios
+      .delete(`/user/group/delete/${user_id}`, authHeader())
       .then(() => {
         window.location.reload();
       })
@@ -34,7 +34,7 @@ const TeamMembers = () => {
         console.error("Wystąpił bład", error);
         setIsLoading(false);
       });
-    }
+  };
   if (isLogged()) {
     checkUserRole();
   }
@@ -49,7 +49,8 @@ const TeamMembers = () => {
       .catch((error) => {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
-  }, []);
+      }, []);
+  });
 
   if (isLoading) {
     return (
