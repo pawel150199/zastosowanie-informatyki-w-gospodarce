@@ -214,7 +214,7 @@ export const scoutOrder = ({}) => {
   const uploadPDF = async () => {
     try {
       const formData = new FormData();
-      formData.append("name", "");
+      formData.append("name", "name");
       formData.append("user_id", "2");
       formData.append("file", generatePDF_());
 
