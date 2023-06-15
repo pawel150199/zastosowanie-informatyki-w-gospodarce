@@ -19,6 +19,7 @@ const TeamMembers = () => {
   const [members, setMembers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [teamAdmin, setTeamAdmin] = useState(false);
+  const [info, setInfo] = useState("");
 
   const checkUserRole = async () => {
     setTeamAdmin(await isTeamAdmin());
@@ -39,7 +40,7 @@ const TeamMembers = () => {
     checkUserRole();
   }
 
-  useEffect(() => {
+  const getUsers = async () => {
     axios
       .get("/users/group", authHeader())
       .then((response) => {
@@ -50,7 +51,9 @@ const TeamMembers = () => {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
       }, []);
-  });
+  };
+
+  getUsers();
 
   if (isLoading) {
     return (
