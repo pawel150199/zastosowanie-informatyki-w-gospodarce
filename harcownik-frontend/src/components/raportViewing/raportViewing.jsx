@@ -33,7 +33,7 @@ const RaportViewing = () => {
       const link = document.createElement("a");
       link.href = url;
       console.log("Raports:", raports);
-      link.setAttribute("download", item.name);
+      link.setAttribute("download", item.name + ".pdf");
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -46,20 +46,22 @@ const RaportViewing = () => {
     <Container id="container">
       <h2 id="badges">Dostępne raporty</h2>
       <Accordion>
-        {raports.map((group, index) => (
-          <Accordion.Item key={index} eventKey={index} className="mb-3">
-            <Accordion.Header>{group.name}</Accordion.Header>
-            <Accordion.Body className="d-flex justify-content-center">
-              <button
-                type="button"
-                className="btn btn-dark "
-                onClick={() => getRaportById(group.id)}
-              >
-                Pobierz raport
-              </button>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
+        {raports
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((raport, index) => (
+            <Accordion.Item key={index} eventKey={index} className="mb-3">
+              <Accordion.Header>{raport.name}</Accordion.Header>
+              <Accordion.Body className="d-flex justify-content-center">
+                <button
+                  type="button"
+                  className="btn btn-dark "
+                  onClick={() => getRaportById(raport.id)}
+                >
+                  Pobierz raport
+                </button>
+              </Accordion.Body>
+            </Accordion.Item>
+          ))}
       </Accordion>
     </Container>
   );
