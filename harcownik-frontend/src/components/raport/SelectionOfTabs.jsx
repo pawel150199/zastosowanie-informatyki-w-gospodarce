@@ -18,10 +18,11 @@ Tab where user decide which paragraph of raport will be included to final versio
 
 export let orderContent = "";
 export let fileContent = "";
-export const userData = "";
+export let userData = "";
 export let scoutSign = "";
 export let scoutCity = "";
 export let scoutLevel = "";
+export let scoutId = "";
 
 export default function SelectionOfTabs() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -30,8 +31,10 @@ export default function SelectionOfTabs() {
     const fetchData = async () => {
       if (isLogged()) {
         const response = await getMe();
+
         scoutSign = response.first_name + " " + response.last_name;
         scoutLevel = response.level;
+        scoutId = response.id;
 
         const responseData = await getMyGroupData();
         scoutCity = responseData.city;
@@ -67,6 +70,7 @@ export default function SelectionOfTabs() {
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
+    console.log("USerData:", userData);
     orderContent = scoutOrder(userData);
   }
 

@@ -20,7 +20,7 @@ const MyNavbar = () => {
     setScout(await isScout());
     setTeamAdmin(await isTeamAdmin());
     setWebAdmin(await isWebAdmin());
-  }
+  };
 
   const handleLogout = () => {
     removeLocalToken("token");
@@ -35,7 +35,6 @@ const MyNavbar = () => {
   if (isLogged()) {
     getName();
     checkUserRole();
-
   }
 
   return (
@@ -81,12 +80,19 @@ const MyNavbar = () => {
                 Nowy harcerz
               </Nav.Link>
             ) : null}
+            {teamAdmin ? (
+              <Nav.Link className="box" href="/raport_viewing">
+                Menadżer raportów
+              </Nav.Link>
+            ) : null}
           </Nav>
           <Nav className="navbar-nav navbar-dark mr-auto">
             {isLogged() ? (
               <NavDropdown title={username} id="basic-nav-dropdown">
                 <NavDropdown.Item href="/user">Profil</NavDropdown.Item>
-                <NavDropdown.Item href="/team_members">Twoja Drużyna</NavDropdown.Item>
+                <NavDropdown.Item href="/team_members">
+                  Twoja Drużyna
+                </NavDropdown.Item>
                 <NavDropdown.Item href="/reset_password">
                   Zmień hasło
                 </NavDropdown.Item>

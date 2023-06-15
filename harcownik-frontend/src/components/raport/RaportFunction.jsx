@@ -103,3 +103,24 @@ export const updateLevelApplications = async (badgeId, status) => {
     }
   }
 };
+
+export const postPdfRaport = async (name, userId, file) => {
+  try {
+    const response = await axios.post(
+      `http://localhost:8000/report/pdf`,
+      {
+        name: name,
+        user_id: userId,
+        file: file,
+      },
+      authHeader()
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};
