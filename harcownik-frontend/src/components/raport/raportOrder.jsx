@@ -203,10 +203,40 @@ export const scoutOrder = ({}) => {
       );
   };
 
+  // const generatePDF_ = () => {
+  //   return pdfMake.createPdf(documentDefinition).getBlob((blob) => {
+  //     const file = new File([blob], tittle, {
+  //       type: "application/pdf",
+  //     });
+  //   });
+  // };
+
+  // const uploadPDF = async () => {
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("name", "name");
+  //     formData.append("user_id", "2");
+  //     formData.append("file", generatePDF_());
+
+  //     const response = await axios.post("/report/pdf", formData, {
+  //       headers: {
+  //         accept: "application/json",
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
+
+  //     console.log("PDF uploaded successfully!", response.data);
+  //   } catch (error) {
+  //     console.error("Error uploading PDF:", error);
+  //   }
+  // };
   const generatePDF_ = () => {
-    return pdfMake.createPdf(documentDefinition).getBlob((blob) => {
-      const file = new File([blob], tittle, {
-        type: "application/pdf",
+    return new Promise((resolve) => {
+      pdfMake.createPdf(documentDefinition).getBlob((blob) => {
+        const file = new File([blob], tittle, {
+          type: "application/pdf",
+        });
+        resolve(file); // Resolve with the created file object
       });
     });
   };
@@ -216,7 +246,7 @@ export const scoutOrder = ({}) => {
       const formData = new FormData();
       formData.append("name", "name");
       formData.append("user_id", "2");
-      formData.append("file", generatePDF_());
+      formData.append("file", await generatePDF_()); // Wait for the file to be generated
 
       const response = await axios.post("/report/pdf", formData, {
         headers: {

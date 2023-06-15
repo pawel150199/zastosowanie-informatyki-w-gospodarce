@@ -21,7 +21,8 @@ const TeamMembers = () => {
   const [teamAdmin, setTeamAdmin] = useState(false);
 
   const checkUserRole = async () => {
-    setTeamAdmin(await isTeamAdmin());
+    setTeamAdmin(isTeamAdmin());
+    // setTeamAdmin(await isTeamAdmin());
   };
 
   const handleDeleteMember = async (user_id) => {
