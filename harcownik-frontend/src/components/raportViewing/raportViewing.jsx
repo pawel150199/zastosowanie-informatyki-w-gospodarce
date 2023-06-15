@@ -5,6 +5,7 @@ import { Accordion, Container, Spinner } from "react-bootstrap";
 
 const RaportViewing = () => {
   const [raports, setRaports] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
