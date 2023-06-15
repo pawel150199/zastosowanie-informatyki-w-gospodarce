@@ -2,8 +2,9 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import axios from "../../api/api";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { scoutSign, scoutCity, scoutLevel } from "./SelectionOfTabs";
+import { scoutSign, scoutCity, scoutLevel, scoutId } from "./SelectionOfTabs";
 import { postPdfRaport } from "./RaportFunction";
+import getMe from "../../api/getMe";
 
 /*
 Component responsible for storing the content of raport and generating it in pdf format.
@@ -244,9 +245,9 @@ export const scoutOrder = ({}) => {
   const uploadPDF = async () => {
     try {
       const formData = new FormData();
-      formData.append("name", "name");
-      formData.append("user_id", "2");
-      formData.append("file", await generatePDF_()); // Wait for the file to be generated
+      formData.append("name", tittle);
+      formData.append("user_id", scoutId);
+      formData.append("file", await generatePDF_());
 
       const response = await axios.post("/report/pdf", formData, {
         headers: {

@@ -7,6 +7,7 @@ import About from "./components/about/About";
 import User from "./components/user/User";
 import Login from "./components/login/Login";
 import RegisterScout from "./components/registerScout/RegisterScout";
+import RaportViewing from "./components/raportViewing/raportViewing";
 import RegisterAdmin from "./components/registerAdmin/RegisterAdmin";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 import TeamMembers from "./components/teamMembers/TeamMembers";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register_scout" element={<RegisterScout />} />
+            <Route path="/raport_viewing" element={<RaportViewing />} />
             <Route path="/register_admin" element={<RegisterAdmin />} />
             <Route path="/reset_password" element={<ResetPassword />} />
             <Route path="/about" element={<About />} />
