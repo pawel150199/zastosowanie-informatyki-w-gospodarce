@@ -51,7 +51,9 @@ const TeamMembers = () => {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
       }, []);
+
   };
+
 
   getUsers();
 
