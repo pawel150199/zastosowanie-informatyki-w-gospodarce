@@ -1,3 +1,4 @@
+import random, string
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -38,6 +39,8 @@ def create_scout(
     db: Session = Depends(get_db),
     current_teamadmin: models.User = Depends(get_current_teamadmin),
 ) -> Any:
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for i in range(8))
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -46,9 +49,9 @@ def create_scout(
         )
     if settings.EMAILS_ENABLED and user.email:
         send_new_account_email(
-            email_to=user.email, username=user.first_name, password=user.password
+            email_to=user.email, username=user.first_name, password=password
         )
-    return crud.create_scout(db=db, user=user, group_id=current_teamadmin.group_id)
+    return crud.create_scout(db=db, user=user, group_id=current_teamadmin.group_id, password=password)
 
 
 @router.post("/users/admin", response_model=schemas.User)

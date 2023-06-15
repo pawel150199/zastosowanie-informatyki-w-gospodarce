@@ -9,14 +9,14 @@ from src.schemas.user import CreateScout, CreateUser, UpdateUser
 
 
 # POST
-def create_scout(db: Session, user: CreateScout, group_id: int) -> UserModel:
+def create_scout(db: Session, user: CreateScout, group_id: int, password: str) -> UserModel:
     db_user = UserModel(
         first_name=user.first_name,
         last_name=user.last_name,
         email=user.email,
         is_teamadmin=False,
         is_webadmin=False,
-        hashed_password=get_password_hash(user.password),
+        hashed_password=get_password_hash(password),
         level=user.level,
         function=user.function,
         group_id=group_id,

@@ -95,20 +95,6 @@ const Register = () => {
         value={email}
         onChangeText={setEmail}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Hasło"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={setPassword}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Powtórz hasło"
-        secureTextEntry={true}
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
       {info && <p className="error">{info}</p>}
       <Button style={styles.button} onClick={handleRegister}>
         Dodaj Harcerza

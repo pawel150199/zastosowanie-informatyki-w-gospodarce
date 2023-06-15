@@ -22,7 +22,6 @@ class CreateUser(UserBase):
 class CreateScout(UserBase):
     level: str
     function: Optional[str]
-    password: Optional[str]
     group_id: Optional[int]
     badge_id: Optional[int]
 
