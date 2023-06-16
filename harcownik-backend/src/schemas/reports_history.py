@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Optional
 
 from pydantic import BaseModel
@@ -16,6 +17,7 @@ class PdfFile(BaseModel):
     id: Optional[int]
     name: Optional[str]
     user_id: Optional[int]
+    time_created: Optional[datetime]
 
     class Config:
         orm_mode = True
