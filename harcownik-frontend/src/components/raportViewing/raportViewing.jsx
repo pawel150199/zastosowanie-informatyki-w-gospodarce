@@ -2,15 +2,15 @@
 import axios from "../../api/api";
 import React, { useState, useEffect } from "react";
 import { Accordion, Container, Spinner } from "react-bootstrap";
+import authHeader from "../../api/authHeader";
 
 const RaportViewing = () => {
   const [raports, setRaports] = useState([]);
-  //   const [raportsAmount, setRaportsAmount] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("/reports")
+      .get("/me/reports", authHeader())
       .then((response) => {
         setRaports(response.data);
         setIsLoading(false);
@@ -24,7 +24,7 @@ const RaportViewing = () => {
   const getRaportById = async (id) => {
     const item = raports.find((item) => item.id === id);
     try {
-      const response = await axios.get(`/report/${id}/file`, {
+      const response = await axios.get(`/report/${id}/file`, authHeader(), {
         responseType: "arraybuffer",
       });
       console.log("PDF download successfully!", response.data);
@@ -45,9 +45,13 @@ const RaportViewing = () => {
     console.log("ITEM:", item);
     try {
       console.log("ID:", id);
-      const response = await axios.delete(`reports/delete/${id}`, {
-        responseType: "arraybuffer",
-      });
+      const response = await axios.delete(
+        `reports/delete/${id}`,
+        authHeader(),
+        {
+          responseType: "arraybuffer",
+        }
+      );
       console.log("PDF delete successfully!", response.data);
       window.location.reload();
     } catch (error) {
@@ -57,14 +61,12 @@ const RaportViewing = () => {
 
   const fetchAndDisplayPDF = async (id) => {
     try {
-      const response = await axios.get(`/report/${id}/file`, {
-        responseType: "arraybuffer", // Ustawienie typu odpowiedzi na arraybuffer
+      const response = await axios.get(`/report/${id}/file`, authHeader(), {
+        responseType: "arraybuffer",
       });
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
 
-      const blob = new Blob([response.data], { type: "application/pdf" }); // Tworzenie Blob z danych odpowiedzi
-      const url = URL.createObjectURL(blob); // Tworzenie URL dla Blob
-
-      // Otwarcie nowego okna przeglądarki ze wskazanym adresem URL
       window.open(url, "_blank");
     } catch (error) {
       console.error("Błąd podczas pobierania pliku PDF: ", error);
@@ -92,7 +94,7 @@ const RaportViewing = () => {
                 <button
                   type="button"
                   className="btn btn-dark "
-                  style={{ marginLeft: "10px" }}
+                  style={{ marginLeft: "10px", marginRight: "10px" }}
                   onClick={() => deleteRaportById(raport.id)}
                 >
                   Usuń raport
