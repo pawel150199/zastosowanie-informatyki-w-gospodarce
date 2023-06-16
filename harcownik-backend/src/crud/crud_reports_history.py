@@ -1,4 +1,7 @@
+from datetime import  datetime
+from dateutil import parser
 from sqlalchemy.orm import Session
+from sqlalchemy import func, extract
 from src.models.reports_history import PdfReport
 from src.schemas.reports_history import PdfFileCreate
 
@@ -17,6 +20,12 @@ def create_file(db: Session, pdf_report: PdfFileCreate) -> PdfReport:
 # GET
 def get_files(db: Session):
     return db.query(PdfReport).all()
+
+def get_number_in_month(db: Session):
+    today = datetime.now()
+    current_month = today.month
+    report_count = db.query(PdfReport).filter(extract('month', PdfReport.time_created) == current_month).count()
+    return report_count
 
 
 def get_file(db: Session, pdf_id: int):
