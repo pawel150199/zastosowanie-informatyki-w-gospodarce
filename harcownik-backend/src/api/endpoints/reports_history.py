@@ -40,13 +40,13 @@ def read_pdf_data(pdf_id: int, db: Session = Depends(get_db)) -> Any:
 
 
 @router.get("/report/amount")
-def read_pdf_data(db: Session = Depends(get_db)) -> Any:
+def read_amount_pdf_in_current_month(db: Session = Depends(get_db)) -> Any:
     number = crud.get_number_in_month(db)
     return {"Number of PDFs in current month": number}
 
 
 @router.get("/reports/{user_id}", response_model=list[schemas.PdfFile])
-def read_pdfs_data(user_id: int, db: Session = Depends(get_db)) -> Any:
+def read_pdfs_data_by_user(user_id: int, db: Session = Depends(get_db)) -> Any:
     pdfs = crud.get_files_by_user(db, user_id=user_id)
     if pdfs is None or pdfs == []:
         raise HTTPException(status_code=404, detail="Files not found")
@@ -54,7 +54,7 @@ def read_pdfs_data(user_id: int, db: Session = Depends(get_db)) -> Any:
 
 
 @router.get("/report/{pdf_id}/file")
-def read_pdf(pdf_id: int, db: Session = Depends(get_db)) -> Any:
+def read_pdf_content(pdf_id: int, db: Session = Depends(get_db)) -> Any:
     pdf = crud.get_file(db=db, pdf_id=pdf_id)
     if pdf is None:
         raise HTTPException(status_code=404, detail="File not found")
