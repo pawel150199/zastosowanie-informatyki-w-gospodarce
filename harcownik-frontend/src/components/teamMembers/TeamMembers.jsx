@@ -36,26 +36,24 @@ const TeamMembers = () => {
         setIsLoading(false);
       });
   };
-  if (isLogged()) {
-    checkUserRole();
-  }
 
-  const getUsers = async () => {
-    axios
-      .get("/users/group", authHeader())
-      .then((response) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isLogged()) {
+        checkUserRole();
+      }
+      try {
+        const response = await axios.get("/users/group", authHeader());
         setMembers(response.data);
         setIsLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data from API: ", error);
         setIsLoading(false);
-      }, []);
+      }
+    };
 
-  };
-
-
-  getUsers();
+    fetchData();
+  }, []);
 
   if (isLoading) {
     return (
