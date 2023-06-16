@@ -1,8 +1,8 @@
 """Harcownik kickoff
 
-Revision ID: 4ef2246386e8
+Revision ID: 58945e4390d7
 Revises: 
-Create Date: 2023-06-16 22:45:40.410822
+Create Date: 2023-06-16 23:10:49.839777
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4ef2246386e8'
+revision = '58945e4390d7'
 down_revision = None
 branch_labels = None
 depends_on = None

@@ -1,5 +1,3 @@
-from xmlrpc.client import Boolean
-
 from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
@@ -24,6 +22,6 @@ class User(Base):
 
     group = relationship("Group")
     badge = relationship("Badge")
-    badge_reports = relationship("BadgeReport", cascade="all, delete")
-    level_reports = relationship("LevelReport", cascade="all, delete")
+    badge_report = relationship("BadgeReport", back_populates="user", cascade="all, delete")
+    level_report = relationship("LevelReport", back_populates="user", cascade="all, delete")
 
