@@ -5,11 +5,12 @@ import { Accordion, Container, Spinner } from "react-bootstrap";
 
 const RaportViewing = () => {
   const [raports, setRaports] = useState([]);
+  //   const [raportsAmount, setRaportsAmount] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("/reports/2")
+      .get("/reports")
       .then((response) => {
         setRaports(response.data);
         setIsLoading(false);
@@ -22,9 +23,7 @@ const RaportViewing = () => {
 
   const getRaportById = async (id) => {
     const item = raports.find((item) => item.id === id);
-    console.log("ITEM:", item);
     try {
-      console.log("ID:", id);
       const response = await axios.get(`/report/${id}/file`, {
         responseType: "arraybuffer",
       });
@@ -32,13 +31,43 @@ const RaportViewing = () => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      console.log("Raports:", raports);
       link.setAttribute("download", item.name + ".pdf");
       document.body.appendChild(link);
       link.click();
       link.remove();
     } catch (error) {
       console.error("Error downloading PDF:", error);
+    }
+  };
+
+  const deleteRaportById = async (id) => {
+    const item = raports.find((item) => item.id === id);
+    console.log("ITEM:", item);
+    try {
+      console.log("ID:", id);
+      const response = await axios.delete(`reports/delete/${id}`, {
+        responseType: "arraybuffer",
+      });
+      console.log("PDF delete successfully!", response.data);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+    }
+  };
+
+  const fetchAndDisplayPDF = async (id) => {
+    try {
+      const response = await axios.get(`/report/${id}/file`, {
+        responseType: "arraybuffer", // Ustawienie typu odpowiedzi na arraybuffer
+      });
+
+      const blob = new Blob([response.data], { type: "application/pdf" }); // Tworzenie Blob z danych odpowiedzi
+      const url = URL.createObjectURL(blob); // Tworzenie URL dla Blob
+
+      // Otwarcie nowego okna przeglądarki ze wskazanym adresem URL
+      window.open(url, "_blank");
+    } catch (error) {
+      console.error("Błąd podczas pobierania pliku PDF: ", error);
     }
   };
 
@@ -55,9 +84,26 @@ const RaportViewing = () => {
                 <button
                   type="button"
                   className="btn btn-dark "
+                  style={{ marginRight: "10px" }}
                   onClick={() => getRaportById(raport.id)}
                 >
                   Pobierz raport
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-dark "
+                  style={{ marginLeft: "10px" }}
+                  onClick={() => deleteRaportById(raport.id)}
+                >
+                  Usuń raport
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-dark "
+                  style={{ marginLeft: "10px" }}
+                  onClick={() => fetchAndDisplayPDF(raport.id)}
+                >
+                  Podgląd
                 </button>
               </Accordion.Body>
             </Accordion.Item>

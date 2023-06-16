@@ -37,6 +37,7 @@ def read_amount_pdf_in_current_month(db: Session = Depends(get_db), _: models.Us
     return {"Number of PDFs in current month": int(number)}
 
 
+
 @router.get("/report/{pdf_id}/file")
 def read_pdf(pdf_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_teamadmin)) -> Any:
     pdf = crud.get_file(db=db, pdf_id=pdf_id)

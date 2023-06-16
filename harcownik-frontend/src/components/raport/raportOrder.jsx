@@ -2,7 +2,13 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import axios from "../../api/api";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { scoutSign, scoutCity, scoutLevel, scoutId } from "./SelectionOfTabs";
+import {
+  scoutSign,
+  scoutCity,
+  scoutLevel,
+  scoutId,
+  raportAmound,
+} from "./SelectionOfTabs";
 import { postPdfRaport } from "./RaportFunction";
 import getMe from "../../api/getMe";
 
@@ -142,7 +148,7 @@ export const scoutOrder = ({}) => {
   ];
 
   const monthWord = monthNames[month - 1];
-  const tittle = `Rozkaz ${month}/${year}`;
+  const tittle = `Rozkaz ${month}/${year}.${raportAmound}`;
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
   const patternTexts = selectedTabs.map((tab, index) => ({
     text: [
@@ -163,7 +169,7 @@ export const scoutOrder = ({}) => {
         alignment: "right",
       },
       {
-        text: `Rozkaz L. ${month}/${year}`,
+        text: `Rozkaz L. ${tittle}`,
         style: "title",
         alignment: "center",
       },
