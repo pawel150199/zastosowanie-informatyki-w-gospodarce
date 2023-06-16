@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-
+import { authHeader, authHeaderToken } from "../../api/authHeader";
 import getMe from "../../api/getMe";
 import { scoutOrder } from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";
@@ -45,10 +45,10 @@ export default function SelectionOfTabs() {
     const fetchDataAmount = async () => {
       if (isLogged()) {
         axios
-          .get("/report/amount")
+          .get("/report/amount", authHeader())
           .then((response) => {
             raportAmound = parseInt(response.data[0]);
-            // console.log("Uzyskane dane:", response.data[0]);
+            console.log("Uzyskane dane:", response.data[0]);
           })
           .catch((error) => {
             console.error("Error fetching data from API: ", error);

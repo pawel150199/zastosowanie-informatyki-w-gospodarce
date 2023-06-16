@@ -1,6 +1,7 @@
 /* eslint-disable */
 import pdfMake from "pdfmake/build/pdfmake";
 import axios from "../../api/api";
+import { authHeader, authHeaderToken } from "../../api/authHeader";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import {
   scoutSign,
@@ -149,6 +150,7 @@ export const scoutOrder = ({}) => {
 
   const monthWord = monthNames[month - 1];
   const tittle = `Rozkaz ${month}/${year}.${raportAmound}`;
+  console.log("Amount:", raportAmound);
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
   const patternTexts = selectedTabs.map((tab, index) => ({
     text: [
@@ -225,11 +227,15 @@ export const scoutOrder = ({}) => {
     try {
       const formData = new FormData();
       formData.append("name", tittle);
-      formData.append("user_id", scoutId);
       formData.append("file", await generatePDF_());
+
+      const header = authHeaderToken();
+      // console.log("Header:", `Bearer ${header}`);
+      // console.log("Header:", header.token);
 
       const response = await axios.post("/report/pdf", formData, {
         headers: {
+          Authorization: `Bearer ${header.token}`,
           accept: "application/json",
           "Content-Type": "multipart/form-data",
         },
