@@ -23,6 +23,7 @@ export let scoutSign = "";
 export let scoutCity = "";
 export let scoutLevel = "";
 export let scoutId = "";
+export let raportAmound = "";
 
 export default function SelectionOfTabs() {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -40,7 +41,21 @@ export default function SelectionOfTabs() {
         scoutCity = responseData.city;
       }
     };
+    const fetchDataAmount = async () => {
+      if (isLogged()) {
+        axios
+          .get("/report/amount")
+          .then((response) => {
+            raportAmound = parseInt(response.data);
+            console.log("Uzyskane dane:", response.data);
+          })
+          .catch((error) => {
+            console.error("Error fetching data from API: ", error);
+          });
+      }
+    };
     fetchData();
+    fetchDataAmount();
   }, []);
 
   const handleSelect = (eventKey) => {
@@ -130,7 +145,7 @@ export default function SelectionOfTabs() {
       >
         Zaznacz wszystko
       </Button>
-      <Link to="/" id="raport_view">
+      <Link to="/raport_viewing" id="raport_view">
         <Button
           type="button"
           className="btn btn-dark"

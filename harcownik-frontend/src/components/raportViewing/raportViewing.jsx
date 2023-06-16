@@ -5,11 +5,21 @@ import { Accordion, Container, Spinner } from "react-bootstrap";
 
 const RaportViewing = () => {
   const [raports, setRaports] = useState([]);
+  const [raportsAmount, setRaportsAmount] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
-      .get("/reports/2")
+      .get("/report/amount")
+      .then((response) => {
+        setRaportsAmount(response.data);
+        console.log("Uzyskane dane:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data from API: ", error);
+      });
+    axios
+      .get("/reports")
       .then((response) => {
         setRaports(response.data);
         setIsLoading(false);
@@ -22,9 +32,7 @@ const RaportViewing = () => {
 
   const getRaportById = async (id) => {
     const item = raports.find((item) => item.id === id);
-    console.log("ITEM:", item);
     try {
-      console.log("ID:", id);
       const response = await axios.get(`/report/${id}/file`, {
         responseType: "arraybuffer",
       });
@@ -32,11 +40,25 @@ const RaportViewing = () => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      console.log("Raports:", raports);
       link.setAttribute("download", item.name + ".pdf");
       document.body.appendChild(link);
       link.click();
       link.remove();
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+    }
+  };
+
+  const deleteRaportById = async (id) => {
+    const item = raports.find((item) => item.id === id);
+    console.log("ITEM:", item);
+    try {
+      console.log("ID:", id);
+      const response = await axios.delete(`reports/delete/${id}`, {
+        responseType: "arraybuffer",
+      });
+      console.log("PDF delete successfully!", response.data);
+      window.location.reload();
     } catch (error) {
       console.error("Error downloading PDF:", error);
     }
@@ -58,6 +80,13 @@ const RaportViewing = () => {
                   onClick={() => getRaportById(raport.id)}
                 >
                   Pobierz raport
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-dark "
+                  onClick={() => deleteRaportById(raport.id)}
+                >
+                  Usuń raport
                 </button>
               </Accordion.Body>
             </Accordion.Item>
