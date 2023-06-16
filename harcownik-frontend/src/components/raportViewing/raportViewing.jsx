@@ -5,19 +5,10 @@ import { Accordion, Container, Spinner } from "react-bootstrap";
 
 const RaportViewing = () => {
   const [raports, setRaports] = useState([]);
-  const [raportsAmount, setRaportsAmount] = useState([]);
+  //   const [raportsAmount, setRaportsAmount] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("/report/amount")
-      .then((response) => {
-        setRaportsAmount(response.data);
-        console.log("Uzyskane dane:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data from API: ", error);
-      });
     axios
       .get("/reports")
       .then((response) => {
@@ -64,6 +55,22 @@ const RaportViewing = () => {
     }
   };
 
+  const fetchAndDisplayPDF = async (id) => {
+    try {
+      const response = await axios.get(`/report/${id}/file`, {
+        responseType: "arraybuffer", // Ustawienie typu odpowiedzi na arraybuffer
+      });
+
+      const blob = new Blob([response.data], { type: "application/pdf" }); // Tworzenie Blob z danych odpowiedzi
+      const url = URL.createObjectURL(blob); // Tworzenie URL dla Blob
+
+      // Otwarcie nowego okna przeglądarki ze wskazanym adresem URL
+      window.open(url, "_blank");
+    } catch (error) {
+      console.error("Błąd podczas pobierania pliku PDF: ", error);
+    }
+  };
+
   return (
     <Container id="container">
       <h2 id="badges">Dostępne raporty</h2>
@@ -77,6 +84,7 @@ const RaportViewing = () => {
                 <button
                   type="button"
                   className="btn btn-dark "
+                  style={{ marginRight: "10px" }}
                   onClick={() => getRaportById(raport.id)}
                 >
                   Pobierz raport
@@ -84,9 +92,18 @@ const RaportViewing = () => {
                 <button
                   type="button"
                   className="btn btn-dark "
+                  style={{ marginLeft: "10px" }}
                   onClick={() => deleteRaportById(raport.id)}
                 >
                   Usuń raport
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-dark "
+                  style={{ marginLeft: "10px" }}
+                  onClick={() => fetchAndDisplayPDF(raport.id)}
+                >
+                  Podgląd
                 </button>
               </Accordion.Body>
             </Accordion.Item>

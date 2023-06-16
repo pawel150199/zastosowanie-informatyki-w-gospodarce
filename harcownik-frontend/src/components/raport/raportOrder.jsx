@@ -148,7 +148,7 @@ export const scoutOrder = ({}) => {
   ];
 
   const monthWord = monthNames[month - 1];
-  const tittle = `Rozkaz ${raportAmound}/${month}/${year}`;
+  const tittle = `Rozkaz ${month}/${year}.${raportAmound}`;
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
   const patternTexts = selectedTabs.map((tab, index) => ({
     text: [
@@ -169,7 +169,7 @@ export const scoutOrder = ({}) => {
         alignment: "right",
       },
       {
-        text: `Rozkaz L. ${month}/${year}`,
+        text: `Rozkaz L. ${tittle}`,
         style: "title",
         alignment: "center",
       },

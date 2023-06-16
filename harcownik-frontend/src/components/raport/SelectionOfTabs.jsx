@@ -1,4 +1,5 @@
 /* eslint-disable */
+import axios from "../../api/api";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
@@ -46,8 +47,8 @@ export default function SelectionOfTabs() {
         axios
           .get("/report/amount")
           .then((response) => {
-            raportAmound = parseInt(response.data);
-            console.log("Uzyskane dane:", response.data);
+            raportAmound = parseInt(response.data[0]);
+            // console.log("Uzyskane dane:", response.data[0]);
           })
           .catch((error) => {
             console.error("Error fetching data from API: ", error);
