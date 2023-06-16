@@ -19,7 +19,6 @@ const TeamMembers = () => {
   const [members, setMembers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [teamAdmin, setTeamAdmin] = useState(false);
-  const [info, setInfo] = useState("");
 
   const checkUserRole = async () => {
     setTeamAdmin(await isTeamAdmin());
@@ -70,6 +69,14 @@ const TeamMembers = () => {
       <Accordion>
         {members.map((member, index) => (
           <Card key={index}>
+            {member.is_teamadmin ? (
+              <Accordion.Item key={index} eventKey={index} className="mb-3">
+                <Accordion.Header id="header">
+                  <Image src="/img/scout.png" id="scout" className="align-left" />
+                  {member.first_name} {member.last_name}
+                </Accordion.Header>
+              </Accordion.Item>
+            ): 
             <Accordion.Item key={index} eventKey={index} className="mb-3">
               <Accordion.Header id="header">
                 <Image src="/img/scout.png" id="scout" className="align-left" />
@@ -85,7 +92,7 @@ const TeamMembers = () => {
                   </Button>
                 </Accordion.Body>
               ) : null}
-            </Accordion.Item>
+            </Accordion.Item>}
           </Card>
         ))}
       </Accordion>
