@@ -24,3 +24,6 @@ class User(Base):
 
     group = relationship("Group")
     badge = relationship("Badge")
+    badge_reports = relationship("BadgeReport", cascade="all, delete")
+    level_reports = relationship("LevelReport", cascade="all, delete")
+

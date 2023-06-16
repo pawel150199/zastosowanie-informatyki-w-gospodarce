@@ -158,7 +158,7 @@ def update_user(
     user_id: int,
     user_in: schemas.UpdateUser,
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_webadmin_or_teamadmin),
+    _: models.User = Depends(get_current_webadmin_or_teamadmin),
 ) -> Any:
     user = crud.get_user(db, user_id=user_id)
     if not user:

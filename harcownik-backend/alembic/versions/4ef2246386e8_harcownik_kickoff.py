@@ -1,8 +1,8 @@
 """Harcownik kickoff
 
-Revision ID: 878e594dcc38
+Revision ID: 4ef2246386e8
 Revises: 
-Create Date: 2023-06-08 17:58:50.660296
+Create Date: 2023-06-16 22:45:40.410822
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '878e594dcc38'
+revision = '4ef2246386e8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -106,7 +106,6 @@ def upgrade() -> None:
     sa.Column('content', sa.LargeBinary(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('time_created', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
-    sa.Column('time_updated', sa.DateTime(timezone=True), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
