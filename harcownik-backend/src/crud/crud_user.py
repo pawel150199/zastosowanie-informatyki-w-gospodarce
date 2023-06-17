@@ -99,6 +99,7 @@ def delete_user(db: Session, user_id: int) -> Optional[UserModel]:
 
 
 # UPDATE
+# UPDATE
 def update_user(
     db: Session, user_obj: UserModel, user_in: Union[UpdateUser, Dict[str, Any]]
 ) -> UserModel:
@@ -107,7 +108,7 @@ def update_user(
         update_data = user_in
     else:
         update_data = user_in.dict(exclude_unset=True)
-    if update_data["password"]:
+    if "password" in update_data:
         hashed_password = get_password_hash(update_data["password"])
         del update_data["password"]
         update_data["hashed_password"] = hashed_password
