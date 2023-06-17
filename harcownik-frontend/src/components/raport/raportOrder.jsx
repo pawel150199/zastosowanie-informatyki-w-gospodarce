@@ -9,8 +9,7 @@ import {
   scoutId,
   raportAmound,
 } from "./SelectionOfTabs";
-import { postPdfRaport } from "./RaportFunction";
-import getMe from "../../api/getMe";
+import { getLocalToken } from "../../api/utils";
 
 /*
 Component responsible for storing the content of raport and generating it in pdf format.
@@ -225,11 +224,13 @@ export const scoutOrder = ({}) => {
     try {
       const formData = new FormData();
       formData.append("name", tittle);
-      formData.append("user_id", scoutId);
       formData.append("file", await generatePDF_());
+
+      const token = getLocalToken();
 
       const response = await axios.post("/report/pdf", formData, {
         headers: {
+          Authorization: `Bearer ${token}`,
           accept: "application/json",
           "Content-Type": "multipart/form-data",
         },

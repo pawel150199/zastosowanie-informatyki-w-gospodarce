@@ -95,7 +95,14 @@ const RaportViewing = () => {
                   type="button"
                   className="btn btn-dark "
                   style={{ marginLeft: "10px", marginRight: "10px" }}
-                  onClick={() => deleteRaportById(raport.id)}
+                  onClick={() => {
+                    const shouldDelete = window.confirm(
+                      "Czy na pewno chcesz usunąć ten raport?"
+                    );
+                    if (shouldDelete) {
+                      deleteRaportById(raport.id);
+                    }
+                  }}
                 >
                   Usuń raport
                 </button>
