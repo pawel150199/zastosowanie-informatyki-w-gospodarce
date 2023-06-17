@@ -10,13 +10,6 @@ export const authHeader = () => {
   };
 };
 
-export const authHeaderToken = () => {
-  const token = getLocalToken();
-  return {
-    token,
-  };
-};
-
 const loginHeader = () => {
   return {
     Accept: "application/json",

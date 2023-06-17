@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import { authHeader, authHeaderToken } from "../../api/authHeader";
+import { authHeader } from "../../api/authHeader";
 import getMe from "../../api/getMe";
 import { scoutOrder } from "./raportOrder";
 import { tabs, updateTabs } from "./raportOrder";

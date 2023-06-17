@@ -1,7 +1,6 @@
 /* eslint-disable */
 import pdfMake from "pdfmake/build/pdfmake";
 import axios from "../../api/api";
-import { authHeader, authHeaderToken } from "../../api/authHeader";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import {
   scoutSign,
@@ -10,8 +9,7 @@ import {
   scoutId,
   raportAmound,
 } from "./SelectionOfTabs";
-import { postPdfRaport } from "./RaportFunction";
-import getMe from "../../api/getMe";
+import { getLocalToken } from "../../api/utils";
 
 /*
 Component responsible for storing the content of raport and generating it in pdf format.
@@ -229,13 +227,11 @@ export const scoutOrder = ({}) => {
       formData.append("name", tittle);
       formData.append("file", await generatePDF_());
 
-      const header = authHeaderToken();
-      // console.log("Header:", `Bearer ${header}`);
-      // console.log("Header:", header.token);
+      const token = getLocalToken();
 
       const response = await axios.post("/report/pdf", formData, {
         headers: {
-          Authorization: `Bearer ${header.token}`,
+          Authorization: `Bearer ${token}`,
           accept: "application/json",
           "Content-Type": "multipart/form-data",
         },
