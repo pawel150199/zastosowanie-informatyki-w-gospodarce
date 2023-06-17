@@ -24,10 +24,11 @@ const RaportViewing = () => {
   const getRaportById = async (id) => {
     const item = raports.find((item) => item.id === id);
     try {
-      const response = await axios.get(`/report/${id}/file`, authHeader(), {
+      const response = await axios.get(`/report/${id}/file`, {
+        ...authHeader(),
         responseType: "arraybuffer",
       });
-      console.log("PDF download successfully!", response.data);
+      console.log("PDF download successfully!");
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
@@ -42,9 +43,7 @@ const RaportViewing = () => {
 
   const deleteRaportById = async (id) => {
     const item = raports.find((item) => item.id === id);
-    console.log("ITEM:", item);
     try {
-      console.log("ID:", id);
       const response = await axios.delete(
         `reports/delete/${id}`,
         authHeader(),
@@ -52,7 +51,7 @@ const RaportViewing = () => {
           responseType: "arraybuffer",
         }
       );
-      console.log("PDF delete successfully!", response.data);
+      console.log("PDF delete successfully!");
       window.location.reload();
     } catch (error) {
       console.error("Error downloading PDF:", error);
@@ -61,17 +60,19 @@ const RaportViewing = () => {
 
   const fetchAndDisplayPDF = async (id) => {
     try {
-      const response = await axios.get(`/report/${id}/file`, authHeader(), {
+      const response = await axios.get(`/report/${id}/file`, {
+        ...authHeader(),
         responseType: "arraybuffer",
       });
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
-
+  
       window.open(url, "_blank");
     } catch (error) {
       console.error("Błąd podczas pobierania pliku PDF: ", error);
     }
   };
+  
 
   return (
     <Container id="container">

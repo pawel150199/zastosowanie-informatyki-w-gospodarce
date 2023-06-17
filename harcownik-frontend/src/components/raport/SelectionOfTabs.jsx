@@ -86,6 +86,7 @@ export default function SelectionOfTabs() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
     orderContent = scoutOrder(userData);
+    window.location.reload();
   }
 
   const chooseAllTabs = () => {
@@ -141,16 +142,14 @@ export default function SelectionOfTabs() {
       >
         Zaznacz wszystko
       </Button>
-      <Link to="/raport_viewing" id="raport_view">
-        <Button
-          type="button"
-          className="btn btn-dark"
-          onClick={handleDownload}
-          style={{ marginLeft: "1%", marginTop: "1%" }}
-        >
-          Przygotuj raport
-        </Button>
-      </Link>
+      <Button
+        type="button"
+        className="btn btn-dark"
+        onClick={handleDownload}
+        style={{ marginLeft: "1%", marginTop: "1%" }}
+      >
+        Przygotuj raport
+      </Button>
     </div>
   );
 }
