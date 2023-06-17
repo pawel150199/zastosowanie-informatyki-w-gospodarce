@@ -124,3 +124,39 @@ export const postPdfRaport = async (name, userId, file) => {
     }
   }
 };
+
+export const getLevelRaportData = async (levelRaportId) => {
+  try {
+    const response = await axios.get(
+      `/level_reports/${levelRaportId}`,
+      authHeader()
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};
+
+export const addLevelToUser = async (userId, level) => {
+  console.log("USer ID", userId);
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/user/${userId}`,
+      {
+        level: level,
+      },
+      authHeader()
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};
