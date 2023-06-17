@@ -47,7 +47,7 @@ export default function SelectionOfTabs() {
         axios
           .get("/report/amount", authHeader())
           .then((response) => {
-            raportAmound = parseInt(response.data[0]);
+            raportAmound = parseInt(response.data[0]) + 1;
           })
           .catch((error) => {
             console.error("Error fetching data from API: ", error);
@@ -86,7 +86,7 @@ export default function SelectionOfTabs() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
     orderContent = scoutOrder(userData);
-    window.location.reload();
+    window.location.href = "/raport_viewing";
   }
 
   const chooseAllTabs = () => {
