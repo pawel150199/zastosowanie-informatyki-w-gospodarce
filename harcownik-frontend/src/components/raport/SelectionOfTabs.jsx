@@ -48,7 +48,6 @@ export default function SelectionOfTabs() {
           .get("/report/amount", authHeader())
           .then((response) => {
             raportAmound = parseInt(response.data[0]);
-            console.log("Uzyskane dane:", response.data[0]);
           })
           .catch((error) => {
             console.error("Error fetching data from API: ", error);
@@ -86,7 +85,6 @@ export default function SelectionOfTabs() {
   function handleDownload() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
-    console.log("USerData:", userData);
     orderContent = scoutOrder(userData);
   }
 
@@ -110,14 +108,11 @@ export default function SelectionOfTabs() {
               id={tab.id}
               checked={selectedItems.includes(tab.id)}
               onChange={(e) => {
-                console.log("e", e);
                 if (e.target.checked) {
                   handleSelect(tab.id);
                   tab.isChecked = true;
-                  console.log("ischecked", tab.isChecked, tab.label);
                 } else {
                   handleDeselect(tab.id);
-                  console.log("ischecked", tab.isChecked, tab.label);
                 }
               }}
             />

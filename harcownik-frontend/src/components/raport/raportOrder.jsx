@@ -148,7 +148,6 @@ export const scoutOrder = ({}) => {
 
   const monthWord = monthNames[month - 1];
   const tittle = `Rozkaz ${month}/${year}.${raportAmound}`;
-  console.log("Amount:", raportAmound);
   const selectedTabs = tabs.filter((tab) => tab.isChecked);
   const patternTexts = selectedTabs.map((tab, index) => ({
     text: [
