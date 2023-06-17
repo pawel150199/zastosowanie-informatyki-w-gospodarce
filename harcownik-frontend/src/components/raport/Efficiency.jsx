@@ -134,7 +134,6 @@ function Efficiency() {
 
   const addReportedLevelToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      console.log("ITEM:", item);
       updateLevelApplications(item, "zakończona-zaraportowana");
       addLevelToProfile(item);
     });
@@ -153,6 +152,16 @@ function Efficiency() {
       const username = usersData.find((user) => user.id === item.user_id);
       const name = username.first_name + " " + username.last_name;
       tabs[8].patternText += "- " + item.title + ": " + name + ",\n";
+    });
+  };
+
+  const rejectReportedLevel = () => {
+    endedItemsToObsoleted.forEach((item) => {
+      updateLevelApplications(item, "zakończona-odrzucona");
+    });
+
+    reportedItemsToObsoleted.forEach((item) => {
+      updateLevelApplications(item, "zgłoszona-odrzucona");
     });
   };
 
@@ -244,9 +253,27 @@ function Efficiency() {
             type="button"
             className="btn btn-dark"
             onClick={addReportedLevelToRaport}
-            style={{ marginTop: "1%" }}
+            style={{ marginTop: "1%", marginRight: "1%" }}
           >
             Dodaj do raportu
+          </button>
+        )}
+        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => {
+              const confirmed = window.confirm(
+                "Czy na pewno chcesz odrzucić zgłoszenia?"
+              );
+              if (confirmed) {
+                rejectReportedLevel();
+                window.location.reload();
+              }
+            }}
+            style={{ marginTop: "1%", marginLeft: "1%" }}
+          >
+            Odrzuć zgłoszenia
           </button>
         )}
       </Container>

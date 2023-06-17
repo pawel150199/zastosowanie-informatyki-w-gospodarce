@@ -142,6 +142,16 @@ function Submissions() {
     });
   };
 
+  const rejectReportedBadges = () => {
+    endedItemsToObsoleted.forEach((item) => {
+      updateBadgesApplications(item, "zakończona-odrzucona");
+    });
+
+    reportedItemsToObsoleted.forEach((item) => {
+      updateBadgesApplications(item, "zgłoszona-odrzucona");
+    });
+  };
+
   return (
     <div className="jumbotron jumbotronStyle_1 rounded ">
       <h1>Zgłoszone wnioski o nowe sprawności</h1>
@@ -218,7 +228,7 @@ function Submissions() {
               clearSelectedBadges();
               eventCheckBoxFalse();
             }}
-            style={{ marginLeft: "1%" }}
+            style={{ marginLeft: "1%", marginLeft: "1%" }}
           >
             Odznacz wszystko
           </button>
@@ -228,9 +238,27 @@ function Submissions() {
             type="button"
             className="btn btn-dark"
             onClick={addReportedBadgesToRaport}
-            style={{ marginTop: "1%" }}
+            style={{ marginTop: "1%", marginRight: "1%" }}
           >
             Dodaj do raportu
+          </button>
+        )}
+        {(selectedItemsEnded.length || selectedItemsReported.length) > 0 && (
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={() => {
+              const confirmed = window.confirm(
+                "Czy na pewno chcesz odrzucić zgłoszenia?"
+              );
+              if (confirmed) {
+                rejectReportedBadges();
+                window.location.reload();
+              }
+            }}
+            style={{ marginTop: "1%", marginLeft: "1%" }}
+          >
+            Odrzuć zgłoszenia
           </button>
         )}
       </Container>
