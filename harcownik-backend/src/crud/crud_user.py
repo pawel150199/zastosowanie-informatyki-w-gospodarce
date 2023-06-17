@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from src.core.security import get_password_hash, verify_password
 from src.models.user import User as UserModel
 from src.schemas.user import CreateScout, CreateUser, UpdateUser
+from src.models.badge import Badge
 
 
 # POST
@@ -20,9 +21,13 @@ def create_scout(db: Session, user: CreateScout, group_id: int) -> UserModel:
         level=user.level,
         function=user.function,
         group_id=group_id,
-        badge_id=user.badge_id,
     )
 
+    for badge_id in user.badge_ids:
+        badge = db.query(Badge).get(badge_id)
+        if badge:
+            db_user.badges.append(badge)
+    
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
@@ -40,8 +45,12 @@ def create_user(db: Session, user: CreateUser) -> UserModel:
         level=user.level,
         function=user.function,
         group_id=user.group_id,
-        badge_id=user.badge_id,
     )
+
+    for badge_id in user.badge_ids:
+        badge = db.query(Badge).get(badge_id)
+        if badge:
+            db_user.badges.append(badge)
 
     db.add(db_user)
     db.commit()
@@ -108,14 +117,26 @@ def update_user(
         update_data = user_in
     else:
         update_data = user_in.dict(exclude_unset=True)
+        
     if "password" in update_data:
         hashed_password = get_password_hash(update_data["password"])
         del update_data["password"]
         update_data["hashed_password"] = hashed_password
+
+    if "badge_ids" in update_data:
+        for badge_id in update_data["badge_ids"]:
+            badge = db.query(Badge).get(badge_id)
+            if badge:
+                user_obj.badges.append(badge)
+
+        del update_data["badge_ids"]
+
     for field in obj_data:
         if field in update_data:
             setattr(user_obj, field, update_data[field])
+
     db.add(user_obj)
     db.commit()
     db.refresh(user_obj)
     return user_obj
+

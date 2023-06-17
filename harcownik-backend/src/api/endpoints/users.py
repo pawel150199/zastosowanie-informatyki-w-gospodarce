@@ -17,7 +17,7 @@ router = APIRouter()
 def create_scout_with_specific_group_id(
     user: schemas.CreateScout,
     db: Session = Depends(get_db),
-    current_teamadmin: models.User = Depends(get_current_teamadmin),
+    _: models.User = Depends(get_current_teamadmin),
 ) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:

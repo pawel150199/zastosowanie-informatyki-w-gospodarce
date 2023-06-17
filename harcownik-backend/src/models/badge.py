@@ -1,5 +1,6 @@
 from sqlalchemy import JSON, Column, DateTime, Integer, String
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
 from src.db.db import Base
 
 
