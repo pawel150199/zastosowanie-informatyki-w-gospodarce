@@ -6,6 +6,8 @@ import {
   getLevelApplications,
   getUsersData,
   updateLevelApplications,
+  addLevelToUser,
+  getLevelRaportData,
 } from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
@@ -117,10 +119,24 @@ function Efficiency() {
     setEndedItemsToObsoleted([]);
     setReportedItemsToObsoleted([]);
   };
+  const addLevelToProfile = async (item) => {
+    try {
+      const response = await getLevelRaportData(item);
+      console.log("Response:", response);
+      console.log("Response user id:", response.user_id);
+      await addLevelToUser(response.user_id, response.title);
+      return response; // Zwracamy pełną odpowiedź
+    } catch (error) {
+      console.error("Error:", error);
+      throw error; // Rzucamy błąd w przypadku wystąpienia problemu
+    }
+  };
 
   const addReportedLevelToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
+      console.log("ITEM:", item);
       updateLevelApplications(item, "zakończona-zaraportowana");
+      addLevelToProfile(item);
     });
 
     reportedItemsToObsoleted.forEach((item) => {
