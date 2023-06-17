@@ -131,7 +131,6 @@ export const getLevelRaportData = async (levelRaportId) => {
       `/level_reports/${levelRaportId}`,
       authHeader()
     );
-    console.log("REsponse:", response);
     return response.data;
   } catch (error) {
     if (error.response.status === 404) {
