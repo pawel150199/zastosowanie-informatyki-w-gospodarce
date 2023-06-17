@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Picker } from "react-native";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -31,12 +31,7 @@ const RegisterAdmin = () => {
   const [groupId, setGroupId] = useState("");
 
   // Info
-  // eslint-disable-next-line
   const [info, setInfo] = useState("");
-
-  useEffect(() => {
-    handleRegisterAdmin();
-  },[]);
 
   const handleRegisterAdmin = async () => {
     try {
@@ -45,7 +40,7 @@ const RegisterAdmin = () => {
       setInfo("Drużynowy i grupa stworzono pomyślnie!");
       window.location.href = "/login";
     } catch (error) {
-      setInfo("Wystąpił błąd!");
+      setInfo("Wystąpił błąd: " + error.message);
       console.error(error);
     }
   };
@@ -54,7 +49,7 @@ const RegisterAdmin = () => {
     <View style={styles.container}>
       <br></br>
       <Text style={styles.title}>Załóż nową drużynę Harcerską</Text>
-      <small>Jeśli twoja drużyna jest już w aplikacji harcownik, poproś swojego drużynowego o dodanie :)</small>
+      <small>Jeśli twoja drużyna jest już w aplikacji harcownik, poproś swojego drużynowego o dodanie :)</small>
       <br></br>
       <TextInput
         style={styles.input}
@@ -80,7 +75,6 @@ const RegisterAdmin = () => {
         value={city}
         onChangeText={setCity}
       />
-
 
       <br></br>
       <Text style={styles.title}>Załóż konto Drużynowego</Text>
@@ -148,7 +142,7 @@ const RegisterAdmin = () => {
       </Button>
       <TouchableOpacity>
         <Link to="/login">
-            <Text style={styles.link}>Masz już konto? Zaloguj się</Text>
+          <Text style={styles.link}>Masz już konto? Zaloguj się</Text>
         </Link>
       </TouchableOpacity>
       <br></br>
