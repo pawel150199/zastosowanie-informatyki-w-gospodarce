@@ -24,6 +24,7 @@ function Efficiency() {
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
   const [endedItemsToObsoleted, setEndedItemsToObsoleted] = useState([]);
   const [reportedItemsToObsoleted, setReportedItemsToObsoleted] = useState([]);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -163,6 +164,11 @@ function Efficiency() {
     });
   };
 
+  const handleButtonClick = () => {
+    addReportedLevelToRaport();
+    setIsButtonClicked(true);
+  };
+
   return (
     <div className="jumbotron jumbotronStyle_4 rounded ">
       <h1>Zgłoszone wnioski o nowe poziomy harcerskie</h1>
@@ -239,6 +245,7 @@ function Efficiency() {
             onClick={() => {
               clearSelectedBadges();
               eventCheckBoxFalse();
+              setIsButtonClicked(false);
             }}
             style={{ marginLeft: "1%" }}
           >
@@ -250,8 +257,9 @@ function Efficiency() {
           <button
             type="button"
             className="btn btn-dark"
-            onClick={addReportedLevelToRaport}
+            onClick={handleButtonClick}
             style={{ marginTop: "1%", marginRight: "1%" }}
+            disabled={isButtonClicked}
           >
             Dodaj do raportu
           </button>

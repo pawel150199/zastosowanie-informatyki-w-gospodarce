@@ -25,6 +25,7 @@ function Submissions() {
   const [selectedItemsEnded, setSelectedItemsEnded] = useState([]);
   const [endedItemsToObsoleted, setEndedItemsToObsoleted] = useState([]);
   const [reportedItemsToObsoleted, setReportedItemsToObsoleted] = useState([]);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -169,6 +170,11 @@ function Submissions() {
     }
   };
 
+  const handleButtonClick = () => {
+    addReportedBadgesToRaport();
+    setIsButtonClicked(true);
+  };
+
   return (
     <div className="jumbotron jumbotronStyle_1 rounded ">
       <h1>Zgłoszone wnioski o nowe sprawności</h1>
@@ -244,6 +250,7 @@ function Submissions() {
             onClick={() => {
               clearSelectedBadges();
               eventCheckBoxFalse();
+              setIsButtonClicked(false);
             }}
             style={{ marginLeft: "1%", marginLeft: "1%" }}
           >
@@ -254,8 +261,9 @@ function Submissions() {
           <button
             type="button"
             className="btn btn-dark"
-            onClick={addReportedBadgesToRaport}
+            onClick={handleButtonClick}
             style={{ marginTop: "1%", marginRight: "1%" }}
+            disabled={isButtonClicked}
           >
             Dodaj do raportu
           </button>
