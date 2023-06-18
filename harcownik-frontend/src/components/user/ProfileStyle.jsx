@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 4,
   },
   customBadge: {
     backgroundColor: "gray",
