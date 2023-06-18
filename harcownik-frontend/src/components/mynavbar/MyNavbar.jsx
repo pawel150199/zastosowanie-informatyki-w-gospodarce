@@ -58,7 +58,7 @@ const MyNavbar = () => {
             {!isLogged() ? (
               <>
                 <Nav.Link className="box" href="/login">
-                  Zaloguj
+                  Zaloguj się
                 </Nav.Link>
                 <Nav.Link className="box" href="/register_admin">
                   Zarejestruj Drużynę
@@ -72,7 +72,7 @@ const MyNavbar = () => {
             ) : null}
             {teamAdmin ? (
               <Nav.Link className="box" href="/raport">
-                Raport
+                Generowanie raportu
               </Nav.Link>
             ) : null}
             {teamAdmin ? (
@@ -97,7 +97,7 @@ const MyNavbar = () => {
                   Zmień hasło
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={handleLogout}>
-                  Wyloguj
+                  Wyloguj się
                 </NavDropdown.Item>
               </NavDropdown>
             ) : null}

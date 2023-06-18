@@ -9,7 +9,7 @@ const About = () => {
         <br></br>
         <p className="lead text-center">
           Harcownik to aplikacja webowa skierowana do organizacji harcerskich.
-          Ma ona za zadanie usprawnić zarządzanie harcerzami.
+          Ma ona za zadanie usprawnić zarządzanie grupą harcerzy.
         </p>
       </div>
       <br></br>
