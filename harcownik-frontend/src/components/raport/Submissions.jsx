@@ -159,8 +159,8 @@ function Submissions() {
     try {
       const response = await getBadgeRaportData(item);
       const response_2 = await addBadgeToUser(
-        response[0].user_id,
-        response[0].badge_id
+        response.user_id,
+        response.badge_id
       );
       return response;
     } catch (error) {

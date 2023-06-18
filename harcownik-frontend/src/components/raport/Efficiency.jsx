@@ -122,8 +122,6 @@ function Efficiency() {
   const addLevelToProfile = async (item) => {
     try {
       const response = await getLevelRaportData(item);
-      console.log("Response:", response);
-      console.log("Response user id:", response.user_id);
       await addLevelToUser(response.user_id, response.title);
       return response;
     } catch (error) {

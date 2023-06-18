@@ -47,13 +47,15 @@ function SkillsCard() {
       {meData &&
         meData.badges &&
         meData.badges.length > 0 &&
-        meData.badges.map((myBadge, index) => (
-          <View key={index} style={styles.badgeContainer}>
-            <Badge containerStyle={styles.customBadge}>
-              <Text style={styles.badgeText}>{myBadge.name}</Text>
-            </Badge>
-          </View>
-        ))}
+        meData.badges
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((myBadge, index) => (
+            <View key={index} style={styles.badgeContainer}>
+              <Badge containerStyle={styles.customBadge}>
+                <Text style={styles.badgeText}>{myBadge.name}</Text>
+              </Badge>
+            </View>
+          ))}
     </View>
   );
 }
