@@ -124,7 +124,6 @@ function Submissions() {
 
   const addReportedBadgesToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
-      console.log("Item:", item);
       updateBadgesApplications(item, "zakończona-zaraportowana");
       addBadgesToProfile(item);
     });

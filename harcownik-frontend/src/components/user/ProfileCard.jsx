@@ -14,7 +14,6 @@ function ProfileCard() {
     if (meData) {
       try {
         const response = await getMyGroupData(groupId);
-        console.log("Scout:", response);
         setMyGroup(response.data);
       } catch (error) {
         setMyGroup([]);

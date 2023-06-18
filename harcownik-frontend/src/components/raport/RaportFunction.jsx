@@ -142,7 +142,6 @@ export const getLevelRaportData = async (levelRaportId) => {
 };
 
 export const addLevelToUser = async (userId, level) => {
-  console.log("USer ID", userId);
   try {
     const response = await axios.put(
       `http://localhost:8000/user/${userId}`,
@@ -167,7 +166,6 @@ export const getBadgeRaportData = async (badge_id) => {
       `/badge_reports/badge/${badge_id}`,
       authHeader()
     );
-    console.log("response badge data:", response.data);
     return response.data;
   } catch (error) {
     if (error.response.status === 404) {

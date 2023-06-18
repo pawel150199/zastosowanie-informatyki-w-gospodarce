@@ -56,7 +56,7 @@ def read_my_badges_reports(
     db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)
 ) -> Any:
     me = current_user.id
-    db_badge_report = crud.get_badge_report_by_user(db, user_id=me)
+    db_badge_report = crud.get_badge_report(db, user_id=me)
     if db_badge_report is None or db_badge_report == []:
         raise HTTPException(status_code=404, detail="Badge reports not found")
     return db_badge_report

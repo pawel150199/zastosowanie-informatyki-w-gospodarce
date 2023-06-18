@@ -91,7 +91,6 @@ export const postBadge = async (data, userID, badgeID, status) => {
       },
       authHeader()
     );
-    console.log("postBadge:", response);
     window.location.reload();
   } catch (error) {
     console.error(error);

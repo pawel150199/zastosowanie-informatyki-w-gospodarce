@@ -39,10 +39,6 @@ def get_badge_report_by_group(db: Session, group_id: int):
     return db.query(BadgeReportModel).join(User).filter(User.group_id == group_id).all()
 
 
-def get_badge_report_by_badge(db: Session, badge_id: int):
-    return db.query(BadgeReportModel).filter(BadgeReportModel.id == badge_id ).all()
-
-
 # DELETE
 def delete_badge_report(db: Session, badge_report_id: int):
     db_badge_report = db.query(BadgeReportModel).get(badge_report_id)
