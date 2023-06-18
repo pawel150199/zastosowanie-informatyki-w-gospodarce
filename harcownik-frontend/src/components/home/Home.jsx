@@ -32,7 +32,7 @@ function Home() {
           <br></br>
           <h1>Witaj w aplikacji Harcownik</h1>
           <p className="lead">
-            Jesteś jeden krok od ułatwienia zarządzania grupą harcerzyków
+            Jesteś jeden krok od ułatwienia zarządzania twoją drużyną
           </p>
           <Link to="/login" className="text-center">
             <Button variant="primary" className="mt-3 badge">
@@ -49,10 +49,10 @@ function Home() {
         </h2>
         <p className="text-center">
           Jest to aplikacja przeznaczona dla podgrup harcerskich zwanych
-          drużyną. Zadaniem aplikacji jest ułatwienie zarządzanie drużyną w tym
-          kluczowa jest kwestia generowania rozkazu, który powoduje wiele
+          drużynami. Zadaniem aplikacji jest ułatwienie zarządzania drużyną. 
+          Kluczową kwestią w zarządzniu drużyną jest tworzenie rozkazów, które powoduje wiele
           problemów. Dodatkowo aplikacja udostępnia podstawowe informacje np. o
-          zdobytych zdolnościach oraz o wymaganiach, które trzeba spełnić aby je
+          zdobytych sprawnościach oraz o wymaganiach, które trzeba spełnić aby je
           zdobyć. Aplikacja wysyła powiadomienia przypominające o składkach.
         </p>
         <br></br>

@@ -86,7 +86,7 @@ export default function SelectionOfTabs() {
     const selectedTabs = tabs.filter((tab) => selectedItems.includes(tab.id));
     fileContent = selectedTabs.map((tab) => tab.patternText).join("\n\n");
     orderContent = scoutOrder(userData);
-    window.location.href = "/raport_viewing";
+    //window.location.href = "/raport_viewing";
   }
 
   const chooseAllTabs = () => {

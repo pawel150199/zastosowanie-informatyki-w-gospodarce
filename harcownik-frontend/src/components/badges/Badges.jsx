@@ -31,7 +31,7 @@ const Badges = () => {
 
   return (
     <Container id="container">
-      <h2 id="badges">Sprawności harcerzy polskich</h2>
+      <h2 id="badges">Sprawności Związku Harcerstwa Polskiego</h2>
       <Accordion>
         {badges.map((group, index) => (
           <Accordion.Item key={index} eventKey={index} className="mb-3">
