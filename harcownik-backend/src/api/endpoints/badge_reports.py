@@ -56,7 +56,7 @@ def read_my_badges_reports(
     db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)
 ) -> Any:
     me = current_user.id
-    db_badge_report = crud.get_badge_report(db, user_id=me)
+    db_badge_report = crud.get_badge_report_by_user(db, user_id=me)
     if db_badge_report is None or db_badge_report == []:
         raise HTTPException(status_code=404, detail="Badge reports not found")
     return db_badge_report
@@ -64,7 +64,7 @@ def read_my_badges_reports(
 
 @router.get("/badge_reports/badge/{badge_id}", response_model=list[schemas.BadgeReport])
 def read_badges_reports_by_badge(badge_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_teamadmin)):
-    db_badge_report = crud.get_badge_report_by_badge(db, badge_id=badge_id)
+    db_badge_report = crud.get_badge_report(db, badge_id=badge_id)
     if db_badge_report is None:
         raise HTTPException(
             status_code=404,
