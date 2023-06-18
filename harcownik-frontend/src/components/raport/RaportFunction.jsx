@@ -142,12 +142,47 @@ export const getLevelRaportData = async (levelRaportId) => {
 };
 
 export const addLevelToUser = async (userId, level) => {
-  console.log("USer ID", userId);
   try {
     const response = await axios.put(
       `http://localhost:8000/user/${userId}`,
       {
         level: level,
+      },
+      authHeader()
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};
+
+export const getBadgeRaportData = async (badge_id) => {
+  try {
+    const response = await axios.get(
+      `/badge_reports/${badge_id}`,
+      authHeader()
+    );
+    console.log("REsponse:", response);
+    return response.data;
+  } catch (error) {
+    if (error.response.status === 404) {
+      throw new Error("Data not found");
+    } else {
+      console.error(error);
+    }
+  }
+};
+
+export const addBadgeToUser = async (userId, badgeId) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8000/user/${userId}`,
+      {
+        badge_ids: [badgeId],
       },
       authHeader()
     );

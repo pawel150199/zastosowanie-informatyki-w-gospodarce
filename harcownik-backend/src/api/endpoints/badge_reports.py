@@ -62,9 +62,9 @@ def read_my_badges_reports(
     return db_badge_report
 
 
-@router.get("/badge_reports/badge/{badge_id}", response_model=list[schemas.BadgeReport])
-def read_badges_reports_by_badge(badge_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_teamadmin)):
-    db_badge_report = crud.get_badge_report_by_badge(db, badge_id=badge_id)
+@router.get("/badge_reports/{badge_report_id}", response_model=schemas.BadgeReport)
+def read_badges_reports_by_badge(badge_report_id: int, db: Session = Depends(get_db), _: models.User = Depends(get_current_teamadmin)):
+    db_badge_report = crud.get_badge_report(db, badge_report_id=badge_report_id)
     if db_badge_report is None:
         raise HTTPException(
             status_code=404,

@@ -44,12 +44,18 @@ function SkillsCard() {
         Twoje umiejętności <FaMedal size={40} />
       </Text>
       <View style={styles.divider} />
-
-      <View style={styles.badgeContainer}>
-        <Badge containerStyle={styles.customBadge}>
-          <Text style={styles.badgeText}>{myBadge}</Text>
-        </Badge>
-      </View>
+      {meData &&
+        meData.badges &&
+        meData.badges.length > 0 &&
+        meData.badges
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((myBadge, index) => (
+            <View key={index} style={styles.badgeContainer}>
+              <Badge containerStyle={styles.customBadge}>
+                <Text style={styles.badgeText}>{myBadge.name}</Text>
+              </Badge>
+            </View>
+          ))}
     </View>
   );
 }

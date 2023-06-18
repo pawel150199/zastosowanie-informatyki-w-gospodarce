@@ -6,6 +6,8 @@ import {
   getBadgesApplications,
   getUsersData,
   updateBadgesApplications,
+  addBadgeToUser,
+  getBadgeRaportData,
 } from "./RaportFunction";
 import { tabs } from "./raportOrder";
 import "./raport_style.css";
@@ -123,6 +125,7 @@ function Submissions() {
   const addReportedBadgesToRaport = () => {
     endedItemsToObsoleted.forEach((item) => {
       updateBadgesApplications(item, "zakończona-zaraportowana");
+      addBadgesToProfile(item);
     });
 
     reportedItemsToObsoleted.forEach((item) => {
@@ -150,6 +153,20 @@ function Submissions() {
     reportedItemsToObsoleted.forEach((item) => {
       updateBadgesApplications(item, "zgłoszona-odrzucona");
     });
+  };
+
+  const addBadgesToProfile = async (item) => {
+    try {
+      const response = await getBadgeRaportData(item);
+      const response_2 = await addBadgeToUser(
+        response.user_id,
+        response.badge_id
+      );
+      return response;
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
   };
 
   return (

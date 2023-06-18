@@ -19,10 +19,10 @@ const User = () => {
   return (
     <Container>
       <Row>
-        <Col md={7}>
+        <Col md={6}>
           <ProfileCard />
         </Col>
-        <Col md={5}>
+        <Col md={6}>
           <SkillsCard />
         </Col>
       </Row>
