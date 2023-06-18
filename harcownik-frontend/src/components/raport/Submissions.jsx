@@ -159,9 +159,10 @@ function Submissions() {
   const addBadgesToProfile = async (item) => {
     try {
       const response = await getBadgeRaportData(item);
-      console.log("Response:", response[0]);
-      console.log("Response user id:", response[0].user_id);
-      await addBadgeToUser(response[0].user_id, response[0].badge_id);
+      const response_2 = await addBadgeToUser(
+        response[0].user_id,
+        response[0].badge_id
+      );
       return response;
     } catch (error) {
       console.error("Error:", error);

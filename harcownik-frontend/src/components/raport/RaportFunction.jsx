@@ -179,12 +179,11 @@ export const getBadgeRaportData = async (badge_id) => {
 };
 
 export const addBadgeToUser = async (userId, badgeId) => {
-  console.log("USer ID", userId);
   try {
     const response = await axios.put(
       `http://localhost:8000/user/${userId}`,
       {
-        badge_ids: [badge],
+        badge_ids: [badgeId],
       },
       authHeader()
     );
