@@ -55,7 +55,6 @@ function ApplicationStatus() {
                 (badge) =>
                   badge.status === "zakończona" ||
                   badge.status === "zgłoszona" ||
-                  badge.status === "zgłoszona-zaraportowana" ||
                   badge.status === "zakończona-odrzucona" ||
                   badge.status === "zgłoszona-odrzucona"
               )
