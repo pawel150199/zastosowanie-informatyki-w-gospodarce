@@ -30,7 +30,7 @@ target_metadata = Base.metadata
 def get_url():
     user = "postgres"
     password = "admin"
-    server = "host.docker.internal"
+    server = "localhost"
     db = "postgres"
     return f"postgresql://{user}:{password}@{server}/{db}"
 
