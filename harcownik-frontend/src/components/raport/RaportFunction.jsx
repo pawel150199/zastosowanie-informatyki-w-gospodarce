@@ -69,7 +69,7 @@ export const getMyGroupData = async () => {
 export const updateBadgesApplications = async (badgeId, status) => {
   try {
     const response = await axios.put(
-      `http://localhost:8000/badge_report/${badgeId}`,
+      `/badge_report/${badgeId}`,
       {
         status: status,
       },
@@ -88,7 +88,7 @@ export const updateBadgesApplications = async (badgeId, status) => {
 export const updateLevelApplications = async (badgeId, status) => {
   try {
     const response = await axios.put(
-      `http://localhost:8000/level_report/${badgeId}`,
+      `/level_report/${badgeId}`,
       {
         status: status,
       },
@@ -107,7 +107,7 @@ export const updateLevelApplications = async (badgeId, status) => {
 export const postPdfRaport = async (name, userId, file) => {
   try {
     const response = await axios.post(
-      `http://localhost:8000/report/pdf`,
+      `/report/pdf`,
       {
         name: name,
         user_id: userId,
@@ -144,7 +144,7 @@ export const getLevelRaportData = async (levelRaportId) => {
 export const addLevelToUser = async (userId, level) => {
   try {
     const response = await axios.put(
-      `http://localhost:8000/user/${userId}`,
+      `/user/${userId}`,
       {
         level: level,
       },
@@ -180,7 +180,7 @@ export const getBadgeRaportData = async (badge_id) => {
 export const addBadgeToUser = async (userId, badgeId) => {
   try {
     const response = await axios.put(
-      `http://localhost:8000/user/${userId}`,
+      `/user/${userId}`,
       {
         badge_ids: [badgeId],
       },
