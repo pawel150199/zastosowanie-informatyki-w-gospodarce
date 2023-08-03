@@ -12,31 +12,11 @@ from src.utils import send_new_account_email
 router = APIRouter()
 
 # POST
-# for testing purpose for now i will leave this endpoint
-@router.post("/users/scout/specificid/{group_id}", response_model=schemas.User)
-def create_scout_with_specific_group_id(
-    user: schemas.CreateScout,
-    db: Session = Depends(get_db),
-    _: models.User = Depends(get_current_teamadmin),
-) -> Any:
-    db_user = crud.get_by_email(db, email=user.email)
-    if db_user:
-        raise HTTPException(
-            status_code=400,
-            detail="The user with this username already exist in the system",
-        )
-    if settings.EMAILS_ENABLED and user.email:
-        send_new_account_email(
-            email_to=user.email, username=user.first_name, password=user.password
-        )
-    return crud.create_scout(db=db, user=user, group_id=user.group_id)
-
-
 @router.post("/users/scout", response_model=schemas.User)
 def create_scout(
     user: schemas.CreateScout,
     db: Session = Depends(get_db),
-    current_teamadmin: models.User = Depends(get_current_teamadmin),
+    current_teamadmin: models.User = Depends(get_current_webadmin_or_teamadmin),
 ) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
@@ -52,7 +32,7 @@ def create_scout(
 
 
 @router.post("/users/admin", response_model=schemas.User)
-def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)) -> Any:
+def create_user(user: schemas.CreateUser, db: Session = Depends(get_db), _: models.User = Depends(get_current_webadmin)) -> Any:
     db_user = crud.get_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(
@@ -139,7 +119,7 @@ def delete_user(
 def delete_user(
     user_id: int,
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_teamadmin),
+    current_user: models.User = Depends(get_current_webadmin_or_teamadmin),
 ) -> Any:
     user = crud.get_user(db=db, user_id=user_id)
     if current_user.id == user_id:
