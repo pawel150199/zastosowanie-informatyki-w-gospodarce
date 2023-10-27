@@ -1,36 +1,6 @@
 version: "3.8"
 
 services:
-  # Traefik reverse proxy
-  traefik:
-    image: traefik:v2.5
-    networks:
-      - traefik-public
-      - default
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-
-  # FastAPI web server
-  fastapi:
-    depends_on: 
-      - postgres
-    command: ["bash", "-c", "./pre_test_backend.sh"]
-    entrypoint: ["poetry run uvicorn src.main:app --port 8000"]
-    build:
-      context: ./harcownik-backend
-      dockerfile: Dockerfile
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.fastapi.rule=Host(`api.example.com`)"
-      - "traefik.http.routers.fastapi.entrypoints=web"
-      - "traefik.http.services.fastapi.loadbalancer.server.port=80"
 
   # PostgreSQL database
   postgres:
@@ -42,34 +12,50 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=postgres
       - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - internal-network
+  # FastAPI web server
+  fastapi:
+    depends_on: 
+      - postgres
+    build:
+      context: ./harcownik-backend
+      dockerfile: Dockerfile
+    entrypoint: ["poetry", "run", "./entrypoint.sh"]
+    ports:
+      - "8000:8000"
+    environment:
+      - postgres_server=postgres
+    networks:
+      - internal-network
 
   # PgAdmin web interface
-  pgadmin:
-    depends_on:
-      - postgres
-    image: dpage/pgadmin4:latest
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=your_email@example.com
-      - PGADMIN_DEFAULT_PASSWORD=your_pgadmin_password
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.example.com`)"
-      - "traefik.http.routers.pgadmin.entrypoints=web"
-      - "traefik.http.services.pgadmin.loadbalancer.server.port=80"
+  #pgadmin:
+  #  depends_on:
+  #    - postgres
+  #  image: dpage/pgadmin4:latest
+  #  environment:
+  #    - PGADMIN_DEFAULT_EMAIL=harcownikapp@gmail.com
+  #    - PGADMIN_DEFAULT_PASSWORD=admin
+  #  ports:
+  #    - "5050:80"
+  #  networks:
+  #    - internal-network
 
   # React frontend
   frontend:
+    depends_on:
+      - fastapi
     build:
       context: ./harcownik-frontend
       dockerfile: Dockerfile
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`example.com`)"
-      - "traefik.http.routers.frontend.entrypoints=web"
-      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+    ports:
+      - "3000:80"
+    networks:
+      - internal-network
 
 volumes:
   app-db-data:
 
 networks:
-  traefik-public:
+  internal-network:

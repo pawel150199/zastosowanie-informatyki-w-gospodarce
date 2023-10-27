@@ -18,5 +18,11 @@ alembic upgrade head
 log_info "Migration has been succesfully run!"
 
 # Create initial data in DB
-python ./initial_data.py
-log_info "Initial data has been succesfully created!" 
+if python ./initial_data.py 2>/dev/null; then
+    log_info "Initial data has been succesfully created!"
+else
+    log_info "Initial data exists!"
+fi
+
+# Entrypoint
+uvicorn src.main:app --host 0.0.0.0 --port 8000

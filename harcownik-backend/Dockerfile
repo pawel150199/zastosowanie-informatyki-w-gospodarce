@@ -11,14 +11,11 @@ COPY ./src ./src
 COPY ./alembic/ ./alembic
 COPY ./pyproject.toml  .
 COPY ./alembic.ini .
-COPY ./pre_test_backend.sh .
+COPY ./entrypoint.sh .
 COPY ./backend_test_connection.py .
 COPY ./initial_data.py .
 
 RUN poetry install --no-root
 RUN poetry config virtualenvs.create false
 
-RUN chmod +x ./pre_test_backend.sh
-RUN poetry run ./pre_test_backend.sh
-
-CMD ["poetry", "run", ",uvicorn", "src.main:app", "--port", "8000"]
+RUN chmod +x ./entrypoint.sh

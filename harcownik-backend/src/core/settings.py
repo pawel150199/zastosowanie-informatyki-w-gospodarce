@@ -8,16 +8,16 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Harcownik"
     SECRET_KEY: str = secrets.token_urlsafe(32)
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 8
-    SERVER_NAME: str = "localhost"
+    SERVER_NAME: str = "172.18.0.3"
     ALGORITHM: str = "HS256"
-    SERVER_HOST: AnyHttpUrl = "http://localhost:8000"
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://localhost:3000"]
+    SERVER_HOST: AnyHttpUrl = "http://172.18.0.3:8000"
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://172.18.0.4:3000"]
 
     # DATABASE
-    POSTGRES_SERVER: str = None
-    POSTGRES_USER: str = None
-    POSTGRES_PASSWORD: str = None
-    POSTGRES_DB: str = None
+    POSTGRES_SERVER: str = "172.18.0.2"
+    POSTGRES_USER: str = "postgres"
+    POSTGRES_PASSWORD: str = "admin"
+    POSTGRES_DB: str = "postgres"
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 
     # SMTP
