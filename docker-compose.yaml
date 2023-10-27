@@ -18,7 +18,9 @@ services:
   fastapi:
     depends_on: 
       - postgres
-    image: polo150199/harcownik-backend:latest
+    build:
+      context: ./harcownik-backend
+      dockerfile: Dockerfile
     entrypoint: ["poetry", "run", "./entrypoint.sh"]
     ports:
       - "8000:8000"
@@ -44,7 +46,9 @@ services:
   frontend:
     depends_on:
       - fastapi
-    image: polo150199/harcownik-frontend:latest
+    build:
+      context: ./harcownik-frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:80"
     networks:
