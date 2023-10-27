@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     # DATABASE
     POSTGRES_SERVER: str = "172.18.0.2"
     POSTGRES_USER: str = "postgres"
-    POSTGRES_PASSWORD: str = "admin"
+    POSTGRES_PASSWORD: str = "password"
     POSTGRES_DB: str = "postgres"
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 

@@ -6,6 +6,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+from src.core.settings import settings
 import os
 
 # this is the Alembic Config object, which provides
@@ -28,10 +29,10 @@ target_metadata = Base.metadata
 # ... etc.
 
 def get_url():
-    user = "postgres"
-    password = "admin"
-    server = "172.18.0.2"
-    db = "postgres"
+    user = settings.POSTGRES_USER
+    password = settings.POSTGRES_PASSWORD
+    server = settings.POSTGRES_SERVER
+    db = settings.POSTGRES_DB
     return f"postgresql://{user}:{password}@{server}/{db}"
 
 def run_migrations_offline() -> None:
