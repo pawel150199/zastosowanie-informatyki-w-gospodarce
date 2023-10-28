@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     SERVER_NAME: str = "172.18.0.3"
     ALGORITHM: str = "HS256"
     SERVER_HOST: AnyHttpUrl = "http://172.18.0.3:8000"
-    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://172.18.0.4:3000"]
+    BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = ["http://172.18.0.4:80"]
 
     # DATABASE
     POSTGRES_SERVER: str = "172.18.0.2"
